@@ -1,2 +1,3 @@
-# repo-scheduler
-Schedules repository events for more reliable GitHub Actions workflow runs
+# Repo scheduler
+
+_Schedules repository events for more reliable GitHub Actions workflow runs_

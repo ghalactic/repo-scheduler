@@ -1,0 +1,20 @@
+/* eslint-disable no-console */
+import { build } from "esbuild";
+
+const [, , outfile] = process.argv;
+
+if (!outfile) {
+  console.error("usage: node build-aws-lambda.ts <outfile>");
+  process.exit(1);
+}
+
+await build({
+  entryPoints: ["src/aws-lambda/index.ts"],
+  bundle: true,
+  packages: "bundle",
+  sourcemap: true,
+  platform: "node",
+  target: "node24",
+  format: "esm",
+  outfile,
+});

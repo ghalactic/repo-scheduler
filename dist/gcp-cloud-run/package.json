@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "main": "dist/index.mjs",
+  "scripts": {
+    "start": "node dist/index.mjs"
+  }
+}

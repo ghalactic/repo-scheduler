@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: Ghalactic repo scheduler
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: ghalactic-repo-scheduler
+    Description: >-
+      External scheduler for GitHub repos that triggers a repository dispatch
+      event on a configurable schedule.
+    Author: ghalactic
+    SpdxLicenseId: MIT
+    HomePageUrl: https://github.com/ghalactic/repo-scheduler
+    SourceCodeUrl: https://github.com/ghalactic/repo-scheduler
+    SemanticVersion: 0.0.0
+
+Parameters:
+  GitHubAppId:
+    Type: String
+    Description: GitHub App numeric ID
+  GitHubRepo:
+    Type: String
+    Description: GitHub repo slug in the format "owner/repo"
+  GitHubWorkflow:
+    Type: String
+    Description: Workflow filename or numeric ID
+
+Resources:
+  GitHubAppPkSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/github-app-pk"
+      Description: GitHub App PEM-encoded private key
+
+  SchedulerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: dist/index.handler
+      Runtime: nodejs20.x
+      Timeout: 30
+      Environment:
+        Variables:
+          GITHUB_APP_ID: !Ref GitHubAppId
+          GITHUB_APP_PK_SECRET_ARN: !Ref GitHubAppPkSecret
+          GITHUB_REPO: !Ref GitHubRepo
+          GITHUB_WORKFLOW: !Ref GitHubWorkflow
+      Policies:
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref GitHubAppPkSecret
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: rate(30 minutes)
+            RetryPolicy:
+              MaximumRetryAttempts: 3
+
+Outputs:
+  SecretArn:
+    Description: ARN of the secret — populate it with your GitHub App private key
+    Value: !Ref GitHubAppPkSecret

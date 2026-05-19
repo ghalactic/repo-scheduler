@@ -1,0 +1,6 @@
+/.makefiles/
+/artifacts/
+/dist/
+/pnpm-lock.yaml
+
+testdata/
