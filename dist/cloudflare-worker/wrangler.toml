@@ -12,5 +12,5 @@ GITHUB_EVENT_TYPE = ""
 
 [[secrets_store_secrets]]
 binding = "GITHUB_APP_PK"
-store_id = "demo"
+store_id = "ghalactic-repo-scheduler"
 secret_name = "github-app-pk"
