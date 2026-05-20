@@ -17,20 +17,10 @@ export default {
       privateKey: env.GITHUB_APP_PK,
       repo: env.GITHUB_REPO,
       eventType: env.GITHUB_EVENT_TYPE,
-      payload: parsePayload(env.GITHUB_PAYLOAD),
+      payload: env.GITHUB_PAYLOAD,
     });
   },
 };
-
-function parsePayload(raw: string | undefined): Record<string, unknown> {
-  if (!raw) return {};
-
-  try {
-    return JSON.parse(raw) as Record<string, unknown>;
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
-  }
-}
 
 interface ScheduledEvent {
   cron: string;

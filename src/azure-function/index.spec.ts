@@ -50,7 +50,7 @@ it("calls dispatch with config from environment variables", async () => {
     privateKey: "fake-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: {},
+    payload: undefined,
   });
 });
 
@@ -66,16 +66,8 @@ it("parses GITHUB_PAYLOAD when set", async () => {
     privateKey: "fake-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: { foo: "bar" },
+    payload: '{"foo":"bar"}',
   });
-});
-
-it("throws on invalid JSON in GITHUB_PAYLOAD", async () => {
-  vi.stubEnv("GITHUB_PAYLOAD", "oops");
-  await import("./index.js");
-  const handler = getHandler();
-
-  await expect(handler()).rejects.toThrow("GITHUB_PAYLOAD is not valid JSON");
 });
 
 it("throws when environment variables are missing", async () => {

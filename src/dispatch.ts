@@ -5,11 +5,12 @@ export interface DispatchConfig {
   privateKey: string;
   repo: string;
   eventType: string;
-  payload?: Record<string, unknown>;
+  payload?: string;
 }
 
 export async function dispatch(config: DispatchConfig): Promise<void> {
-  const { appId, privateKey, repo, eventType, payload = {} } = config;
+  const { appId, privateKey, repo, eventType, payload: rawPayload } = config;
+  const clientPayload = parsePayload(rawPayload);
   const [owner, repoName] = splitRepo(repo);
   const app = new App({ appId, privateKey });
 
@@ -41,8 +42,26 @@ export async function dispatch(config: DispatchConfig): Promise<void> {
     owner,
     repo: repoName,
     event_type: eventType,
-    client_payload: payload,
+    client_payload: clientPayload,
   });
+}
+
+function parsePayload(raw: string | undefined): Record<string, unknown> {
+  if (!raw) return {};
+
+  let parsed: unknown;
+
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+    throw new Error("GITHUB_PAYLOAD must be a JSON object");
+  }
+
+  return parsed as Record<string, unknown>;
 }
 
 function splitRepo(repo: string): [owner: string, repo: string] {

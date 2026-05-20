@@ -30,16 +30,6 @@ export async function handler(): Promise<void> {
     privateKey,
     repo,
     eventType,
-    payload: parsePayload(process.env.GITHUB_PAYLOAD),
+    payload: process.env.GITHUB_PAYLOAD,
   });
-}
-
-function parsePayload(raw: string | undefined): Record<string, unknown> {
-  if (!raw) return {};
-
-  try {
-    return JSON.parse(raw) as Record<string, unknown>;
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
-  }
 }

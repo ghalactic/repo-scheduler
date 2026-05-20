@@ -85,7 +85,7 @@ it("dispatches a repository_dispatch event with the configured event type", asyn
 });
 
 it("passes client_payload when payload is provided", async () => {
-  await dispatch({ ...config, payload: { key: "value" } });
+  await dispatch({ ...config, payload: '{"key":"value"}' });
 
   expect(mocks.installationRequest).toHaveBeenCalledWith(
     "POST /repos/{owner}/{repo}/dispatches",
@@ -95,6 +95,30 @@ it("passes client_payload when payload is provided", async () => {
       event_type: "schedule",
       client_payload: { key: "value" },
     },
+  );
+});
+
+it("throws when payload is not valid JSON", async () => {
+  await expect(dispatch({ ...config, payload: "bad" })).rejects.toThrow(
+    "GITHUB_PAYLOAD is not valid JSON",
+  );
+});
+
+it("throws when payload is a JSON array", async () => {
+  await expect(dispatch({ ...config, payload: "[1,2]" })).rejects.toThrow(
+    "GITHUB_PAYLOAD must be a JSON object",
+  );
+});
+
+it("throws when payload is JSON null", async () => {
+  await expect(dispatch({ ...config, payload: "null" })).rejects.toThrow(
+    "GITHUB_PAYLOAD must be a JSON object",
+  );
+});
+
+it("throws when payload is a JSON string", async () => {
+  await expect(dispatch({ ...config, payload: '"hello"' })).rejects.toThrow(
+    "GITHUB_PAYLOAD must be a JSON object",
   );
 });
 

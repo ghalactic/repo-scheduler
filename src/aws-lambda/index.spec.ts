@@ -45,7 +45,7 @@ it("fetches the private key from Secrets Manager and dispatches", async () => {
     privateKey: "fake-pem-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: {},
+    payload: undefined,
   });
 });
 
@@ -66,21 +66,8 @@ it("parses GITHUB_PAYLOAD when set", async () => {
     privateKey: "fake-pem-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: { run_id: "abc" },
+    payload: '{"run_id":"abc"}',
   });
-});
-
-it("throws on invalid JSON in GITHUB_PAYLOAD", async () => {
-  vi.stubEnv("GITHUB_APP_ID", "12345");
-  vi.stubEnv(
-    "GITHUB_APP_PK_SECRET_ARN",
-    "arn:aws:secretsmanager:us-east-1:123:secret:pk",
-  );
-  vi.stubEnv("GITHUB_REPO", "owner/repo");
-  vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
-  vi.stubEnv("GITHUB_PAYLOAD", "bad-json");
-
-  await expect(handler()).rejects.toThrow("GITHUB_PAYLOAD is not valid JSON");
 });
 
 it("throws when environment variables are missing", async () => {

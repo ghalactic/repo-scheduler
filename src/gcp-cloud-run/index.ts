@@ -21,18 +21,13 @@ const server = createServer((req, res) => {
     return;
   }
 
-  let payload: Record<string, unknown>;
-
-  try {
-    payload = parsePayload(process.env.GITHUB_PAYLOAD);
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : String(error);
-    res.writeHead(500).end(message);
-
-    return;
-  }
-
-  dispatch({ appId, privateKey, repo, eventType, payload }).then(
+  dispatch({
+    appId,
+    privateKey,
+    repo,
+    eventType,
+    payload: process.env.GITHUB_PAYLOAD,
+  }).then(
     () => {
       res.writeHead(200).end();
     },
@@ -44,13 +39,3 @@ const server = createServer((req, res) => {
 });
 
 server.listen(port);
-
-function parsePayload(raw: string | undefined): Record<string, unknown> {
-  if (!raw) return {};
-
-  try {
-    return JSON.parse(raw) as Record<string, unknown>;
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
-  }
-}

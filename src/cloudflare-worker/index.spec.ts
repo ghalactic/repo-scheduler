@@ -29,7 +29,7 @@ it("calls dispatch with config from env bindings", async () => {
     privateKey: env.GITHUB_APP_PK,
     repo: env.GITHUB_REPO,
     eventType: "schedule",
-    payload: {},
+    payload: undefined,
   });
 });
 
@@ -43,16 +43,8 @@ it("parses GITHUB_PAYLOAD when set", async () => {
     privateKey: env.GITHUB_APP_PK,
     repo: env.GITHUB_REPO,
     eventType: "schedule",
-    payload: { key: "value" },
+    payload: '{"key":"value"}',
   });
-});
-
-it("throws on invalid JSON in GITHUB_PAYLOAD", async () => {
-  const envWithBadPayload = { ...env, GITHUB_PAYLOAD: "not-json" };
-
-  await expect(worker.scheduled(event, envWithBadPayload)).rejects.toThrow(
-    "GITHUB_PAYLOAD is not valid JSON",
-  );
 });
 
 it("propagates errors from dispatch", async () => {
