@@ -12,29 +12,13 @@ schedule.
 ## Prerequisites
 
 - Cloudflare account
-- [Wrangler CLI]
-
-[wrangler cli]: https://developers.cloudflare.com/workers/wrangler/
 
 ## Usage
 
-Click the button above, or deploy from this directory:
-
-```sh
-wrangler deploy
-```
-
-After deploying, set the required variables:
-
-```sh
-wrangler vars set GITHUB_APP_ID=<app-id> GITHUB_REPO=<owner/repo> GITHUB_EVENT_TYPE=<event-type>
-wrangler secret put GITHUB_APP_PK
-```
-
-Optionally set `GITHUB_PAYLOAD` to a JSON object to include in every dispatch:
-
-```sh
-wrangler vars set 'GITHUB_PAYLOAD={"key":"value"}'
-```
+Click the button above to deploy. The setup page prompts for the required
+environment variables (`GITHUB_APP_ID`, `GITHUB_REPO`, `GITHUB_EVENT_TYPE`) and
+the `GITHUB_APP_PK` secret.
 
 To adjust the schedule, edit the `crons` array in `wrangler.toml` and redeploy.
+
+Optionally set `GITHUB_PAYLOAD` to a JSON object to include in every dispatch.
