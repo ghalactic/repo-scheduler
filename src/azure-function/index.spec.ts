@@ -18,7 +18,7 @@ beforeEach(() => {
   vi.stubEnv("GITHUB_APP_ID", "12345");
   vi.stubEnv("GITHUB_APP_PK", "fake-key");
   vi.stubEnv("GITHUB_REPO", "owner/repo");
-  vi.stubEnv("GITHUB_WORKFLOW", "provision-tokens.yml");
+  vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   vi.resetModules();
 });
 
@@ -30,12 +30,12 @@ function getHandler(): () => Promise<void> {
   return options.handler;
 }
 
-it("registers a timer trigger with 30-minute schedule", async () => {
+it("registers a timer trigger using SCHEDULE_EXPRESSION app setting", async () => {
   await import("./index.js");
 
   expect(mockTimer).toHaveBeenCalledWith(
     "schedulerTimer",
-    expect.objectContaining({ schedule: "0 */30 * * * *" }),
+    expect.objectContaining({ schedule: "%SCHEDULE_EXPRESSION%" }),
   );
 });
 
@@ -49,8 +49,33 @@ it("calls dispatch with config from environment variables", async () => {
     appId: "12345",
     privateKey: "fake-key",
     repo: "owner/repo",
-    workflow: "provision-tokens.yml",
+    eventType: "schedule",
+    payload: {},
   });
+});
+
+it("parses GITHUB_PAYLOAD when set", async () => {
+  vi.stubEnv("GITHUB_PAYLOAD", '{"foo":"bar"}');
+  await import("./index.js");
+  const handler = getHandler();
+
+  await handler();
+
+  expect(dispatch).toHaveBeenCalledWith({
+    appId: "12345",
+    privateKey: "fake-key",
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: { foo: "bar" },
+  });
+});
+
+it("throws on invalid JSON in GITHUB_PAYLOAD", async () => {
+  vi.stubEnv("GITHUB_PAYLOAD", "oops");
+  await import("./index.js");
+  const handler = getHandler();
+
+  await expect(handler()).rejects.toThrow("GITHUB_PAYLOAD is not valid JSON");
 });
 
 it("throws when environment variables are missing", async () => {
