@@ -14,7 +14,7 @@ export interface DispatchConfig {
   privateKey: string;
   repo: string;
   eventType: string;
-  payload?: Record<string, unknown>;
+  payload?: string;
 }
 ```
 
@@ -37,8 +37,8 @@ All platforms switch from:
 Each platform entrypoint:
 
 - Reads `GITHUB_EVENT_TYPE` (required — throw if missing).
-- Reads `GITHUB_PAYLOAD` (optional). If set, parse as JSON; throw with a clear
-  message if parsing fails.
+- Reads `GITHUB_PAYLOAD` (optional). Passes the raw string to `dispatch()`,
+  which validates and parses it internally.
 - Passes `eventType` and `payload` to `dispatch()`.
 
 ## Schedule configurability

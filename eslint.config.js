@@ -38,7 +38,7 @@ export default defineConfig(
     rules: {
       // typescript-eslint replaces no-undef
       "no-undef": "off",
-      // Use @actions/core logging, not console
+      // Errors should propagate to callers, not be logged to console
       "no-console": "error",
 
       // Use strict camelCase for everything except variables, which can also
