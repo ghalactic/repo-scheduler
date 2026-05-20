@@ -2,7 +2,7 @@
 
 [![Deploy to Cloudflare Workers][deploy-badge]][deploy-url]
 
-Use a Worker Cron Trigger to dispatch the token-provider workflow on a fixed
+Use a Worker Cron Trigger to dispatch a `repository_dispatch` event on a fixed
 schedule.
 
 ## Prerequisites
@@ -18,16 +18,16 @@ Edit `wrangler.toml` and set the non-sensitive values:
 [vars]
 GITHUB_APP_ID = "<app-id>"
 GITHUB_REPO = "<owner/repo>"
-GITHUB_WORKFLOW = "<workflow>"
+GITHUB_EVENT_TYPE = "<event-type>"
 ```
+
+To adjust the schedule, edit the `crons` array in `wrangler.toml`.
 
 Store the private key as a Wrangler secret:
 
 ```sh
 wrangler secret put GITHUB_APP_PK
 ```
-
-The 30-minute cron schedule is already configured in `wrangler.toml`.
 
 ## Deploy
 
@@ -39,5 +39,5 @@ wrangler deploy
 
 [deploy-badge]: https://deploy.workers.cloudflare.com/button
 [deploy-url]:
-  https://deploy.workers.cloudflare.com/?url=https://github.com/ghalactic/provision-github-tokens/tree/main/examples/external-scheduler/cloudflare-worker
+  https://deploy.workers.cloudflare.com/?url=https://github.com/ghalactic/repo-scheduler/tree/main/dist/cloudflare-worker
 [wrangler]: https://developers.cloudflare.com/workers/wrangler/

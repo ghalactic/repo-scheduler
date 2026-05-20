@@ -8310,7 +8310,7 @@ var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
 // src/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, workflow } = config;
+  const { appId, privateKey, repo, eventType, payload = {} } = config;
   const [owner, repoName] = splitRepo(repo);
   const app = new App2({ appId, privateKey });
   let installationId;
@@ -8332,21 +8332,12 @@ async function dispatch(config) {
     throw error;
   }
   const octokit = await app.getInstallationOctokit(installationId);
-  const {
-    data: { default_branch: ref }
-  } = await octokit.request("GET /repos/{owner}/{repo}", {
+  await octokit.request("POST /repos/{owner}/{repo}/dispatches", {
     owner,
-    repo: repoName
+    repo: repoName,
+    event_type: eventType,
+    client_payload: payload
   });
-  await octokit.request(
-    "POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches",
-    {
-      owner,
-      repo: repoName,
-      workflow_id: workflow,
-      ref
-    }
-  );
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -8366,10 +8357,19 @@ var index_default = {
       appId: env.GITHUB_APP_ID,
       privateKey: env.GITHUB_APP_PK,
       repo: env.GITHUB_REPO,
-      workflow: env.GITHUB_WORKFLOW
+      eventType: env.GITHUB_EVENT_TYPE,
+      payload: parsePayload(env.GITHUB_PAYLOAD)
     });
   }
 };
+function parsePayload(raw) {
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+}
 export {
   index_default as default
 };

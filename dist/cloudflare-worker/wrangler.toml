@@ -8,6 +8,6 @@ crons = ["*/30 * * * *"]
 [vars]
 GITHUB_APP_ID = ""
 GITHUB_REPO = ""
-GITHUB_WORKFLOW = ""
+GITHUB_EVENT_TYPE = ""
 
 # GITHUB_APP_PK must be set via: wrangler secret put GITHUB_APP_PK
