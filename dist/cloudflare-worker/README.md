@@ -16,15 +16,13 @@ schedule.
 
 [wrangler cli]: https://developers.cloudflare.com/workers/wrangler/
 
-## Deploy
+## Usage
 
-Click the button above, or run the deploy from this directory:
+Click the button above, or deploy from this directory:
 
 ```sh
 wrangler deploy
 ```
-
-## Configure
 
 After deploying, set the required variables:
 

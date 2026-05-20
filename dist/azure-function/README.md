@@ -17,7 +17,7 @@ on a configurable schedule.
 [azure functions core tools]:
   https://learn.microsoft.com/azure/azure-functions/functions-run-local
 
-## Deploy
+## Usage
 
 Click the button above, or deploy from the CLI:
 
@@ -34,10 +34,7 @@ Then publish the function code:
 func azure functionapp publish <function-app>
 ```
 
-## Configure
-
-The ARM template creates a Key Vault with an empty `github-app-pk` secret. After
-deploying, update the secret with your PEM key:
+After deployment, populate the Key Vault secret with your PEM key:
 
 ```sh
 az keyvault secret set \
