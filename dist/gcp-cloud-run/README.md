@@ -2,8 +2,8 @@
 
 [![Run on Google Cloud][deploy-badge]][deploy-url]
 
-Use Cloud Run and Cloud Scheduler to dispatch the token-provider workflow every
-30 minutes.
+Use Cloud Run and Cloud Scheduler to dispatch a `repository_dispatch` event on a
+configurable schedule.
 
 ## Prerequisites
 
@@ -27,29 +27,30 @@ gcloud secrets versions add github-app-pk --data-file=github-app.pem
 Deploy the Cloud Run service from this directory:
 
 ```sh
-gcloud run deploy provision-github-tokens-scheduler \
+gcloud run deploy ghalactic-repo-scheduler \
   --source=. \
   --region=<region> \
   --no-allow-unauthenticated \
-  --set-env-vars=GITHUB_APP_ID=<app-id>,GITHUB_REPO=<owner/repo>,GITHUB_WORKFLOW=<workflow> \
+  --set-env-vars=GITHUB_APP_ID=<app-id>,GITHUB_REPO=<owner/repo>,GITHUB_EVENT_TYPE=<event-type> \
   --set-secrets=GITHUB_APP_PK=github-app-pk:latest
 ```
 
-Create a Cloud Scheduler job that sends an HTTP POST every 30 minutes:
+Create a Cloud Scheduler job that sends an HTTP POST:
 
 ```sh
-gcloud scheduler jobs create http provision-github-tokens-scheduler \
+gcloud scheduler jobs create http ghalactic-repo-scheduler \
   --location=<region> \
   --schedule='*/30 * * * *' \
-  --uri="$(gcloud run services describe provision-github-tokens-scheduler --region=<region> --format='value(status.url)')" \
+  --uri="$(gcloud run services describe ghalactic-repo-scheduler --region=<region> --format='value(status.url)')" \
   --http-method=POST \
   --oidc-service-account-email=<scheduler-service-account> \
   --max-retry-attempts=3
 ```
 
-Use a service account that has the Cloud Run Invoker role.
+Use a service account that has the Cloud Run Invoker role. Adjust the
+`--schedule` cron expression as needed.
 
 [deploy-badge]: https://deploy.cloud.run/button.svg
 [deploy-url]:
-  https://deploy.cloud.run/?git_repo=https://github.com/ghalactic/provision-github-tokens&dir=examples/external-scheduler/gcp-cloud-run
+  https://deploy.cloud.run/?git_repo=https://github.com/ghalactic/repo-scheduler&dir=dist/gcp-cloud-run
 [gcloud]: https://cloud.google.com/sdk/docs/install
