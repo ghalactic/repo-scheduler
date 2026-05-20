@@ -23,19 +23,13 @@ const config: DispatchConfig = {
   privateKey:
     "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----",
   repo: "owner/repo",
-  workflow: "provision-tokens.yml",
+  eventType: "schedule",
 };
 
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.appRequest.mockResolvedValue({ data: { id: 99 } });
-  mocks.installationRequest.mockImplementation((route: string) => {
-    if (route === "GET /repos/{owner}/{repo}") {
-      return Promise.resolve({ data: { default_branch: "main" } });
-    }
-
-    return Promise.resolve(undefined);
-  });
+  mocks.installationRequest.mockResolvedValue(undefined);
   mocks.getInstallationOctokit.mockResolvedValue({
     request: mocks.installationRequest,
   });
@@ -76,36 +70,30 @@ it("gets an installation octokit for the discovered installation", async () => {
   expect(mocks.getInstallationOctokit).toHaveBeenCalledWith(99);
 });
 
-it("resolves the default branch via the API", async () => {
+it("dispatches a repository_dispatch event with the configured event type", async () => {
   await dispatch(config);
 
   expect(mocks.installationRequest).toHaveBeenCalledWith(
-    "GET /repos/{owner}/{repo}",
+    "POST /repos/{owner}/{repo}/dispatches",
     {
       owner: "owner",
       repo: "repo",
+      event_type: "schedule",
+      client_payload: {},
     },
   );
 });
 
-it("dispatches the workflow using the resolved default branch", async () => {
-  mocks.installationRequest.mockImplementation((route: string) => {
-    if (route === "GET /repos/{owner}/{repo}") {
-      return Promise.resolve({ data: { default_branch: "develop" } });
-    }
-
-    return Promise.resolve(undefined);
-  });
-
-  await dispatch(config);
+it("passes client_payload when payload is provided", async () => {
+  await dispatch({ ...config, payload: { key: "value" } });
 
   expect(mocks.installationRequest).toHaveBeenCalledWith(
-    "POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches",
+    "POST /repos/{owner}/{repo}/dispatches",
     {
       owner: "owner",
       repo: "repo",
-      workflow_id: config.workflow,
-      ref: "develop",
+      event_type: "schedule",
+      client_payload: { key: "value" },
     },
   );
 });
