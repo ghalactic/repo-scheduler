@@ -36125,7 +36125,8 @@ var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
 // src/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, eventType, payload: payload2 = {} } = config;
+  const { appId, privateKey, repo, eventType, payload: rawPayload } = config;
+  const clientPayload = parsePayload(rawPayload);
   const [owner, repoName] = splitRepo(repo);
   const app = new App2({ appId, privateKey });
   let installationId;
@@ -36151,8 +36152,21 @@ async function dispatch(config) {
     owner,
     repo: repoName,
     event_type: eventType,
-    client_payload: payload2
+    client_payload: clientPayload
   });
+}
+function parsePayload(raw) {
+  if (!raw) return {};
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+    throw new Error("GITHUB_PAYLOAD must be a JSON object");
+  }
+  return parsed;
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -36187,16 +36201,8 @@ async function handler2() {
     privateKey,
     repo,
     eventType,
-    payload: parsePayload(process.env.GITHUB_PAYLOAD)
+    payload: process.env.GITHUB_PAYLOAD
   });
-}
-function parsePayload(raw) {
-  if (!raw) return {};
-  try {
-    return JSON.parse(raw);
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
-  }
 }
 export {
   handler2 as handler

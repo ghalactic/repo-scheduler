@@ -8291,7 +8291,8 @@ var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
 // src/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, eventType, payload = {} } = config;
+  const { appId, privateKey, repo, eventType, payload: rawPayload } = config;
+  const clientPayload = parsePayload(rawPayload);
   const [owner, repoName] = splitRepo(repo);
   const app = new App2({ appId, privateKey });
   let installationId;
@@ -8317,8 +8318,21 @@ async function dispatch(config) {
     owner,
     repo: repoName,
     event_type: eventType,
-    client_payload: payload
+    client_payload: clientPayload
   });
+}
+function parsePayload(raw) {
+  if (!raw) return {};
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+    throw new Error("GITHUB_PAYLOAD must be a JSON object");
+  }
+  return parsed;
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -8346,15 +8360,13 @@ var server = createServer((req, res) => {
     res.writeHead(500).end("Missing required environment variables");
     return;
   }
-  let payload;
-  try {
-    payload = parsePayload(process.env.GITHUB_PAYLOAD);
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    res.writeHead(500).end(message);
-    return;
-  }
-  dispatch({ appId, privateKey, repo, eventType, payload }).then(
+  dispatch({
+    appId,
+    privateKey,
+    repo,
+    eventType,
+    payload: process.env.GITHUB_PAYLOAD
+  }).then(
     () => {
       res.writeHead(200).end();
     },
@@ -8365,14 +8377,6 @@ var server = createServer((req, res) => {
   );
 });
 server.listen(port);
-function parsePayload(raw) {
-  if (!raw) return {};
-  try {
-    return JSON.parse(raw);
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
-  }
-}
 /*! Bundled license information:
 
 content-type/dist/index.js:
