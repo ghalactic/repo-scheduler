@@ -2,7 +2,7 @@
 
 [![Launch Stack][deploy-badge]][deploy-url]
 
-Use Lambda and EventBridge to dispatch the token-provider workflow on a fixed
+Use Lambda and EventBridge to dispatch a `repository_dispatch` event on a fixed
 schedule.
 
 ## Prerequisites
@@ -21,8 +21,9 @@ aws secretsmanager put-secret-value \
   --secret-string file://github-app.pem
 ```
 
-`GitHubAppId`, `GitHubRepo`, and `GitHubWorkflow` are passed as plain
-CloudFormation parameters.
+`GitHubAppId`, `GitHubRepo`, and `GitHubEventType` are passed as CloudFormation
+parameters. The schedule defaults to every 30 minutes but can be overridden with
+the `Schedule` parameter.
 
 ## Deploy
 
@@ -32,8 +33,7 @@ Run the guided deploy from this directory:
 sam deploy --guided
 ```
 
-The template already runs every 30 minutes. EventBridge retries failed
-invocations up to 3 times.
+EventBridge retries failed invocations up to 3 times.
 
 ## Publish to SAR
 
@@ -50,6 +50,6 @@ can deploy with one click.
 [deploy-badge]:
   https://img.shields.io/badge/Deploy-AWS%20Serverless%20App%20Repository-orange?logo=amazonaws
 [deploy-url]:
-  https://serverlessrepo.aws.amazon.com/applications/provision-github-tokens-scheduler
+  https://serverlessrepo.aws.amazon.com/applications/ghalactic-repo-scheduler
 [sam-cli]:
   https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html

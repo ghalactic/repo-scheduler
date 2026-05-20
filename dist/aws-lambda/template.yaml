@@ -20,10 +20,14 @@ Parameters:
     Description: GitHub App numeric ID
   GitHubRepo:
     Type: String
-    Description: GitHub repo slug in the format "owner/repo"
-  GitHubWorkflow:
+    Description: Target repository in owner/repo format
+  GitHubEventType:
     Type: String
-    Description: Workflow filename or numeric ID
+    Description: repository_dispatch event type string
+  Schedule:
+    Type: String
+    Default: rate(30 minutes)
+    Description: EventBridge schedule expression
 
 Resources:
   GitHubAppPkSecret:
@@ -44,7 +48,7 @@ Resources:
           GITHUB_APP_ID: !Ref GitHubAppId
           GITHUB_APP_PK_SECRET_ARN: !Ref GitHubAppPkSecret
           GITHUB_REPO: !Ref GitHubRepo
-          GITHUB_WORKFLOW: !Ref GitHubWorkflow
+          GITHUB_EVENT_TYPE: !Ref GitHubEventType
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: !Ref GitHubAppPkSecret
@@ -52,7 +56,7 @@ Resources:
         Schedule:
           Type: Schedule
           Properties:
-            Schedule: rate(30 minutes)
+            Schedule: !Ref Schedule
             RetryPolicy:
               MaximumRetryAttempts: 3
 
