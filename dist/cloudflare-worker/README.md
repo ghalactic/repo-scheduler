@@ -5,10 +5,16 @@
 Use a Worker Cron Trigger to dispatch a `repository_dispatch` event on a fixed
 schedule.
 
+[deploy-badge]: https://deploy.workers.cloudflare.com/button
+[deploy-url]:
+  https://deploy.workers.cloudflare.com/?url=https://github.com/ghalactic/repo-scheduler/tree/main/dist/cloudflare-worker
+
 ## Prerequisites
 
 - Cloudflare account
-- [Wrangler CLI][wrangler]
+- [Wrangler CLI]
+
+[wrangler cli]: https://developers.cloudflare.com/workers/wrangler/
 
 ## Configure
 
@@ -36,8 +42,3 @@ Run the deploy from this directory:
 ```sh
 wrangler deploy
 ```
-
-[deploy-badge]: https://deploy.workers.cloudflare.com/button
-[deploy-url]:
-  https://deploy.workers.cloudflare.com/?url=https://github.com/ghalactic/repo-scheduler/tree/main/dist/cloudflare-worker
-[wrangler]: https://developers.cloudflare.com/workers/wrangler/

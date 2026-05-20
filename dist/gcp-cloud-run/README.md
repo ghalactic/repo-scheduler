@@ -5,10 +5,16 @@
 Use Cloud Run and Cloud Scheduler to dispatch a `repository_dispatch` event on a
 configurable schedule.
 
+[deploy-badge]: https://deploy.cloud.run/button.svg
+[deploy-url]:
+  https://deploy.cloud.run/?git_repo=https://github.com/ghalactic/repo-scheduler&dir=dist/gcp-cloud-run
+
 ## Prerequisites
 
 - GCP project
-- [gcloud CLI][gcloud]
+- [gcloud CLI]
+
+[gcloud cli]: https://cloud.google.com/sdk/docs/install
 
 ## Configure
 
@@ -49,8 +55,3 @@ gcloud scheduler jobs create http ghalactic-repo-scheduler \
 
 Use a service account that has the Cloud Run Invoker role. Adjust the
 `--schedule` cron expression as needed.
-
-[deploy-badge]: https://deploy.cloud.run/button.svg
-[deploy-url]:
-  https://deploy.cloud.run/?git_repo=https://github.com/ghalactic/repo-scheduler&dir=dist/gcp-cloud-run
-[gcloud]: https://cloud.google.com/sdk/docs/install
