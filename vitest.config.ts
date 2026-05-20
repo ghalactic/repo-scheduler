@@ -5,7 +5,6 @@ export default defineConfig({
     watch: false,
     coverage: {
       include: ["src/**/*.ts"],
-      exclude: ["src/type/**"],
       reportsDirectory: "artifacts/coverage/vitest",
       reporter: ["html", "lcov", "text"],
     },
