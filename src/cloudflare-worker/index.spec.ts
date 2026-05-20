@@ -12,7 +12,7 @@ const env: Env = {
   GITHUB_APP_PK:
     "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----",
   GITHUB_REPO: "owner/repo",
-  GITHUB_WORKFLOW: "provision-tokens.yml",
+  GITHUB_EVENT_TYPE: "schedule",
 };
 
 const event = { cron: "*/30 * * * *", scheduledTime: Date.now() };
@@ -28,8 +28,31 @@ it("calls dispatch with config from env bindings", async () => {
     appId: env.GITHUB_APP_ID,
     privateKey: env.GITHUB_APP_PK,
     repo: env.GITHUB_REPO,
-    workflow: env.GITHUB_WORKFLOW,
+    eventType: "schedule",
+    payload: {},
   });
+});
+
+it("parses GITHUB_PAYLOAD when set", async () => {
+  const envWithPayload = { ...env, GITHUB_PAYLOAD: '{"key":"value"}' };
+
+  await worker.scheduled(event, envWithPayload);
+
+  expect(dispatch).toHaveBeenCalledWith({
+    appId: env.GITHUB_APP_ID,
+    privateKey: env.GITHUB_APP_PK,
+    repo: env.GITHUB_REPO,
+    eventType: "schedule",
+    payload: { key: "value" },
+  });
+});
+
+it("throws on invalid JSON in GITHUB_PAYLOAD", async () => {
+  const envWithBadPayload = { ...env, GITHUB_PAYLOAD: "not-json" };
+
+  await expect(worker.scheduled(event, envWithBadPayload)).rejects.toThrow(
+    "GITHUB_PAYLOAD is not valid JSON",
+  );
 });
 
 it("propagates errors from dispatch", async () => {

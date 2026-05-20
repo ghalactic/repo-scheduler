@@ -5,7 +5,8 @@ export interface Env {
   GITHUB_APP_ID: string;
   GITHUB_APP_PK: string;
   GITHUB_REPO: string;
-  GITHUB_WORKFLOW: string;
+  GITHUB_EVENT_TYPE: string;
+  GITHUB_PAYLOAD?: string;
 }
 /* eslint-enable @typescript-eslint/naming-convention */
 
@@ -15,10 +16,21 @@ export default {
       appId: env.GITHUB_APP_ID,
       privateKey: env.GITHUB_APP_PK,
       repo: env.GITHUB_REPO,
-      workflow: env.GITHUB_WORKFLOW,
+      eventType: env.GITHUB_EVENT_TYPE,
+      payload: parsePayload(env.GITHUB_PAYLOAD),
     });
   },
 };
+
+function parsePayload(raw: string | undefined): Record<string, unknown> {
+  if (!raw) return {};
+
+  try {
+    return JSON.parse(raw) as Record<string, unknown>;
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+}
 
 interface ScheduledEvent {
   cron: string;
