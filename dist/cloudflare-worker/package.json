@@ -13,7 +13,7 @@
         "description": "The `repository_dispatch` event type string."
       },
       "GITHUB_APP_PK": {
-        "description": "PEM-encoded private key for the GitHub App."
+        "description": "PEM-encoded private key for the GitHub App. Stored in the Secrets Store."
       }
     }
   }

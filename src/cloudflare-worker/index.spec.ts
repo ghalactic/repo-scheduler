@@ -7,10 +7,12 @@ vi.mock("../dispatch.js", () => ({
 import { dispatch } from "../dispatch.js";
 import worker, { type Env } from "./index.js";
 
+const privateKey =
+  "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----";
+
 const env: Env = {
   GITHUB_APP_ID: "12345",
-  GITHUB_APP_PK:
-    "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----",
+  GITHUB_APP_PK: { get: () => Promise.resolve(privateKey) },
   GITHUB_REPO: "owner/repo",
   GITHUB_EVENT_TYPE: "schedule",
 };
@@ -26,7 +28,7 @@ it("calls dispatch with config from env bindings", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: env.GITHUB_APP_ID,
-    privateKey: env.GITHUB_APP_PK,
+    privateKey,
     repo: env.GITHUB_REPO,
     eventType: "schedule",
     payload: undefined,
@@ -40,7 +42,7 @@ it("parses GITHUB_PAYLOAD when set", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: env.GITHUB_APP_ID,
-    privateKey: env.GITHUB_APP_PK,
+    privateKey,
     repo: env.GITHUB_REPO,
     eventType: "schedule",
     payload: '{"key":"value"}',

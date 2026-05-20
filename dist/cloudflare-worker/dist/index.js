@@ -8369,7 +8369,7 @@ var index_default = {
   async scheduled(_event, env) {
     await dispatch({
       appId: env.GITHUB_APP_ID,
-      privateKey: env.GITHUB_APP_PK,
+      privateKey: await env.GITHUB_APP_PK.get(),
       repo: env.GITHUB_REPO,
       eventType: env.GITHUB_EVENT_TYPE,
       payload: env.GITHUB_PAYLOAD
