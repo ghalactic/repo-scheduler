@@ -8,9 +8,9 @@ export async function handler(): Promise<void> {
   const appId = process.env.GITHUB_APP_ID;
   const secretArn = process.env.GITHUB_APP_PK_SECRET_ARN;
   const repo = process.env.GITHUB_REPO;
-  const workflow = process.env.GITHUB_WORKFLOW;
+  const eventType = process.env.GITHUB_EVENT_TYPE;
 
-  if (!appId || !secretArn || !repo || !workflow) {
+  if (!appId || !secretArn || !repo || !eventType) {
     throw new Error("Missing required environment variables");
   }
 
@@ -25,5 +25,21 @@ export async function handler(): Promise<void> {
     throw new Error("Secret value is empty");
   }
 
-  await dispatch({ appId, privateKey, repo, workflow });
+  await dispatch({
+    appId,
+    privateKey,
+    repo,
+    eventType,
+    payload: parsePayload(process.env.GITHUB_PAYLOAD),
+  });
+}
+
+function parsePayload(raw: string | undefined): Record<string, unknown> {
+  if (!raw) return {};
+
+  try {
+    return JSON.parse(raw) as Record<string, unknown>;
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
 }
