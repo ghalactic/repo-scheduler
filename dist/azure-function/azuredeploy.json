@@ -24,14 +24,20 @@
     "gitHubRepo": {
       "type": "string",
       "metadata": {
-        "description": "owner/repo of the token-provider workflow"
+        "description": "Target repository in owner/repo format"
       }
     },
-    "gitHubWorkflow": {
+    "gitHubEventType": {
       "type": "string",
-      "defaultValue": "provision-tokens.yml",
       "metadata": {
-        "description": "Workflow filename or numeric ID"
+        "description": "repository_dispatch event type string"
+      }
+    },
+    "scheduleExpression": {
+      "type": "string",
+      "defaultValue": "0 */30 * * * *",
+      "metadata": {
+        "description": "Timer trigger NCRONTAB expression"
       }
     }
   },
@@ -137,8 +143,12 @@
               "value": "[parameters('gitHubRepo')]"
             },
             {
-              "name": "GITHUB_WORKFLOW",
-              "value": "[parameters('gitHubWorkflow')]"
+              "name": "GITHUB_EVENT_TYPE",
+              "value": "[parameters('gitHubEventType')]"
+            },
+            {
+              "name": "SCHEDULE_EXPRESSION",
+              "value": "[parameters('scheduleExpression')]"
             }
           ]
         }
@@ -165,7 +175,7 @@
       "type": "string",
       "value": "[variables('keyVaultName')]",
       "metadata": {
-        "description": "Name of the Key Vault — update the github-app-pk secret with your PEM key"
+        "description": "Name of the Key Vault \u2014 update the github-app-pk secret with your PEM key"
       }
     }
   }

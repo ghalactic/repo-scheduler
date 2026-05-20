@@ -8291,7 +8291,7 @@ var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
 // src/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, workflow } = config;
+  const { appId, privateKey, repo, eventType, payload = {} } = config;
   const [owner, repoName] = splitRepo(repo);
   const app2 = new App2({ appId, privateKey });
   let installationId;
@@ -8313,21 +8313,12 @@ async function dispatch(config) {
     throw error;
   }
   const octokit = await app2.getInstallationOctokit(installationId);
-  const {
-    data: { default_branch: ref }
-  } = await octokit.request("GET /repos/{owner}/{repo}", {
+  await octokit.request("POST /repos/{owner}/{repo}/dispatches", {
     owner,
-    repo: repoName
+    repo: repoName,
+    event_type: eventType,
+    client_payload: payload
   });
-  await octokit.request(
-    "POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches",
-    {
-      owner,
-      repo: repoName,
-      workflow_id: workflow,
-      ref
-    }
-  );
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -8342,18 +8333,32 @@ function hasStatus(error, status) {
 
 // src/azure-function/index.ts
 app.timer("schedulerTimer", {
-  schedule: "0 */30 * * * *",
+  schedule: "%SCHEDULE_EXPRESSION%",
   handler: async () => {
     const appId = process.env.GITHUB_APP_ID;
     const privateKey = process.env.GITHUB_APP_PK;
     const repo = process.env.GITHUB_REPO;
-    const workflow = process.env.GITHUB_WORKFLOW;
-    if (!appId || !privateKey || !repo || !workflow) {
+    const eventType = process.env.GITHUB_EVENT_TYPE;
+    if (!appId || !privateKey || !repo || !eventType) {
       throw new Error("Missing required environment variables");
     }
-    await dispatch({ appId, privateKey, repo, workflow });
+    await dispatch({
+      appId,
+      privateKey,
+      repo,
+      eventType,
+      payload: parsePayload(process.env.GITHUB_PAYLOAD)
+    });
   }
 });
+function parsePayload(raw) {
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+}
 /*! Bundled license information:
 
 content-type/dist/index.js:

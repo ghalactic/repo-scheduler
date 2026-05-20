@@ -2,8 +2,8 @@
 
 [![Deploy to Azure][deploy-badge]][deploy-url]
 
-Use an Azure Functions timer trigger to dispatch the token-provider workflow on
-an interval.
+Use an Azure Functions timer trigger to dispatch a `repository_dispatch` event on
+a configurable schedule.
 
 ## Prerequisites
 
@@ -25,6 +25,9 @@ az keyvault secret set \
 The Function App uses a system-assigned managed identity with the Key Vault
 Secrets User role, so the Key Vault reference resolves automatically.
 
+The schedule defaults to every 30 minutes and can be changed via the
+`scheduleExpression` parameter (NCRONTAB format).
+
 ## Deploy
 
 Click the button above, or deploy from the CLI:
@@ -33,7 +36,7 @@ Click the button above, or deploy from the CLI:
 az deployment group create \
   --resource-group <resource-group> \
   --template-file azuredeploy.json \
-  --parameters functionAppName=<name> gitHubAppId=<app-id> gitHubRepo=<owner/repo>
+  --parameters functionAppName=<name> gitHubAppId=<app-id> gitHubRepo=<owner/repo> gitHubEventType=<event-type>
 ```
 
 After deployment, update the Key Vault secret as described above, then publish
@@ -43,10 +46,8 @@ the function code:
 func azure functionapp publish <function-app>
 ```
 
-The 30-minute timer schedule is registered in code via `app.timer()`.
-
 [deploy-badge]: https://aka.ms/deploytoazurebutton
 [deploy-url]:
-  https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fghalactic%2Fprovision-github-tokens%2Fmain%2Fexamples%2Fexternal-scheduler%2Fazure-function%2Fazuredeploy.json
+  https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fghalactic%2Frepo-scheduler%2Fmain%2Fdist%2Fazure-function%2Fazuredeploy.json
 [functions-core-tools]:
   https://learn.microsoft.com/azure/azure-functions/functions-run-local
