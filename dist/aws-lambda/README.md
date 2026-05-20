@@ -13,22 +13,14 @@ schedule.
 ## Prerequisites
 
 - AWS account
-- [SAM CLI]
-
-[sam cli]:
-  https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html
 
 ## Usage
 
-Run the guided deploy from this directory:
+Click the button above to deploy via the AWS Serverless Application Repository.
+The deployment form prompts for `GitHubAppId`, `GitHubRepo`, `GitHubEventType`,
+and an optional `Schedule` (defaults to every 30 minutes).
 
-```sh
-sam deploy --guided
-```
-
-The guided flow prompts for `GitHubAppId`, `GitHubRepo`, `GitHubEventType`, and
-an optional `Schedule` (defaults to every 30 minutes). EventBridge retries
-failed invocations up to 3 times.
+EventBridge retries failed invocations up to 3 times.
 
 After the stack is created, populate the private key secret:
 
