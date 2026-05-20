@@ -13,25 +13,17 @@ on a configurable schedule.
 
 - Azure account
 - [Azure CLI]
-- [Azure Functions Core Tools]
 
 [azure cli]: https://learn.microsoft.com/cli/azure/install-azure-cli
-[azure functions core tools]:
-  https://learn.microsoft.com/azure/azure-functions/functions-run-local
 
 ## Usage
 
-Click the button above to deploy the infrastructure. The deployment form prompts
-for `functionAppName`, `gitHubAppId`, `gitHubRepo`, `gitHubEventType`, and an
-optional `scheduleExpression` (defaults to every 30 minutes).
+Click the button above to deploy. The deployment form prompts for
+`functionAppName`, `gitHubAppId`, `gitHubRepo`, `gitHubEventType`, and an
+optional `scheduleExpression` (defaults to every 30 minutes). The template
+deploys both infrastructure and function code from this repository.
 
-Then publish the function code:
-
-```sh
-func azure functionapp publish <function-app>
-```
-
-After publishing, populate the Key Vault secret with your PEM key:
+After deployment, populate the Key Vault secret with your PEM key:
 
 ```sh
 az keyvault secret set \
