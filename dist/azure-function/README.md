@@ -12,21 +12,18 @@ on a configurable schedule.
 ## Prerequisites
 
 - Azure account
+- [Azure CLI]
 - [Azure Functions Core Tools]
 
+[azure cli]: https://learn.microsoft.com/cli/azure/install-azure-cli
 [azure functions core tools]:
   https://learn.microsoft.com/azure/azure-functions/functions-run-local
 
 ## Usage
 
-Click the button above, or deploy from the CLI:
-
-```sh
-az deployment group create \
-  --resource-group <resource-group> \
-  --template-file azuredeploy.json \
-  --parameters functionAppName=<name> gitHubAppId=<app-id> gitHubRepo=<owner/repo> gitHubEventType=<event-type>
-```
+Click the button above to deploy the infrastructure. The deployment form prompts
+for `functionAppName`, `gitHubAppId`, `gitHubRepo`, `gitHubEventType`, and an
+optional `scheduleExpression` (defaults to every 30 minutes).
 
 Then publish the function code:
 
@@ -34,7 +31,7 @@ Then publish the function code:
 func azure functionapp publish <function-app>
 ```
 
-After deployment, populate the Key Vault secret with your PEM key:
+After publishing, populate the Key Vault secret with your PEM key:
 
 ```sh
 az keyvault secret set \
@@ -45,6 +42,3 @@ az keyvault secret set \
 
 The Function App uses a system-assigned managed identity with the Key Vault
 Secrets User role, so the Key Vault reference resolves automatically.
-
-The schedule defaults to every 30 minutes and can be changed via the
-`scheduleExpression` parameter (NCRONTAB format).

@@ -13,6 +13,9 @@ schedule.
 ## Prerequisites
 
 - AWS account
+- [AWS CLI]
+
+[aws cli]: https://aws.amazon.com/cli/
 
 ## Usage
 
