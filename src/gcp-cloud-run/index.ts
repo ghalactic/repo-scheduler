@@ -13,15 +13,26 @@ const server = createServer((req, res) => {
   const appId = process.env.GITHUB_APP_ID;
   const privateKey = process.env.GITHUB_APP_PK;
   const repo = process.env.GITHUB_REPO;
-  const workflow = process.env.GITHUB_WORKFLOW;
+  const eventType = process.env.GITHUB_EVENT_TYPE;
 
-  if (!appId || !privateKey || !repo || !workflow) {
+  if (!appId || !privateKey || !repo || !eventType) {
     res.writeHead(500).end("Missing required environment variables");
 
     return;
   }
 
-  dispatch({ appId, privateKey, repo, workflow }).then(
+  let payload: Record<string, unknown>;
+
+  try {
+    payload = parsePayload(process.env.GITHUB_PAYLOAD);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    res.writeHead(500).end(message);
+
+    return;
+  }
+
+  dispatch({ appId, privateKey, repo, eventType, payload }).then(
     () => {
       res.writeHead(200).end();
     },
@@ -33,3 +44,13 @@ const server = createServer((req, res) => {
 });
 
 server.listen(port);
+
+function parsePayload(raw: string | undefined): Record<string, unknown> {
+  if (!raw) return {};
+
+  try {
+    return JSON.parse(raw) as Record<string, unknown>;
+  } catch {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+  }
+}

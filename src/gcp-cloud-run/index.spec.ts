@@ -37,7 +37,7 @@ beforeEach(() => {
   vi.stubEnv("GITHUB_APP_ID", "12345");
   vi.stubEnv("GITHUB_APP_PK", "fake-key");
   vi.stubEnv("GITHUB_REPO", "owner/repo");
-  vi.stubEnv("GITHUB_WORKFLOW", "provision-tokens.yml");
+  vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   vi.stubEnv("PORT", "9999");
   vi.resetModules();
 });
@@ -79,9 +79,40 @@ it("calls dispatch and returns 200 on success", async () => {
     appId: "12345",
     privateKey: "fake-key",
     repo: "owner/repo",
-    workflow: "provision-tokens.yml",
+    eventType: "schedule",
+    payload: {},
   });
   expect(res.writeHead).toHaveBeenCalledWith(200);
+});
+
+it("parses GITHUB_PAYLOAD when set", async () => {
+  vi.stubEnv("GITHUB_PAYLOAD", '{"run":"123"}');
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+
+  handler({ method: "POST" } as IncomingMessage, res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(dispatch).toHaveBeenCalledWith({
+    appId: "12345",
+    privateKey: "fake-key",
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: { run: "123" },
+  });
+});
+
+it("returns 500 when GITHUB_PAYLOAD is invalid JSON", async () => {
+  vi.stubEnv("GITHUB_PAYLOAD", "bad");
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+
+  handler({ method: "POST" } as IncomingMessage, res);
+
+  expect(res.writeHead).toHaveBeenCalledWith(500);
+  expect(res.end).toHaveBeenCalledWith("GITHUB_PAYLOAD is not valid JSON");
 });
 
 it("returns 500 when env vars are missing", async () => {
