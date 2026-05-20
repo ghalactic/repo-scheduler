@@ -16,21 +16,9 @@ configurable schedule.
 
 [gcloud cli]: https://cloud.google.com/sdk/docs/install
 
-## Configure
-
-Use environment variables for non-sensitive settings and Secret Manager for
-`GITHUB_APP_PK`.
-
-Create the secret:
-
-```sh
-gcloud secrets create github-app-pk --replication-policy=automatic
-gcloud secrets versions add github-app-pk --data-file=github-app.pem
-```
-
 ## Deploy
 
-Deploy the Cloud Run service from this directory:
+Click the button above, or deploy the Cloud Run service from this directory:
 
 ```sh
 gcloud run deploy ghalactic-repo-scheduler \
@@ -38,10 +26,10 @@ gcloud run deploy ghalactic-repo-scheduler \
   --region=<region> \
   --no-allow-unauthenticated \
   --set-env-vars=GITHUB_APP_ID=<app-id>,GITHUB_REPO=<owner/repo>,GITHUB_EVENT_TYPE=<event-type> \
-  --set-secrets=GITHUB_APP_PK=github-app-pk:latest
+  --set-secrets=GITHUB_APP_PK=ghalactic-repo-scheduler-github-app-pk:latest
 ```
 
-Create a Cloud Scheduler job that sends an HTTP POST:
+Then create a Cloud Scheduler job that sends an HTTP POST:
 
 ```sh
 gcloud scheduler jobs create http ghalactic-repo-scheduler \
@@ -55,3 +43,17 @@ gcloud scheduler jobs create http ghalactic-repo-scheduler \
 
 Use a service account that has the Cloud Run Invoker role. Adjust the
 `--schedule` cron expression as needed.
+
+## Configure
+
+Create the secret in Secret Manager before or after deploying the service:
+
+```sh
+gcloud secrets create ghalactic-repo-scheduler-github-app-pk \
+  --replication-policy=automatic
+gcloud secrets versions add ghalactic-repo-scheduler-github-app-pk \
+  --data-file=github-app.pem
+```
+
+The secret name is prefixed with the service name because Secret Manager is
+project-global.

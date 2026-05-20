@@ -28,8 +28,7 @@ az deployment group create \
   --parameters functionAppName=<name> gitHubAppId=<app-id> gitHubRepo=<owner/repo> gitHubEventType=<event-type>
 ```
 
-After deployment, update the Key Vault secret as described above, then publish
-the function code:
+Then publish the function code:
 
 ```sh
 func azure functionapp publish <function-app>
