@@ -112,7 +112,7 @@
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "siteConfig": {
-          "linuxFxVersion": "NODE|20",
+          "linuxFxVersion": "NODE|22",
           "appSettings": [
             {
               "name": "AzureWebJobsStorage",
@@ -128,7 +128,7 @@
             },
             {
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
-              "value": "~20"
+              "value": "~22"
             },
             {
               "name": "GITHUB_APP_ID",

@@ -41,7 +41,7 @@ Resources:
     Properties:
       CodeUri: .
       Handler: dist/index.handler
-      Runtime: nodejs20.x
+      Runtime: nodejs24.x
       Timeout: 30
       Environment:
         Variables:
