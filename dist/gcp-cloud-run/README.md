@@ -9,49 +9,17 @@ configurable schedule.
 [deploy-url]:
   https://deploy.cloud.run/?git_repo=https://github.com/ghalactic/repo-scheduler&dir=dist/gcp-cloud-run
 
-## Prerequisites
-
-- GCP project
-- [gcloud CLI]
-
-[gcloud cli]: https://cloud.google.com/sdk/docs/install
-
 ## Usage
 
-Create the private key secret in Secret Manager:
-
-```sh
-gcloud secrets create ghalactic-repo-scheduler-github-app-pk \
-  --replication-policy=automatic
-gcloud secrets versions add ghalactic-repo-scheduler-github-app-pk \
-  --data-file=github-app.pem
-```
-
-The secret name is prefixed with the service name because Secret Manager is
-project-global.
-
-Deploy the Cloud Run service from this directory:
-
-```sh
-gcloud run deploy ghalactic-repo-scheduler \
-  --source=. \
-  --region=<region> \
-  --no-allow-unauthenticated \
-  --set-env-vars=GITHUB_APP_ID=<app-id>,GITHUB_REPO=<owner/repo>,GITHUB_EVENT_TYPE=<event-type> \
-  --set-secrets=GITHUB_APP_PK=ghalactic-repo-scheduler-github-app-pk:latest
-```
-
-Create a Cloud Scheduler job that sends an HTTP POST:
-
-```sh
-gcloud scheduler jobs create http ghalactic-repo-scheduler \
-  --location=<region> \
-  --schedule='*/30 * * * *' \
-  --uri="$(gcloud run services describe ghalactic-repo-scheduler --region=<region> --format='value(status.url)')" \
-  --http-method=POST \
-  --oidc-service-account-email=<scheduler-service-account> \
-  --max-retry-attempts=3
-```
-
-Use a service account that has the Cloud Run Invoker role. Adjust the
-`--schedule` cron expression as needed.
+1. Create a secret in **Secret Manager** named
+   `ghalactic-repo-scheduler-github-app-pk` containing your GitHub App's
+   PEM-encoded private key. The name is prefixed because Secret Manager is
+   project-global.
+2. Click the **Run on Google Cloud** button above. The Cloud Shell wizard
+   deploys the Cloud Run service. Set the environment variables `GITHUB_APP_ID`,
+   `GITHUB_REPO`, and `GITHUB_EVENT_TYPE` when prompted, and mount the secret as
+   `GITHUB_APP_PK`.
+3. Create a **Cloud Scheduler** job that sends an HTTP POST to the Cloud Run
+   service URL on your desired schedule (e.g. every 30 minutes). Use a service
+   account with the **Cloud Run Invoker** role and configure OIDC
+   authentication.

@@ -131,6 +131,10 @@
               "value": "~22"
             },
             {
+              "name": "WEBSITE_RUN_FROM_PACKAGE",
+              "value": "https://github.com/ghalactic/repo-scheduler/releases/latest/download/azure-function.zip"
+            },
+            {
               "name": "GITHUB_APP_ID",
               "value": "[parameters('gitHubAppId')]"
             },
@@ -167,19 +171,6 @@
         "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '4633458b-17de-408a-b874-0445c86b69e6')]",
         "principalId": "[reference(resourceId('Microsoft.Web/sites', parameters('functionAppName')), '2023-01-01', 'Full').identity.principalId]",
         "principalType": "ServicePrincipal"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites/sourcecontrols",
-      "apiVersion": "2023-01-01",
-      "name": "[concat(parameters('functionAppName'), '/web')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
-      ],
-      "properties": {
-        "repoUrl": "https://github.com/ghalactic/repo-scheduler",
-        "branch": "main",
-        "isManualIntegration": true
       }
     }
   ],

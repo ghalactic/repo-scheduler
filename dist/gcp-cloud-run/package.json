@@ -1,4 +1,7 @@
 {
+  "name": "ghalactic-repo-scheduler",
+  "version": "0.0.0",
+  "description": "Cloud Run service for the Ghalactic repo scheduler",
   "private": true,
   "type": "module",
   "main": "dist/index.mjs",
