@@ -3,6 +3,8 @@ GENERATED_FILES += dist/azure-function/dist/index.mjs dist/azure-function/dist/i
 GENERATED_FILES += dist/cloudflare-worker/dist/index.js dist/cloudflare-worker/dist/index.js.map
 GENERATED_FILES += dist/gcp-cloud-run/dist/index.mjs dist/gcp-cloud-run/dist/index.mjs.map
 
+JS_ESLINT_REQ += dist/cloudflare-worker/worker-configuration.d.ts
+
 -include .makefiles/Makefile
 -include .makefiles/pkg/js/v1/Makefile
 -include .makefiles/pkg/js/v1/with-pnpm.mk
