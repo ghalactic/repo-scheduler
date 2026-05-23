@@ -2,5 +2,3 @@
 /artifacts/
 /dist/**/dist/
 /pnpm-lock.yaml
-
-testdata/
