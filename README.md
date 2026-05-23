@@ -17,10 +17,10 @@ respond to the event.
 
 ## Platforms
 
-- [Cloudflare Workers](dist/cloudflare-worker/README.md)
 - [AWS Lambda](dist/aws-lambda/README.md)
-- [Google Cloud Run](dist/gcp-cloud-run/README.md)
 - [Azure Functions](dist/azure-function/README.md)
+- [Cloudflare Workers](dist/cloudflare-worker/README.md)
+- [Google Cloud Run](dist/gcp-cloud-run/README.md)
 
 ## Configuration
 
