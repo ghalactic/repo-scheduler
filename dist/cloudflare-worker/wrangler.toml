@@ -1,6 +1,6 @@
 name = "ghalactic-repo-scheduler"
 main = "dist/index.js"
-compatibility_date = "2025-05-23"
+compatibility_date = "2026-05-23"
 
 [triggers]
 crons = ["*/30 * * * *"]
