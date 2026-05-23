@@ -1,0 +1,46 @@
+name: Publish release (shared)
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: The tag to publish the release from
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  publish:
+    name: Publish release
+    runs-on: ubuntu-latest
+    concurrency: publish-release
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Build release artifacts
+        run: make release
+
+      - name: Publish release
+        uses: ghalactic/github-release-from-tag@v6
+        with:
+          makeLatest: never
+          reactions: hooray,heart,rocket
+          assets: |
+            - path: artifacts/release/azure-function.zip
+              name: azure-function.zip

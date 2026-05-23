@@ -10,12 +10,10 @@ on:
 
 jobs:
   publish:
-    name: Ghalactic
-    uses: ghalactic/repos/.github/workflows/shared-publish-release.yml@main
-    secrets: inherit
+    name: Publish release
+    uses: ./.github/workflows/shared-publish-release.yml
     permissions:
       contents: write
       discussions: write
     with:
-      makeTarget: release
       tag: ${{ inputs.tag }}
