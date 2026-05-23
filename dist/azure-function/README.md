@@ -8,7 +8,8 @@
 
 ## Usage
 
-1. Click the **Deploy to Azure** button above. Fill in `functionAppName`,
+1. Click the **Deploy to Azure** button above. Select or create a resource group
+   (e.g. `ghalactic-repo-scheduler`), then fill in `functionAppName`,
    `gitHubAppId`, `gitHubRepo`, `gitHubEventType`, and optionally
    `scheduleExpression` (defaults to twice per hour).
 2. After deployment completes, open the Key Vault created by the template (its
