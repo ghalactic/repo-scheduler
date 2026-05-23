@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext",
-    "tsBuildInfoFile": "../../artifacts/tsbuild/common.tsbuildinfo"
+    "tsBuildInfoFile": "artifacts/tsbuild/root.tsbuildinfo"
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["src/platform"]
 }

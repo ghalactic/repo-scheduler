@@ -1,11 +1,10 @@
 {
   "files": [],
   "references": [
-    { "path": "src/common" },
+    { "path": "tsconfig.root.json" },
     { "path": "src/platform/aws-lambda" },
     { "path": "src/platform/azure-function" },
     { "path": "src/platform/cloudflare-worker" },
-    { "path": "src/platform/gcp-cloud-run" },
-    { "path": "tsconfig.scripts.json" }
+    { "path": "src/platform/gcp-cloud-run" }
   ]
 }
