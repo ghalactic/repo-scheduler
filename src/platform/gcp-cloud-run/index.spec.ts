@@ -31,8 +31,15 @@ it("starts an HTTP server on the PORT env var", async () => {
   expect(mockListen).toHaveBeenCalledWith(9999);
 });
 
-it("defaults to port 8080 when PORT is not set", async () => {
+it("defaults to port 8080 when PORT is empty", async () => {
   vi.stubEnv("PORT", "");
+  await import("./index.js");
+
+  expect(mockListen).toHaveBeenCalledWith(8080);
+});
+
+it("defaults to port 8080 when PORT is undefined", async () => {
+  delete process.env.PORT;
   await import("./index.js");
 
   expect(mockListen).toHaveBeenCalledWith(8080);
