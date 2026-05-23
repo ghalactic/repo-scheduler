@@ -5,7 +5,7 @@ workers_dev = false
 preview_urls = false
 
 [triggers]
-crons = ["*/30 * * * *"]
+crons = ["21,51 * * * *"]
 
 [vars]
 GITHUB_APP_ID = ""

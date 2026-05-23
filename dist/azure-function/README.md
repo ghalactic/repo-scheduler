@@ -13,7 +13,7 @@ on a configurable schedule.
 
 1. Click the **Deploy to Azure** button above. Fill in `functionAppName`,
    `gitHubAppId`, `gitHubRepo`, `gitHubEventType`, and optionally
-   `scheduleExpression` (defaults to every 30 minutes).
+   `scheduleExpression` (defaults to twice per hour).
 2. After deployment completes, open the Key Vault created by the template (named
    `<functionAppName>-kv`). Under **Secrets**, create a secret named
    `github-app-pk` with your GitHub App's PEM-encoded private key as the value.

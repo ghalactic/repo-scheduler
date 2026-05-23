@@ -20,6 +20,6 @@ configurable schedule.
    `GITHUB_REPO`, and `GITHUB_EVENT_TYPE` when prompted, and mount the secret as
    `GITHUB_APP_PK`.
 3. Create a **Cloud Scheduler** job that sends an HTTP POST to the Cloud Run
-   service URL on your desired schedule (e.g. every 30 minutes). Use a service
+   service URL on your desired schedule (e.g. `21,51 * * * *`). Use a service
    account with the **Cloud Run Invoker** role and configure OIDC
    authentication.
