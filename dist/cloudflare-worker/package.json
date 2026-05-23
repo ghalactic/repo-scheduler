@@ -4,6 +4,9 @@
   "description": "Cloudflare Worker cron trigger for the Ghalactic repo scheduler",
   "private": true,
   "type": "module",
+  "devDependencies": {
+    "wrangler": "^4.93.1"
+  },
   "cloudflare": {
     "bindings": {
       "GITHUB_APP_ID": {
