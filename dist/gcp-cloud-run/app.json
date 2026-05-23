@@ -26,7 +26,6 @@
     "GITHUB_PAYLOAD": {
       "description": "JSON object to include in every dispatch event.",
       "value": "{}",
-      "required": false,
       "order": 5
     }
   }
