@@ -94,7 +94,7 @@
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "apiVersion": "2024-04-02",
-      "name": "[concat(variables('keyVaultName'), '/github-app-pk')]",
+      "name": "[concat(variables('keyVaultName'), '/ghalactic-repo-scheduler-pk')]",
       "dependsOn": [
         "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
       ],
@@ -114,7 +114,7 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
-        "[resourceId('Microsoft.KeyVault/vaults/secrets', variables('keyVaultName'), 'github-app-pk')]"
+        "[resourceId('Microsoft.KeyVault/vaults/secrets', variables('keyVaultName'), 'ghalactic-repo-scheduler-pk')]"
       ],
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
@@ -147,7 +147,7 @@
             },
             {
               "name": "GITHUB_APP_PK",
-              "value": "[concat('@Microsoft.KeyVault(SecretUri=https://', variables('keyVaultName'), '.vault.azure.net/secrets/github-app-pk/)')]"
+              "value": "[concat('@Microsoft.KeyVault(SecretUri=https://', variables('keyVaultName'), '.vault.azure.net/secrets/ghalactic-repo-scheduler-pk/)')]"
             },
             {
               "name": "GITHUB_REPO",
@@ -190,7 +190,7 @@
       "type": "string",
       "value": "[variables('keyVaultName')]",
       "metadata": {
-        "description": "Name of the Key Vault \u2014 update the github-app-pk secret with your PEM key"
+        "description": "Name of the Key Vault \u2014 update the ghalactic-repo-scheduler-pk secret with your PEM key"
       }
     }
   }

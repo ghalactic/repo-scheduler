@@ -17,4 +17,5 @@ jobs:
       contents: write
       discussions: write
     with:
+      makeTarget: release
       tag: ${{ inputs.tag }}
