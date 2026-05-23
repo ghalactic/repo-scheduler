@@ -1,7 +1,4 @@
 {
-  "name": "ghalactic-repo-scheduler",
-  "version": "0.0.0",
-  "description": "Cloudflare Worker cron trigger for the Ghalactic repo scheduler",
   "private": true,
   "type": "module",
   "devDependencies": {
