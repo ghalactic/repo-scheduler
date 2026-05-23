@@ -8,13 +8,11 @@
 
 ## Usage
 
-1. Create a secret in **Secret Manager** named `ghalactic-repo-scheduler-pk`
-   containing your GitHub App's PEM-encoded private key.
-2. Click the **Run on Google Cloud** button above. The Cloud Shell wizard
-   deploys the Cloud Run service. Set the environment variables `GITHUB_APP_ID`,
-   `GITHUB_REPO`, and `GITHUB_EVENT_TYPE` when prompted, and mount the secret as
-   `GITHUB_APP_PK`.
-3. Create a **Cloud Scheduler** job that sends an HTTP POST to the Cloud Run
-   service URL on your desired schedule (e.g. `21,51 * * * *`). Use a service
-   account with the **Cloud Run Invoker** role and configure OIDC
-   authentication.
+1. Click the **Run on Google Cloud** button above. Fill in `GITHUB_APP_ID`,
+   `GITHUB_REPO`, and `GITHUB_EVENT_TYPE` when prompted.
+2. After deployment, open the Cloud Run service in the console. Under
+   **Variables & Secrets**, replace the generated `GITHUB_APP_PK` value with
+   your GitHub App's PEM-encoded private key.
+3. Create a **Cloud Scheduler** job that sends an HTTP POST to the service URL
+   on your desired schedule (e.g. `21,51 * * * *`). Use a service account with
+   the **Cloud Run Invoker** role and configure OIDC authentication.

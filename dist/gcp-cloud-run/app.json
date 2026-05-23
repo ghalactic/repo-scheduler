@@ -1,0 +1,33 @@
+{
+  "name": "ghalactic-repo-scheduler",
+  "options": {
+    "allow-unauthenticated": false,
+    "memory": "256Mi",
+    "max-instances": 1
+  },
+  "env": {
+    "GITHUB_APP_ID": {
+      "description": "Numeric ID of the GitHub App.",
+      "order": 1
+    },
+    "GITHUB_APP_PK": {
+      "description": "PEM-encoded private key for the GitHub App.",
+      "generator": "secret",
+      "order": 2
+    },
+    "GITHUB_REPO": {
+      "description": "Target repository in owner/repo format.",
+      "order": 3
+    },
+    "GITHUB_EVENT_TYPE": {
+      "description": "The repository_dispatch event type string.",
+      "order": 4
+    },
+    "GITHUB_PAYLOAD": {
+      "description": "JSON object to include in every dispatch event.",
+      "value": "{}",
+      "required": false,
+      "order": 5
+    }
+  }
+}
