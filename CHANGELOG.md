@@ -7,7 +7,9 @@ Versioning].
 [keep a changelog]: https://keepachangelog.com/
 [semantic versioning]: https://semver.org/
 
-## Unreleased
+## [v0.1.0] - 2026-05-23
+
+[v0.1.0]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.1.0
 
 ### Added
 
