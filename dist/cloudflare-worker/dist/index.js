@@ -8360,12 +8360,75 @@ function hasErrorStatus(error, status) {
   return error instanceof Error && "status" in error && error.status === status;
 }
 
+// src/common/pkcs.ts
+var PKCS1_PREFIX = "-----BEGIN RSA PRIVATE KEY-----";
+var PKCS8_PREFIX = "-----BEGIN PRIVATE KEY-----";
+var PKCS8_SUFFIX = "-----END PRIVATE KEY-----";
+var PKCS8_HEADER = new Uint8Array([
+  48,
+  13,
+  6,
+  9,
+  42,
+  134,
+  72,
+  134,
+  247,
+  13,
+  1,
+  1,
+  1,
+  5,
+  0
+]);
+function ensurePkcs8(pem) {
+  if (!pem.includes(PKCS1_PREFIX)) return pem;
+  const base64 = pem.replace(/-----(?:BEGIN|END) RSA PRIVATE KEY-----/g, "").replace(/\s+/g, "");
+  const pkcs1 = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+  const version = new Uint8Array([2, 1, 0]);
+  const octetString = wrapAsn1(4, pkcs1);
+  const inner = concat(version, PKCS8_HEADER, octetString);
+  const pkcs8 = wrapAsn1(48, inner);
+  const encoded = btoa(String.fromCharCode(...pkcs8)).replace(/(.{64})/g, "$1\n").trimEnd();
+  return `${PKCS8_PREFIX}
+${encoded}
+${PKCS8_SUFFIX}`;
+}
+function wrapAsn1(tag, content) {
+  const len = encodeAsn1Length(content.length);
+  const result = new Uint8Array(1 + len.length + content.length);
+  result[0] = tag;
+  result.set(len, 1);
+  result.set(content, 1 + len.length);
+  return result;
+}
+function encodeAsn1Length(length) {
+  if (length < 128) return new Uint8Array([length]);
+  const bytes = [];
+  let remaining = length;
+  while (remaining > 0) {
+    bytes.unshift(remaining & 255);
+    remaining >>= 8;
+  }
+  return new Uint8Array([128 | bytes.length, ...bytes]);
+}
+function concat(...arrays) {
+  const totalLength = arrays.reduce((sum, a) => sum + a.length, 0);
+  const result = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const a of arrays) {
+    result.set(a, offset);
+    offset += a.length;
+  }
+  return result;
+}
+
 // src/platform/cloudflare-worker/index.ts
 var index_default = {
   async scheduled(_, env) {
     await dispatch({
       appId: env.GITHUB_APP_ID,
-      appPk: await env.GITHUB_APP_PK.get(),
+      appPk: ensurePkcs8(await env.GITHUB_APP_PK.get()),
       repo: env.GITHUB_REPO,
       eventType: env.GITHUB_EVENT_TYPE,
       payload: env.GITHUB_PAYLOAD

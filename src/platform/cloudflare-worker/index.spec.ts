@@ -6,6 +6,10 @@ vi.mock("../../common/dispatch.js", () => ({
   dispatch: vi.fn().mockResolvedValue(undefined),
 }));
 
+vi.mock("../../common/pkcs.js", () => ({
+  ensurePkcs8: vi.fn((pem: string) => `<pkcs8>${pem}</pkcs8>`),
+}));
+
 const appPk =
   "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----";
 
@@ -26,12 +30,12 @@ beforeEach(() => {
   vi.clearAllMocks();
 });
 
-it("calls dispatch with config from env bindings", async () => {
+it("converts the private key to PKCS#8 before dispatching", async () => {
   await worker.scheduled(event, env);
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: env.GITHUB_APP_ID,
-    appPk,
+    appPk: `<pkcs8>${appPk}</pkcs8>`,
     repo: env.GITHUB_REPO,
     eventType: "schedule",
     payload: "{}",
@@ -45,7 +49,7 @@ it("parses GITHUB_PAYLOAD when set", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: env.GITHUB_APP_ID,
-    appPk,
+    appPk: `<pkcs8>${appPk}</pkcs8>`,
     repo: env.GITHUB_REPO,
     eventType: "schedule",
     payload: '{"key":"value"}',
