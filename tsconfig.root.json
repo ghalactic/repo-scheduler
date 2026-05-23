@@ -12,5 +12,11 @@
     "tsBuildInfoFile": "artifacts/tsbuild/root.tsbuildinfo"
   },
   "include": ["**/*.ts", "**/*.js"],
-  "exclude": ["src/platform"]
+  "exclude": [
+    ".makefiles",
+    "artifacts",
+    "node_modules",
+    "dist/**/dist",
+    "src/platform"
+  ]
 }
