@@ -7,6 +7,14 @@ Versioning].
 [keep a changelog]: https://keepachangelog.com/
 [semantic versioning]: https://semver.org/
 
+## [v0.2.1] - 2026-05-23
+
+[v0.2.1]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.2.1
+
+### Fixed
+
+- Fixed Azure `apiVersion`.
+
 ## [v0.2.0] - 2026-05-23
 
 [v0.2.0]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.2.0

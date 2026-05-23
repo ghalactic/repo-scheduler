@@ -79,7 +79,7 @@
     },
     {
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2024-04-02",
+      "apiVersion": "2024-11-01",
       "name": "[variables('keyVaultName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -93,7 +93,7 @@
     },
     {
       "type": "Microsoft.KeyVault/vaults/secrets",
-      "apiVersion": "2024-04-02",
+      "apiVersion": "2024-11-01",
       "name": "[concat(variables('keyVaultName'), '/ghalactic-repo-scheduler-pk')]",
       "dependsOn": [
         "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
@@ -139,7 +139,7 @@
             },
             {
               "name": "WEBSITE_RUN_FROM_PACKAGE",
-              "value": "https://github.com/ghalactic/repo-scheduler/releases/download/v0.2.0/azure-function.zip"
+              "value": "https://github.com/ghalactic/repo-scheduler/releases/download/v0.2.1/azure-function.zip"
             },
             {
               "name": "GITHUB_APP_ID",
