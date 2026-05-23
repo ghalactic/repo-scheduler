@@ -35,3 +35,26 @@ respond to the event.
 [^1]:
     Each platform stores the private key in its native secret manager — the
     `GITHUB_APP_PK` input's content varies by platform.
+
+## Creating a GitHub App
+
+The scheduler authenticates as a [GitHub App] to dispatch events. Create one
+with the following settings:
+
+1. Go to your organization or personal **Settings > Developer settings > GitHub
+   Apps > New GitHub App**.
+2. Fill in the required fields:
+   - **GitHub App name:** anything descriptive (e.g. "Repo Scheduler")
+   - **Homepage URL:** can be this repository's URL
+   - **Webhook:** uncheck "Active" (no webhook is needed)
+3. Under **Repository permissions**, set:
+   - **Contents:** Read and write
+4. Click **Create GitHub App**.
+5. Note the **App ID** shown on the app's settings page.
+6. Scroll to **Private keys** and click **Generate a private key**. Save the
+   downloaded PEM file — you'll provide its contents to your platform's secret
+   store.
+7. Go to **Install App** in the sidebar and install it on the repositories you
+   want to dispatch events to.
+
+[github app]: https://docs.github.com/apps/creating-github-apps
