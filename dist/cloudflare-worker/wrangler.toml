@@ -20,4 +20,4 @@ GITHUB_PAYLOAD = "{}"
 [[secrets_store_secrets]]
 binding = "GITHUB_APP_PK"
 store_id = "ghalactic-repo-scheduler"
-secret_name = "github-app-pk"
+secret_name = "ghalactic-repo-scheduler-pk"
