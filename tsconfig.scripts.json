@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "tsBuildInfoFile": "artifacts/tsbuild/scripts.tsbuildinfo"
+  },
+  "include": ["*.ts", "script/**/*.ts"]
+}

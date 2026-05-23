@@ -3,20 +3,27 @@ GENERATED_FILES += dist/azure-function/dist/index.mjs dist/azure-function/dist/i
 GENERATED_FILES += dist/cloudflare-worker/dist/index.js dist/cloudflare-worker/dist/index.js.map
 GENERATED_FILES += dist/gcp-cloud-run/dist/index.mjs dist/gcp-cloud-run/dist/index.mjs.map
 
-JS_TSC_TYPECHECK_SKIP_LIB := true
-
 -include .makefiles/Makefile
 -include .makefiles/pkg/js/v1/Makefile
 -include .makefiles/pkg/js/v1/with-pnpm.mk
--include .makefiles/pkg/js/v1/with-tsc.mk
 
 .makefiles/%:
 	@curl -sfL https://makefiles.dev/v1 | bash /dev/stdin "$@"
 
 ################################################################################
 
+.PHONY: tsc-typecheck
+tsc-typecheck: artifacts/link-dependencies.touch dist/cloudflare-worker/worker-configuration.d.ts
+	$(JS_EXEC) tsc -b
+
+.PHONY: ci
+ci:: tsc-typecheck
+
+.PHONY: lint
+lint:: tsc-typecheck
+
 .PHONY: precommit
-precommit:: verify-generated
+precommit:: tsc-typecheck verify-generated
 
 ################################################################################
 
@@ -25,6 +32,9 @@ dist/aws-lambda/dist/index.mjs dist/aws-lambda/dist/index.mjs.map: script/build-
 
 dist/azure-function/dist/index.mjs dist/azure-function/dist/index.mjs.map: script/build-azure-function.ts artifacts/link-dependencies.touch $(JS_SOURCE_FILES)
 	node "$<" "$@"
+
+dist/cloudflare-worker/worker-configuration.d.ts: dist/cloudflare-worker/wrangler.toml artifacts/link-dependencies.touch
+	wrangler types --config $< --strict-vars=false $@
 
 dist/cloudflare-worker/dist/index.js dist/cloudflare-worker/dist/index.js.map: script/build-cloudflare-worker.ts artifacts/link-dependencies.touch $(JS_SOURCE_FILES)
 	node "$<" "$@"

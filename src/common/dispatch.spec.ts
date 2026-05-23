@@ -1,4 +1,6 @@
+import { App } from "octokit";
 import { beforeEach, expect, it, vi } from "vitest";
+import { dispatch, type DispatchConfig } from "./dispatch.js";
 
 const mocks = vi.hoisted(() => {
   return {
@@ -15,15 +17,12 @@ vi.mock("octokit", () => {
   };
 });
 
-import { App } from "octokit";
-import { dispatch, type DispatchConfig } from "./dispatch.js";
-
 const config: DispatchConfig = {
   appId: "12345",
-  privateKey:
-    "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----",
+  appPk: "-----BEGIN RSA PRIVATE KEY-----\nfake\n-----END RSA PRIVATE KEY-----",
   repo: "owner/repo",
   eventType: "schedule",
+  payload: "",
 };
 
 beforeEach(() => {
@@ -35,9 +34,7 @@ beforeEach(() => {
   });
   vi.mocked(App).mockImplementation(function mockApp() {
     return {
-      octokit: {
-        request: mocks.appRequest,
-      },
+      octokit: { request: mocks.appRequest },
       getInstallationOctokit: mocks.getInstallationOctokit,
     } as never;
   });
@@ -48,7 +45,7 @@ it("creates an App with the configured credentials", async () => {
 
   expect(App).toHaveBeenCalledWith({
     appId: config.appId,
-    privateKey: config.privateKey,
+    privateKey: config.appPk,
   });
 });
 

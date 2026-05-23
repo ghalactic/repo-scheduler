@@ -1,15 +1,11 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "esModuleInterop": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "ESNext"
-  },
-  "exclude": ["dist", "artifacts", "dist", ".makefiles"],
-  "include": ["**/*.js", "**/*.ts", ".agents/**/*.js"]
+  "files": [],
+  "references": [
+    { "path": "src/common" },
+    { "path": "src/platform/aws-lambda" },
+    { "path": "src/platform/azure-function" },
+    { "path": "src/platform/cloudflare-worker" },
+    { "path": "src/platform/gcp-cloud-run" },
+    { "path": "tsconfig.scripts.json" }
+  ]
 }

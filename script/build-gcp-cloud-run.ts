@@ -9,7 +9,7 @@ if (!outfile) {
 }
 
 await build({
-  entryPoints: ["src/gcp-cloud-run/index.ts"],
+  entryPoints: ["src/platform/gcp-cloud-run/index.ts"],
   bundle: true,
   packages: "bundle",
   sourcemap: true,

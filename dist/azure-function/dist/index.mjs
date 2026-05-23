@@ -1474,7 +1474,7 @@ var require_light = __commonJS({
   }
 });
 
-// src/azure-function/index.ts
+// src/platform/azure-function/index.ts
 import { app } from "@azure/functions";
 
 // node_modules/.pnpm/universal-user-agent@7.0.3/node_modules/universal-user-agent/index.js
@@ -8289,50 +8289,43 @@ function onSecondaryRateLimit(retryAfter, options, octokit) {
 var App2 = App.defaults({ Octokit: Octokit2 });
 var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
-// src/dispatch.ts
+// src/common/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, eventType, payload: rawPayload } = config;
-  const clientPayload = parsePayload(rawPayload);
-  const [owner, repoName] = splitRepo(repo);
-  const app2 = new App2({ appId, privateKey });
+  const { appId, appPk, eventType } = config;
+  const payload = parsePayload(config.payload);
+  const [owner, repo] = splitRepo(config.repo);
+  const app2 = new App2({ appId, privateKey: appPk });
   let installationId;
   try {
     const { data } = await app2.octokit.request(
       "GET /repos/{owner}/{repo}/installation",
-      {
-        owner,
-        repo: repoName
-      }
+      { owner, repo }
     );
     installationId = data.id;
   } catch (error) {
-    if (hasStatus(error, 404)) {
-      throw new Error(`GitHub App ${appId} is not installed on ${repo}`, {
-        cause: error
-      });
-    }
-    throw error;
+    if (!hasErrorStatus(error, 404)) throw error;
+    throw new Error(`GitHub App ${appId} is not installed on ${config.repo}`, {
+      cause: error
+    });
   }
   const octokit = await app2.getInstallationOctokit(installationId);
   await octokit.request("POST /repos/{owner}/{repo}/dispatches", {
     owner,
-    repo: repoName,
+    repo,
     event_type: eventType,
-    client_payload: clientPayload
+    client_payload: payload
   });
 }
-function parsePayload(raw) {
-  if (!raw) return {};
+function parsePayload(payload) {
+  if (!payload) return {};
   let parsed;
   try {
-    parsed = JSON.parse(raw);
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+    parsed = JSON.parse(payload);
+  } catch (error) {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON", { cause: error });
   }
-  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-    throw new Error("GITHUB_PAYLOAD must be a JSON object");
-  }
-  return parsed;
+  if (isRecord(parsed)) return parsed;
+  throw new Error("GITHUB_PAYLOAD must be a JSON object");
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -8341,27 +8334,33 @@ function splitRepo(repo) {
   }
   return [parts[0], parts[1]];
 }
-function hasStatus(error, status) {
+function isRecord(value) {
+  return typeof value === "object" && value != null && !Array.isArray(value);
+}
+function hasErrorStatus(error, status) {
   return error instanceof Error && "status" in error && error.status === status;
 }
 
-// src/azure-function/index.ts
+// src/platform/azure-function/index.ts
 app.timer("schedulerTimer", {
   schedule: "%SCHEDULE_EXPRESSION%",
   handler: async () => {
-    const appId = process.env.GITHUB_APP_ID;
-    const privateKey = process.env.GITHUB_APP_PK;
-    const repo = process.env.GITHUB_REPO;
-    const eventType = process.env.GITHUB_EVENT_TYPE;
-    if (!appId || !privateKey || !repo || !eventType) {
+    const {
+      GITHUB_APP_ID: appId = "",
+      GITHUB_APP_PK: appPk = "",
+      GITHUB_REPO: repo = "",
+      GITHUB_EVENT_TYPE: eventType = "",
+      GITHUB_PAYLOAD: payload = "{}"
+    } = process.env;
+    if (!appId || !appPk || !repo || !eventType) {
       throw new Error("Missing required environment variables");
     }
     await dispatch({
       appId,
-      privateKey,
+      appPk,
       repo,
       eventType,
-      payload: process.env.GITHUB_PAYLOAD
+      payload
     });
   }
 });

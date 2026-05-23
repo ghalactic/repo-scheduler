@@ -1,8 +1,6 @@
 import { beforeEach, expect, it, vi } from "vitest";
-
-vi.mock("../dispatch.js", () => ({
-  dispatch: vi.fn().mockResolvedValue(undefined),
-}));
+import { dispatch } from "../../common/dispatch.js";
+import { handler } from "./index.js";
 
 const mockSend = vi.fn();
 
@@ -15,8 +13,9 @@ vi.mock("@aws-sdk/client-secrets-manager", () => ({
   },
 }));
 
-import { dispatch } from "../dispatch.js";
-import { handler } from "./index.js";
+vi.mock("../../common/dispatch.js", () => ({
+  dispatch: vi.fn().mockResolvedValue(undefined),
+}));
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -26,10 +25,7 @@ beforeEach(() => {
 
 it("fetches the private key from Secrets Manager and dispatches", async () => {
   vi.stubEnv("GITHUB_APP_ID", "12345");
-  vi.stubEnv(
-    "GITHUB_APP_PK_SECRET_ARN",
-    "arn:aws:secretsmanager:us-east-1:123:secret:pk",
-  );
+  vi.stubEnv("GITHUB_APP_PK", "arn:aws:secretsmanager:us-east-1:123:secret:pk");
   vi.stubEnv("GITHUB_REPO", "owner/repo");
   vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
 
@@ -42,19 +38,16 @@ it("fetches the private key from Secrets Manager and dispatches", async () => {
   );
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
-    privateKey: "fake-pem-key",
+    appPk: "fake-pem-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: undefined,
+    payload: "{}",
   });
 });
 
 it("parses GITHUB_PAYLOAD when set", async () => {
   vi.stubEnv("GITHUB_APP_ID", "12345");
-  vi.stubEnv(
-    "GITHUB_APP_PK_SECRET_ARN",
-    "arn:aws:secretsmanager:us-east-1:123:secret:pk",
-  );
+  vi.stubEnv("GITHUB_APP_PK", "arn:aws:secretsmanager:us-east-1:123:secret:pk");
   vi.stubEnv("GITHUB_REPO", "owner/repo");
   vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   vi.stubEnv("GITHUB_PAYLOAD", '{"run_id":"abc"}');
@@ -63,7 +56,7 @@ it("parses GITHUB_PAYLOAD when set", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
-    privateKey: "fake-pem-key",
+    appPk: "fake-pem-key",
     repo: "owner/repo",
     eventType: "schedule",
     payload: '{"run_id":"abc"}',
@@ -72,7 +65,7 @@ it("parses GITHUB_PAYLOAD when set", async () => {
 
 it("throws when environment variables are missing", async () => {
   vi.stubEnv("GITHUB_APP_ID", "");
-  vi.stubEnv("GITHUB_APP_PK_SECRET_ARN", "");
+  vi.stubEnv("GITHUB_APP_PK", "");
   vi.stubEnv("GITHUB_REPO", "");
   vi.stubEnv("GITHUB_EVENT_TYPE", "");
 
@@ -83,10 +76,7 @@ it("throws when environment variables are missing", async () => {
 
 it("throws when secret value is empty", async () => {
   vi.stubEnv("GITHUB_APP_ID", "12345");
-  vi.stubEnv(
-    "GITHUB_APP_PK_SECRET_ARN",
-    "arn:aws:secretsmanager:us-east-1:123:secret:pk",
-  );
+  vi.stubEnv("GITHUB_APP_PK", "arn:aws:secretsmanager:us-east-1:123:secret:pk");
   vi.stubEnv("GITHUB_REPO", "owner/repo");
   vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   mockSend.mockResolvedValue({ SecretString: undefined });
@@ -96,10 +86,7 @@ it("throws when secret value is empty", async () => {
 
 it("propagates errors from dispatch", async () => {
   vi.stubEnv("GITHUB_APP_ID", "12345");
-  vi.stubEnv(
-    "GITHUB_APP_PK_SECRET_ARN",
-    "arn:aws:secretsmanager:us-east-1:123:secret:pk",
-  );
+  vi.stubEnv("GITHUB_APP_PK", "arn:aws:secretsmanager:us-east-1:123:secret:pk");
   vi.stubEnv("GITHUB_REPO", "owner/repo");
   vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   vi.mocked(dispatch).mockRejectedValue(new Error("dispatch failed"));

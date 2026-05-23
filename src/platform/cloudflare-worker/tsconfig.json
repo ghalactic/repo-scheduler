@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "tsBuildInfoFile": "../../../artifacts/tsbuild/cloudflare-worker.tsbuildinfo",
+    "types": []
+  },
+  "include": [
+    "**/*.ts",
+    "../../common/**/*.ts",
+    "../../../dist/cloudflare-worker/worker-configuration.d.ts"
+  ]
+}

@@ -17,6 +17,9 @@
       },
       "GITHUB_APP_PK": {
         "description": "PEM-encoded private key for the GitHub App. Stored in the Secrets Store."
+      },
+      "GITHUB_PAYLOAD": {
+        "description": "JSON object to include in every dispatch event. Defaults to {}."
       }
     }
   }

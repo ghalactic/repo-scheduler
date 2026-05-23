@@ -9,7 +9,7 @@ if (!outfile) {
 }
 
 await build({
-  entryPoints: ["src/cloudflare-worker/index.ts"],
+  entryPoints: ["src/platform/cloudflare-worker/index.ts"],
   bundle: true,
   packages: "bundle",
   sourcemap: true,

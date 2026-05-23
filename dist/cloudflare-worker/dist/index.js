@@ -8308,50 +8308,43 @@ function onSecondaryRateLimit(retryAfter, options, octokit) {
 var App2 = App.defaults({ Octokit: Octokit2 });
 var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
-// src/dispatch.ts
+// src/common/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, eventType, payload: rawPayload } = config;
-  const clientPayload = parsePayload(rawPayload);
-  const [owner, repoName] = splitRepo(repo);
-  const app = new App2({ appId, privateKey });
+  const { appId, appPk, eventType } = config;
+  const payload = parsePayload(config.payload);
+  const [owner, repo] = splitRepo(config.repo);
+  const app = new App2({ appId, privateKey: appPk });
   let installationId;
   try {
     const { data } = await app.octokit.request(
       "GET /repos/{owner}/{repo}/installation",
-      {
-        owner,
-        repo: repoName
-      }
+      { owner, repo }
     );
     installationId = data.id;
   } catch (error) {
-    if (hasStatus(error, 404)) {
-      throw new Error(`GitHub App ${appId} is not installed on ${repo}`, {
-        cause: error
-      });
-    }
-    throw error;
+    if (!hasErrorStatus(error, 404)) throw error;
+    throw new Error(`GitHub App ${appId} is not installed on ${config.repo}`, {
+      cause: error
+    });
   }
   const octokit = await app.getInstallationOctokit(installationId);
   await octokit.request("POST /repos/{owner}/{repo}/dispatches", {
     owner,
-    repo: repoName,
+    repo,
     event_type: eventType,
-    client_payload: clientPayload
+    client_payload: payload
   });
 }
-function parsePayload(raw) {
-  if (!raw) return {};
+function parsePayload(payload) {
+  if (!payload) return {};
   let parsed;
   try {
-    parsed = JSON.parse(raw);
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+    parsed = JSON.parse(payload);
+  } catch (error) {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON", { cause: error });
   }
-  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-    throw new Error("GITHUB_PAYLOAD must be a JSON object");
-  }
-  return parsed;
+  if (isRecord(parsed)) return parsed;
+  throw new Error("GITHUB_PAYLOAD must be a JSON object");
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -8360,16 +8353,19 @@ function splitRepo(repo) {
   }
   return [parts[0], parts[1]];
 }
-function hasStatus(error, status) {
+function isRecord(value) {
+  return typeof value === "object" && value != null && !Array.isArray(value);
+}
+function hasErrorStatus(error, status) {
   return error instanceof Error && "status" in error && error.status === status;
 }
 
-// src/cloudflare-worker/index.ts
+// src/platform/cloudflare-worker/index.ts
 var index_default = {
-  async scheduled(_event, env) {
+  async scheduled(_, env) {
     await dispatch({
       appId: env.GITHUB_APP_ID,
-      privateKey: await env.GITHUB_APP_PK.get(),
+      appPk: await env.GITHUB_APP_PK.get(),
       repo: env.GITHUB_REPO,
       eventType: env.GITHUB_EVENT_TYPE,
       payload: env.GITHUB_PAYLOAD

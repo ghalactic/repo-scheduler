@@ -24,6 +24,10 @@ Parameters:
   GitHubEventType:
     Type: String
     Description: repository_dispatch event type string
+  GitHubPayload:
+    Type: String
+    Default: "{}"
+    Description: JSON object to include in every dispatch event
   Schedule:
     Type: String
     Default: rate(30 minutes)
@@ -46,9 +50,10 @@ Resources:
       Environment:
         Variables:
           GITHUB_APP_ID: !Ref GitHubAppId
-          GITHUB_APP_PK_SECRET_ARN: !Ref GitHubAppPkSecret
+          GITHUB_APP_PK: !Ref GitHubAppPkSecret
           GITHUB_REPO: !Ref GitHubRepo
           GITHUB_EVENT_TYPE: !Ref GitHubEventType
+          GITHUB_PAYLOAD: !Ref GitHubPayload
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: !Ref GitHubAppPkSecret

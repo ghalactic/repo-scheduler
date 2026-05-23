@@ -1,8 +1,5 @@
 import { beforeEach, expect, it, vi } from "vitest";
-
-vi.mock("../dispatch.js", () => ({
-  dispatch: vi.fn().mockResolvedValue(undefined),
-}));
+import { dispatch } from "../../common/dispatch.js";
 
 const mockTimer = vi.hoisted(() => vi.fn());
 
@@ -10,7 +7,9 @@ vi.mock("@azure/functions", () => ({
   app: { timer: mockTimer },
 }));
 
-import { dispatch } from "../dispatch.js";
+vi.mock("../../common/dispatch.js", () => ({
+  dispatch: vi.fn().mockResolvedValue(undefined),
+}));
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -47,10 +46,10 @@ it("calls dispatch with config from environment variables", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
-    privateKey: "fake-key",
+    appPk: "fake-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: undefined,
+    payload: "{}",
   });
 });
 
@@ -63,7 +62,7 @@ it("parses GITHUB_PAYLOAD when set", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
-    privateKey: "fake-key",
+    appPk: "fake-key",
     repo: "owner/repo",
     eventType: "schedule",
     payload: '{"foo":"bar"}',

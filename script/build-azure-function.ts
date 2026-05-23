@@ -9,7 +9,7 @@ if (!outfile) {
 }
 
 await build({
-  entryPoints: ["src/azure-function/index.ts"],
+  entryPoints: ["src/platform/azure-function/index.ts"],
   bundle: true,
   packages: "bundle",
   sourcemap: true,

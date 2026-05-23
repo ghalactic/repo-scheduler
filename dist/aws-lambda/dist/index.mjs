@@ -29308,7 +29308,7 @@ var require_light = __commonJS({
   }
 });
 
-// src/aws-lambda/index.ts
+// src/platform/aws-lambda/index.ts
 var import_client_secrets_manager = __toESM(require_dist_cjs19(), 1);
 
 // node_modules/.pnpm/universal-user-agent@7.0.3/node_modules/universal-user-agent/index.js
@@ -36123,50 +36123,43 @@ function onSecondaryRateLimit(retryAfter, options, octokit) {
 var App2 = App.defaults({ Octokit: Octokit2 });
 var OAuthApp2 = OAuthApp.defaults({ Octokit: Octokit2 });
 
-// src/dispatch.ts
+// src/common/dispatch.ts
 async function dispatch(config) {
-  const { appId, privateKey, repo, eventType, payload: rawPayload } = config;
-  const clientPayload = parsePayload(rawPayload);
-  const [owner, repoName] = splitRepo(repo);
-  const app = new App2({ appId, privateKey });
+  const { appId, appPk, eventType } = config;
+  const payload2 = parsePayload(config.payload);
+  const [owner, repo] = splitRepo(config.repo);
+  const app = new App2({ appId, privateKey: appPk });
   let installationId;
   try {
     const { data: data2 } = await app.octokit.request(
       "GET /repos/{owner}/{repo}/installation",
-      {
-        owner,
-        repo: repoName
-      }
+      { owner, repo }
     );
     installationId = data2.id;
   } catch (error2) {
-    if (hasStatus(error2, 404)) {
-      throw new Error(`GitHub App ${appId} is not installed on ${repo}`, {
-        cause: error2
-      });
-    }
-    throw error2;
+    if (!hasErrorStatus(error2, 404)) throw error2;
+    throw new Error(`GitHub App ${appId} is not installed on ${config.repo}`, {
+      cause: error2
+    });
   }
   const octokit = await app.getInstallationOctokit(installationId);
   await octokit.request("POST /repos/{owner}/{repo}/dispatches", {
     owner,
-    repo: repoName,
+    repo,
     event_type: eventType,
-    client_payload: clientPayload
+    client_payload: payload2
   });
 }
-function parsePayload(raw) {
-  if (!raw) return {};
+function parsePayload(payload2) {
+  if (!payload2) return {};
   let parsed;
   try {
-    parsed = JSON.parse(raw);
-  } catch {
-    throw new Error("GITHUB_PAYLOAD is not valid JSON");
+    parsed = JSON.parse(payload2);
+  } catch (error2) {
+    throw new Error("GITHUB_PAYLOAD is not valid JSON", { cause: error2 });
   }
-  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
-    throw new Error("GITHUB_PAYLOAD must be a JSON object");
-  }
-  return parsed;
+  if (isRecord(parsed)) return parsed;
+  throw new Error("GITHUB_PAYLOAD must be a JSON object");
 }
 function splitRepo(repo) {
   const parts = repo.split("/");
@@ -36175,34 +36168,31 @@ function splitRepo(repo) {
   }
   return [parts[0], parts[1]];
 }
-function hasStatus(error2, status) {
+function isRecord(value) {
+  return typeof value === "object" && value != null && !Array.isArray(value);
+}
+function hasErrorStatus(error2, status) {
   return error2 instanceof Error && "status" in error2 && error2.status === status;
 }
 
-// src/aws-lambda/index.ts
+// src/platform/aws-lambda/index.ts
 async function handler2() {
-  const appId = process.env.GITHUB_APP_ID;
-  const secretArn = process.env.GITHUB_APP_PK_SECRET_ARN;
-  const repo = process.env.GITHUB_REPO;
-  const eventType = process.env.GITHUB_EVENT_TYPE;
-  if (!appId || !secretArn || !repo || !eventType) {
+  const {
+    GITHUB_APP_ID: appId = "",
+    GITHUB_APP_PK: secretId = "",
+    GITHUB_REPO: repo = "",
+    GITHUB_EVENT_TYPE: eventType = "",
+    GITHUB_PAYLOAD: payload2 = "{}"
+  } = process.env;
+  if (!appId || !secretId || !repo || !eventType) {
     throw new Error("Missing required environment variables");
   }
-  const client = new import_client_secrets_manager.SecretsManagerClient({});
-  const secret = await client.send(
-    new import_client_secrets_manager.GetSecretValueCommand({ SecretId: secretArn })
+  const client = new import_client_secrets_manager.SecretsManagerClient();
+  const { SecretString: appPk } = await client.send(
+    new import_client_secrets_manager.GetSecretValueCommand({ SecretId: secretId })
   );
-  const privateKey = secret.SecretString;
-  if (!privateKey) {
-    throw new Error("Secret value is empty");
-  }
-  await dispatch({
-    appId,
-    privateKey,
-    repo,
-    eventType,
-    payload: process.env.GITHUB_PAYLOAD
-  });
+  if (!appPk) throw new Error("Secret value is empty");
+  await dispatch({ appId, appPk, repo, eventType, payload: payload2 });
 }
 export {
   handler2 as handler

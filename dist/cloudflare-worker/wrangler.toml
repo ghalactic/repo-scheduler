@@ -9,6 +9,7 @@ crons = ["*/30 * * * *"]
 GITHUB_APP_ID = ""
 GITHUB_REPO = ""
 GITHUB_EVENT_TYPE = ""
+GITHUB_PAYLOAD = "{}"
 
 [[secrets_store_secrets]]
 binding = "GITHUB_APP_PK"

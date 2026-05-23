@@ -9,7 +9,7 @@ if (!outfile) {
 }
 
 await build({
-  entryPoints: ["src/aws-lambda/index.ts"],
+  entryPoints: ["src/platform/aws-lambda/index.ts"],
   bundle: true,
   packages: "bundle",
   sourcemap: true,

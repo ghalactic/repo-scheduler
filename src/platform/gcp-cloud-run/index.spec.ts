@@ -1,9 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { createServer } from "node:http";
 import { beforeEach, expect, it, vi } from "vitest";
-
-vi.mock("../dispatch.js", () => ({
-  dispatch: vi.fn().mockResolvedValue(undefined),
-}));
+import { dispatch } from "../../common/dispatch.js";
 
 const mockListen = vi.hoisted(() => vi.fn());
 
@@ -11,25 +9,9 @@ vi.mock("node:http", () => ({
   createServer: vi.fn(() => ({ listen: mockListen })),
 }));
 
-import { createServer } from "node:http";
-import { dispatch } from "../dispatch.js";
-
-function makeRes() {
-  const end = vi.fn();
-  const writeHead = vi.fn().mockReturnValue({ end });
-
-  return { writeHead, end } as unknown as ServerResponse & {
-    writeHead: ReturnType<typeof vi.fn>;
-    end: ReturnType<typeof vi.fn>;
-  };
-}
-
-function getHandler() {
-  return vi.mocked(createServer).mock.calls[0][0] as (
-    req: IncomingMessage,
-    res: ServerResponse,
-  ) => void;
-}
+vi.mock("../../common/dispatch.js", () => ({
+  dispatch: vi.fn().mockResolvedValue(undefined),
+}));
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -77,10 +59,10 @@ it("calls dispatch and returns 200 on success", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
-    privateKey: "fake-key",
+    appPk: "fake-key",
     repo: "owner/repo",
     eventType: "schedule",
-    payload: undefined,
+    payload: "{}",
   });
   expect(res.writeHead).toHaveBeenCalledWith(200);
 });
@@ -96,7 +78,7 @@ it("parses GITHUB_PAYLOAD when set", async () => {
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
-    privateKey: "fake-key",
+    appPk: "fake-key",
     repo: "owner/repo",
     eventType: "schedule",
     payload: '{"run":"123"}',
@@ -142,3 +124,20 @@ it("stringifies non-Error rejection values", async () => {
   expect(res.writeHead).toHaveBeenCalledWith(500);
   expect(res.end).toHaveBeenCalledWith("string-error");
 });
+
+function makeRes() {
+  const end = vi.fn();
+  const writeHead = vi.fn().mockReturnValue({ end });
+
+  return { writeHead, end } as ServerResponse & {
+    writeHead: ReturnType<typeof vi.fn>;
+    end: ReturnType<typeof vi.fn>;
+  };
+}
+
+function getHandler() {
+  return vi.mocked(createServer).mock.calls[0][0] as (
+    req: IncomingMessage,
+    res: ServerResponse,
+  ) => void;
+}

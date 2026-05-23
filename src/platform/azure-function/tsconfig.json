@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "tsBuildInfoFile": "../../../artifacts/tsbuild/azure-function.tsbuildinfo",
+    "types": ["node"]
+  },
+  "include": ["**/*.ts", "../../common/**/*.ts"]
+}

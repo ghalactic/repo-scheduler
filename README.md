@@ -10,24 +10,10 @@ using a GitHub App for authentication.
 ## How it works
 
 Each platform implementation authenticates as a GitHub App and dispatches a
-`repository_dispatch` event with your configured event type and optional
-payload.
+`repository_dispatch` event with your configured event type and payload.
 
 The target repository can then use `on: repository_dispatch` in any workflow to
 respond to the event.
-
-## Configuration
-
-| Variable            | Required | Sensitive | Description                            |
-| ------------------- | -------- | --------- | -------------------------------------- |
-| `GITHUB_APP_ID`     | Yes      | No        | GitHub App ID                          |
-| `GITHUB_APP_PK`     | Yes      | Yes       | GitHub App PEM-encoded private key     |
-| `GITHUB_REPO`       | Yes      | No        | Target repository in `owner/repo` form |
-| `GITHUB_EVENT_TYPE` | Yes      | No        | `repository_dispatch` event type       |
-| `GITHUB_PAYLOAD`    | No       | No        | JSON for `client_payload`              |
-
-Each platform stores the private key in its native secret manager. See the
-individual platform guide for details.
 
 ## Platforms
 
@@ -35,3 +21,17 @@ individual platform guide for details.
 - [AWS Lambda](dist/aws-lambda/README.md)
 - [Google Cloud Run](dist/gcp-cloud-run/README.md)
 - [Azure Functions](dist/azure-function/README.md)
+
+## Configuration
+
+| Input               | Description                            |
+| ------------------- | -------------------------------------- |
+| `GITHUB_APP_ID`     | GitHub App ID                          |
+| `GITHUB_APP_PK`     | GitHub App PEM-encoded private key[^1] |
+| `GITHUB_REPO`       | Target repository in `owner/repo` form |
+| `GITHUB_EVENT_TYPE` | `repository_dispatch` event type       |
+| `GITHUB_PAYLOAD`    | JSON object for `client_payload`       |
+
+[^1]:
+    Each platform stores the private key in its native secret manager — the
+    `GITHUB_APP_PK` input's content varies by platform.

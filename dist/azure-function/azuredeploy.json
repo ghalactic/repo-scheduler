@@ -33,6 +33,13 @@
         "description": "repository_dispatch event type string"
       }
     },
+    "gitHubPayload": {
+      "type": "string",
+      "defaultValue": "{}",
+      "metadata": {
+        "description": "JSON object to include in every dispatch event"
+      }
+    },
     "scheduleExpression": {
       "type": "string",
       "defaultValue": "0 */30 * * * *",
@@ -149,6 +156,10 @@
             {
               "name": "GITHUB_EVENT_TYPE",
               "value": "[parameters('gitHubEventType')]"
+            },
+            {
+              "name": "GITHUB_PAYLOAD",
+              "value": "[parameters('gitHubPayload')]"
             },
             {
               "name": "SCHEDULE_EXPRESSION",
