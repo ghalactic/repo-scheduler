@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "composite": true,
     "esModuleInterop": true,
     "module": "NodeNext",
@@ -10,6 +11,6 @@
     "target": "ESNext",
     "tsBuildInfoFile": "artifacts/tsbuild/root.tsbuildinfo"
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "**/*.js"],
   "exclude": ["src/platform"]
 }
