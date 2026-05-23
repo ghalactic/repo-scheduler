@@ -9,7 +9,7 @@
 ## Usage
 
 1. Create a secret in **Secret Manager** named
-   `ghalactic-repo-scheduler-github-app-pk` containing your GitHub App's
+   `ghalactic-repo-scheduler-pk` containing your GitHub App's
    PEM-encoded private key. The name is prefixed because Secret Manager is
    project-global.
 2. Click the **Run on Google Cloud** button above. The Cloud Shell wizard

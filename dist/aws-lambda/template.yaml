@@ -37,7 +37,7 @@ Resources:
   GitHubAppPkSecret:
     Type: AWS::SecretsManager::Secret
     Properties:
-      Name: !Sub "${AWS::StackName}/github-app-pk"
+      Name: !Sub "${AWS::StackName}/ghalactic-repo-scheduler-pk"
       Description: GitHub App PEM-encoded private key
 
   SchedulerFunction:
