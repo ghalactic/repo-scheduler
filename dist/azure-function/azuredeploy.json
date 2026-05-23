@@ -139,7 +139,7 @@
             },
             {
               "name": "WEBSITE_RUN_FROM_PACKAGE",
-              "value": "https://github.com/ghalactic/repo-scheduler/releases/download/v0.1.0/azure-function.zip"
+              "value": "https://github.com/ghalactic/repo-scheduler/releases/download/v0.2.0/azure-function.zip"
             },
             {
               "name": "GITHUB_APP_ID",
