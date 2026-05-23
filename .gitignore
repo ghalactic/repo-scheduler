@@ -1,3 +1,5 @@
 /.makefiles/
 /artifacts/
 /node_modules/
+
+/dist/cloudflare-worker/worker-configuration.d.ts

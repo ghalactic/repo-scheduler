@@ -1,4 +1,6 @@
 /.makefiles/
 /artifacts/
 /dist/**/dist/
+
+/dist/cloudflare-worker/worker-configuration.d.ts
 /pnpm-lock.yaml

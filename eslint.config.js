@@ -24,7 +24,13 @@ const namingBase = [
 ];
 
 export default defineConfig(
-  globalIgnores([".makefiles", "artifacts", "dist"]),
+  globalIgnores([
+    ".makefiles",
+    "artifacts",
+    "dist",
+
+    "dist/cloudflare-worker/worker-configuration.d.ts",
+  ]),
   js.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   vitest.configs.recommended,
