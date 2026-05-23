@@ -1,13 +1,10 @@
-# Azure Function scheduler
+# Azure Function repo scheduler
 
 [![Deploy to Azure][deploy-badge]][deploy-url]
 
 [deploy-badge]: https://aka.ms/deploytoazurebutton
 [deploy-url]:
   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fghalactic%2Frepo-scheduler%2Fmain%2Fdist%2Fazure-function%2Fazuredeploy.json
-
-Use an Azure Functions timer trigger to dispatch a `repository_dispatch` event
-on a configurable schedule.
 
 ## Usage
 

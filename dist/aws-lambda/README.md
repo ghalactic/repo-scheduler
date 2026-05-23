@@ -1,9 +1,6 @@
-# AWS Lambda scheduler
+# AWS Lambda repo scheduler
 
 [![Launch Stack][deploy-badge]][deploy-url]
-
-Use Lambda and EventBridge to dispatch a `repository_dispatch` event on a fixed
-schedule.
 
 [deploy-badge]:
   https://img.shields.io/badge/Deploy-AWS%20Serverless%20App%20Repository-orange?logo=amazonaws

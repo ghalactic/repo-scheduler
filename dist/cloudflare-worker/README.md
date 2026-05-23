@@ -1,9 +1,6 @@
-# Cloudflare Worker scheduler
+# Cloudflare Worker repo scheduler
 
 [![Deploy to Cloudflare Workers][deploy-badge]][deploy-url]
-
-Use a Worker Cron Trigger to dispatch a `repository_dispatch` event on a fixed
-schedule.
 
 [deploy-badge]: https://deploy.workers.cloudflare.com/button
 [deploy-url]:

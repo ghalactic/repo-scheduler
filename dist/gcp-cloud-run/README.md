@@ -1,9 +1,6 @@
-# Google Cloud Run scheduler
+# Google Cloud Run repo scheduler
 
 [![Run on Google Cloud][deploy-badge]][deploy-url]
-
-Use Cloud Run and Cloud Scheduler to dispatch a `repository_dispatch` event on a
-configurable schedule.
 
 [deploy-badge]: https://deploy.cloud.run/button.svg
 [deploy-url]:
