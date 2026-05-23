@@ -14,8 +14,5 @@ schedule.
 1. Click the button above to deploy. The setup page prompts for the required
    environment variables (`GITHUB_APP_ID`, `GITHUB_REPO`, `GITHUB_EVENT_TYPE`)
    and provisions a Secrets Store binding for `GITHUB_APP_PK`.
-2. After deploying, open the **Secrets Store** in the Cloudflare dashboard and
-   set the `github-app-pk` secret value to your GitHub App's PEM-encoded private
-   key.
-3. To adjust the schedule, edit the `crons` array in `wrangler.toml` and
-   redeploy.
+2. Cloudflare will create a new repository to house your worker. To adjust the
+   schedule, edit the `crons` array in `wrangler.toml` and redeploy.
