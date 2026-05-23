@@ -11,7 +11,8 @@
     "@types/node": "^24.12.2",
     "esbuild": "^0.28.0",
     "octokit": "^5.0.5",
-    "typescript": "^6.0.0"
+    "typescript": "^6.0.0",
+    "wrangler": "^4.93.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",

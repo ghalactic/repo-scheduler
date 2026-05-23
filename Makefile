@@ -34,7 +34,7 @@ dist/azure-function/dist/index.mjs dist/azure-function/dist/index.mjs.map: scrip
 	node "$<" "$@"
 
 dist/cloudflare-worker/worker-configuration.d.ts: dist/cloudflare-worker/wrangler.toml artifacts/link-dependencies.touch
-	wrangler types --config $< --strict-vars=false $@
+	$(JS_EXEC) wrangler types --config $< --strict-vars=false $@
 
 dist/cloudflare-worker/dist/index.js dist/cloudflare-worker/dist/index.js.map: script/build-cloudflare-worker.ts artifacts/link-dependencies.touch $(JS_SOURCE_FILES)
 	node "$<" "$@"
