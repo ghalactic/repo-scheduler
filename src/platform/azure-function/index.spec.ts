@@ -27,7 +27,7 @@ interface MockRequest {
 function makeRequest(method: string, body?: unknown): MockRequest {
   return {
     method,
-    json: async () => body,
+    json: () => Promise.resolve(body),
   };
 }
 
@@ -116,9 +116,7 @@ it("returns 400 when body is not valid JSON", async () => {
   const handler = await getHandler();
   const req = {
     method: "POST",
-    json: async () => {
-      throw new SyntaxError("Unexpected token");
-    },
+    json: () => Promise.reject(new SyntaxError("Unexpected token")),
   };
 
   const res = await handler(req);
