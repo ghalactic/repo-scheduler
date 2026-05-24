@@ -200,6 +200,20 @@ it("returns 500 with error message on dispatch failure", async () => {
   expect(res.body).toBe("dispatch failed");
 });
 
+it("stringifies non-Error rejection values", async () => {
+  vi.mocked(dispatch).mockRejectedValue("string-error");
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+  });
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(500);
+  expect(res.body).toBe("string-error");
+});
+
 function makeRequest(method: string, body?: unknown): MockRequest {
   return {
     method,

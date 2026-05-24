@@ -37,6 +37,14 @@ it("defaults to port 8080 when PORT is empty", async () => {
   expect(mockListen).toHaveBeenCalledWith(8080);
 });
 
+it("defaults to port 8080 when PORT is undefined", async () => {
+  vi.unstubAllEnvs();
+  delete process.env.PORT;
+  await import("./index.js");
+
+  expect(mockListen).toHaveBeenCalledWith(8080);
+});
+
 it("returns 405 for non-POST requests", async () => {
   await import("./index.js");
   const handler = getHandler();
