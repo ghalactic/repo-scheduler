@@ -1,5 +1,6 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { createServer } from "node:http";
+import { Readable } from "node:stream";
 import { beforeEach, expect, it, vi } from "vitest";
 import { dispatch } from "../../common/dispatch.js";
 
@@ -18,11 +19,38 @@ beforeEach(() => {
   vi.unstubAllEnvs();
   vi.stubEnv("GITHUB_APP_ID", "12345");
   vi.stubEnv("GITHUB_APP_PK", "fake-key");
-  vi.stubEnv("GITHUB_REPO", "owner/repo");
-  vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   vi.stubEnv("PORT", "9999");
   vi.resetModules();
 });
+
+function getHandler() {
+  return vi.mocked(createServer).mock.calls[0][0] as (
+    req: IncomingMessage,
+    res: ServerResponse,
+  ) => void;
+}
+
+function makeRes() {
+  const end = vi.fn();
+  const writeHead = vi.fn().mockReturnValue({ end });
+
+  return { writeHead, end } as ServerResponse & {
+    writeHead: ReturnType<typeof vi.fn>;
+    end: ReturnType<typeof vi.fn>;
+  };
+}
+
+function makeReq(method: string, body?: string): IncomingMessage {
+  const req = new Readable({
+    read() {
+      if (body != null) this.push(body);
+      this.push(null);
+    },
+  }) as IncomingMessage;
+  req.method = method;
+
+  return req;
+}
 
 it("starts an HTTP server on the PORT env var", async () => {
   await import("./index.js");
@@ -38,30 +66,83 @@ it("defaults to port 8080 when PORT is empty", async () => {
   expect(mockListen).toHaveBeenCalledWith(8080);
 });
 
-it("defaults to port 8080 when PORT is undefined", async () => {
-  delete process.env.PORT;
-  await import("./index.js");
-
-  expect(mockListen).toHaveBeenCalledWith(8080);
-});
-
 it("returns 405 for non-POST requests", async () => {
   await import("./index.js");
   const handler = getHandler();
   const res = makeRes();
 
-  handler({ method: "GET" } as IncomingMessage, res);
+  handler(makeReq("GET"), res);
 
   expect(res.writeHead).toHaveBeenCalledWith(405);
   expect(res.end).toHaveBeenCalledWith("Method not allowed");
 });
 
-it("calls dispatch and returns 200 on success", async () => {
+it("returns 400 when request body is not valid JSON", async () => {
   await import("./index.js");
   const handler = getHandler();
   const res = makeRes();
 
-  handler({ method: "POST" } as IncomingMessage, res);
+  handler(makeReq("POST", "not json"), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("Invalid JSON");
+});
+
+it("returns 400 when repo is missing from body", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+
+  handler(makeReq("POST", '{"eventType":"schedule"}'), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("Missing required field: repo");
+});
+
+it("returns 400 when eventType is missing from body", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+
+  handler(makeReq("POST", '{"repo":"owner/repo"}'), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("Missing required field: eventType");
+});
+
+it("calls dispatch with body params and env credentials, returns 200", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+  const body = JSON.stringify({
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: { key: "value" },
+  });
+
+  handler(makeReq("POST", body), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(dispatch).toHaveBeenCalledWith({
+    appId: "12345",
+    appPk: "fake-key",
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: '{"key":"value"}',
+  });
+  expect(res.writeHead).toHaveBeenCalledWith(200);
+});
+
+it("defaults payload to '{}' when not in body", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+  const body = JSON.stringify({ repo: "owner/repo", eventType: "schedule" });
+
+  handler(makeReq("POST", body), res);
   await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
 
   expect(dispatch).toHaveBeenCalledWith({
@@ -71,38 +152,37 @@ it("calls dispatch and returns 200 on success", async () => {
     eventType: "schedule",
     payload: "{}",
   });
-  expect(res.writeHead).toHaveBeenCalledWith(200);
 });
 
-it("parses GITHUB_PAYLOAD when set", async () => {
-  vi.stubEnv("GITHUB_PAYLOAD", '{"run":"123"}');
-  await import("./index.js");
-  const handler = getHandler();
-  const res = makeRes();
-
-  handler({ method: "POST" } as IncomingMessage, res);
-  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
-
-  expect(dispatch).toHaveBeenCalledWith({
-    appId: "12345",
-    appPk: "fake-key",
-    repo: "owner/repo",
-    eventType: "schedule",
-    payload: '{"run":"123"}',
-  });
-});
-
-it("returns 500 when env vars are missing", async () => {
+it("returns 500 when GITHUB_APP_ID is missing", async () => {
   vi.stubEnv("GITHUB_APP_ID", "");
   await import("./index.js");
   const handler = getHandler();
   const res = makeRes();
+  const body = JSON.stringify({ repo: "owner/repo", eventType: "schedule" });
 
-  handler({ method: "POST" } as IncomingMessage, res);
+  handler(makeReq("POST", body), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
 
   expect(res.writeHead).toHaveBeenCalledWith(500);
   expect(res.end).toHaveBeenCalledWith(
-    "Missing required environment variables",
+    "Missing required environment variable: GITHUB_APP_ID",
+  );
+});
+
+it("returns 500 when GITHUB_APP_PK is missing", async () => {
+  vi.stubEnv("GITHUB_APP_PK", "");
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+  const body = JSON.stringify({ repo: "owner/repo", eventType: "schedule" });
+
+  handler(makeReq("POST", body), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(500);
+  expect(res.end).toHaveBeenCalledWith(
+    "Missing required environment variable: GITHUB_APP_PK",
   );
 });
 
@@ -111,8 +191,9 @@ it("returns 500 with error message on dispatch failure", async () => {
   vi.mocked(dispatch).mockRejectedValue(new Error("dispatch failed"));
   const handler = getHandler();
   const res = makeRes();
+  const body = JSON.stringify({ repo: "owner/repo", eventType: "schedule" });
 
-  handler({ method: "POST" } as IncomingMessage, res);
+  handler(makeReq("POST", body), res);
   await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
 
   expect(res.writeHead).toHaveBeenCalledWith(500);
@@ -124,27 +205,11 @@ it("stringifies non-Error rejection values", async () => {
   vi.mocked(dispatch).mockRejectedValue("string-error");
   const handler = getHandler();
   const res = makeRes();
+  const body = JSON.stringify({ repo: "owner/repo", eventType: "schedule" });
 
-  handler({ method: "POST" } as IncomingMessage, res);
+  handler(makeReq("POST", body), res);
   await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
 
   expect(res.writeHead).toHaveBeenCalledWith(500);
   expect(res.end).toHaveBeenCalledWith("string-error");
 });
-
-function makeRes() {
-  const end = vi.fn();
-  const writeHead = vi.fn().mockReturnValue({ end });
-
-  return { writeHead, end } as ServerResponse & {
-    writeHead: ReturnType<typeof vi.fn>;
-    end: ReturnType<typeof vi.fn>;
-  };
-}
-
-function getHandler() {
-  return vi.mocked(createServer).mock.calls[0][0] as (
-    req: IncomingMessage,
-    res: ServerResponse,
-  ) => void;
-}
