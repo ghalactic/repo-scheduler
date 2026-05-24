@@ -36176,23 +36176,33 @@ function hasErrorStatus(error2, status) {
 }
 
 // src/platform/aws-lambda/index.ts
-async function handler2() {
-  const {
-    GITHUB_APP_ID: appId = "",
-    GITHUB_APP_PK: secretId = "",
-    GITHUB_REPO: repo = "",
-    GITHUB_EVENT_TYPE: eventType = "",
-    GITHUB_PAYLOAD: payload2 = "{}"
-  } = process.env;
-  if (!appId || !secretId || !repo || !eventType) {
-    throw new Error("Missing required environment variables");
+async function handler2(event) {
+  const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: secretId = "" } = process.env;
+  if (!appId) {
+    throw new Error("Missing required environment variable: GITHUB_APP_ID");
+  }
+  if (!secretId) {
+    throw new Error("Missing required environment variable: GITHUB_APP_PK");
+  }
+  const { repo, eventType, payload: payload2 } = event;
+  if (!repo) {
+    throw new Error("Missing required event field: repo");
+  }
+  if (!eventType) {
+    throw new Error("Missing required event field: eventType");
   }
   const client = new import_client_secrets_manager.SecretsManagerClient();
   const { SecretString: appPk } = await client.send(
     new import_client_secrets_manager.GetSecretValueCommand({ SecretId: secretId })
   );
   if (!appPk) throw new Error("Secret value is empty");
-  await dispatch({ appId, appPk, repo, eventType, payload: payload2 });
+  await dispatch({
+    appId,
+    appPk,
+    repo,
+    eventType,
+    payload: JSON.stringify(payload2 ?? {})
+  });
 }
 export {
   handler2 as handler

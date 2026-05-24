@@ -8342,24 +8342,53 @@ function hasErrorStatus(error, status) {
 }
 
 // src/platform/gcp-cloud-run/index.ts
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on("data", (chunk) => chunks.push(chunk));
+    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
+    req.on("error", reject);
+  });
+}
 var server = createServer((req, res) => {
   if (req.method !== "POST") {
     res.writeHead(405).end("Method not allowed");
     return;
   }
-  const {
-    GITHUB_APP_ID: appId = "",
-    GITHUB_APP_PK: appPk = "",
-    GITHUB_REPO: repo = "",
-    GITHUB_EVENT_TYPE: eventType = "",
-    GITHUB_PAYLOAD: payload = "{}"
-  } = process.env;
-  if (!appId || !appPk || !repo || !eventType) {
-    res.writeHead(500).end("Missing required environment variables");
-    return;
-  }
   (async () => {
-    await dispatch({ appId, appPk, repo, eventType, payload });
+    const raw = await readBody(req);
+    let body;
+    try {
+      body = JSON.parse(raw);
+    } catch {
+      res.writeHead(400).end("Invalid JSON");
+      return;
+    }
+    const { repo, eventType, payload } = body;
+    if (!repo || typeof repo !== "string") {
+      res.writeHead(400).end("Missing required field: repo");
+      return;
+    }
+    if (!eventType || typeof eventType !== "string") {
+      res.writeHead(400).end("Missing required field: eventType");
+      return;
+    }
+    const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
+    if (!appId) {
+      res.writeHead(500).end("Missing required environment variable: GITHUB_APP_ID");
+      return;
+    }
+    if (!appPk) {
+      res.writeHead(500).end("Missing required environment variable: GITHUB_APP_PK");
+      return;
+    }
+    await dispatch({
+      appId,
+      appPk,
+      repo,
+      eventType,
+      payload: JSON.stringify(payload ?? {})
+    });
     res.writeHead(200).end();
   })().catch((error) => {
     res.writeHead(500).end(error instanceof Error ? error.message : String(error));
