@@ -1,4 +1,5 @@
-import { createServer, type IncomingMessage } from "node:http";
+import { createServer } from "node:http";
+import { text } from "node:stream/consumers";
 import { dispatch } from "../../common/dispatch.js";
 import { parseScheduleInput } from "../../common/parse-schedule-input.js";
 
@@ -29,7 +30,7 @@ const server = createServer((req, res) => {
       return;
     }
 
-    const raw = await readBody(req);
+    const raw = await text(req);
 
     let body: unknown;
 
@@ -60,12 +61,3 @@ const server = createServer((req, res) => {
 });
 
 server.listen(Number(process.env.PORT ?? "") || 8080);
-
-function readBody(req: IncomingMessage): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const chunks: Buffer[] = [];
-    req.on("data", (chunk: Buffer) => chunks.push(chunk));
-    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
-    req.on("error", reject);
-  });
-}

@@ -1476,6 +1476,7 @@ var require_light = __commonJS({
 
 // src/platform/gcp-cloud-run/index.ts
 import { createServer } from "node:http";
+import { text } from "node:stream/consumers";
 
 // node_modules/.pnpm/universal-user-agent@7.0.3/node_modules/universal-user-agent/index.js
 function getUserAgent() {
@@ -1977,8 +1978,8 @@ var convertMarkedBigIntsReviver = (key, value, context, userReviver) => {
   if (typeof userReviver !== "function") return value;
   return userReviver(key, value, context);
 };
-var JSONParseV2 = (text, reviver) => {
-  return JSON.parse(text, (key, value, context) => {
+var JSONParseV2 = (text2, reviver) => {
+  return JSON.parse(text2, (key, value, context) => {
     const isBigNumber = typeof value === "number" && (value > Number.MAX_SAFE_INTEGER || value < Number.MIN_SAFE_INTEGER);
     const isInt = context && intRegex.test(context.source);
     const isBigInt = isBigNumber && isInt;
@@ -1991,20 +1992,20 @@ var MAX_INT = Number.MAX_SAFE_INTEGER.toString();
 var MAX_DIGITS = MAX_INT.length;
 var stringsOrLargeNumbers = /"(?:\\.|[^"])*"|-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?/g;
 var noiseValueWithQuotes = /^"-?\d+n+"$/;
-var JSONParse = (text, reviver) => {
-  if (!text) return originalParse(text, reviver);
-  if (isContextSourceSupported()) return JSONParseV2(text, reviver);
-  const serializedData = text.replace(
+var JSONParse = (text2, reviver) => {
+  if (!text2) return originalParse(text2, reviver);
+  if (isContextSourceSupported()) return JSONParseV2(text2, reviver);
+  const serializedData = text2.replace(
     stringsOrLargeNumbers,
-    (text2, digits, fractional, exponential) => {
-      const isString = text2[0] === '"';
-      const isNoise = isString && noiseValueWithQuotes.test(text2);
-      if (isNoise) return text2.substring(0, text2.length - 1) + 'n"';
+    (text3, digits, fractional, exponential) => {
+      const isString = text3[0] === '"';
+      const isNoise = isString && noiseValueWithQuotes.test(text3);
+      if (isNoise) return text3.substring(0, text3.length - 1) + 'n"';
       const isFractionalOrExponential = fractional || exponential;
       const isLessThanMaxSafeInt = digits && (digits.length < MAX_DIGITS || digits.length === MAX_DIGITS && digits <= MAX_INT);
       if (isString || isFractionalOrExponential || isLessThanMaxSafeInt)
-        return text2;
-      return '"' + text2 + 'n"';
+        return text3;
+      return '"' + text3 + 'n"';
     }
   );
   return originalParse(
@@ -2173,12 +2174,12 @@ async function getResponseData(response) {
   }
   const mimetype = (0, import_content_type.parse)(contentType);
   if (isJSONResponse(mimetype)) {
-    let text = "";
+    let text2 = "";
     try {
-      text = await response.text();
-      return JSONParse(text);
+      text2 = await response.text();
+      return JSONParse(text2);
     } catch (err) {
-      return text;
+      return text2;
     }
   } else if (mimetype.type.startsWith("text/") || mimetype.parameters.charset?.toLowerCase() === "utf-8") {
     return response.text().catch(noop);
@@ -8378,7 +8379,7 @@ var server = createServer((req, res) => {
       res.writeHead(500).end("Missing required environment variable: GITHUB_APP_PK");
       return;
     }
-    const raw = await readBody(req);
+    const raw = await text(req);
     let body;
     try {
       body = JSON.parse(raw);
@@ -8398,14 +8399,6 @@ var server = createServer((req, res) => {
   });
 });
 server.listen(Number(process.env.PORT ?? "") || 8080);
-function readBody(req) {
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    req.on("data", (chunk) => chunks.push(chunk));
-    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
-    req.on("error", reject);
-  });
-}
 /*! Bundled license information:
 
 content-type/dist/index.js:
