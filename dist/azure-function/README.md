@@ -1,18 +1,55 @@
-# Azure Function repo scheduler
+# Azure Function Repo Scheduler
 
-[![Deploy to Azure][deploy-badge]][deploy-url]
+## Deploy via CLI
 
-[deploy-badge]: https://aka.ms/deploytoazurebutton
-[deploy-url]:
-  https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fghalactic%2Frepo-scheduler%2Fmain%2Fdist%2Fazure-function%2Fazuredeploy.json
+Prerequisites:
+[Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli),
+[Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local)
 
-## Usage
+Deploy the infrastructure:
 
-1. Click the **Deploy to Azure** button above. Select or create a resource group
-   (e.g. `ghalactic-repo-scheduler`), then fill in `functionAppName`,
-   `gitHubAppId`, `gitHubRepo`, `gitHubEventType`, and optionally
-   `scheduleExpression` (defaults to twice per hour).
-2. After deployment completes, open the Key Vault created by the template (its
-   name is shown in the deployment outputs). Under **Secrets**, update the
-   `ghalactic-repo-scheduler-pk` secret with your GitHub App's PEM-encoded
-   private key as the value.
+```sh
+cd dist/azure-function
+
+az deployment group create \
+  --resource-group YOUR_RESOURCE_GROUP \
+  --template-file azuredeploy.json \
+  --parameters \
+    functionAppName=repo-scheduler \
+    gitHubAppId=YOUR_APP_ID \
+    targetRepo=owner/repo \
+    targetEventType=your-event-type
+```
+
+Update the Key Vault secret with your GitHub App private key:
+
+```sh
+az keyvault secret set \
+  --vault-name KEY_VAULT_NAME \
+  --name ghalactic-repo-scheduler-pk \
+  --file path/to/private-key.pem
+```
+
+Publish the function code:
+
+```sh
+func azure functionapp publish repo-scheduler
+```
+
+## Adding More Schedules
+
+Create additional Logic App workflows that POST to the same function URL with
+different bodies. The function URL and key are shown in the deployment outputs.
+
+## Configuration
+
+| Parameter           | Description                              | Default                |
+| ------------------- | ---------------------------------------- | ---------------------- |
+| `functionAppName`   | Name of the Function App                 | (required)             |
+| `gitHubAppId`       | GitHub App numeric ID                    | (required)             |
+| `targetRepo`        | Target repository in `owner/repo` format | (required)             |
+| `targetEventType`   | `repository_dispatch` event type         | (required)             |
+| `targetPayload`     | JSON object for `client_payload`         | `{}`                   |
+| `scheduleFrequency` | Recurrence frequency                     | `Hour`                 |
+| `scheduleInterval`  | Recurrence interval                      | `1`                    |
+| `scheduleStartTime` | Start time (controls offset)             | `2026-01-01T00:21:00Z` |

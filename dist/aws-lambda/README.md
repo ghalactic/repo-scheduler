@@ -1,4 +1,4 @@
-# AWS Lambda repo scheduler
+# AWS Lambda Repo Scheduler
 
 [![Launch Stack][deploy-badge]][deploy-url]
 
@@ -7,11 +7,55 @@
 [deploy-url]:
   https://serverlessrepo.aws.amazon.com/applications/ghalactic-repo-scheduler
 
-## Usage
+## Deploy via CLI
 
-1. Click the button above to deploy via the AWS Serverless Application
-   Repository. Fill in `GitHubAppId`, `GitHubRepo`, `GitHubEventType`, and
-   optionally `Schedule` (defaults to twice per hour).
-2. After the stack is created, open the secret created by the template in the
-   **AWS Secrets Manager** console (the ARN is in the stack outputs). Set the
-   secret value to your GitHub App's PEM-encoded private key.
+Prerequisites:
+[AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+
+```sh
+cd dist/aws-lambda
+
+sam deploy \
+  --stack-name repo-scheduler \
+  --resolve-s3 \
+  --capabilities CAPABILITY_IAM \
+  --parameter-overrides \
+    GitHubAppId=YOUR_APP_ID \
+    TargetRepo=owner/repo \
+    TargetEventType=your-event-type
+```
+
+After deployment, populate the private key secret (ARN shown in stack outputs):
+
+```sh
+aws secretsmanager put-secret-value \
+  --secret-id STACK_NAME/ghalactic-repo-scheduler-pk \
+  --secret-string "$(cat path/to/private-key.pem)"
+```
+
+## Adding More Schedules
+
+Create additional EventBridge schedules targeting the same Lambda with different
+inputs:
+
+```sh
+aws scheduler create-schedule \
+  --name repo-scheduler-other \
+  --schedule-expression "cron(45 * * * ? *)" \
+  --target '{
+    "Arn": "FUNCTION_ARN",
+    "RoleArn": "EXECUTION_ROLE_ARN",
+    "Input": "{\"repo\":\"owner/other-repo\",\"eventType\":\"other-event\"}"
+  }' \
+  --flexible-time-window '{"Mode":"OFF"}'
+```
+
+## Configuration
+
+| Parameter         | Description                              | Default              |
+| ----------------- | ---------------------------------------- | -------------------- |
+| `GitHubAppId`     | GitHub App numeric ID                    | (required)           |
+| `TargetRepo`      | Target repository in `owner/repo` format | (required)           |
+| `TargetEventType` | `repository_dispatch` event type         | (required)           |
+| `TargetPayload`   | JSON object for `client_payload`         | `{}`                 |
+| `Schedule`        | EventBridge schedule expression          | `cron(21 * * * ? *)` |
