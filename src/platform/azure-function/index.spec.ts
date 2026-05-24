@@ -125,6 +125,34 @@ it("returns 400 when body is not valid JSON", async () => {
   expect(res.body).toBe("Invalid JSON");
 });
 
+it("returns 400 when payload is not a JSON object", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: "not-an-object",
+  });
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("payload must be a JSON object");
+});
+
+it("returns 400 when payload is an array", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: [1, 2, 3],
+  });
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("payload must be a JSON object");
+});
+
 it("returns 500 when GITHUB_APP_ID is missing", async () => {
   vi.stubEnv("GITHUB_APP_ID", "");
   const handler = await getHandler();

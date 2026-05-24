@@ -154,6 +154,53 @@ it("defaults payload to '{}' when not in body", async () => {
   });
 });
 
+it("returns 413 when request body exceeds 1 MB", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+  const largeBody = "x".repeat(1_048_577);
+
+  handler(makeReq("POST", largeBody), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(413);
+  expect(res.end).toHaveBeenCalledWith("Body too large");
+});
+
+it("returns 400 when payload is not a JSON object", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+  const body = JSON.stringify({
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: "not-an-object",
+  });
+
+  handler(makeReq("POST", body), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("payload must be a JSON object");
+});
+
+it("returns 400 when payload is an array", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+  const body = JSON.stringify({
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: [1, 2, 3],
+  });
+
+  handler(makeReq("POST", body), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("payload must be a JSON object");
+});
+
 it("returns 500 when GITHUB_APP_ID is missing", async () => {
   vi.stubEnv("GITHUB_APP_ID", "");
   await import("./index.js");

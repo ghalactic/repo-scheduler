@@ -9,10 +9,15 @@ Deploy the Cloud Run service:
 ```sh
 cd dist/gcp-cloud-run
 
+# Create the secret for the private key
+gcloud secrets create repo-scheduler-pk \
+  --data-file path/to/private-key.pem
+
 gcloud run deploy repo-scheduler \
   --source . \
   --region YOUR_REGION \
-  --set-env-vars "GITHUB_APP_ID=YOUR_APP_ID,GITHUB_APP_PK=$(cat path/to/private-key.pem)" \
+  --set-env-vars "GITHUB_APP_ID=YOUR_APP_ID" \
+  --set-secrets "GITHUB_APP_PK=repo-scheduler-pk:latest" \
   --no-allow-unauthenticated \
   --memory 256Mi \
   --max-instances 1

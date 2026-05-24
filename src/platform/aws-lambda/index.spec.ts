@@ -94,6 +94,30 @@ it("throws when eventType is missing from event", async () => {
   );
 });
 
+it("throws when repo is a non-string value", async () => {
+  await expect(
+    handler({ repo: 123, eventType: "schedule" }),
+  ).rejects.toThrow("Missing required event field: repo");
+});
+
+it("throws when eventType is a non-string value", async () => {
+  await expect(
+    handler({ repo: "owner/repo", eventType: 123 }),
+  ).rejects.toThrow("Missing required event field: eventType");
+});
+
+it("throws when payload is not a JSON object", async () => {
+  await expect(
+    handler({ repo: "owner/repo", eventType: "schedule", payload: "string" }),
+  ).rejects.toThrow("payload must be a JSON object");
+});
+
+it("throws when payload is an array", async () => {
+  await expect(
+    handler({ repo: "owner/repo", eventType: "schedule", payload: [1, 2] }),
+  ).rejects.toThrow("payload must be a JSON object");
+});
+
 it("throws when secret value is empty", async () => {
   mockSend.mockResolvedValue({ SecretString: undefined });
 

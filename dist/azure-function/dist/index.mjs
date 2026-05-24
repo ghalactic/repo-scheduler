@@ -8359,6 +8359,9 @@ app.http("scheduler", {
     if (!eventType || typeof eventType !== "string") {
       return { status: 400, body: "Missing required field: eventType" };
     }
+    if (payload != null && (typeof payload !== "object" || Array.isArray(payload))) {
+      return { status: 400, body: "payload must be a JSON object" };
+    }
     const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
     if (!appId) {
       return {

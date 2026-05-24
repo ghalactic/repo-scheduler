@@ -36185,11 +36185,14 @@ async function handler2(event) {
     throw new Error("Missing required environment variable: GITHUB_APP_PK");
   }
   const { repo, eventType, payload: payload2 } = event;
-  if (!repo) {
+  if (!repo || typeof repo !== "string") {
     throw new Error("Missing required event field: repo");
   }
-  if (!eventType) {
+  if (!eventType || typeof eventType !== "string") {
     throw new Error("Missing required event field: eventType");
+  }
+  if (payload2 != null && (typeof payload2 !== "object" || Array.isArray(payload2))) {
+    throw new Error("payload must be a JSON object");
   }
   const client = new import_client_secrets_manager.SecretsManagerClient();
   const { SecretString: appPk } = await client.send(

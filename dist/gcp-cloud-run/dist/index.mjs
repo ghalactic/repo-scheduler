@@ -8342,10 +8342,20 @@ function hasErrorStatus(error, status) {
 }
 
 // src/platform/gcp-cloud-run/index.ts
+var MAX_BODY_BYTES = 1048576;
 function readBody(req) {
   return new Promise((resolve, reject) => {
     const chunks = [];
-    req.on("data", (chunk) => chunks.push(chunk));
+    let size = 0;
+    req.on("data", (chunk) => {
+      size += chunk.length;
+      if (size > MAX_BODY_BYTES) {
+        req.destroy();
+        reject(new RangeError("Body too large"));
+        return;
+      }
+      chunks.push(chunk);
+    });
     req.on("end", () => resolve(Buffer.concat(chunks).toString()));
     req.on("error", reject);
   });
@@ -8356,7 +8366,16 @@ var server = createServer((req, res) => {
     return;
   }
   (async () => {
-    const raw = await readBody(req);
+    let raw;
+    try {
+      raw = await readBody(req);
+    } catch (error) {
+      if (error instanceof RangeError) {
+        res.writeHead(413).end("Body too large");
+        return;
+      }
+      throw error;
+    }
     let body;
     try {
       body = JSON.parse(raw);
@@ -8371,6 +8390,10 @@ var server = createServer((req, res) => {
     }
     if (!eventType || typeof eventType !== "string") {
       res.writeHead(400).end("Missing required field: eventType");
+      return;
+    }
+    if (payload != null && (typeof payload !== "object" || Array.isArray(payload))) {
+      res.writeHead(400).end("payload must be a JSON object");
       return;
     }
     const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;

@@ -15,8 +15,9 @@ using a GitHub App for authentication.
 4. Each invocation dispatches a `repository_dispatch` event to the specified
    repo
 
-A single deployment can serve multiple repositories and event types — each
-scheduler entry passes the target repo/event as parameters.
+A single deployment can serve multiple repositories and event types on most
+platforms — each scheduler entry passes the target repo/event as parameters. See
+platform docs for details.
 
 ## Platforms
 

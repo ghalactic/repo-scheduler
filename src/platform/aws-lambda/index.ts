@@ -5,9 +5,9 @@ import {
 import { dispatch } from "../../common/dispatch.js";
 
 export interface ScheduleEvent {
-  repo?: string;
-  eventType?: string;
-  payload?: Record<string, unknown>;
+  repo?: unknown;
+  eventType?: unknown;
+  payload?: unknown;
 }
 
 export async function handler(event: ScheduleEvent): Promise<void> {
@@ -24,12 +24,19 @@ export async function handler(event: ScheduleEvent): Promise<void> {
 
   const { repo, eventType, payload } = event;
 
-  if (!repo) {
+  if (!repo || typeof repo !== "string") {
     throw new Error("Missing required event field: repo");
   }
 
-  if (!eventType) {
+  if (!eventType || typeof eventType !== "string") {
     throw new Error("Missing required event field: eventType");
+  }
+
+  if (
+    payload != null &&
+    (typeof payload !== "object" || Array.isArray(payload))
+  ) {
+    throw new Error("payload must be a JSON object");
   }
 
   const client = new SecretsManagerClient();
