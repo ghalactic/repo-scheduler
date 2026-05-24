@@ -92,6 +92,29 @@ it("defaults payload to '{}' when not in body", async () => {
   });
 });
 
+it("returns 400 when body is null", async () => {
+  const handler = await getHandler();
+  const req = {
+    method: "POST",
+    json: () => Promise.resolve(null),
+  };
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("Invalid JSON: expected an object");
+});
+
+it("returns 400 when body is an array", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", [1, 2, 3]);
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("Invalid JSON: expected an object");
+});
+
 it("returns 400 when repo is missing", async () => {
   const handler = await getHandler();
   const req = makeRequest("POST", { eventType: "schedule" });

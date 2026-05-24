@@ -89,6 +89,30 @@ it("returns 400 when request body is not valid JSON", async () => {
   expect(res.end).toHaveBeenCalledWith("Invalid JSON");
 });
 
+it("returns 400 when body is a JSON null", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+
+  handler(makeReq("POST", "null"), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("Invalid JSON: expected an object");
+});
+
+it("returns 400 when body is a JSON array", async () => {
+  await import("./index.js");
+  const handler = getHandler();
+  const res = makeRes();
+
+  handler(makeReq("POST", "[1,2,3]"), res);
+  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
+
+  expect(res.writeHead).toHaveBeenCalledWith(400);
+  expect(res.end).toHaveBeenCalledWith("Invalid JSON: expected an object");
+});
+
 it("returns 400 when repo is missing from body", async () => {
   await import("./index.js");
   const handler = getHandler();

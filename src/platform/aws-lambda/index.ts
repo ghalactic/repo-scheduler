@@ -11,6 +11,10 @@ export interface ScheduleEvent {
 }
 
 export async function handler(event: ScheduleEvent): Promise<void> {
+  if (event == null || typeof event !== "object" || Array.isArray(event)) {
+    throw new Error("Invalid event: expected an object");
+  }
+
   const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: secretId = "" } =
     process.env;
 

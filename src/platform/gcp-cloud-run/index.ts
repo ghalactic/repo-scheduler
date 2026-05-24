@@ -58,6 +58,12 @@ const server = createServer((req, res) => {
       return;
     }
 
+    if (body == null || typeof body !== "object" || Array.isArray(body)) {
+      res.writeHead(400).end("Invalid JSON: expected an object");
+
+      return;
+    }
+
     const { repo, eventType, payload } = body as Record<string, unknown>;
 
     if (!repo || typeof repo !== "string") {

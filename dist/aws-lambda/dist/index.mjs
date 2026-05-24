@@ -36177,6 +36177,9 @@ function hasErrorStatus(error2, status) {
 
 // src/platform/aws-lambda/index.ts
 async function handler2(event) {
+  if (event == null || typeof event !== "object" || Array.isArray(event)) {
+    throw new Error("Invalid event: expected an object");
+  }
   const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: secretId = "" } = process.env;
   if (!appId) {
     throw new Error("Missing required environment variable: GITHUB_APP_ID");

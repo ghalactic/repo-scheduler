@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from "vitest";
 import { dispatch } from "../../common/dispatch.js";
-import { handler } from "./index.js";
+import { handler, type ScheduleEvent } from "./index.js";
 
 const mockSend = vi.fn();
 
@@ -80,6 +80,18 @@ it("throws when GITHUB_APP_PK env var is missing", async () => {
   await expect(
     handler({ repo: "owner/repo", eventType: "schedule" }),
   ).rejects.toThrow("Missing required environment variable: GITHUB_APP_PK");
+});
+
+it("throws when event is null", async () => {
+  await expect(handler(null as unknown as ScheduleEvent)).rejects.toThrow(
+    "Invalid event: expected an object",
+  );
+});
+
+it("throws when event is an array", async () => {
+  await expect(handler([] as unknown as ScheduleEvent)).rejects.toThrow(
+    "Invalid event: expected an object",
+  );
 });
 
 it("throws when repo is missing from event", async () => {

@@ -14,6 +14,10 @@ app.http("scheduler", {
       return { status: 400, body: "Invalid JSON" };
     }
 
+    if (body == null || typeof body !== "object" || Array.isArray(body)) {
+      return { status: 400, body: "Invalid JSON: expected an object" };
+    }
+
     const { repo, eventType, payload } = body as Record<string, unknown>;
 
     if (!repo || typeof repo !== "string") {

@@ -8352,6 +8352,9 @@ app.http("scheduler", {
     } catch {
       return { status: 400, body: "Invalid JSON" };
     }
+    if (body == null || typeof body !== "object" || Array.isArray(body)) {
+      return { status: 400, body: "Invalid JSON: expected an object" };
+    }
     const { repo, eventType, payload } = body;
     if (!repo || typeof repo !== "string") {
       return { status: 400, body: "Missing required field: repo" };

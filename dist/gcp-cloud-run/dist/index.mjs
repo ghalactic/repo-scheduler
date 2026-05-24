@@ -8383,6 +8383,10 @@ var server = createServer((req, res) => {
       res.writeHead(400).end("Invalid JSON");
       return;
     }
+    if (body == null || typeof body !== "object" || Array.isArray(body)) {
+      res.writeHead(400).end("Invalid JSON: expected an object");
+      return;
+    }
     const { repo, eventType, payload } = body;
     if (!repo || typeof repo !== "string") {
       res.writeHead(400).end("Missing required field: repo");
