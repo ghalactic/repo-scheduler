@@ -18,20 +18,20 @@ Parameters:
   GitHubAppId:
     Type: String
     Description: GitHub App numeric ID
-  GitHubRepo:
-    Type: String
-    Description: Target repository in owner/repo format
-  GitHubEventType:
-    Type: String
-    Description: repository_dispatch event type string
-  GitHubPayload:
-    Type: String
-    Default: "{}"
-    Description: JSON object to include in every dispatch event
   Schedule:
     Type: String
-    Default: cron(21,51 * * * ? *)
+    Default: cron(21 * * * ? *)
     Description: EventBridge schedule expression
+  TargetRepo:
+    Type: String
+    Description: Target repository in owner/repo format
+  TargetEventType:
+    Type: String
+    Description: repository_dispatch event type string
+  TargetPayload:
+    Type: String
+    Default: "{}"
+    Description: JSON object to include in the dispatch event
 
 Resources:
   GitHubAppPkSecret:
@@ -51,9 +51,6 @@ Resources:
         Variables:
           GITHUB_APP_ID: !Ref GitHubAppId
           GITHUB_APP_PK: !Ref GitHubAppPkSecret
-          GITHUB_REPO: !Ref GitHubRepo
-          GITHUB_EVENT_TYPE: !Ref GitHubEventType
-          GITHUB_PAYLOAD: !Ref GitHubPayload
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: !Ref GitHubAppPkSecret
@@ -62,6 +59,7 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: !Ref Schedule
+            Input: !Sub '{"repo":"${TargetRepo}","eventType":"${TargetEventType}","payload":${TargetPayload}}'
             RetryPolicy:
               MaximumRetryAttempts: 3
 
@@ -69,3 +67,6 @@ Outputs:
   SecretArn:
     Description: ARN of the secret — populate it with your GitHub App private key
     Value: !Ref GitHubAppPkSecret
+  FunctionArn:
+    Description: ARN of the Lambda function — use as target for additional schedules
+    Value: !GetAtt SchedulerFunction.Arn
