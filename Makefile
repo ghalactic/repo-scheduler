@@ -43,4 +43,3 @@ dist/cloudflare-worker/dist/index.js dist/cloudflare-worker/dist/index.js.map: s
 
 dist/gcp-cloud-run/dist/index.mjs dist/gcp-cloud-run/dist/index.mjs.map: script/build-gcp-cloud-run.ts artifacts/link-dependencies.touch $(JS_SOURCE_FILES)
 	node "$<" "$@"
-
