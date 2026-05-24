@@ -1,1 +1,1 @@
-dist/**/dist/ -diff linguist-generated=true
+dist/*/dist/** -diff linguist-generated=true
