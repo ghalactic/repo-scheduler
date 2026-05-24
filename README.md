@@ -1,4 +1,4 @@
-# Repo scheduler
+# Repo Scheduler
 
 _Schedules repository events for more reliable GitHub Actions workflow runs_
 
@@ -7,13 +7,16 @@ late. This project provides serverless scheduler implementations for multiple
 cloud platforms that dispatch `repository_dispatch` events on a fixed schedule
 using a GitHub App for authentication.
 
-## How it works
+## How It Works
 
-Each platform implementation authenticates as a GitHub App and dispatches a
-`repository_dispatch` event with your configured event type and payload.
+1. Deploy a single serverless function to your chosen cloud platform
+2. Configure your GitHub App credentials at the deployment level
+3. Create scheduler entries that invoke the function with target details
+4. Each invocation dispatches a `repository_dispatch` event to the specified
+   repo
 
-The target repository can then use `on: repository_dispatch` in any workflow to
-respond to the event.
+A single deployment can serve multiple repositories and event types — each
+scheduler entry passes the target repo/event as parameters.
 
 ## Platforms
 
@@ -22,19 +25,27 @@ respond to the event.
 - [Cloudflare Workers](dist/cloudflare-worker/README.md)
 - [Google Cloud Run](dist/gcp-cloud-run/README.md)
 
-## Configuration
+## Deployment-Level Configuration
 
-| Input               | Description                            |
-| ------------------- | -------------------------------------- |
-| `GITHUB_APP_ID`     | GitHub App ID                          |
-| `GITHUB_APP_PK`     | GitHub App PEM-encoded private key[^1] |
-| `GITHUB_REPO`       | Target repository in `owner/repo` form |
-| `GITHUB_EVENT_TYPE` | `repository_dispatch` event type       |
-| `GITHUB_PAYLOAD`    | JSON object for `client_payload`       |
+These are configured once when you deploy the function:
 
-[^1]:
-    Each platform stores the private key in its native secret manager — the
-    `GITHUB_APP_PK` input's content varies by platform.
+| Input           | Description                            |
+| --------------- | -------------------------------------- |
+| `GITHUB_APP_ID` | GitHub App ID                          |
+| `GITHUB_APP_PK` | GitHub App PEM-encoded private key[^1] |
+
+[^1]: Each platform stores the private key in its native secret manager.
+
+## Per-Invocation Configuration
+
+These are passed by each scheduler entry (how they're passed varies by platform
+— see platform docs):
+
+| Input       | Description                                 |
+| ----------- | ------------------------------------------- |
+| `repo`      | Target repository in `owner/repo` form      |
+| `eventType` | `repository_dispatch` event type            |
+| `payload`   | JSON object for `client_payload` (optional) |
 
 ## Creating a GitHub App
 
