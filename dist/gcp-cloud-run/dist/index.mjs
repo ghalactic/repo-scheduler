@@ -8341,25 +8341,28 @@ function hasErrorStatus(error, status) {
   return error instanceof Error && "status" in error && error.status === status;
 }
 
-// src/platform/gcp-cloud-run/index.ts
-var MAX_BODY_BYTES = 1048576;
-function readBody(req) {
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    let size = 0;
-    req.on("data", (chunk) => {
-      size += chunk.length;
-      if (size > MAX_BODY_BYTES) {
-        req.destroy();
-        reject(new RangeError("Body too large"));
-        return;
-      }
-      chunks.push(chunk);
-    });
-    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
-    req.on("error", reject);
-  });
+// src/common/parse-schedule-input.ts
+function parseScheduleInput(input) {
+  if (input == null || typeof input !== "object" || Array.isArray(input)) {
+    return { ok: false, error: "Invalid input: expected a JSON object" };
+  }
+  const { repo, eventType, payload } = input;
+  if (!repo || typeof repo !== "string") {
+    return { ok: false, error: "Missing required field: repo" };
+  }
+  if (!eventType || typeof eventType !== "string") {
+    return { ok: false, error: "Missing required field: eventType" };
+  }
+  if (payload != null && (typeof payload !== "object" || Array.isArray(payload))) {
+    return { ok: false, error: "payload must be a JSON object" };
+  }
+  return {
+    ok: true,
+    value: { repo, eventType, payload: JSON.stringify(payload ?? {}) }
+  };
 }
+
+// src/platform/gcp-cloud-run/index.ts
 var server = createServer((req, res) => {
   if (req.method !== "POST") {
     res.writeHead(405).end("Method not allowed");
@@ -8383,21 +8386,9 @@ var server = createServer((req, res) => {
       res.writeHead(400).end("Invalid JSON");
       return;
     }
-    if (body == null || typeof body !== "object" || Array.isArray(body)) {
-      res.writeHead(400).end("Invalid JSON: expected an object");
-      return;
-    }
-    const { repo, eventType, payload } = body;
-    if (!repo || typeof repo !== "string") {
-      res.writeHead(400).end("Missing required field: repo");
-      return;
-    }
-    if (!eventType || typeof eventType !== "string") {
-      res.writeHead(400).end("Missing required field: eventType");
-      return;
-    }
-    if (payload != null && (typeof payload !== "object" || Array.isArray(payload))) {
-      res.writeHead(400).end("payload must be a JSON object");
+    const parsed = parseScheduleInput(body);
+    if (!parsed.ok) {
+      res.writeHead(400).end(parsed.error);
       return;
     }
     const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
@@ -8412,9 +8403,7 @@ var server = createServer((req, res) => {
     await dispatch({
       appId,
       appPk,
-      repo,
-      eventType,
-      payload: JSON.stringify(payload ?? {})
+      ...parsed.value
     });
     res.writeHead(200).end();
   })().catch((error) => {
@@ -8422,6 +8411,24 @@ var server = createServer((req, res) => {
   });
 });
 server.listen(Number(process.env.PORT ?? "") || 8080);
+var MAX_BODY_BYTES = 1048576;
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    let size = 0;
+    req.on("data", (chunk) => {
+      size += chunk.length;
+      if (size > MAX_BODY_BYTES) {
+        req.destroy();
+        reject(new RangeError("Body too large"));
+        return;
+      }
+      chunks.push(chunk);
+    });
+    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
+    req.on("error", reject);
+  });
+}
 /*! Bundled license information:
 
 content-type/dist/index.js:

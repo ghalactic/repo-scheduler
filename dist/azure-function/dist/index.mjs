@@ -8341,6 +8341,27 @@ function hasErrorStatus(error, status) {
   return error instanceof Error && "status" in error && error.status === status;
 }
 
+// src/common/parse-schedule-input.ts
+function parseScheduleInput(input) {
+  if (input == null || typeof input !== "object" || Array.isArray(input)) {
+    return { ok: false, error: "Invalid input: expected a JSON object" };
+  }
+  const { repo, eventType, payload } = input;
+  if (!repo || typeof repo !== "string") {
+    return { ok: false, error: "Missing required field: repo" };
+  }
+  if (!eventType || typeof eventType !== "string") {
+    return { ok: false, error: "Missing required field: eventType" };
+  }
+  if (payload != null && (typeof payload !== "object" || Array.isArray(payload))) {
+    return { ok: false, error: "payload must be a JSON object" };
+  }
+  return {
+    ok: true,
+    value: { repo, eventType, payload: JSON.stringify(payload ?? {}) }
+  };
+}
+
 // src/platform/azure-function/index.ts
 app.http("scheduler", {
   methods: ["POST"],
@@ -8352,18 +8373,9 @@ app.http("scheduler", {
     } catch {
       return { status: 400, body: "Invalid JSON" };
     }
-    if (body == null || typeof body !== "object" || Array.isArray(body)) {
-      return { status: 400, body: "Invalid JSON: expected an object" };
-    }
-    const { repo, eventType, payload } = body;
-    if (!repo || typeof repo !== "string") {
-      return { status: 400, body: "Missing required field: repo" };
-    }
-    if (!eventType || typeof eventType !== "string") {
-      return { status: 400, body: "Missing required field: eventType" };
-    }
-    if (payload != null && (typeof payload !== "object" || Array.isArray(payload))) {
-      return { status: 400, body: "payload must be a JSON object" };
+    const parsed = parseScheduleInput(body);
+    if (!parsed.ok) {
+      return { status: 400, body: parsed.error };
     }
     const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
     if (!appId) {
@@ -8382,9 +8394,7 @@ app.http("scheduler", {
       await dispatch({
         appId,
         appPk,
-        repo,
-        eventType,
-        payload: JSON.stringify(payload ?? {})
+        ...parsed.value
       });
     } catch (error) {
       return {

@@ -585,7 +585,7 @@ var init_poller = __esm({
     init_circularReplacer();
     init_sleep();
     init_waiter();
-    runPolling = async ({ minDelay, maxDelay, maxWaitTime, abortController, client, abortSignal }, input, acceptorChecks) => {
+    runPolling = async ({ minDelay, maxDelay, maxWaitTime, abortController, client: client2, abortSignal }, input, acceptorChecks) => {
       const observedResponses = {};
       const [minDelayMs, maxDelayMs] = [minDelay * 1e3, maxDelay * 1e3];
       let currentAttempt = 0;
@@ -606,7 +606,7 @@ var init_poller = __esm({
           }
           await sleep(delayMs / 1e3);
         }
-        const { state: state2, reason } = await acceptorChecks(client, input);
+        const { state: state2, reason } = await acceptorChecks(client2, input);
         if (reason) {
           const message = createMessageFromResponse(reason);
           observedResponses[message] |= 0;
@@ -617,12 +617,12 @@ var init_poller = __esm({
         }
         currentAttempt += 1;
         if (!didWarn403 && Date.now() >= warn403Time) {
-          checkWarn403(observedResponses, client);
+          checkWarn403(observedResponses, client2);
           didWarn403 = true;
         }
       }
     };
-    checkWarn403 = (observedResponses = {}, client) => {
+    checkWarn403 = (observedResponses = {}, client2) => {
       const orderedErrors = Object.keys(observedResponses);
       let maxCount = 0;
       let count403 = 0;
@@ -633,7 +633,7 @@ var init_poller = __esm({
           count403 += n2;
         }
       }
-      const clientLogger = client?.config?.logger;
+      const clientLogger = client2?.config?.logger;
       const warningLogger = typeof clientLogger?.warn === "function" && !clientLogger.constructor?.name?.includes?.("NoOpLogger") ? clientLogger : console;
       if (count403 >= 3 || orderedErrors[orderedErrors.length - 1]?.startsWith("403:")) {
         warningLogger.warn(`@smithy/util-waiter WARN - 403 status code encountered during waiter polling.`);
@@ -11732,10 +11732,10 @@ function createPaginator(ClientCtor, CommandCtor, inputTokenName, outputTokenNam
 var makePagedClientRequest, get;
 var init_createPaginator = __esm({
   "node_modules/.pnpm/@smithy+core@3.24.3/node_modules/@smithy/core/dist-es/pagination/createPaginator.js"() {
-    makePagedClientRequest = async (CommandCtor, client, input, withCommand = (_) => _, ...args) => {
+    makePagedClientRequest = async (CommandCtor, client2, input, withCommand = (_) => _, ...args) => {
       let command = new CommandCtor(input);
       command = withCommand(command) ?? command;
-      return await client.send(command, ...args);
+      return await client2.send(command, ...args);
     };
     get = (fromObject, path) => {
       let cursor2 = fromObject;
@@ -13847,7 +13847,7 @@ var require_dist_cjs5 = __commonJS({
   "node_modules/.pnpm/@smithy+signature-v4@5.4.3/node_modules/@smithy/signature-v4/dist-cjs/index.js"(exports) {
     "use strict";
     var serde = (init_serde(), __toCommonJS(serde_exports));
-    var client = (init_client2(), __toCommonJS(client_exports));
+    var client2 = (init_client2(), __toCommonJS(client_exports));
     var protocols = (init_protocols(), __toCommonJS(protocols_exports));
     var HeaderFormatter = class {
       format(headers) {
@@ -14059,8 +14059,8 @@ var require_dist_cjs5 = __commonJS({
         this.sha256 = sha256;
         this.uriEscapePath = uriEscapePath;
         this.applyChecksum = typeof applyChecksum === "boolean" ? applyChecksum : true;
-        this.regionProvider = client.normalizeProvider(region);
-        this.credentialProvider = client.normalizeProvider(credentials);
+        this.regionProvider = client2.normalizeProvider(region);
+        this.credentialProvider = client2.normalizeProvider(credentials);
       }
       createCanonicalRequest(request2, canonicalHeaders, payloadHash) {
         const sortedHeaders = Object.keys(canonicalHeaders).sort();
@@ -14688,7 +14688,7 @@ var require_package = __commonJS({
 var require_dist_cjs6 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.38/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js"(exports) {
     "use strict";
-    var client = (init_client3(), __toCommonJS(client_exports2));
+    var client2 = (init_client3(), __toCommonJS(client_exports2));
     var config = (init_config2(), __toCommonJS(config_exports));
     var ENV_KEY = "AWS_ACCESS_KEY_ID";
     var ENV_SECRET = "AWS_SECRET_ACCESS_KEY";
@@ -14713,7 +14713,7 @@ var require_dist_cjs6 = __commonJS({
           ...credentialScope && { credentialScope },
           ...accountId && { accountId }
         };
-        client.setCredentialFeature(credentials, "CREDENTIALS_ENV_VARS", "g");
+        client2.setCredentialFeature(credentials, "CREDENTIALS_ENV_VARS", "g");
         return credentials;
       }
       throw new config.CredentialsProviderError("Unable to find environment variable credentials.", { logger: init?.logger });
@@ -22281,7 +22281,7 @@ var init_sso_oidc = __esm({
 var require_dist_cjs11 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+token-providers@3.1049.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js"(exports) {
     "use strict";
-    var client = (init_client3(), __toCommonJS(client_exports2));
+    var client2 = (init_client3(), __toCommonJS(client_exports2));
     var httpAuthSchemes = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
     var config = (init_config2(), __toCommonJS(config_exports));
     var node_fs = __require("node:fs");
@@ -22295,7 +22295,7 @@ var require_dist_cjs11 = __commonJS({
         throw new config.TokenProviderError(`Token not present in '${bearerTokenKey}' environment variable`, { logger: logger2 });
       }
       const token = { token: process.env[bearerTokenKey] };
-      client.setTokenFeature(token, "BEARER_SERVICE_ENV_VARS", "3");
+      client2.setTokenFeature(token, "BEARER_SERVICE_ENV_VARS", "3");
       return token;
     };
     var EXPIRE_WINDOW_MS = 5 * 60 * 1e3;
@@ -23084,7 +23084,7 @@ var require_dist_cjs12 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.972.42/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js"(exports) {
     "use strict";
     var config = (init_config2(), __toCommonJS(config_exports));
-    var client = (init_client3(), __toCommonJS(client_exports2));
+    var client2 = (init_client3(), __toCommonJS(client_exports2));
     var tokenProviders = require_dist_cjs11();
     var isSsoProfile = (arg) => arg && (typeof arg.sso_start_url === "string" || typeof arg.sso_account_id === "string" || typeof arg.sso_session === "string" || typeof arg.sso_region === "string" || typeof arg.sso_role_name === "string");
     var SHOULD_FAIL_CREDENTIAL_CHAIN = false;
@@ -23163,9 +23163,9 @@ var require_dist_cjs12 = __commonJS({
         ...accountId && { accountId }
       };
       if (ssoSession) {
-        client.setCredentialFeature(credentials, "CREDENTIALS_SSO", "s");
+        client2.setCredentialFeature(credentials, "CREDENTIALS_SSO", "s");
       } else {
-        client.setCredentialFeature(credentials, "CREDENTIALS_SSO_LEGACY", "u");
+        client2.setCredentialFeature(credentials, "CREDENTIALS_SSO_LEGACY", "u");
       }
       return credentials;
     };
@@ -23982,7 +23982,7 @@ var init_signin = __esm({
 var require_dist_cjs13 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.42/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js"(exports) {
     "use strict";
-    var client = (init_client3(), __toCommonJS(client_exports2));
+    var client2 = (init_client3(), __toCommonJS(client_exports2));
     var config = (init_config2(), __toCommonJS(config_exports));
     var protocols = (init_protocols(), __toCommonJS(protocols_exports));
     var node_crypto = __require("node:crypto");
@@ -24033,7 +24033,7 @@ var require_dist_cjs13 = __commonJS({
         };
         const requestHandler = isH22(this.callerClientConfig?.requestHandler) ? void 0 : this.callerClientConfig?.requestHandler;
         const region = this.profileData.region ?? await this.callerClientConfig?.region?.() ?? process.env.AWS_REGION;
-        const client2 = new SigninClient2({
+        const client3 = new SigninClient2({
           credentials: {
             accessKeyId: "",
             secretAccessKey: ""
@@ -24044,7 +24044,7 @@ var require_dist_cjs13 = __commonJS({
           userAgentAppId,
           ...this.init?.clientConfig
         });
-        this.createDPoPInterceptor(client2.middlewareStack);
+        this.createDPoPInterceptor(client3.middlewareStack);
         const commandInput = {
           tokenInput: {
             clientId: token.clientId,
@@ -24053,7 +24053,7 @@ var require_dist_cjs13 = __commonJS({
           }
         };
         try {
-          const response = await client2.send(new CreateOAuth2TokenCommand2(commandInput));
+          const response = await client3.send(new CreateOAuth2TokenCommand2(commandInput));
           const { accessKeyId, secretAccessKey, sessionToken } = response.tokenOutput?.accessToken ?? {};
           const { refreshToken: refreshToken2, expiresIn } = response.tokenOutput ?? {};
           if (!accessKeyId || !secretAccessKey || !sessionToken || !refreshToken2) {
@@ -24250,7 +24250,7 @@ var require_dist_cjs13 = __commonJS({
       }
       const fetcher = new LoginCredentialsFetcher(profile, init, callerClientConfig);
       const credentials = await fetcher.loadCredentials();
-      return client.setCredentialFeature(credentials, "CREDENTIALS_LOGIN", "AD");
+      return client2.setCredentialFeature(credentials, "CREDENTIALS_LOGIN", "AD");
     };
     exports.fromLoginCredentials = fromLoginCredentials;
   }
@@ -25544,7 +25544,7 @@ var require_dist_cjs15 = __commonJS({
     var config = (init_config2(), __toCommonJS(config_exports));
     var node_child_process = __require("node:child_process");
     var node_util = __require("node:util");
-    var client = (init_client3(), __toCommonJS(client_exports2));
+    var client2 = (init_client3(), __toCommonJS(client_exports2));
     var getValidatedProcessCredentials = (profileName, data2, profiles) => {
       if (data2.Version !== 1) {
         throw Error(`Profile ${profileName} credential_process did not return Version 1.`);
@@ -25571,7 +25571,7 @@ var require_dist_cjs15 = __commonJS({
         ...data2.CredentialScope && { credentialScope: data2.CredentialScope },
         ...accountId && { accountId }
       };
-      client.setCredentialFeature(credentials, "CREDENTIALS_PROCESS", "w");
+      client2.setCredentialFeature(credentials, "CREDENTIALS_PROCESS", "w");
       return credentials;
     };
     var resolveProcessCredentials = async (profileName, profiles, logger2) => {
@@ -25713,7 +25713,7 @@ var require_dist_cjs17 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.972.42/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js"(exports) {
     "use strict";
     var config = (init_config2(), __toCommonJS(config_exports));
-    var client = (init_client3(), __toCommonJS(client_exports2));
+    var client2 = (init_client3(), __toCommonJS(client_exports2));
     var credentialProviderLogin = require_dist_cjs13();
     var resolveCredentialSource = (credentialSource, profileName, logger2) => {
       const sourceProvidersMap = {
@@ -25740,7 +25740,7 @@ var require_dist_cjs17 = __commonJS({
         throw new config.CredentialsProviderError(`Unsupported credential source in profile ${profileName}. Got ${credentialSource}, expected EcsContainer or Ec2InstanceMetadata or Environment.`, { logger: logger2 });
       }
     };
-    var setNamedProvider = (creds) => client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_NAMED_PROVIDER", "p");
+    var setNamedProvider = (creds) => client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_NAMED_PROVIDER", "p");
     var isAssumeRoleProfile = (arg, { profile = "default", logger: logger2 } = {}) => {
       return Boolean(arg) && typeof arg === "object" && typeof arg.role_arn === "string" && ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1 && ["undefined", "string"].indexOf(typeof arg.external_id) > -1 && ["undefined", "string"].indexOf(typeof arg.mfa_serial) > -1 && (isAssumeRoleWithSourceProfile(arg, { profile, logger: logger2 }) || isCredentialSourceProfile(arg, { profile, logger: logger2 }));
     };
@@ -25783,7 +25783,7 @@ var require_dist_cjs17 = __commonJS({
         [source_profile]: true
       }, isCredentialSourceWithoutRoleArn(profiles[source_profile] ?? {})) : (await resolveCredentialSource(profileData.credential_source, profileName, options.logger)(options))();
       if (isCredentialSourceWithoutRoleArn(profileData)) {
-        return sourceCredsProvider.then((creds) => client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
+        return sourceCredsProvider.then((creds) => client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
       } else {
         const params = {
           RoleArn: profileData.role_arn,
@@ -25800,7 +25800,7 @@ var require_dist_cjs17 = __commonJS({
           params.TokenCode = await options.mfaCodeProvider(mfa_serial);
         }
         const sourceCreds = await sourceCredsProvider;
-        return options.roleAssumer(sourceCreds, params).then((creds) => client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
+        return options.roleAssumer(sourceCreds, params).then((creds) => client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
       }
     };
     var isCredentialSourceWithoutRoleArn = (section) => {
@@ -25814,13 +25814,13 @@ var require_dist_cjs17 = __commonJS({
         ...options,
         profile: profileName
       })({ callerClientConfig });
-      return client.setCredentialFeature(credentials, "CREDENTIALS_PROFILE_LOGIN", "AC");
+      return client2.setCredentialFeature(credentials, "CREDENTIALS_PROFILE_LOGIN", "AC");
     };
     var isProcessProfile = (arg) => Boolean(arg) && typeof arg === "object" && typeof arg.credential_process === "string";
     var resolveProcessCredentials = async (options, profile) => Promise.resolve().then(() => __toESM(require_dist_cjs15())).then(({ fromProcess }) => fromProcess({
       ...options,
       profile
-    })().then((creds) => client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_PROCESS", "v")));
+    })().then((creds) => client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_PROCESS", "v")));
     var resolveSsoCredentials = async (profile, profileData, options = {}, callerClientConfig) => {
       const { fromSSO } = await Promise.resolve().then(() => __toESM(require_dist_cjs12()));
       return fromSSO({
@@ -25832,9 +25832,9 @@ var require_dist_cjs17 = __commonJS({
         callerClientConfig
       }).then((creds) => {
         if (profileData.sso_session) {
-          return client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SSO", "r");
+          return client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SSO", "r");
         } else {
-          return client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SSO_LEGACY", "t");
+          return client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_SSO_LEGACY", "t");
         }
       });
     };
@@ -25849,7 +25849,7 @@ var require_dist_cjs17 = __commonJS({
         ...profile.aws_credential_scope && { credentialScope: profile.aws_credential_scope },
         ...profile.aws_account_id && { accountId: profile.aws_account_id }
       };
-      return client.setCredentialFeature(credentials, "CREDENTIALS_PROFILE", "n");
+      return client2.setCredentialFeature(credentials, "CREDENTIALS_PROFILE", "n");
     };
     var isWebIdentityProfile = (arg) => Boolean(arg) && typeof arg === "object" && typeof arg.web_identity_token_file === "string" && typeof arg.role_arn === "string" && ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1;
     var resolveWebIdentityCredentials = async (profile, options, callerClientConfig) => Promise.resolve().then(() => __toESM(require_dist_cjs16())).then(({ fromTokenFile }) => fromTokenFile({
@@ -25861,7 +25861,7 @@ var require_dist_cjs17 = __commonJS({
       parentClientConfig: options.parentClientConfig
     })({
       callerClientConfig
-    }).then((creds) => client.setCredentialFeature(creds, "CREDENTIALS_PROFILE_STS_WEB_ID_TOKEN", "q")));
+    }).then((creds) => client2.setCredentialFeature(creds, "CREDENTIALS_PROFILE_STS_WEB_ID_TOKEN", "q")));
     var resolveProfileData = async (profileName, profiles, options, callerClientConfig, visitedProfiles = {}, isAssumeRoleRecursiveCall = false) => {
       const data2 = profiles[profileName];
       if (Object.keys(visitedProfiles).length > 0 && isStaticCredsProfile(data2)) {
@@ -27554,7 +27554,7 @@ var require_dist_cjs19 = __commonJS({
     "use strict";
     var client$1 = (init_client3(), __toCommonJS(client_exports2));
     var core = (init_dist_es(), __toCommonJS(dist_es_exports));
-    var client = (init_client2(), __toCommonJS(client_exports));
+    var client2 = (init_client2(), __toCommonJS(client_exports));
     var config = (init_config2(), __toCommonJS(config_exports));
     var endpoints = (init_endpoints(), __toCommonJS(endpoints_exports));
     var protocols = (init_protocols(), __toCommonJS(protocols_exports));
@@ -27616,11 +27616,11 @@ var require_dist_cjs19 = __commonJS({
       };
     };
     var resolveRuntimeExtensions5 = (runtimeConfig2, extensions) => {
-      const extensionConfiguration = Object.assign(client$1.getAwsRegionExtensionConfiguration(runtimeConfig2), client.getDefaultExtensionConfiguration(runtimeConfig2), protocols.getHttpHandlerExtensionConfiguration(runtimeConfig2), getHttpAuthExtensionConfiguration5(runtimeConfig2));
+      const extensionConfiguration = Object.assign(client$1.getAwsRegionExtensionConfiguration(runtimeConfig2), client2.getDefaultExtensionConfiguration(runtimeConfig2), protocols.getHttpHandlerExtensionConfiguration(runtimeConfig2), getHttpAuthExtensionConfiguration5(runtimeConfig2));
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
-      return Object.assign(runtimeConfig2, client$1.resolveAwsRegionExtensionConfiguration(extensionConfiguration), client.resolveDefaultRuntimeConfig(extensionConfiguration), protocols.resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig5(extensionConfiguration));
+      return Object.assign(runtimeConfig2, client$1.resolveAwsRegionExtensionConfiguration(extensionConfiguration), client2.resolveDefaultRuntimeConfig(extensionConfiguration), protocols.resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig5(extensionConfiguration));
     };
-    var SecretsManagerClient2 = class extends client.Client {
+    var SecretsManagerClient2 = class extends client2.Client {
       config;
       constructor(...[configuration]) {
         const _config_0 = runtimeConfig.getRuntimeConfig(configuration || {});
@@ -27654,95 +27654,95 @@ var require_dist_cjs19 = __commonJS({
         super.destroy();
       }
     };
-    var BatchGetSecretValueCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var BatchGetSecretValueCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "BatchGetSecretValue", {}).n("SecretsManagerClient", "BatchGetSecretValueCommand").sc(schemas_0.BatchGetSecretValue$).build() {
     };
-    var CancelRotateSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var CancelRotateSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "CancelRotateSecret", {}).n("SecretsManagerClient", "CancelRotateSecretCommand").sc(schemas_0.CancelRotateSecret$).build() {
     };
-    var CreateSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var CreateSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "CreateSecret", {}).n("SecretsManagerClient", "CreateSecretCommand").sc(schemas_0.CreateSecret$).build() {
     };
-    var DeleteResourcePolicyCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var DeleteResourcePolicyCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "DeleteResourcePolicy", {}).n("SecretsManagerClient", "DeleteResourcePolicyCommand").sc(schemas_0.DeleteResourcePolicy$).build() {
     };
-    var DeleteSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var DeleteSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "DeleteSecret", {}).n("SecretsManagerClient", "DeleteSecretCommand").sc(schemas_0.DeleteSecret$).build() {
     };
-    var DescribeSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var DescribeSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "DescribeSecret", {}).n("SecretsManagerClient", "DescribeSecretCommand").sc(schemas_0.DescribeSecret$).build() {
     };
-    var GetRandomPasswordCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var GetRandomPasswordCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "GetRandomPassword", {}).n("SecretsManagerClient", "GetRandomPasswordCommand").sc(schemas_0.GetRandomPassword$).build() {
     };
-    var GetResourcePolicyCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var GetResourcePolicyCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "GetResourcePolicy", {}).n("SecretsManagerClient", "GetResourcePolicyCommand").sc(schemas_0.GetResourcePolicy$).build() {
     };
-    var GetSecretValueCommand2 = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var GetSecretValueCommand2 = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "GetSecretValue", {}).n("SecretsManagerClient", "GetSecretValueCommand").sc(schemas_0.GetSecretValue$).build() {
     };
-    var ListSecretsCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var ListSecretsCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "ListSecrets", {}).n("SecretsManagerClient", "ListSecretsCommand").sc(schemas_0.ListSecrets$).build() {
     };
-    var ListSecretVersionIdsCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var ListSecretVersionIdsCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "ListSecretVersionIds", {}).n("SecretsManagerClient", "ListSecretVersionIdsCommand").sc(schemas_0.ListSecretVersionIds$).build() {
     };
-    var PutResourcePolicyCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var PutResourcePolicyCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "PutResourcePolicy", {}).n("SecretsManagerClient", "PutResourcePolicyCommand").sc(schemas_0.PutResourcePolicy$).build() {
     };
-    var PutSecretValueCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var PutSecretValueCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "PutSecretValue", {}).n("SecretsManagerClient", "PutSecretValueCommand").sc(schemas_0.PutSecretValue$).build() {
     };
-    var RemoveRegionsFromReplicationCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var RemoveRegionsFromReplicationCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "RemoveRegionsFromReplication", {}).n("SecretsManagerClient", "RemoveRegionsFromReplicationCommand").sc(schemas_0.RemoveRegionsFromReplication$).build() {
     };
-    var ReplicateSecretToRegionsCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var ReplicateSecretToRegionsCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "ReplicateSecretToRegions", {}).n("SecretsManagerClient", "ReplicateSecretToRegionsCommand").sc(schemas_0.ReplicateSecretToRegions$).build() {
     };
-    var RestoreSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var RestoreSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "RestoreSecret", {}).n("SecretsManagerClient", "RestoreSecretCommand").sc(schemas_0.RestoreSecret$).build() {
     };
-    var RotateSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var RotateSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "RotateSecret", {}).n("SecretsManagerClient", "RotateSecretCommand").sc(schemas_0.RotateSecret$).build() {
     };
-    var StopReplicationToReplicaCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var StopReplicationToReplicaCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "StopReplicationToReplica", {}).n("SecretsManagerClient", "StopReplicationToReplicaCommand").sc(schemas_0.StopReplicationToReplica$).build() {
     };
-    var TagResourceCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var TagResourceCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "TagResource", {}).n("SecretsManagerClient", "TagResourceCommand").sc(schemas_0.TagResource$).build() {
     };
-    var UntagResourceCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var UntagResourceCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "UntagResource", {}).n("SecretsManagerClient", "UntagResourceCommand").sc(schemas_0.UntagResource$).build() {
     };
-    var UpdateSecretCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var UpdateSecretCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "UpdateSecret", {}).n("SecretsManagerClient", "UpdateSecretCommand").sc(schemas_0.UpdateSecret$).build() {
     };
-    var UpdateSecretVersionStageCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var UpdateSecretVersionStageCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "UpdateSecretVersionStage", {}).n("SecretsManagerClient", "UpdateSecretVersionStageCommand").sc(schemas_0.UpdateSecretVersionStage$).build() {
     };
-    var ValidateResourcePolicyCommand = class extends client.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
+    var ValidateResourcePolicyCommand = class extends client2.Command.classBuilder().ep(commonParams5).m(function(Command2, cs, config2, o2) {
       return [endpoints.getEndpointPlugin(config2, Command2.getEndpointParameterInstructions())];
     }).s("secretsmanager", "ValidateResourcePolicy", {}).n("SecretsManagerClient", "ValidateResourcePolicyCommand").sc(schemas_0.ValidateResourcePolicy$).build() {
     };
@@ -27781,7 +27781,7 @@ var require_dist_cjs19 = __commonJS({
     };
     var SecretsManager = class extends SecretsManagerClient2 {
     };
-    client.createAggregatedClient(commands5, SecretsManager, { paginators });
+    client2.createAggregatedClient(commands5, SecretsManager, { paginators });
     var FilterNameStringType = {
       all: "all",
       description: "description",
@@ -27806,8 +27806,8 @@ var require_dist_cjs19 = __commonJS({
       asc: "asc",
       desc: "desc"
     };
-    exports.$Command = client.Command;
-    exports.__Client = client.Client;
+    exports.$Command = client2.Command;
+    exports.__Client = client2.Client;
     exports.SecretsManagerServiceException = SecretsManagerServiceException.SecretsManagerServiceException;
     exports.BatchGetSecretValueCommand = BatchGetSecretValueCommand;
     exports.CancelRotateSecretCommand = CancelRotateSecretCommand;
@@ -36175,10 +36175,32 @@ function hasErrorStatus(error2, status) {
   return error2 instanceof Error && "status" in error2 && error2.status === status;
 }
 
+// src/common/parse-schedule-input.ts
+function parseScheduleInput(input) {
+  if (input == null || typeof input !== "object" || Array.isArray(input)) {
+    return { ok: false, error: "Invalid input: expected a JSON object" };
+  }
+  const { repo, eventType, payload: payload2 } = input;
+  if (!repo || typeof repo !== "string") {
+    return { ok: false, error: "Missing required field: repo" };
+  }
+  if (!eventType || typeof eventType !== "string") {
+    return { ok: false, error: "Missing required field: eventType" };
+  }
+  if (payload2 != null && (typeof payload2 !== "object" || Array.isArray(payload2))) {
+    return { ok: false, error: "payload must be a JSON object" };
+  }
+  return {
+    ok: true,
+    value: { repo, eventType, payload: JSON.stringify(payload2 ?? {}) }
+  };
+}
+
 // src/platform/aws-lambda/index.ts
 async function handler2(event) {
-  if (event == null || typeof event !== "object" || Array.isArray(event)) {
-    throw new Error("Invalid event: expected an object");
+  const parsed = parseScheduleInput(event);
+  if (!parsed.ok) {
+    throw new Error(parsed.error);
   }
   const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: secretId = "" } = process.env;
   if (!appId) {
@@ -36187,17 +36209,6 @@ async function handler2(event) {
   if (!secretId) {
     throw new Error("Missing required environment variable: GITHUB_APP_PK");
   }
-  const { repo, eventType, payload: payload2 } = event;
-  if (!repo || typeof repo !== "string") {
-    throw new Error("Missing required event field: repo");
-  }
-  if (!eventType || typeof eventType !== "string") {
-    throw new Error("Missing required event field: eventType");
-  }
-  if (payload2 != null && (typeof payload2 !== "object" || Array.isArray(payload2))) {
-    throw new Error("payload must be a JSON object");
-  }
-  const client = new import_client_secrets_manager.SecretsManagerClient();
   const { SecretString: appPk } = await client.send(
     new import_client_secrets_manager.GetSecretValueCommand({ SecretId: secretId })
   );
@@ -36205,11 +36216,10 @@ async function handler2(event) {
   await dispatch({
     appId,
     appPk,
-    repo,
-    eventType,
-    payload: JSON.stringify(payload2 ?? {})
+    ...parsed.value
   });
 }
+var client = new import_client_secrets_manager.SecretsManagerClient();
 export {
   handler2 as handler
 };
