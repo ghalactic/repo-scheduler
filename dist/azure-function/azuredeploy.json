@@ -21,37 +21,53 @@
         "description": "GitHub App numeric ID"
       }
     },
-    "gitHubRepo": {
+    "targetRepo": {
       "type": "string",
       "metadata": {
         "description": "Target repository in owner/repo format"
       }
     },
-    "gitHubEventType": {
+    "targetEventType": {
       "type": "string",
       "metadata": {
         "description": "repository_dispatch event type string"
       }
     },
-    "gitHubPayload": {
+    "targetPayload": {
       "type": "string",
       "defaultValue": "{}",
       "metadata": {
         "description": "JSON object to include in every dispatch event"
       }
     },
-    "scheduleExpression": {
-      "type": "string",
-      "defaultValue": "0 21,51 * * * *",
+    "scheduleInterval": {
+      "type": "int",
+      "defaultValue": 1,
       "metadata": {
-        "description": "Timer trigger NCRONTAB expression"
+        "description": "Recurrence interval"
+      }
+    },
+    "scheduleFrequency": {
+      "type": "string",
+      "defaultValue": "Hour",
+      "allowedValues": ["Minute", "Hour", "Day", "Week", "Month"],
+      "metadata": {
+        "description": "Recurrence frequency"
+      }
+    },
+    "scheduleStartTime": {
+      "type": "string",
+      "defaultValue": "2026-01-01T00:21:00Z",
+      "metadata": {
+        "description": "Start time for recurrence (controls offset within the interval)"
       }
     }
   },
   "variables": {
     "storageAccountName": "[concat('fn', uniqueString(resourceGroup().id))]",
     "hostingPlanName": "[concat(parameters('functionAppName'), '-plan')]",
-    "keyVaultName": "[concat('kv-', uniqueString(resourceGroup().id))]"
+    "keyVaultName": "[concat('kv-', uniqueString(resourceGroup().id))]",
+    "logicAppName": "[concat(parameters('functionAppName'), '-schedule')]"
   },
   "resources": [
     {
@@ -138,32 +154,12 @@
               "value": "~22"
             },
             {
-              "name": "WEBSITE_RUN_FROM_PACKAGE",
-              "value": "https://github.com/ghalactic/repo-scheduler/releases/download/v0.2.1/azure-function.zip"
-            },
-            {
               "name": "GITHUB_APP_ID",
               "value": "[parameters('gitHubAppId')]"
             },
             {
               "name": "GITHUB_APP_PK",
               "value": "[concat('@Microsoft.KeyVault(SecretUri=https://', variables('keyVaultName'), '.vault.azure.net/secrets/ghalactic-repo-scheduler-pk/)')]"
-            },
-            {
-              "name": "GITHUB_REPO",
-              "value": "[parameters('gitHubRepo')]"
-            },
-            {
-              "name": "GITHUB_EVENT_TYPE",
-              "value": "[parameters('gitHubEventType')]"
-            },
-            {
-              "name": "GITHUB_PAYLOAD",
-              "value": "[parameters('gitHubPayload')]"
-            },
-            {
-              "name": "SCHEDULE_EXPRESSION",
-              "value": "[parameters('scheduleExpression')]"
             }
           ]
         }
@@ -183,15 +179,64 @@
         "principalId": "[reference(resourceId('Microsoft.Web/sites', parameters('functionAppName')), '2024-04-01', 'Full').identity.principalId]",
         "principalType": "ServicePrincipal"
       }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "[variables('logicAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
+      ],
+      "properties": {
+        "state": "Enabled",
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "triggers": {
+            "Recurrence": {
+              "type": "Recurrence",
+              "recurrence": {
+                "frequency": "[parameters('scheduleFrequency')]",
+                "interval": "[parameters('scheduleInterval')]",
+                "startTime": "[parameters('scheduleStartTime')]"
+              }
+            }
+          },
+          "actions": {
+            "Post_scheduler_request": {
+              "type": "Http",
+              "inputs": {
+                "method": "POST",
+                "uri": "[concat('https://', parameters('functionAppName'), '.azurewebsites.net/api/scheduler')]",
+                "headers": {
+                  "Content-Type": "application/json",
+                  "x-functions-key": "[listKeys(concat(resourceId('Microsoft.Web/sites', parameters('functionAppName')), '/host/default'), '2024-04-01').functionKeys.default]"
+                },
+                "body": {
+                  "repo": "[parameters('targetRepo')]",
+                  "eventType": "[parameters('targetEventType')]",
+                  "payload": "[json(parameters('targetPayload'))]"
+                }
+              },
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
     }
   ],
   "outputs": {
     "keyVaultName": {
       "type": "string",
-      "value": "[variables('keyVaultName')]",
-      "metadata": {
-        "description": "Name of the Key Vault \u2014 update the ghalactic-repo-scheduler-pk secret with your PEM key"
-      }
+      "value": "[variables('keyVaultName')]"
+    },
+    "functionUrl": {
+      "type": "string",
+      "value": "[concat('https://', parameters('functionAppName'), '.azurewebsites.net/api/scheduler')]"
     }
   }
 }
