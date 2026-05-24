@@ -11,7 +11,10 @@
 
 Prerequisites:
 
-- [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+- [AWS SAM CLI]
+
+[aws sam cli]:
+  https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html
 
 ```sh
 sam deploy \

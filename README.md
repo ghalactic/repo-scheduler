@@ -53,6 +53,8 @@ These are passed by each scheduler entry (how they're passed varies by platform
 The scheduler authenticates as a [GitHub App] to dispatch events. Create one
 with the following settings:
 
+[github app]: https://docs.github.com/apps/creating-github-apps
+
 1. Go to your organization or personal **Settings > Developer settings > GitHub
    Apps > New GitHub App**.
 2. Fill in the required fields:
@@ -68,5 +70,3 @@ with the following settings:
    store.
 7. Go to **Install App** in the sidebar and install it on the repositories you
    want to dispatch events to.
-
-[github app]: https://docs.github.com/apps/creating-github-apps

@@ -17,6 +17,9 @@ Prerequisites:
 
 - [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
 
+[wrangler cli]:
+  https://developers.cloudflare.com/workers/wrangler/install-and-update/
+
 ```sh
 wrangler deploy \
   --var GITHUB_APP_ID:YOUR_APP_ID \
@@ -36,8 +39,7 @@ wrangler secret put GITHUB_APP_PK
 ## Adding more schedules
 
 Deploy another Worker with different configuration. Each Worker handles one
-target repository/event combination. Cloudflare's deploy button makes this
-straightforward.
+target repository/event combination.
 
 ## Configuration
 

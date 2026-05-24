@@ -4,8 +4,12 @@
 
 Prerequisites:
 
-- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local)
+- [Azure CLI]
+- [Azure Functions Core Tools]
+
+[azure cli]: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
+[azure functions core tools]:
+  https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local
 
 Deploy the infrastructure:
 

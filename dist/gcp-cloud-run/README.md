@@ -4,7 +4,9 @@
 
 Prerequisites:
 
-- [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+- [Google Cloud CLI]
+
+[google cloud cli]: https://cloud.google.com/sdk/docs/install
 
 Deploy the Cloud Run service:
 
