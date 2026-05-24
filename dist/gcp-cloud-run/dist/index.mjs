@@ -1475,8 +1475,7 @@ var require_light = __commonJS({
 });
 
 // src/platform/gcp-cloud-run/index.ts
-import { createServer } from "node:http";
-import { text } from "node:stream/consumers";
+import { http } from "@google-cloud/functions-framework";
 
 // node_modules/.pnpm/universal-user-agent@7.0.3/node_modules/universal-user-agent/index.js
 function getUserAgent() {
@@ -1978,8 +1977,8 @@ var convertMarkedBigIntsReviver = (key, value, context, userReviver) => {
   if (typeof userReviver !== "function") return value;
   return userReviver(key, value, context);
 };
-var JSONParseV2 = (text2, reviver) => {
-  return JSON.parse(text2, (key, value, context) => {
+var JSONParseV2 = (text, reviver) => {
+  return JSON.parse(text, (key, value, context) => {
     const isBigNumber = typeof value === "number" && (value > Number.MAX_SAFE_INTEGER || value < Number.MIN_SAFE_INTEGER);
     const isInt = context && intRegex.test(context.source);
     const isBigInt = isBigNumber && isInt;
@@ -1992,20 +1991,20 @@ var MAX_INT = Number.MAX_SAFE_INTEGER.toString();
 var MAX_DIGITS = MAX_INT.length;
 var stringsOrLargeNumbers = /"(?:\\.|[^"])*"|-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?/g;
 var noiseValueWithQuotes = /^"-?\d+n+"$/;
-var JSONParse = (text2, reviver) => {
-  if (!text2) return originalParse(text2, reviver);
-  if (isContextSourceSupported()) return JSONParseV2(text2, reviver);
-  const serializedData = text2.replace(
+var JSONParse = (text, reviver) => {
+  if (!text) return originalParse(text, reviver);
+  if (isContextSourceSupported()) return JSONParseV2(text, reviver);
+  const serializedData = text.replace(
     stringsOrLargeNumbers,
-    (text3, digits, fractional, exponential) => {
-      const isString = text3[0] === '"';
-      const isNoise = isString && noiseValueWithQuotes.test(text3);
-      if (isNoise) return text3.substring(0, text3.length - 1) + 'n"';
+    (text2, digits, fractional, exponential) => {
+      const isString = text2[0] === '"';
+      const isNoise = isString && noiseValueWithQuotes.test(text2);
+      if (isNoise) return text2.substring(0, text2.length - 1) + 'n"';
       const isFractionalOrExponential = fractional || exponential;
       const isLessThanMaxSafeInt = digits && (digits.length < MAX_DIGITS || digits.length === MAX_DIGITS && digits <= MAX_INT);
       if (isString || isFractionalOrExponential || isLessThanMaxSafeInt)
-        return text3;
-      return '"' + text3 + 'n"';
+        return text2;
+      return '"' + text2 + 'n"';
     }
   );
   return originalParse(
@@ -2174,12 +2173,12 @@ async function getResponseData(response) {
   }
   const mimetype = (0, import_content_type.parse)(contentType);
   if (isJSONResponse(mimetype)) {
-    let text2 = "";
+    let text = "";
     try {
-      text2 = await response.text();
-      return JSONParse(text2);
+      text = await response.text();
+      return JSONParse(text);
     } catch (err) {
-      return text2;
+      return text;
     }
   } else if (mimetype.type.startsWith("text/") || mimetype.parameters.charset?.toLowerCase() === "utf-8") {
     return response.text().catch(noop);
@@ -8364,41 +8363,32 @@ function parseScheduleInput(input) {
 }
 
 // src/platform/gcp-cloud-run/index.ts
-var server = createServer((req, res) => {
+http("schedule", async (req, res) => {
   if (req.method !== "POST") {
-    res.writeHead(405).end("Method not allowed");
+    res.status(405).send("Method not allowed");
     return;
   }
-  (async () => {
-    const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
-    if (!appId) {
-      res.writeHead(500).end("Missing required environment variable: GITHUB_APP_ID");
-      return;
-    }
-    if (!appPk) {
-      res.writeHead(500).end("Missing required environment variable: GITHUB_APP_PK");
-      return;
-    }
-    const raw = await text(req);
-    let body;
-    try {
-      body = JSON.parse(raw);
-    } catch {
-      res.writeHead(400).end("Invalid JSON");
-      return;
-    }
-    const parsed = parseScheduleInput(body);
-    if (!parsed.ok) {
-      res.writeHead(400).end(parsed.error);
-      return;
-    }
+  const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
+  if (!appId) {
+    res.status(500).send("Missing required environment variable: GITHUB_APP_ID");
+    return;
+  }
+  if (!appPk) {
+    res.status(500).send("Missing required environment variable: GITHUB_APP_PK");
+    return;
+  }
+  const parsed = parseScheduleInput(req.body);
+  if (!parsed.ok) {
+    res.status(400).send(parsed.error);
+    return;
+  }
+  try {
     await dispatch({ appId, appPk, ...parsed.value });
-    res.writeHead(200).end();
-  })().catch((error) => {
-    res.writeHead(500).end(error instanceof Error ? error.message : String(error));
-  });
+    res.status(200).send();
+  } catch (error) {
+    res.status(500).send(error instanceof Error ? error.message : String(error));
+  }
 });
-server.listen(Number(process.env.PORT ?? "") || 8080);
 /*! Bundled license information:
 
 content-type/dist/index.js:

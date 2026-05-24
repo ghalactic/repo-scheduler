@@ -12,6 +12,7 @@ await build({
   entryPoints: ["src/platform/gcp-cloud-run/index.ts"],
   bundle: true,
   packages: "bundle",
+  external: ["@google-cloud/functions-framework"],
   sourcemap: true,
   platform: "node",
   target: "node24",

@@ -1,6 +1,8 @@
 FROM node:24-slim
 WORKDIR /app
-COPY dist/index.mjs .
+COPY package.json .
+RUN npm install --omit=dev
+COPY dist/ dist/
 ENV PORT=8080
 EXPOSE 8080
-CMD ["node", "index.mjs"]
+CMD ["npx", "functions-framework", "--target=schedule", "--source=."]

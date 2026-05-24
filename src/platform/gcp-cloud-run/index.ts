@@ -1,63 +1,44 @@
-import { createServer } from "node:http";
-import { text } from "node:stream/consumers";
+import { http } from "@google-cloud/functions-framework";
 import { dispatch } from "../../common/dispatch.js";
 import { parseScheduleInput } from "../../common/parse-schedule-input.js";
 
-const server = createServer((req, res) => {
+http("schedule", async (req, res) => {
   if (req.method !== "POST") {
-    res.writeHead(405).end("Method not allowed");
+    res.status(405).send("Method not allowed");
 
     return;
   }
 
-  (async () => {
-    const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } =
-      process.env;
+  const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } = process.env;
 
-    if (!appId) {
-      res
-        .writeHead(500)
-        .end("Missing required environment variable: GITHUB_APP_ID");
-
-      return;
-    }
-
-    if (!appPk) {
-      res
-        .writeHead(500)
-        .end("Missing required environment variable: GITHUB_APP_PK");
-
-      return;
-    }
-
-    const raw = await text(req);
-
-    let body: unknown;
-
-    try {
-      body = JSON.parse(raw) as unknown;
-    } catch {
-      res.writeHead(400).end("Invalid JSON");
-
-      return;
-    }
-
-    const parsed = parseScheduleInput(body);
-
-    if (!parsed.ok) {
-      res.writeHead(400).end(parsed.error);
-
-      return;
-    }
-
-    await dispatch({ appId, appPk, ...parsed.value });
-
-    res.writeHead(200).end();
-  })().catch((error) => {
+  if (!appId) {
     res
-      .writeHead(500)
-      .end(error instanceof Error ? error.message : String(error));
-  });
-});
+      .status(500)
+      .send("Missing required environment variable: GITHUB_APP_ID");
 
-server.listen(Number(process.env.PORT ?? "") || 8080);
+    return;
+  }
+
+  if (!appPk) {
+    res
+      .status(500)
+      .send("Missing required environment variable: GITHUB_APP_PK");
+
+    return;
+  }
+
+  const parsed = parseScheduleInput(req.body);
+
+  if (!parsed.ok) {
+    res.status(400).send(parsed.error);
+
+    return;
+  }
+
+  try {
+    await dispatch({ appId, appPk, ...parsed.value });
+    res.status(200).send();
+  } catch (error) {
+    res.status(500).send(error instanceof Error ? error.message : String(error));
+  }
+});
