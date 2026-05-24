@@ -9,7 +9,7 @@ enabled = true
 invocation_logs = true
 
 [triggers]
-crons = ["21,51 * * * *"]
+crons = ["21 * * * *"]
 
 [vars]
 GITHUB_APP_ID = ""
