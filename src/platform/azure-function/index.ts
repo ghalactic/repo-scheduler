@@ -7,20 +7,6 @@ app.http("scheduler", {
   authLevel: "function",
 
   handler: async (req: HttpRequest): Promise<HttpResponseInit> => {
-    let body: unknown;
-
-    try {
-      body = await req.json();
-    } catch {
-      return { status: 400, body: "Invalid JSON" };
-    }
-
-    const parsed = parseScheduleInput(body);
-
-    if (!parsed.ok) {
-      return { status: 400, body: parsed.error };
-    }
-
     const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } =
       process.env;
 
@@ -38,12 +24,20 @@ app.http("scheduler", {
       };
     }
 
+    let body: unknown;
+
     try {
-      await dispatch({
-        appId,
-        appPk,
-        ...parsed.value,
-      });
+      body = await req.json();
+    } catch {
+      return { status: 400, body: "Invalid JSON" };
+    }
+
+    const parsed = parseScheduleInput(body);
+
+    if (!parsed.ok) return { status: 400, body: parsed.error };
+
+    try {
+      await dispatch({ appId, appPk, ...parsed.value });
     } catch (error) {
       return {
         status: 500,

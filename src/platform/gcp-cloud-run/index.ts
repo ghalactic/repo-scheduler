@@ -10,6 +10,25 @@ const server = createServer((req, res) => {
   }
 
   (async () => {
+    const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } =
+      process.env;
+
+    if (!appId) {
+      res
+        .writeHead(500)
+        .end("Missing required environment variable: GITHUB_APP_ID");
+
+      return;
+    }
+
+    if (!appPk) {
+      res
+        .writeHead(500)
+        .end("Missing required environment variable: GITHUB_APP_PK");
+
+      return;
+    }
+
     let raw: string;
 
     try {
@@ -42,30 +61,7 @@ const server = createServer((req, res) => {
       return;
     }
 
-    const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } =
-      process.env;
-
-    if (!appId) {
-      res
-        .writeHead(500)
-        .end("Missing required environment variable: GITHUB_APP_ID");
-
-      return;
-    }
-
-    if (!appPk) {
-      res
-        .writeHead(500)
-        .end("Missing required environment variable: GITHUB_APP_PK");
-
-      return;
-    }
-
-    await dispatch({
-      appId,
-      appPk,
-      ...parsed.value,
-    });
+    await dispatch({ appId, appPk, ...parsed.value });
 
     res.writeHead(200).end();
   })().catch((error) => {

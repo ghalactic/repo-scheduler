@@ -36198,10 +36198,6 @@ function parseScheduleInput(input) {
 
 // src/platform/aws-lambda/index.ts
 async function handler2(event) {
-  const parsed = parseScheduleInput(event);
-  if (!parsed.ok) {
-    throw new Error(parsed.error);
-  }
   const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: secretId = "" } = process.env;
   if (!appId) {
     throw new Error("Missing required environment variable: GITHUB_APP_ID");
@@ -36209,15 +36205,13 @@ async function handler2(event) {
   if (!secretId) {
     throw new Error("Missing required environment variable: GITHUB_APP_PK");
   }
+  const parsed = parseScheduleInput(event);
+  if (!parsed.ok) throw new Error(parsed.error);
   const { SecretString: appPk } = await client.send(
     new import_client_secrets_manager.GetSecretValueCommand({ SecretId: secretId })
   );
   if (!appPk) throw new Error("Secret value is empty");
-  await dispatch({
-    appId,
-    appPk,
-    ...parsed.value
-  });
+  await dispatch({ appId, appPk, ...parsed.value });
 }
 var client = new import_client_secrets_manager.SecretsManagerClient();
 export {
