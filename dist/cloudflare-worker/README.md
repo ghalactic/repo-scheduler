@@ -14,11 +14,10 @@ variables and provisions a Secrets Store binding for the private key.
 ## Deploy via CLI
 
 Prerequisites:
-[Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
+
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
 
 ```sh
-cd dist/cloudflare-worker
-
 wrangler deploy \
   --var GITHUB_APP_ID:YOUR_APP_ID \
   --var GITHUB_REPO:owner/repo \
@@ -42,8 +41,8 @@ straightforward.
 
 ## Configuration
 
-| Variable            | Description                                     |
-| ------------------- | ----------------------------------------------- |
+| Input               | Description                                     |
+| :------------------ | :---------------------------------------------- |
 | `GITHUB_APP_ID`     | GitHub App numeric ID                           |
 | `GITHUB_APP_PK`     | PEM-encoded private key (Secrets Store binding) |
 | `GITHUB_REPO`       | Target repository in `owner/repo` format        |

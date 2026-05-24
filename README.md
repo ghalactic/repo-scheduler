@@ -31,7 +31,7 @@ platform docs for details.
 These are configured once when you deploy the function:
 
 | Input           | Description                            |
-| --------------- | -------------------------------------- |
+| :-------------- | :------------------------------------- |
 | `GITHUB_APP_ID` | GitHub App ID                          |
 | `GITHUB_APP_PK` | GitHub App PEM-encoded private key[^1] |
 
@@ -43,7 +43,7 @@ These are passed by each scheduler entry (how they're passed varies by platform
 — see platform docs):
 
 | Input       | Description                                 |
-| ----------- | ------------------------------------------- |
+| :---------- | :------------------------------------------ |
 | `repo`      | Target repository in `owner/repo` form      |
 | `eventType` | `repository_dispatch` event type            |
 | `payload`   | JSON object for `client_payload` (optional) |

@@ -2,13 +2,13 @@
 
 ## Deploy via CLI
 
-Prerequisites: [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+Prerequisites:
+
+- [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
 
 Deploy the Cloud Run service:
 
 ```sh
-cd dist/gcp-cloud-run
-
 # Create the secret for the private key
 gcloud secrets create repo-scheduler-pk \
   --data-file path/to/private-key.pem
@@ -68,15 +68,15 @@ gcloud scheduler jobs create http repo-scheduler-other \
 
 The function reads these from environment variables (set at deploy time):
 
-| Variable        | Description                        |
-| --------------- | ---------------------------------- |
+| Input           | Description                        |
+| :-------------- | :--------------------------------- |
 | `GITHUB_APP_ID` | GitHub App numeric ID              |
 | `GITHUB_APP_PK` | PEM-encoded GitHub App private key |
 
 Each Cloud Scheduler job passes these in the HTTP body:
 
-| Field       | Description                                 |
-| ----------- | ------------------------------------------- |
+| Input       | Description                                 |
+| :---------- | :------------------------------------------ |
 | `repo`      | Target repository in `owner/repo` format    |
 | `eventType` | `repository_dispatch` event type            |
 | `payload`   | JSON object for `client_payload` (optional) |

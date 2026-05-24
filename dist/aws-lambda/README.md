@@ -10,11 +10,10 @@
 ## Deploy via CLI
 
 Prerequisites:
-[AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
+
+- [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html)
 
 ```sh
-cd dist/aws-lambda
-
 sam deploy \
   --stack-name repo-scheduler \
   --resolve-s3 \
@@ -53,7 +52,7 @@ aws scheduler create-schedule \
 ## Configuration
 
 | Parameter         | Description                              | Default              |
-| ----------------- | ---------------------------------------- | -------------------- |
+| :---------------- | :--------------------------------------- | :------------------- |
 | `GitHubAppId`     | GitHub App numeric ID                    | (required)           |
 | `TargetRepo`      | Target repository in `owner/repo` format | (required)           |
 | `TargetEventType` | `repository_dispatch` event type         | (required)           |

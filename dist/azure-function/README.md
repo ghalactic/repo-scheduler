@@ -3,14 +3,13 @@
 ## Deploy via CLI
 
 Prerequisites:
-[Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli),
-[Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local)
+
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [Azure Functions Core Tools](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local)
 
 Deploy the infrastructure:
 
 ```sh
-cd dist/azure-function
-
 az deployment group create \
   --resource-group YOUR_RESOURCE_GROUP \
   --template-file azuredeploy.json \
@@ -44,7 +43,7 @@ different bodies. The function URL and key are shown in the deployment outputs.
 ## Configuration
 
 | Parameter           | Description                              | Default                |
-| ------------------- | ---------------------------------------- | ---------------------- |
+| :------------------ | :--------------------------------------- | :--------------------- |
 | `functionAppName`   | Name of the Function App                 | (required)             |
 | `gitHubAppId`       | GitHub App numeric ID                    | (required)             |
 | `targetRepo`        | Target repository in `owner/repo` format | (required)             |
