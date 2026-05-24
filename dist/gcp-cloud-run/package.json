@@ -3,7 +3,7 @@
   "type": "module",
   "main": "dist/index.mjs",
   "scripts": {
-    "start": "npx functions-framework --target=schedule --source=."
+    "start": "functions-framework --target=schedule --source=."
   },
   "dependencies": {
     "@google-cloud/functions-framework": "^5.0.0"
