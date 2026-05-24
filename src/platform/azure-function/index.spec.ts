@@ -1,10 +1,10 @@
 import { beforeEach, expect, it, vi } from "vitest";
 import { dispatch } from "../../common/dispatch.js";
 
-const mockTimer = vi.hoisted(() => vi.fn());
+const mockHttp = vi.hoisted(() => vi.fn());
 
 vi.mock("@azure/functions", () => ({
-  app: { timer: mockTimer },
+  app: { http: mockHttp },
 }));
 
 vi.mock("../../common/dispatch.js", () => ({
@@ -16,33 +16,72 @@ beforeEach(() => {
   vi.unstubAllEnvs();
   vi.stubEnv("GITHUB_APP_ID", "12345");
   vi.stubEnv("GITHUB_APP_PK", "fake-key");
-  vi.stubEnv("GITHUB_REPO", "owner/repo");
-  vi.stubEnv("GITHUB_EVENT_TYPE", "schedule");
   vi.resetModules();
 });
 
-function getHandler(): () => Promise<void> {
-  const options = mockTimer.mock.calls[0][1] as {
-    handler: () => Promise<void>;
+interface MockRequest {
+  method: string;
+  json: () => Promise<unknown>;
+}
+
+function makeRequest(method: string, body?: unknown): MockRequest {
+  return {
+    method,
+    json: async () => body,
+  };
+}
+
+async function getHandler(): Promise<
+  (req: MockRequest) => Promise<{ status: number; body?: string }>
+> {
+  await import("./index.js");
+  const options = mockHttp.mock.calls[0][1] as {
+    handler: (req: MockRequest) => Promise<{ status: number; body?: string }>;
   };
 
   return options.handler;
 }
 
-it("registers a timer trigger using SCHEDULE_EXPRESSION app setting", async () => {
+it("registers an HTTP trigger with POST method and function auth", async () => {
   await import("./index.js");
 
-  expect(mockTimer).toHaveBeenCalledWith(
-    "schedulerTimer",
-    expect.objectContaining({ schedule: "%SCHEDULE_EXPRESSION%" }),
+  expect(mockHttp).toHaveBeenCalledWith(
+    "scheduler",
+    expect.objectContaining({
+      methods: ["POST"],
+      authLevel: "function",
+    }),
   );
 });
 
-it("calls dispatch with config from environment variables", async () => {
-  await import("./index.js");
-  const handler = getHandler();
+it("dispatches with body params and env credentials, returns 200", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: { key: "value" },
+  });
 
-  await handler();
+  const res = await handler(req);
+
+  expect(dispatch).toHaveBeenCalledWith({
+    appId: "12345",
+    appPk: "fake-key",
+    repo: "owner/repo",
+    eventType: "schedule",
+    payload: '{"key":"value"}',
+  });
+  expect(res.status).toBe(200);
+});
+
+it("defaults payload to '{}' when not in body", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+  });
+
+  await handler(req);
 
   expect(dispatch).toHaveBeenCalledWith({
     appId: "12345",
@@ -53,36 +92,79 @@ it("calls dispatch with config from environment variables", async () => {
   });
 });
 
-it("parses GITHUB_PAYLOAD when set", async () => {
-  vi.stubEnv("GITHUB_PAYLOAD", '{"foo":"bar"}');
-  await import("./index.js");
-  const handler = getHandler();
+it("returns 400 when repo is missing", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", { eventType: "schedule" });
 
-  await handler();
+  const res = await handler(req);
 
-  expect(dispatch).toHaveBeenCalledWith({
-    appId: "12345",
-    appPk: "fake-key",
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("Missing required field: repo");
+});
+
+it("returns 400 when eventType is missing", async () => {
+  const handler = await getHandler();
+  const req = makeRequest("POST", { repo: "owner/repo" });
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("Missing required field: eventType");
+});
+
+it("returns 400 when body is not valid JSON", async () => {
+  const handler = await getHandler();
+  const req = {
+    method: "POST",
+    json: async () => {
+      throw new SyntaxError("Unexpected token");
+    },
+  };
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(400);
+  expect(res.body).toBe("Invalid JSON");
+});
+
+it("returns 500 when GITHUB_APP_ID is missing", async () => {
+  vi.stubEnv("GITHUB_APP_ID", "");
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
     repo: "owner/repo",
     eventType: "schedule",
-    payload: '{"foo":"bar"}',
   });
+
+  const res = await handler(req);
+
+  expect(res.status).toBe(500);
+  expect(res.body).toBe("Missing required environment variable: GITHUB_APP_ID");
 });
 
-it("throws when environment variables are missing", async () => {
-  vi.stubEnv("GITHUB_APP_ID", "");
-  await import("./index.js");
-  const handler = getHandler();
+it("returns 500 when GITHUB_APP_PK is missing", async () => {
+  vi.stubEnv("GITHUB_APP_PK", "");
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+  });
 
-  await expect(handler()).rejects.toThrow(
-    "Missing required environment variables",
-  );
+  const res = await handler(req);
+
+  expect(res.status).toBe(500);
+  expect(res.body).toBe("Missing required environment variable: GITHUB_APP_PK");
 });
 
-it("propagates errors from dispatch", async () => {
-  await import("./index.js");
-  const handler = getHandler();
+it("returns 500 with error message on dispatch failure", async () => {
   vi.mocked(dispatch).mockRejectedValue(new Error("dispatch failed"));
+  const handler = await getHandler();
+  const req = makeRequest("POST", {
+    repo: "owner/repo",
+    eventType: "schedule",
+  });
 
-  await expect(handler()).rejects.toThrow("dispatch failed");
+  const res = await handler(req);
+
+  expect(res.status).toBe(500);
+  expect(res.body).toBe("dispatch failed");
 });
