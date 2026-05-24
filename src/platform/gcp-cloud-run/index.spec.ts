@@ -149,19 +149,6 @@ it("defaults payload to '{}' when not in body", async () => {
   });
 });
 
-it("returns 413 when request body exceeds 1 MB", async () => {
-  await import("./index.js");
-  const handler = getHandler();
-  const res = makeRes();
-  const largeBody = "x".repeat(1_048_577);
-
-  handler(makeReq("POST", largeBody), res);
-  await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
-
-  expect(res.writeHead).toHaveBeenCalledWith(413);
-  expect(res.end).toHaveBeenCalledWith("Body too large");
-});
-
 it("returns 400 when payload is not a JSON object", async () => {
   await import("./index.js");
   const handler = getHandler();

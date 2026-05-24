@@ -29,19 +29,7 @@ const server = createServer((req, res) => {
       return;
     }
 
-    let raw: string;
-
-    try {
-      raw = await readBody(req);
-    } catch (error) {
-      if (error instanceof RangeError) {
-        res.writeHead(413).end("Body too large");
-
-        return;
-      }
-
-      throw error;
-    }
+    const raw = await readBody(req);
 
     let body: unknown;
 
@@ -73,26 +61,10 @@ const server = createServer((req, res) => {
 
 server.listen(Number(process.env.PORT ?? "") || 8080);
 
-const MAX_BODY_BYTES = 1_048_576; // 1 MB
-
 function readBody(req: IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {
     const chunks: Buffer[] = [];
-    let size = 0;
-
-    req.on("data", (chunk: Buffer) => {
-      size += chunk.length;
-
-      if (size > MAX_BODY_BYTES) {
-        req.destroy();
-        reject(new RangeError("Body too large"));
-
-        return;
-      }
-
-      chunks.push(chunk);
-    });
-
+    req.on("data", (chunk: Buffer) => chunks.push(chunk));
     req.on("end", () => resolve(Buffer.concat(chunks).toString()));
     req.on("error", reject);
   });

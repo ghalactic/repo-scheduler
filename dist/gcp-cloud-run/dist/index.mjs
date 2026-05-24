@@ -8378,16 +8378,7 @@ var server = createServer((req, res) => {
       res.writeHead(500).end("Missing required environment variable: GITHUB_APP_PK");
       return;
     }
-    let raw;
-    try {
-      raw = await readBody(req);
-    } catch (error) {
-      if (error instanceof RangeError) {
-        res.writeHead(413).end("Body too large");
-        return;
-      }
-      throw error;
-    }
+    const raw = await readBody(req);
     let body;
     try {
       body = JSON.parse(raw);
@@ -8407,20 +8398,10 @@ var server = createServer((req, res) => {
   });
 });
 server.listen(Number(process.env.PORT ?? "") || 8080);
-var MAX_BODY_BYTES = 1048576;
 function readBody(req) {
   return new Promise((resolve, reject) => {
     const chunks = [];
-    let size = 0;
-    req.on("data", (chunk) => {
-      size += chunk.length;
-      if (size > MAX_BODY_BYTES) {
-        req.destroy();
-        reject(new RangeError("Body too large"));
-        return;
-      }
-      chunks.push(chunk);
-    });
+    req.on("data", (chunk) => chunks.push(chunk));
     req.on("end", () => resolve(Buffer.concat(chunks).toString()));
     req.on("error", reject);
   });
