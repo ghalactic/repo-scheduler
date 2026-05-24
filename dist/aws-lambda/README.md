@@ -1,4 +1,4 @@
-# AWS Lambda Repo Scheduler
+# AWS Lambda repo scheduler
 
 [![Launch Stack][deploy-badge]][deploy-url]
 
@@ -33,7 +33,7 @@ aws secretsmanager put-secret-value \
   --secret-string "$(cat path/to/private-key.pem)"
 ```
 
-## Adding More Schedules
+## Adding more schedules
 
 Create additional EventBridge schedules targeting the same Lambda with different
 inputs:

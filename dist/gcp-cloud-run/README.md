@@ -1,4 +1,4 @@
-# Google Cloud Run Repo Scheduler
+# Google Cloud Run repo scheduler
 
 ## Deploy via CLI
 
@@ -43,7 +43,7 @@ gcloud scheduler jobs create http repo-scheduler-job \
   --oidc-service-account-email "repo-scheduler-invoker@PROJECT_ID.iam.gserviceaccount.com"
 ```
 
-## Adding More Schedules
+## Adding more schedules
 
 Create additional Cloud Scheduler jobs targeting the same service URL with
 different message bodies:

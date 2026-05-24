@@ -1,4 +1,4 @@
-# Azure Function Repo Scheduler
+# Azure Function repo scheduler
 
 ## Deploy via CLI
 
@@ -36,7 +36,7 @@ Publish the function code:
 func azure functionapp publish repo-scheduler
 ```
 
-## Adding More Schedules
+## Adding more schedules
 
 Create additional Logic App workflows that POST to the same function URL with
 different bodies. The function URL and key are shown in the deployment outputs.

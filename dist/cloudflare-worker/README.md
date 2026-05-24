@@ -1,4 +1,4 @@
-# Cloudflare Worker Repo Scheduler
+# Cloudflare Worker repo scheduler
 
 [![Deploy to Cloudflare Workers][deploy-badge]][deploy-url]
 
@@ -6,7 +6,7 @@
 [deploy-url]:
   https://deploy.workers.cloudflare.com/?url=https://github.com/ghalactic/repo-scheduler/tree/main/dist/cloudflare-worker
 
-## Deploy via Button
+## Deploy via button
 
 Click the button above. The setup page prompts for the required environment
 variables and provisions a Secrets Store binding for the private key.
@@ -34,7 +34,7 @@ wrangler secret put GITHUB_APP_PK
 # Paste your PEM-encoded private key when prompted
 ```
 
-## Adding More Schedules
+## Adding more schedules
 
 Deploy another Worker with different configuration. Each Worker handles one
 target repository/event combination. Cloudflare's deploy button makes this

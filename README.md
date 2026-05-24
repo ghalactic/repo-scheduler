@@ -7,7 +7,7 @@ late. This project provides serverless scheduler implementations for multiple
 cloud platforms that dispatch `repository_dispatch` events on a fixed schedule
 using a GitHub App for authentication.
 
-## How It Works
+## How it works
 
 1. Deploy a single serverless function to your chosen cloud platform
 2. Configure your GitHub App credentials at the deployment level
@@ -25,7 +25,7 @@ scheduler entry passes the target repo/event as parameters.
 - [Cloudflare Workers](dist/cloudflare-worker/README.md)
 - [Google Cloud Run](dist/gcp-cloud-run/README.md)
 
-## Deployment-Level Configuration
+## Deployment-level configuration
 
 These are configured once when you deploy the function:
 
@@ -36,7 +36,7 @@ These are configured once when you deploy the function:
 
 [^1]: Each platform stores the private key in its native secret manager.
 
-## Per-Invocation Configuration
+## Per-invocation configuration
 
 These are passed by each scheduler entry (how they're passed varies by platform
 — see platform docs):
