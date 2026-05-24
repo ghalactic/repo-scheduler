@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import type { Request, Response } from "@google-cloud/functions-framework";
 import { http } from "@google-cloud/functions-framework";
 import { beforeEach, expect, it, vi } from "vitest";
@@ -42,7 +43,9 @@ it("returns 400 when body is null", async () => {
   await handler(req, res);
 
   expect(res.status).toHaveBeenCalledWith(400);
-  expect(res.send).toHaveBeenCalledWith("Invalid input: expected a JSON object");
+  expect(res.send).toHaveBeenCalledWith(
+    "Invalid input: expected a JSON object",
+  );
 });
 
 it("returns 400 when body is an array", async () => {
@@ -52,7 +55,9 @@ it("returns 400 when body is an array", async () => {
   await handler(req, res);
 
   expect(res.status).toHaveBeenCalledWith(400);
-  expect(res.send).toHaveBeenCalledWith("Invalid input: expected a JSON object");
+  expect(res.send).toHaveBeenCalledWith(
+    "Invalid input: expected a JSON object",
+  );
 });
 
 it("returns 400 when repo is missing from body", async () => {
@@ -214,11 +219,13 @@ async function getHandler() {
 function makeReqRes(method: string, body?: unknown): [Request, Response] {
   const req = { method, body } as Request;
   const send = vi.fn();
-  const res = { status: vi.fn().mockReturnValue({ send }), send } as unknown as
-    Response & {
-      status: ReturnType<typeof vi.fn>;
-      send: ReturnType<typeof vi.fn>;
-    };
+  const res = {
+    status: vi.fn().mockReturnValue({ send }),
+    send,
+  } as unknown as Response & {
+    status: ReturnType<typeof vi.fn>;
+    send: ReturnType<typeof vi.fn>;
+  };
 
   return [req, res];
 }

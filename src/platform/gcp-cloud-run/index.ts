@@ -39,6 +39,8 @@ http("schedule", async (req, res) => {
     await dispatch({ appId, appPk, ...parsed.value });
     res.status(200).send();
   } catch (error) {
-    res.status(500).send(error instanceof Error ? error.message : String(error));
+    res
+      .status(500)
+      .send(error instanceof Error ? error.message : String(error));
   }
 });
