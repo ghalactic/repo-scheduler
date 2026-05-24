@@ -95,15 +95,15 @@ it("throws when eventType is missing from event", async () => {
 });
 
 it("throws when repo is a non-string value", async () => {
-  await expect(
-    handler({ repo: 123, eventType: "schedule" }),
-  ).rejects.toThrow("Missing required event field: repo");
+  await expect(handler({ repo: 123, eventType: "schedule" })).rejects.toThrow(
+    "Missing required event field: repo",
+  );
 });
 
 it("throws when eventType is a non-string value", async () => {
-  await expect(
-    handler({ repo: "owner/repo", eventType: 123 }),
-  ).rejects.toThrow("Missing required event field: eventType");
+  await expect(handler({ repo: "owner/repo", eventType: 123 })).rejects.toThrow(
+    "Missing required event field: eventType",
+  );
 });
 
 it("throws when payload is not a JSON object", async () => {
