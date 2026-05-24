@@ -22,7 +22,7 @@ Create a service account for Cloud Scheduler:
 
 ```sh
 gcloud iam service-accounts create repo-scheduler-invoker \
-  --display-name "Repo Scheduler Invoker"
+  --display-name "Repo scheduler invoker"
 
 gcloud run services add-iam-policy-binding repo-scheduler \
   --region YOUR_REGION \

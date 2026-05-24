@@ -55,7 +55,7 @@ with the following settings:
 1. Go to your organization or personal **Settings > Developer settings > GitHub
    Apps > New GitHub App**.
 2. Fill in the required fields:
-   - **GitHub App name:** anything descriptive (e.g. "Repo Scheduler")
+   - **GitHub App name:** anything descriptive (e.g. "Repo scheduler")
    - **Homepage URL:** can be this repository's URL
    - **Webhook:** uncheck "Active" (no webhook is needed)
 3. Under **Repository permissions**, set:
