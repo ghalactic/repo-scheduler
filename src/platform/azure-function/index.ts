@@ -1,5 +1,6 @@
 import { app, type HttpRequest, type HttpResponseInit } from "@azure/functions";
 import { dispatch } from "../../common/dispatch.js";
+import { parseScheduleInput } from "../../common/parse-schedule-input.js";
 
 app.http("scheduler", {
   methods: ["POST"],
@@ -14,25 +15,10 @@ app.http("scheduler", {
       return { status: 400, body: "Invalid JSON" };
     }
 
-    if (body == null || typeof body !== "object" || Array.isArray(body)) {
-      return { status: 400, body: "Invalid JSON: expected an object" };
-    }
+    const parsed = parseScheduleInput(body);
 
-    const { repo, eventType, payload } = body as Record<string, unknown>;
-
-    if (!repo || typeof repo !== "string") {
-      return { status: 400, body: "Missing required field: repo" };
-    }
-
-    if (!eventType || typeof eventType !== "string") {
-      return { status: 400, body: "Missing required field: eventType" };
-    }
-
-    if (
-      payload != null &&
-      (typeof payload !== "object" || Array.isArray(payload))
-    ) {
-      return { status: 400, body: "payload must be a JSON object" };
+    if (!parsed.ok) {
+      return { status: 400, body: parsed.error };
     }
 
     const { GITHUB_APP_ID: appId = "", GITHUB_APP_PK: appPk = "" } =
@@ -56,9 +42,7 @@ app.http("scheduler", {
       await dispatch({
         appId,
         appPk,
-        repo,
-        eventType,
-        payload: JSON.stringify(payload ?? {}),
+        ...parsed.value,
       });
     } catch (error) {
       return {

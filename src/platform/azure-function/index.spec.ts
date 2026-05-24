@@ -24,24 +24,6 @@ interface MockRequest {
   json: () => Promise<unknown>;
 }
 
-function makeRequest(method: string, body?: unknown): MockRequest {
-  return {
-    method,
-    json: () => Promise.resolve(body),
-  };
-}
-
-async function getHandler(): Promise<
-  (req: MockRequest) => Promise<{ status: number; body?: string }>
-> {
-  await import("./index.js");
-  const options = mockHttp.mock.calls[0][1] as {
-    handler: (req: MockRequest) => Promise<{ status: number; body?: string }>;
-  };
-
-  return options.handler;
-}
-
 it("registers an HTTP trigger with POST method and function auth", async () => {
   await import("./index.js");
 
@@ -102,7 +84,7 @@ it("returns 400 when body is null", async () => {
   const res = await handler(req);
 
   expect(res.status).toBe(400);
-  expect(res.body).toBe("Invalid JSON: expected an object");
+  expect(res.body).toBe("Invalid input: expected a JSON object");
 });
 
 it("returns 400 when body is an array", async () => {
@@ -112,7 +94,7 @@ it("returns 400 when body is an array", async () => {
   const res = await handler(req);
 
   expect(res.status).toBe(400);
-  expect(res.body).toBe("Invalid JSON: expected an object");
+  expect(res.body).toBe("Invalid input: expected a JSON object");
 });
 
 it("returns 400 when repo is missing", async () => {
@@ -217,3 +199,21 @@ it("returns 500 with error message on dispatch failure", async () => {
   expect(res.status).toBe(500);
   expect(res.body).toBe("dispatch failed");
 });
+
+function makeRequest(method: string, body?: unknown): MockRequest {
+  return {
+    method,
+    json: () => Promise.resolve(body),
+  };
+}
+
+async function getHandler(): Promise<
+  (req: MockRequest) => Promise<{ status: number; body?: string }>
+> {
+  await import("./index.js");
+  const options = mockHttp.mock.calls[0][1] as {
+    handler: (req: MockRequest) => Promise<{ status: number; body?: string }>;
+  };
+
+  return options.handler;
+}

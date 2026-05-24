@@ -23,35 +23,6 @@ beforeEach(() => {
   vi.resetModules();
 });
 
-function getHandler() {
-  return vi.mocked(createServer).mock.calls[0][0] as (
-    req: IncomingMessage,
-    res: ServerResponse,
-  ) => void;
-}
-
-function makeRes() {
-  const end = vi.fn();
-  const writeHead = vi.fn().mockReturnValue({ end });
-
-  return { writeHead, end } as ServerResponse & {
-    writeHead: ReturnType<typeof vi.fn>;
-    end: ReturnType<typeof vi.fn>;
-  };
-}
-
-function makeReq(method: string, body?: string): IncomingMessage {
-  const req = new Readable({
-    read() {
-      if (body != null) this.push(body);
-      this.push(null);
-    },
-  }) as IncomingMessage;
-  req.method = method;
-
-  return req;
-}
-
 it("starts an HTTP server on the PORT env var", async () => {
   await import("./index.js");
 
@@ -98,7 +69,7 @@ it("returns 400 when body is a JSON null", async () => {
   await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
 
   expect(res.writeHead).toHaveBeenCalledWith(400);
-  expect(res.end).toHaveBeenCalledWith("Invalid JSON: expected an object");
+  expect(res.end).toHaveBeenCalledWith("Invalid input: expected a JSON object");
 });
 
 it("returns 400 when body is a JSON array", async () => {
@@ -110,7 +81,7 @@ it("returns 400 when body is a JSON array", async () => {
   await vi.waitFor(() => expect(res.writeHead).toHaveBeenCalled());
 
   expect(res.writeHead).toHaveBeenCalledWith(400);
-  expect(res.end).toHaveBeenCalledWith("Invalid JSON: expected an object");
+  expect(res.end).toHaveBeenCalledWith("Invalid input: expected a JSON object");
 });
 
 it("returns 400 when repo is missing from body", async () => {
@@ -284,3 +255,32 @@ it("stringifies non-Error rejection values", async () => {
   expect(res.writeHead).toHaveBeenCalledWith(500);
   expect(res.end).toHaveBeenCalledWith("string-error");
 });
+
+function getHandler() {
+  return vi.mocked(createServer).mock.calls[0][0] as (
+    req: IncomingMessage,
+    res: ServerResponse,
+  ) => void;
+}
+
+function makeRes() {
+  const end = vi.fn();
+  const writeHead = vi.fn().mockReturnValue({ end });
+
+  return { writeHead, end } as ServerResponse & {
+    writeHead: ReturnType<typeof vi.fn>;
+    end: ReturnType<typeof vi.fn>;
+  };
+}
+
+function makeReq(method: string, body?: string): IncomingMessage {
+  const req = new Readable({
+    read() {
+      if (body != null) this.push(body);
+      this.push(null);
+    },
+  }) as IncomingMessage;
+  req.method = method;
+
+  return req;
+}

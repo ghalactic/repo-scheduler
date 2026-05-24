@@ -1,30 +1,6 @@
 import { createServer, type IncomingMessage } from "node:http";
 import { dispatch } from "../../common/dispatch.js";
-
-const MAX_BODY_BYTES = 1_048_576; // 1 MB
-
-function readBody(req: IncomingMessage): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const chunks: Buffer[] = [];
-    let size = 0;
-
-    req.on("data", (chunk: Buffer) => {
-      size += chunk.length;
-
-      if (size > MAX_BODY_BYTES) {
-        req.destroy();
-        reject(new RangeError("Body too large"));
-
-        return;
-      }
-
-      chunks.push(chunk);
-    });
-
-    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
-    req.on("error", reject);
-  });
-}
+import { parseScheduleInput } from "../../common/parse-schedule-input.js";
 
 const server = createServer((req, res) => {
   if (req.method !== "POST") {
@@ -58,31 +34,10 @@ const server = createServer((req, res) => {
       return;
     }
 
-    if (body == null || typeof body !== "object" || Array.isArray(body)) {
-      res.writeHead(400).end("Invalid JSON: expected an object");
+    const parsed = parseScheduleInput(body);
 
-      return;
-    }
-
-    const { repo, eventType, payload } = body as Record<string, unknown>;
-
-    if (!repo || typeof repo !== "string") {
-      res.writeHead(400).end("Missing required field: repo");
-
-      return;
-    }
-
-    if (!eventType || typeof eventType !== "string") {
-      res.writeHead(400).end("Missing required field: eventType");
-
-      return;
-    }
-
-    if (
-      payload != null &&
-      (typeof payload !== "object" || Array.isArray(payload))
-    ) {
-      res.writeHead(400).end("payload must be a JSON object");
+    if (!parsed.ok) {
+      res.writeHead(400).end(parsed.error);
 
       return;
     }
@@ -109,9 +64,7 @@ const server = createServer((req, res) => {
     await dispatch({
       appId,
       appPk,
-      repo,
-      eventType,
-      payload: JSON.stringify(payload ?? {}),
+      ...parsed.value,
     });
 
     res.writeHead(200).end();
@@ -123,3 +76,28 @@ const server = createServer((req, res) => {
 });
 
 server.listen(Number(process.env.PORT ?? "") || 8080);
+
+const MAX_BODY_BYTES = 1_048_576; // 1 MB
+
+function readBody(req: IncomingMessage): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const chunks: Buffer[] = [];
+    let size = 0;
+
+    req.on("data", (chunk: Buffer) => {
+      size += chunk.length;
+
+      if (size > MAX_BODY_BYTES) {
+        req.destroy();
+        reject(new RangeError("Body too large"));
+
+        return;
+      }
+
+      chunks.push(chunk);
+    });
+
+    req.on("end", () => resolve(Buffer.concat(chunks).toString()));
+    req.on("error", reject);
+  });
+}

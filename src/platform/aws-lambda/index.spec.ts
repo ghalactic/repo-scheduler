@@ -1,8 +1,8 @@
 import { beforeEach, expect, it, vi } from "vitest";
 import { dispatch } from "../../common/dispatch.js";
-import { handler, type ScheduleEvent } from "./index.js";
+import { handler } from "./index.js";
 
-const mockSend = vi.fn();
+const mockSend = vi.hoisted(() => vi.fn());
 
 vi.mock("@aws-sdk/client-secrets-manager", () => ({
   SecretsManagerClient: class {
@@ -83,38 +83,38 @@ it("throws when GITHUB_APP_PK env var is missing", async () => {
 });
 
 it("throws when event is null", async () => {
-  await expect(handler(null as unknown as ScheduleEvent)).rejects.toThrow(
-    "Invalid event: expected an object",
+  await expect(handler(null)).rejects.toThrow(
+    "Invalid input: expected a JSON object",
   );
 });
 
 it("throws when event is an array", async () => {
-  await expect(handler([] as unknown as ScheduleEvent)).rejects.toThrow(
-    "Invalid event: expected an object",
+  await expect(handler([])).rejects.toThrow(
+    "Invalid input: expected a JSON object",
   );
 });
 
 it("throws when repo is missing from event", async () => {
   await expect(handler({ eventType: "schedule" })).rejects.toThrow(
-    "Missing required event field: repo",
+    "Missing required field: repo",
   );
 });
 
 it("throws when eventType is missing from event", async () => {
   await expect(handler({ repo: "owner/repo" })).rejects.toThrow(
-    "Missing required event field: eventType",
+    "Missing required field: eventType",
   );
 });
 
 it("throws when repo is a non-string value", async () => {
   await expect(handler({ repo: 123, eventType: "schedule" })).rejects.toThrow(
-    "Missing required event field: repo",
+    "Missing required field: repo",
   );
 });
 
 it("throws when eventType is a non-string value", async () => {
   await expect(handler({ repo: "owner/repo", eventType: 123 })).rejects.toThrow(
-    "Missing required event field: eventType",
+    "Missing required field: eventType",
   );
 });
 
