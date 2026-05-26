@@ -13,7 +13,7 @@ importers:
         version: 3.1050.0
       '@azure/functions':
         specifier: ^4.14.0
-        version: 4.14.0
+        version: 4.15.0
       '@google-cloud/functions-framework':
         specifier: ^5.0.2
         version: 5.0.2
@@ -152,8 +152,8 @@ packages:
     resolution: {integrity: sha512-ncCkHBNQYJa93dBIh+toH0v1iSgCzSo9tr94s6SMBe7DPWREkaWh8cq33A5P4rPSFX1g5W+3SPvIzDr/6/VOWQ==}
     engines: {node: '>=18.0'}
 
-  '@azure/functions@4.14.0':
-    resolution: {integrity: sha512-13LsitEHNe09qmpEf6eX1ajyI9Cn9syJ8p3ord40h9+08Qk72Yg8X7FNkrgvidJqr9bPwCkcRup2yyIq1mSa6w==}
+  '@azure/functions@4.15.0':
+    resolution: {integrity: sha512-N5qVZutVvAOFzAtOlxxFgyW7T7TbHLTO8RENUIy8GTfZxyvHllDDyQpZD1RF1CIFS9FLmBqVyFabYMMLmK++fA==}
     engines: {node: '>=20.0'}
 
   '@babel/code-frame@7.29.0':
@@ -2515,7 +2515,7 @@ snapshots:
 
   '@azure/functions-extensions-base@0.2.0': {}
 
-  '@azure/functions@4.14.0':
+  '@azure/functions@4.15.0':
     dependencies:
       '@azure/functions-extensions-base': 0.2.0
       cookie: 0.7.2
