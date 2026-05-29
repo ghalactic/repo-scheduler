@@ -13,7 +13,7 @@ importers:
         version: 3.1050.0
       '@azure/functions':
         specifier: ^4.14.0
-        version: 4.15.0
+        version: 4.16.0
       '@google-cloud/functions-framework':
         specifier: ^5.0.2
         version: 5.0.2
@@ -148,12 +148,12 @@ packages:
     resolution: {integrity: sha512-iY8yvjE0y651BixKNPgmv1WrQc+GZ142sb0z4gYnChDDY2YqI4P/jsSopBWrKfAt7LOJAkOXt7rC/hms+WclQQ==}
     engines: {node: '>=18.0.0'}
 
-  '@azure/functions-extensions-base@0.2.0':
-    resolution: {integrity: sha512-ncCkHBNQYJa93dBIh+toH0v1iSgCzSo9tr94s6SMBe7DPWREkaWh8cq33A5P4rPSFX1g5W+3SPvIzDr/6/VOWQ==}
+  '@azure/functions-extensions-base@0.3.0':
+    resolution: {integrity: sha512-Cux0hLu5ZXlC/Kb+yvJVhRLIdkfFwui2HeT5oGZL00r/GCUUkhGTzRfZUjRN4Bq729mPv3okPucz2z7SMQLStA==}
     engines: {node: '>=18.0'}
 
-  '@azure/functions@4.15.0':
-    resolution: {integrity: sha512-N5qVZutVvAOFzAtOlxxFgyW7T7TbHLTO8RENUIy8GTfZxyvHllDDyQpZD1RF1CIFS9FLmBqVyFabYMMLmK++fA==}
+  '@azure/functions@4.16.0':
+    resolution: {integrity: sha512-cwLld7tRi1VLYNdm1evgS9n8ABP/e+0uLjRO++OjM/kigERG80OfFRRMbag/vpXUzCtda83lDiuCvcwPlxgwZw==}
     engines: {node: '>=20.0'}
 
   '@babel/code-frame@7.29.0':
@@ -2518,11 +2518,11 @@ snapshots:
 
   '@aws/lambda-invoke-store@0.2.4': {}
 
-  '@azure/functions-extensions-base@0.2.0': {}
+  '@azure/functions-extensions-base@0.3.0': {}
 
-  '@azure/functions@4.15.0':
+  '@azure/functions@4.16.0':
     dependencies:
-      '@azure/functions-extensions-base': 0.2.0
+      '@azure/functions-extensions-base': 0.3.0
       cookie: 0.7.2
 
   '@babel/code-frame@7.29.0':
