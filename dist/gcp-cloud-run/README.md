@@ -15,17 +15,27 @@ Deploy the Cloud Run service:
 gcloud secrets create repo-scheduler-pk \
   --data-file path/to/private-key.pem
 
+# Create a service account for the function runtime
+gcloud iam service-accounts create repo-scheduler \
+  --display-name "Repo scheduler"
+
+# Grant it access to the private key secret
+gcloud secrets add-iam-policy-binding repo-scheduler-pk \
+  --member "serviceAccount:repo-scheduler@PROJECT_ID.iam.gserviceaccount.com" \
+  --role "roles/secretmanager.secretAccessor"
+
 gcloud run deploy repo-scheduler \
   --source . \
   --region YOUR_REGION \
   --set-env-vars "GITHUB_APP_ID=YOUR_APP_ID" \
   --set-secrets "GITHUB_APP_PK=repo-scheduler-pk:latest" \
   --no-allow-unauthenticated \
+  --service-account repo-scheduler@PROJECT_ID.iam.gserviceaccount.com \
   --memory 256Mi \
   --max-instances 1
 ```
 
-Create a service account for Cloud Scheduler:
+Create a service account for Cloud Scheduler to invoke the function:
 
 ```sh
 gcloud iam service-accounts create repo-scheduler-invoker \
