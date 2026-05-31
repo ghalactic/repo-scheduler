@@ -4,18 +4,39 @@
 
 Prerequisites:
 
-- [Azure CLI]
+- [Azure CLI] with the `quota` extension (`az extension add --name quota`)
 - [Azure Functions Core Tools]
+- At least 1 [Y1 (Consumption plan) quota] in your chosen region (fresh
+  subscriptions default to 0)
 
 [azure cli]: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 [azure functions core tools]:
   https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local
+[y1 (consumption plan) quota]:
+  https://portal.azure.com/#view/Microsoft_Azure_Capacity/QuotaMenuBlade/~/myQuotas
 
 Deploy the infrastructure:
 
 ```sh
+# Register required resource providers (may take a few minutes)
+az provider register --namespace Microsoft.Compute
+az provider register --namespace Microsoft.Insights
+az provider register --namespace Microsoft.KeyVault
+az provider register --namespace Microsoft.Logic
+az provider register --namespace Microsoft.Storage
+az provider register --namespace Microsoft.Web
+
+# Ensure Y1 (Consumption plan) quota is non-zero (fresh subscriptions default to 0)
+az quota create \
+  --resource-name Y1 \
+  --scope "/subscriptions/$(az account show --query id -o tsv)/providers/Microsoft.Web/locations/eastus" \
+  --limit-object value=1 \
+  --resource-type dedicated
+
+az group create --name ghalactic-repo-scheduler --location eastus
+
 az deployment group create \
-  --resource-group YOUR_RESOURCE_GROUP \
+  --resource-group ghalactic-repo-scheduler \
   --template-file azuredeploy.json \
   --parameters \
     functionAppName=repo-scheduler \
