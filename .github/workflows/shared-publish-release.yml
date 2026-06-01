@@ -53,3 +53,10 @@ jobs:
             --output-template-file packaged.yaml \
             --s3-bucket "${{ vars.AWS_SAR_BUCKET }}"
           sam publish --template packaged.yaml --region us-east-1
+
+      - name: Make SAR application public
+        run: |
+          aws serverlessrepo put-application-policy \
+            --application-id "arn:aws:serverlessrepo:us-east-1:724346214646:applications/ghalactic-repo-scheduler" \
+            --statements '[{"Principals":["*"],"Actions":["Deploy"]}]' \
+            --region us-east-1

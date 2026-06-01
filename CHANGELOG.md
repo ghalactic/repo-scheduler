@@ -7,6 +7,14 @@ Versioning].
 [keep a changelog]: https://keepachangelog.com/
 [semantic versioning]: https://semver.org/
 
+## [v0.3.1] - 2026-06-02
+
+[v0.3.1]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.1
+
+### Fixed
+
+- Made AWS SAR app publicly available.
+
 ## [v0.3.0] - 2026-06-01
 
 [v0.3.0]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.0
