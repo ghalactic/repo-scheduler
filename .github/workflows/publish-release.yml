@@ -12,5 +12,6 @@ jobs:
     permissions:
       contents: write
       discussions: write
+      id-token: write
     with:
       tag: ${{ github.ref_name }}

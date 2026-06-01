@@ -15,5 +15,6 @@ jobs:
     permissions:
       contents: write
       discussions: write
+      id-token: write
     with:
       tag: ${{ inputs.tag }}
