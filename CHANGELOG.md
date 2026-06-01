@@ -7,6 +7,14 @@ Versioning].
 [keep a changelog]: https://keepachangelog.com/
 [semantic versioning]: https://semver.org/
 
+## [v0.3.4] - 2026-06-02
+
+[v0.3.4]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.4
+
+### Fixed
+
+- Fixed AWS SAR license publishing.
+
 ## [v0.3.3] - 2026-06-02
 
 [v0.3.3]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.3
