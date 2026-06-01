@@ -50,9 +50,8 @@ jobs:
 
       - name: Publish to AWS SAR
         run: |
-          sam build --template-file dist/aws-lambda/template.yaml
           sam package \
-            --template-file .aws-sam/build/template.yaml \
+            --template-file dist/aws-lambda/template.yaml \
             --output-template-file packaged.yaml \
             --s3-bucket "${{ vars.AWS_SAR_BUCKET }}"
           sam publish --template packaged.yaml --region us-east-1
