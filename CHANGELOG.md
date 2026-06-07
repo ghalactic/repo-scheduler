@@ -7,6 +7,14 @@ Versioning].
 [keep a changelog]: https://keepachangelog.com/
 [semantic versioning]: https://semver.org/
 
+## [v0.3.8] - 2026-06-07
+
+[v0.3.8]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.8
+
+### Fixed
+
+- Fixed AWS SAM template.
+
 ## [v0.3.7] - 2026-06-07
 
 [v0.3.7]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.7

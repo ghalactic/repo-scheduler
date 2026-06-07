@@ -80,7 +80,7 @@ Resources:
     Type: AWS::Scheduler::Schedule
     Properties:
       FlexibleTimeWindow:
-        Mode: OFF
+        Mode: "OFF"
       ScheduleExpression: !Ref Schedule
       Target:
         Arn: !GetAtt SchedulerFunction.Arn
