@@ -67,8 +67,8 @@ Resources:
 
 Outputs:
   SecretArn:
-    Description: ARN of the secret — populate it with your GitHub App private key
+    Description: ARN of the secret. Populate it with your GitHub App private key.
     Value: !Ref GitHubAppPkSecret
   FunctionArn:
-    Description: ARN of the Lambda function — use as target for additional schedules
+    Description: ARN of the Lambda function. Use as target for additional schedules.
     Value: !GetAtt SchedulerFunction.Arn
