@@ -1,4 +1,4 @@
-GENERATED_FILES += dist/aws-lambda/dist/index.mjs dist/aws-lambda/dist/index.mjs.map
+GENERATED_FILES += dist/aws-lambda/LICENSE dist/aws-lambda/dist/index.mjs dist/aws-lambda/dist/index.mjs.map
 GENERATED_FILES += dist/azure-function/dist/index.mjs dist/azure-function/dist/index.mjs.map
 GENERATED_FILES += dist/cloudflare-worker/dist/index.js dist/cloudflare-worker/dist/index.js.map
 GENERATED_FILES += dist/gcp-cloud-run/dist/index.mjs dist/gcp-cloud-run/dist/index.mjs.map
@@ -28,6 +28,9 @@ lint:: tsc-typecheck
 precommit:: tsc-typecheck verify-generated
 
 ################################################################################
+
+dist/aws-lambda/LICENSE: LICENSE
+	cp "$<" "$@"
 
 dist/aws-lambda/dist/index.mjs dist/aws-lambda/dist/index.mjs.map: script/build-aws-lambda.ts artifacts/link-dependencies.touch $(JS_SOURCE_FILES)
 	node "$<" "$@"

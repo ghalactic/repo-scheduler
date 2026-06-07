@@ -45,9 +45,6 @@ jobs:
           VERSION="${{ inputs.tag }}"
           sed -i "s/SemanticVersion: .*/SemanticVersion: ${VERSION#v}/" dist/aws-lambda/template.yaml
 
-      - name: Prepare SAR artifacts
-        run: cp LICENSE dist/aws-lambda/LICENSE
-
       - name: Publish to AWS SAR
         run: |
           sam package \
