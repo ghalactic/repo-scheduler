@@ -56,14 +56,38 @@ Resources:
       Policies:
         - AWSSecretsManagerGetSecretValuePolicy:
             SecretArn: !Ref GitHubAppPkSecret
-      Events:
-        Schedule:
-          Type: Schedule
-          Properties:
-            Schedule: !Ref Schedule
-            Input: !Sub '{"repo":"${TargetRepo}","eventType":"${TargetEventType}","payload":${TargetPayload}}'
-            RetryPolicy:
-              MaximumRetryAttempts: 3
+
+  SchedulerInvocationRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: scheduler.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: InvokeSchedulerFunction
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource: !GetAtt SchedulerFunction.Arn
+
+  DefaultSchedule:
+    Type: AWS::Scheduler::Schedule
+    Properties:
+      FlexibleTimeWindow:
+        Mode: OFF
+      ScheduleExpression: !Ref Schedule
+      Target:
+        Arn: !GetAtt SchedulerFunction.Arn
+        RoleArn: !GetAtt SchedulerInvocationRole.Arn
+        Input: !Sub '{"repo":"${TargetRepo}","eventType":"${TargetEventType}","payload":${TargetPayload}}'
+        RetryPolicy:
+          MaximumRetryAttempts: 3
 
 Outputs:
   SecretArn:
@@ -72,3 +96,6 @@ Outputs:
   FunctionArn:
     Description: ARN of the Lambda function. Use as target for additional schedules.
     Value: !GetAtt SchedulerFunction.Arn
+  ScheduleRoleArn:
+    Description: ARN of the EventBridge Scheduler role. Use for additional schedules.
+    Value: !GetAtt SchedulerInvocationRole.Arn

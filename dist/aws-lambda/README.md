@@ -30,7 +30,8 @@ aws secretsmanager put-secret-value \
 ## Adding more schedules
 
 Create additional EventBridge schedules targeting the same Lambda with different
-inputs:
+inputs. Use the `FunctionArn` and `ScheduleRoleArn` stack outputs as
+`FUNCTION_ARN` and `EXECUTION_ROLE_ARN`:
 
 ```sh
 aws scheduler create-schedule \

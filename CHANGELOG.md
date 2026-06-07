@@ -7,6 +7,14 @@ Versioning].
 [keep a changelog]: https://keepachangelog.com/
 [semantic versioning]: https://semver.org/
 
+## [v0.3.7] - 2026-06-07
+
+[v0.3.7]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.7
+
+### Fixed
+
+- Fixed AWS bundle to support `require()`.
+
 ## [v0.3.6] - 2026-06-07
 
 [v0.3.6]: https://github.com/ghalactic/repo-scheduler/releases/tag/v0.3.6
