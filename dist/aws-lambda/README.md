@@ -23,7 +23,7 @@ After deployment, populate the private key secret (ARN shown in stack outputs):
 
 ```sh
 aws secretsmanager put-secret-value \
-  --secret-id STACK_NAME/ghalactic-repo-scheduler-pk \
+  --secret-id STACK_NAME/private-key \
   --secret-string "$(cat path/to/private-key.pem)"
 ```
 
