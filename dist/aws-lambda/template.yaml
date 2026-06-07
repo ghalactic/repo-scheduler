@@ -9,6 +9,7 @@ Metadata:
       External scheduler for GitHub repos that triggers a repository dispatch
       event on a configurable schedule.
     Author: ghalactic
+    SpdxLicenseId: MIT
     ReadmeUrl: README.md
     LicenseUrl: LICENSE
     HomePageUrl: https://github.com/ghalactic/repo-scheduler
