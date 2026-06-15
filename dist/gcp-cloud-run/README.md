@@ -50,7 +50,7 @@ gcloud run services add-iam-policy-binding repo-scheduler \
 Create a Cloud Scheduler job:
 
 ```sh
-gcloud scheduler jobs create http repo-scheduler-job \
+gcloud scheduler jobs create http repo-scheduler-example-a \
   --location YOUR_REGION \
   --schedule "21 * * * *" \
   --uri "$(gcloud run services describe repo-scheduler --region YOUR_REGION --format 'value(status.url)')" \
@@ -66,10 +66,10 @@ Create additional Cloud Scheduler jobs targeting the same service URL with
 different message bodies:
 
 ```sh
-gcloud scheduler jobs create http repo-scheduler-other \
+gcloud scheduler jobs create http repo-scheduler-example-b \
   --location YOUR_REGION \
   --schedule "45 * * * *" \
-  --uri SERVICE_URL \
+  --uri "$(gcloud run services describe repo-scheduler --region YOUR_REGION --format 'value(status.url)')" \
   --http-method POST \
   --headers "Content-Type=application/json" \
   --message-body '{"repo":"owner/other-repo","eventType":"other-event"}' \
