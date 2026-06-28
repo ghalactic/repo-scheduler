@@ -14869,9 +14869,9 @@ var init_httpAuthSchemes2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/auth/httpAuthSchemeProvider.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/auth/httpAuthSchemeProvider.js
 var require_httpAuthSchemeProvider = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/auth/httpAuthSchemeProvider.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/auth/httpAuthSchemeProvider.js"(exports) {
     var { resolveAwsSdkSigV4Config: resolveAwsSdkSigV4Config2 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
     var { getSmithyContext: getSmithyContext2, normalizeProvider: normalizeProvider3 } = (init_client2(), __toCommonJS(client_exports));
     exports.defaultSecretsManagerHttpAuthSchemeParametersProvider = async (config, context, input) => {
@@ -14915,13 +14915,13 @@ var require_httpAuthSchemeProvider = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/package.json
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/package.json
 var require_package = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/package.json"(exports, module) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/package.json"(exports, module) {
     module.exports = {
       name: "@aws-sdk/client-secrets-manager",
       description: "AWS SDK for JavaScript Secrets Manager Client for Node.js, Browser and React Native",
-      version: "3.1072.0",
+      version: "3.1073.0",
       scripts: {
         build: "concurrently 'yarn:build:types' 'yarn:build:es' && yarn build:cjs",
         "build:cjs": "node ../../scripts/compilation/inline",
@@ -25033,9 +25033,9 @@ var require_dist_cjs18 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/bdd.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/bdd.js
 var require_bdd = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/bdd.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/bdd.js"(exports) {
     var { BinaryDecisionDiagram: BinaryDecisionDiagram2 } = (init_endpoints(), __toCommonJS(endpoints_exports));
     var m3 = "ref";
     var a5 = -1;
@@ -25143,9 +25143,9 @@ var require_bdd = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/endpointResolver.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/endpointResolver.js
 var require_endpointResolver = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/endpointResolver.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/endpoint/endpointResolver.js"(exports) {
     var { awsEndpointFunctions: awsEndpointFunctions2 } = (init_client3(), __toCommonJS(client_exports2));
     var { customEndpointFunctions: customEndpointFunctions2, decideEndpoint: decideEndpoint2, EndpointCache: EndpointCache2 } = (init_endpoints(), __toCommonJS(endpoints_exports));
     var { bdd: bdd5 } = require_bdd();
@@ -25163,9 +25163,9 @@ var require_endpointResolver = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/SecretsManagerServiceException.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/SecretsManagerServiceException.js
 var require_SecretsManagerServiceException = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/SecretsManagerServiceException.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/SecretsManagerServiceException.js"(exports) {
     var { ServiceException: __ServiceException } = (init_client2(), __toCommonJS(client_exports));
     exports.__ServiceException = __ServiceException;
     exports.SecretsManagerServiceException = class SecretsManagerServiceException extends __ServiceException {
@@ -25177,9 +25177,9 @@ var require_SecretsManagerServiceException = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/errors.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/errors.js
 var require_errors = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/errors.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/models/errors.js"(exports) {
     var { SecretsManagerServiceException: __BaseException } = require_SecretsManagerServiceException();
     exports.DecryptionFailure = class DecryptionFailure extends __BaseException {
       name = "DecryptionFailure";
@@ -25352,9 +25352,9 @@ var require_errors = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/schemas/schemas_0.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/schemas/schemas_0.js
 var require_schemas_0 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/schemas/schemas_0.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/schemas/schemas_0.js"(exports) {
     var _AAD = "AutomaticallyAfterDays";
     var _APIELT = "APIErrorListType";
     var _APIET = "APIErrorType";
@@ -26470,9 +26470,9 @@ var require_schemas_0 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.shared.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.shared.js
 var require_runtimeConfig_shared = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.shared.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.shared.js"(exports) {
     var { AwsSdkSigV4Signer: AwsSdkSigV4Signer2 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
     var { AwsJson1_1Protocol: AwsJson1_1Protocol2 } = (init_protocols2(), __toCommonJS(protocols_exports2));
     var { NoOpLogger: NoOpLogger2 } = (init_client2(), __toCommonJS(client_exports));
@@ -26514,9 +26514,9 @@ var require_runtimeConfig_shared = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.js
 var require_runtimeConfig = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/runtimeConfig.js"(exports) {
     var packageInfo = require_package();
     var { createDefaultUserAgentProvider: createDefaultUserAgentProvider2, emitWarningIfUnsupportedVersion: awsCheckVersion, NODE_APP_ID_CONFIG_OPTIONS: NODE_APP_ID_CONFIG_OPTIONS2 } = (init_client3(), __toCommonJS(client_exports2));
     var { NODE_AUTH_SCHEME_PREFERENCE_OPTIONS: NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
@@ -26564,9 +26564,9 @@ var require_runtimeConfig = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
 var require_dist_cjs19 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1072.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1073.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
     var __exportStar2 = (m3, e5) => {
       Object.assign(e5, m3);
     };
