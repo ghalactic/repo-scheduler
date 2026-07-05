@@ -5,8 +5,7 @@ export interface ScheduleInput {
 }
 
 export type ParseResult =
-  | { ok: true; value: ScheduleInput }
-  | { ok: false; error: string };
+  { ok: true; value: ScheduleInput } | { ok: false; error: string };
 
 export function parseScheduleInput(input: unknown): ParseResult {
   if (input == null || typeof input !== "object" || Array.isArray(input)) {
