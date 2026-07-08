@@ -6,6 +6,6 @@
     "start": "functions-framework --target=schedule --source=."
   },
   "dependencies": {
-    "@google-cloud/functions-framework": "^5.0.0"
+    "@google-cloud/functions-framework": "^5.0.5"
   }
 }
