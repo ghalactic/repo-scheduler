@@ -48,10 +48,10 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js
 var state, emitWarningIfUnsupportedVersion;
 var init_emitWarningIfUnsupportedVersion = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js"() {
     state = {
       warningEmitted: false
     };
@@ -79,10 +79,10 @@ More information can be found at: https://a.co/c895JFp`);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js
 var longPollMiddleware, longPollMiddlewareOptions, getLongPollPlugin;
 var init_longPollMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js"() {
     longPollMiddleware = () => (next, context) => async (args) => {
       context.__retryLongPoll = true;
       return next(args);
@@ -101,7 +101,7 @@ var init_longPollMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js
 function setCredentialFeature(credentials, feature, value) {
   if (!credentials.$source) {
     credentials.$source = {};
@@ -110,7 +110,7 @@ function setCredentialFeature(credentials, feature, value) {
   return credentials;
 }
 var init_setCredentialFeature = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js"() {
   }
 });
 
@@ -843,14 +843,14 @@ var init_poller = __esm({
           }
           await sleep(delayMs / 1e3);
         }
-        const { state: state3, reason } = await acceptorChecks(client2, input);
+        const { state: state2, reason } = await acceptorChecks(client2, input);
         if (reason) {
           const message = createMessageFromResponse(reason);
           observedResponses[message] |= 0;
           observedResponses[message] += 1;
         }
-        if (state3 !== WaiterState.RETRY) {
-          return { state: state3, reason, final: reason, observedResponses };
+        if (state2 !== WaiterState.RETRY) {
+          return { state: state2, reason, final: reason, observedResponses };
         }
         currentAttempt += 1;
         if (!didWarn403 && Date.now() >= warn403Time) {
@@ -4218,12 +4218,12 @@ var init_NodeUseDualstackEndpointConfigOptions = __esm({
     CONFIG_USE_DUALSTACK_ENDPOINT = "use_dualstack_endpoint";
     DEFAULT_USE_DUALSTACK_ENDPOINT = false;
     NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_USE_DUALSTACK_ENDPOINT, SelectorType.ENV),
+      environmentVariableSelector: (env2) => booleanSelector(env2, ENV_USE_DUALSTACK_ENDPOINT, SelectorType.ENV),
       configFileSelector: (profile) => booleanSelector(profile, CONFIG_USE_DUALSTACK_ENDPOINT, SelectorType.CONFIG),
       default: false
     };
     nodeDualstackConfigSelectors = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_USE_DUALSTACK_ENDPOINT, SelectorType.ENV),
+      environmentVariableSelector: (env2) => booleanSelector(env2, ENV_USE_DUALSTACK_ENDPOINT, SelectorType.ENV),
       configFileSelector: (profile) => booleanSelector(profile, CONFIG_USE_DUALSTACK_ENDPOINT, SelectorType.CONFIG),
       default: void 0
     };
@@ -4240,12 +4240,12 @@ var init_NodeUseFipsEndpointConfigOptions = __esm({
     CONFIG_USE_FIPS_ENDPOINT = "use_fips_endpoint";
     DEFAULT_USE_FIPS_ENDPOINT = false;
     NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_USE_FIPS_ENDPOINT, SelectorType.ENV),
+      environmentVariableSelector: (env2) => booleanSelector(env2, ENV_USE_FIPS_ENDPOINT, SelectorType.ENV),
       configFileSelector: (profile) => booleanSelector(profile, CONFIG_USE_FIPS_ENDPOINT, SelectorType.CONFIG),
       default: false
     };
     nodeFipsConfigSelectors = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_USE_FIPS_ENDPOINT, SelectorType.ENV),
+      environmentVariableSelector: (env2) => booleanSelector(env2, ENV_USE_FIPS_ENDPOINT, SelectorType.ENV),
       configFileSelector: (profile) => booleanSelector(profile, CONFIG_USE_FIPS_ENDPOINT, SelectorType.CONFIG),
       default: void 0
     };
@@ -4430,7 +4430,7 @@ var init_config = __esm({
     REGION_ENV_NAME = "AWS_REGION";
     REGION_INI_NAME = "region";
     NODE_REGION_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => env3[REGION_ENV_NAME],
+      environmentVariableSelector: (env2) => env2[REGION_ENV_NAME],
       configFileSelector: (profile) => profile[REGION_INI_NAME],
       default: async () => {
         const region = await getInstanceMetadataRegion();
@@ -4565,22 +4565,22 @@ var init_getRegionInfo = __esm({
     init_getResolvedPartition();
     init_getResolvedSigningRegion();
     getRegionInfo = (region, { useFipsEndpoint = false, useDualstackEndpoint = false, signingService, regionHash, partitionHash }) => {
-      const partition3 = getResolvedPartition(region, { partitionHash });
-      const resolvedRegion = region in regionHash ? region : partitionHash[partition3]?.endpoint ?? region;
+      const partition2 = getResolvedPartition(region, { partitionHash });
+      const resolvedRegion = region in regionHash ? region : partitionHash[partition2]?.endpoint ?? region;
       const hostnameOptions = { useFipsEndpoint, useDualstackEndpoint };
       const regionHostname = getHostnameFromVariants(regionHash[resolvedRegion]?.variants, hostnameOptions);
-      const partitionHostname = getHostnameFromVariants(partitionHash[partition3]?.variants, hostnameOptions);
+      const partitionHostname = getHostnameFromVariants(partitionHash[partition2]?.variants, hostnameOptions);
       const hostname = getResolvedHostname(resolvedRegion, { regionHostname, partitionHostname });
       if (hostname === void 0) {
         throw new Error(`Endpoint resolution failed for: ${{ resolvedRegion, useFipsEndpoint, useDualstackEndpoint }}`);
       }
       const signingRegion = getResolvedSigningRegion(hostname, {
         signingRegion: regionHash[resolvedRegion]?.signingRegion,
-        regionRegex: partitionHash[partition3].regionRegex,
+        regionRegex: partitionHash[partition2].regionRegex,
         useFipsEndpoint
       });
       return {
-        partition: partition3,
+        partition: partition2,
         signingService,
         hostname,
         ...signingRegion && { signingRegion },
@@ -4599,8 +4599,8 @@ var init_defaultsModeConfig = __esm({
     AWS_DEFAULTS_MODE_ENV = "AWS_DEFAULTS_MODE";
     AWS_DEFAULTS_MODE_CONFIG = "defaults_mode";
     NODE_DEFAULTS_MODE_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => {
-        return env3[AWS_DEFAULTS_MODE_ENV];
+      environmentVariableSelector: (env2) => {
+        return env2[AWS_DEFAULTS_MODE_ENV];
       },
       configFileSelector: (profile) => {
         return profile[AWS_DEFAULTS_MODE_CONFIG];
@@ -4749,12 +4749,12 @@ var init_getEndpointUrlConfig = __esm({
     ENV_ENDPOINT_URL = "AWS_ENDPOINT_URL";
     CONFIG_ENDPOINT_URL = "endpoint_url";
     getEndpointUrlConfig = (serviceId) => ({
-      environmentVariableSelector: (env3) => {
+      environmentVariableSelector: (env2) => {
         const serviceSuffixParts = serviceId.split(" ").map((w) => w.toUpperCase());
-        const serviceEndpointUrl = env3[[ENV_ENDPOINT_URL, ...serviceSuffixParts].join("_")];
+        const serviceEndpointUrl = env2[[ENV_ENDPOINT_URL, ...serviceSuffixParts].join("_")];
         if (serviceEndpointUrl)
           return serviceEndpointUrl;
-        const endpointUrl = env3[ENV_ENDPOINT_URL];
+        const endpointUrl = env2[ENV_ENDPOINT_URL];
         if (endpointUrl)
           return endpointUrl;
         return void 0;
@@ -4789,7 +4789,7 @@ var init_getIgnoreConfiguredEndpointUrls = __esm({
     ENV_IGNORE_CONFIGURED_ENDPOINT_URLS = "AWS_IGNORE_CONFIGURED_ENDPOINT_URLS";
     CONFIG_IGNORE_CONFIGURED_ENDPOINT_URLS = "ignore_configured_endpoint_urls";
     ignoreConfiguredEndpointUrlsConfigSelectors = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_IGNORE_CONFIGURED_ENDPOINT_URLS, SelectorType.ENV),
+      environmentVariableSelector: (env2) => booleanSelector(env2, ENV_IGNORE_CONFIGURED_ENDPOINT_URLS, SelectorType.ENV),
       configFileSelector: (profile) => booleanSelector(profile, CONFIG_IGNORE_CONFIGURED_ENDPOINT_URLS, SelectorType.CONFIG),
       default: false
     };
@@ -4840,9 +4840,9 @@ var init_s3 = __esm({
     DOTS_PATTERN = /\.\./;
     isDnsCompatibleBucketName = (bucketName) => DOMAIN_PATTERN.test(bucketName) && !IP_ADDRESS_PATTERN.test(bucketName) && !DOTS_PATTERN.test(bucketName);
     isArnBucketName = (bucketName) => {
-      const [arn, partition3, service, , , bucket] = bucketName.split(":");
+      const [arn, partition2, service, , , bucket] = bucketName.split(":");
       const isArn = arn === "arn" && bucketName.split(":").length >= 6;
-      const isValidArn = Boolean(isArn && partition3 && service && bucket);
+      const isValidArn = Boolean(isArn && partition2 && service && bucket);
       if (isArn && !isValidArn) {
         throw new Error(`Invalid ARN: ${bucketName} was an invalid ARN.`);
       }
@@ -6257,7 +6257,7 @@ var init_createChecksumStream_browser = __esm({
       if (!isReadableStream(source)) {
         throw new Error(`@smithy/util-stream: unsupported source type ${source?.constructor?.name ?? source} in ChecksumStream.`);
       }
-      const encoder3 = base64Encoder ?? toBase642;
+      const encoder2 = base64Encoder ?? toBase642;
       if (typeof TransformStream !== "function") {
         throw new Error("@smithy/util-stream: unable to instantiate ChecksumStream because API unavailable: ReadableStream/TransformStream.");
       }
@@ -6270,7 +6270,7 @@ var init_createChecksumStream_browser = __esm({
         },
         async flush(controller) {
           const digest2 = await checksum.digest();
-          const received = encoder3(digest2);
+          const received = encoder2(digest2);
           if (expectedChecksum !== received) {
             const error2 = new Error(`Checksum mismatch: expected "${expectedChecksum}" but received "${received}" in response header "${checksumSourceLocation}".`);
             controller.error(error2);
@@ -7182,8 +7182,8 @@ var init_readableStreamHasher = __esm({
 });
 
 // node_modules/.pnpm/@smithy+core@3.33.3/node_modules/@smithy/core/dist-es/submodules/checksum/md5/Md5Js.js
-function compress(state3, block) {
-  let a5 = state3[0], b5 = state3[1], c5 = state3[2], d5 = state3[3];
+function compress(state2, block) {
+  let a5 = state2[0], b5 = state2[1], c5 = state2[2], d5 = state2[3];
   for (let i5 = 0; i5 < 64; ++i5) {
     let f5, g5;
     if (i5 < 16) {
@@ -7208,10 +7208,10 @@ function compress(state3, block) {
     b5 = b5 + ((sum << s2 | sum >>> 32 - s2) >>> 0) & M;
     a5 = tmp;
   }
-  state3[0] = state3[0] + a5 & M;
-  state3[1] = state3[1] + b5 & M;
-  state3[2] = state3[2] + c5 & M;
-  state3[3] = state3[3] + d5 & M;
+  state2[0] = state2[0] + a5 & M;
+  state2[1] = state2[1] + b5 & M;
+  state2[2] = state2[2] + c5 & M;
+  state2[3] = state2[3] + d5 & M;
 }
 var Md5Js, INIT, M, S, T;
 var init_Md5Js = __esm({
@@ -7238,7 +7238,7 @@ var init_Md5Js = __esm({
         }
       }
       async digest() {
-        const state3 = Uint32Array.from(this.state);
+        const state2 = Uint32Array.from(this.state);
         const buf2 = new DataView(this.writeBuffer.buffer.slice(0));
         let bufLen = this.bufferLength;
         const bits = this.bytesHashed * 8;
@@ -7247,7 +7247,7 @@ var init_Md5Js = __esm({
           for (let i5 = bufLen; i5 < 64; ++i5) {
             buf2.setUint8(i5, 0);
           }
-          compress(state3, buf2);
+          compress(state2, buf2);
           bufLen = 0;
         }
         for (let i5 = bufLen; i5 < 56; ++i5) {
@@ -7255,11 +7255,11 @@ var init_Md5Js = __esm({
         }
         buf2.setUint32(56, bits >>> 0, true);
         buf2.setUint32(60, Math.floor(bits / 2 ** 32), true);
-        compress(state3, buf2);
+        compress(state2, buf2);
         const out = new Uint8Array(16);
         const view2 = new DataView(out.buffer);
         for (let i5 = 0; i5 < 4; ++i5) {
-          view2.setUint32(i5 * 4, state3[i5], true);
+          view2.setUint32(i5 * 4, state2[i5], true);
         }
         return out;
       }
@@ -7457,7 +7457,7 @@ var init_Sha256Js = __esm({
         this.bytesHashed = 0;
       }
       digestSync() {
-        const state3 = this.state.slice();
+        const state2 = this.state.slice();
         const buffer = this.buffer.slice();
         let bufferLength = this.bufferLength;
         const bitsHashed = this.bytesHashed * 8;
@@ -7467,7 +7467,7 @@ var init_Sha256Js = __esm({
           for (let i5 = bufferLength; i5 < BLOCK; ++i5) {
             bufferView.setUint8(i5, 0);
           }
-          this.hashBufferWith(state3, buffer);
+          this.hashBufferWith(state2, buffer);
           bufferLength = 0;
         }
         for (let i5 = bufferLength; i5 < BLOCK - 8; ++i5) {
@@ -7475,13 +7475,13 @@ var init_Sha256Js = __esm({
         }
         bufferView.setUint32(BLOCK - 8, Math.floor(bitsHashed / 4294967296), false);
         bufferView.setUint32(BLOCK - 4, bitsHashed, false);
-        this.hashBufferWith(state3, buffer);
+        this.hashBufferWith(state2, buffer);
         const out = new Uint8Array(DIGEST_LENGTH);
         for (let i5 = 0; i5 < 8; ++i5) {
-          out[i5 * 4] = state3[i5] >>> 24 & 255;
-          out[i5 * 4 + 1] = state3[i5] >>> 16 & 255;
-          out[i5 * 4 + 2] = state3[i5] >>> 8 & 255;
-          out[i5 * 4 + 3] = state3[i5] >>> 0 & 255;
+          out[i5 * 4] = state2[i5] >>> 24 & 255;
+          out[i5 * 4 + 1] = state2[i5] >>> 16 & 255;
+          out[i5 * 4 + 2] = state2[i5] >>> 8 & 255;
+          out[i5 * 4 + 3] = state2[i5] >>> 0 & 255;
         }
         return out;
       }
@@ -7505,9 +7505,9 @@ var init_Sha256Js = __esm({
       hashBuffer() {
         this.hashBufferWith(this.state, this.buffer);
       }
-      hashBufferWith(state3, buffer) {
+      hashBufferWith(state2, buffer) {
         const w = this.w ??= new Int32Array(64);
-        let s0 = state3[0], s1 = state3[1], s2 = state3[2], s3 = state3[3], s4 = state3[4], s5 = state3[5], s6 = state3[6], s7 = state3[7];
+        let s0 = state2[0], s1 = state2[1], s2 = state2[2], s3 = state2[3], s4 = state2[4], s5 = state2[5], s6 = state2[6], s7 = state2[7];
         for (let i5 = 0; i5 < BLOCK; ++i5) {
           if (i5 < 16) {
             w[i5] = (buffer[i5 * 4] & 255) << 24 | (buffer[i5 * 4 + 1] & 255) << 16 | (buffer[i5 * 4 + 2] & 255) << 8 | buffer[i5 * 4 + 3] & 255;
@@ -7529,14 +7529,14 @@ var init_Sha256Js = __esm({
           s1 = s0;
           s0 = t1 + t2 | 0;
         }
-        state3[0] += s0;
-        state3[1] += s1;
-        state3[2] += s2;
-        state3[3] += s3;
-        state3[4] += s4;
-        state3[5] += s5;
-        state3[6] += s6;
-        state3[7] += s7;
+        state2[0] += s0;
+        state2[1] += s1;
+        state2[2] += s2;
+        state2[3] += s3;
+        state2[4] += s4;
+        state2[5] += s5;
+        state2[6] += s6;
+        state2[7] += s7;
       }
     };
     INIT2 = new Int32Array([
@@ -10813,8 +10813,8 @@ var init_configurations = __esm({
     ENV_MAX_ATTEMPTS = "AWS_MAX_ATTEMPTS";
     CONFIG_MAX_ATTEMPTS = "max_attempts";
     NODE_MAX_ATTEMPT_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => {
-        const value = env3[ENV_MAX_ATTEMPTS];
+      environmentVariableSelector: (env2) => {
+        const value = env2[ENV_MAX_ATTEMPTS];
         if (!value)
           return void 0;
         const maxAttempt = parseInt(value);
@@ -10862,7 +10862,7 @@ var init_configurations = __esm({
     ENV_RETRY_MODE = "AWS_RETRY_MODE";
     CONFIG_RETRY_MODE = "retry_mode";
     NODE_RETRY_MODE_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => env3[ENV_RETRY_MODE],
+      environmentVariableSelector: (env2) => env2[ENV_RETRY_MODE],
       configFileSelector: (profile) => profile[CONFIG_RETRY_MODE],
       default: DEFAULT_RETRY_MODE
     };
@@ -10971,7 +10971,7 @@ var init_retry2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js
 function setFeature2(context, feature, value) {
   if (!context.__aws_sdk_context) {
     context.__aws_sdk_context = {
@@ -10983,13 +10983,13 @@ function setFeature2(context, feature, value) {
   context.__aws_sdk_context.features[feature] = value;
 }
 var init_setFeature = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js"() {
     init_retry2();
     Retry.v2026 ||= typeof process === "object" && process.env?.AWS_NEW_RETRIES_2026 === "true";
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js
 function setTokenFeature(token, feature, value) {
   if (!token.$source) {
     token.$source = {};
@@ -10998,17 +10998,17 @@ function setTokenFeature(token, feature, value) {
   return token;
 }
 var init_setTokenFeature = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js"() {
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js
 function resolveHostHeaderConfig(input) {
   return input;
 }
 var hostHeaderMiddleware, hostHeaderMiddlewareOptions, getHostHeaderPlugin;
 var init_hostHeaderMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js"() {
     init_protocols();
     hostHeaderMiddleware = (options) => (next) => async (args) => {
       if (!HttpRequest.isInstance(args.request))
@@ -11041,10 +11041,10 @@ var init_hostHeaderMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js
 var loggerMiddleware, loggerMiddlewareOptions, getLoggerPlugin;
 var init_loggerMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js"() {
     loggerMiddleware = () => (next, context) => async (args) => {
       try {
         const response = await next(args);
@@ -11089,10 +11089,10 @@ var init_loggerMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js
 var recursionDetectionMiddlewareOptions;
 var init_configuration = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js"() {
     recursionDetectionMiddlewareOptions = {
       step: "build",
       tags: ["RECURSION_DETECTION", "TRACE_CONTEXT_PROPAGATION"],
@@ -11230,7 +11230,7 @@ var init_invoke_store = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js
 function sanitizeTraceHeaders(headers) {
   for (const header of Object.keys(headers)) {
     const lower = header.toLowerCase();
@@ -11242,7 +11242,7 @@ function sanitizeTraceHeaders(headers) {
 }
 var AWS_LAMBDA_FUNCTION_NAME, _X_AMZN_TRACE_ID, X_AMZN_TRACE_ID, TRACEPARENT, TRACESTATE, BAGGAGE, recursionDetectionMiddleware;
 var init_recursionDetectionMiddleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js"() {
     init_invoke_store();
     init_protocols();
     AWS_LAMBDA_FUNCTION_NAME = "AWS_LAMBDA_FUNCTION_NAME";
@@ -11294,10 +11294,10 @@ var init_recursionDetectionMiddleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js
 var getRecursionDetectionPlugin;
 var init_getRecursionDetectionPlugin = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js"() {
     init_configuration();
     init_recursionDetectionMiddleware();
     getRecursionDetectionPlugin = (options) => ({
@@ -11784,7 +11784,7 @@ var init_dist_es = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js
 function isValidUserAgentAppId(appId) {
   if (appId === void 0) {
     return true;
@@ -11812,16 +11812,16 @@ function resolveUserAgentConfig(input) {
 }
 var DEFAULT_UA_APP_ID;
 var init_configurations2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js"() {
     init_dist_es();
     DEFAULT_UA_APP_ID = void 0;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js
 var partitionsInfo;
 var init_partitions = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js"() {
     partitionsInfo = {
       "partitions": [
         {
@@ -12101,17 +12101,17 @@ var init_partitions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js
 var selectedPartitionsInfo, selectedUserAgentPrefix, partition, setPartitionInfo, useDefaultPartitionInfo, getUserAgentPrefix;
 var init_partition = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js"() {
     init_partitions();
     selectedPartitionsInfo = partitionsInfo;
     selectedUserAgentPrefix = "";
     partition = (value) => {
       const { partitions } = selectedPartitionsInfo;
-      for (const partition3 of partitions) {
-        const { regions, outputs } = partition3;
+      for (const partition2 of partitions) {
+        const { regions, outputs } = partition2;
         for (const [region, regionData] of Object.entries(regions)) {
           if (region === value) {
             return {
@@ -12121,15 +12121,15 @@ var init_partition = __esm({
           }
         }
       }
-      for (const partition3 of partitions) {
-        const { regionRegex, outputs } = partition3;
+      for (const partition2 of partitions) {
+        const { regionRegex, outputs } = partition2;
         if (new RegExp(regionRegex).test(value)) {
           return {
             ...outputs
           };
         }
       }
-      const DEFAULT_PARTITION = partitions.find((partition3) => partition3.id === "aws");
+      const DEFAULT_PARTITION = partitions.find((partition2) => partition2.id === "aws");
       if (!DEFAULT_PARTITION) {
         throw new Error("Provided region was not found in the partition array or regex, and default partition with id 'aws' doesn't exist.");
       }
@@ -12137,8 +12137,8 @@ var init_partition = __esm({
         ...DEFAULT_PARTITION.outputs
       };
     };
-    setPartitionInfo = (partitionsInfo3, userAgentPrefix = "") => {
-      selectedPartitionsInfo = partitionsInfo3;
+    setPartitionInfo = (partitionsInfo2, userAgentPrefix = "") => {
+      selectedPartitionsInfo = partitionsInfo2;
       selectedUserAgentPrefix = userAgentPrefix;
     };
     useDefaultPartitionInfo = () => {
@@ -12148,7 +12148,7 @@ var init_partition = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js
 async function checkFeatures(context, config, args) {
   const request2 = args.request;
   if (request2?.headers?.["smithy-protocol"] === "rpc-v2-cbor") {
@@ -12197,17 +12197,17 @@ async function checkFeatures(context, config, args) {
 }
 var ACCOUNT_ID_ENDPOINT_REGEX;
 var init_check_features = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js"() {
     init_retry2();
     init_setFeature();
     ACCOUNT_ID_ENDPOINT_REGEX = /\d{12}\.ddb/;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js
 var USER_AGENT, X_AMZ_USER_AGENT, SPACE, UA_NAME_SEPARATOR, UA_NAME_ESCAPE_REGEX, UA_VALUE_ESCAPE_REGEX, UA_ESCAPE_CHAR;
 var init_constants6 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js"() {
     USER_AGENT = "user-agent";
     X_AMZ_USER_AGENT = "x-amz-user-agent";
     SPACE = " ";
@@ -12218,7 +12218,7 @@ var init_constants6 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js
 function encodeFeatures(features) {
   let buffer = "";
   for (const key in features) {
@@ -12237,15 +12237,15 @@ function encodeFeatures(features) {
 }
 var BYTE_LIMIT;
 var init_encode_features = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js"() {
     BYTE_LIMIT = 1024;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js
 var userAgentMiddleware, escapeUserAgent, getUserAgentMiddlewareOptions, getUserAgentPlugin;
 var init_user_agent_middleware = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js"() {
     init_protocols();
     init_partition();
     init_check_features();
@@ -12258,19 +12258,19 @@ var init_user_agent_middleware = __esm({
       }
       const { headers } = request2;
       const userAgent2 = context?.userAgent?.map(escapeUserAgent) || [];
-      const defaultUserAgent3 = (await options.defaultUserAgentProvider()).map(escapeUserAgent);
+      const defaultUserAgent2 = (await options.defaultUserAgentProvider()).map(escapeUserAgent);
       await checkFeatures(context, options, args);
       const awsContext = context;
-      defaultUserAgent3.push(`m/${encodeFeatures(Object.assign({}, context.__smithy_context?.features, awsContext.__aws_sdk_context?.features))}`);
+      defaultUserAgent2.push(`m/${encodeFeatures(Object.assign({}, context.__smithy_context?.features, awsContext.__aws_sdk_context?.features))}`);
       const customUserAgent = options?.customUserAgent?.map(escapeUserAgent) || [];
       const appId = await options.userAgentAppId();
       if (appId) {
-        defaultUserAgent3.push(escapeUserAgent([`app`, `${appId}`]));
+        defaultUserAgent2.push(escapeUserAgent([`app`, `${appId}`]));
       }
       const prefix = getUserAgentPrefix();
-      const sdkUserAgentValue = (prefix ? [prefix] : []).concat([...defaultUserAgent3, ...userAgent2, ...customUserAgent]).join(SPACE);
+      const sdkUserAgentValue = (prefix ? [prefix] : []).concat([...defaultUserAgent2, ...userAgent2, ...customUserAgent]).join(SPACE);
       const normalUAValue = [
-        ...defaultUserAgent3.filter((section) => section.startsWith("aws-sdk-")),
+        ...defaultUserAgent2.filter((section) => section.startsWith("aws-sdk-")),
         ...customUserAgent
       ].join(SPACE);
       if (options.runtime !== "browser") {
@@ -12321,11 +12321,11 @@ var init_user_agent_middleware = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js
 import { versions } from "node:process";
 var getRuntimeUserAgentPair;
 var init_getRuntimeUserAgentPair = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js"() {
     getRuntimeUserAgentPair = () => {
       const runtimesToCheck = ["deno", "bun", "llrt"];
       for (const runtime of runtimesToCheck) {
@@ -12338,20 +12338,20 @@ var init_getRuntimeUserAgentPair = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js
 var crtAvailability;
 var init_crt_availability = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js"() {
     crtAvailability = {
       isCrtAvailable: false
     };
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js
 var isCrtAvailable;
 var init_is_crt_available = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js"() {
     init_crt_availability();
     isCrtAvailable = () => {
       if (crtAvailability.isCrtAvailable) {
@@ -12362,12 +12362,12 @@ var init_is_crt_available = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js
 import { platform, release } from "node:os";
 import { env } from "node:process";
 var createDefaultUserAgentProvider, defaultUserAgent;
 var init_defaultUserAgent = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js"() {
     init_getRuntimeUserAgentPair();
     init_is_crt_available();
     init_crt_availability();
@@ -12400,16 +12400,16 @@ var init_defaultUserAgent = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js
 var UA_APP_ID_ENV_NAME, UA_APP_ID_INI_NAME, UA_APP_ID_INI_NAME_DEPRECATED, NODE_APP_ID_CONFIG_OPTIONS;
 var init_nodeAppIdConfigOptions = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js"() {
     init_configurations2();
     UA_APP_ID_ENV_NAME = "AWS_SDK_UA_APP_ID";
     UA_APP_ID_INI_NAME = "sdk_ua_app_id";
     UA_APP_ID_INI_NAME_DEPRECATED = "sdk-ua-app-id";
     NODE_APP_ID_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => env3[UA_APP_ID_ENV_NAME],
+      environmentVariableSelector: (env2) => env2[UA_APP_ID_ENV_NAME],
       configFileSelector: (profile) => profile[UA_APP_ID_INI_NAME] ?? profile[UA_APP_ID_INI_NAME_DEPRECATED],
       default: DEFAULT_UA_APP_ID
     };
@@ -13232,10 +13232,10 @@ var require_es5 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js
 var createUserAgentStringParsingProvider;
 var init_createUserAgentStringParsingProvider = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js"() {
     createUserAgentStringParsingProvider = ({ serviceId, clientVersion }) => async (config) => {
       const module = await Promise.resolve().then(() => __toESM(require_es5()));
       const parse3 = module.parse ?? module.default.parse ?? (() => "");
@@ -13259,10 +13259,10 @@ var init_createUserAgentStringParsingProvider = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js
 var fallback;
 var init_defaultUserAgent2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js"() {
     fallback = {
       os(ua) {
         if (/iPhone|iPad|iPod/.test(ua))
@@ -13292,17 +13292,17 @@ var init_defaultUserAgent2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js
 var init_isIpAddress2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js"() {
     init_endpoints();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js
 var isVirtualHostableS3Bucket;
 var init_isVirtualHostableS3Bucket = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js"() {
     init_endpoints();
     init_isIpAddress2();
     isVirtualHostableS3Bucket = (value, allowSubDomains = false) => {
@@ -13331,22 +13331,22 @@ var init_isVirtualHostableS3Bucket = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js
 var ARN_DELIMITER, RESOURCE_DELIMITER, parseArn;
 var init_parseArn = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js"() {
     ARN_DELIMITER = ":";
     RESOURCE_DELIMITER = "/";
     parseArn = (value) => {
       const segments = value.split(ARN_DELIMITER);
       if (segments.length < 6)
         return null;
-      const [arn, partition3, service, region, accountId, ...resourcePath] = segments;
-      if (arn !== "arn" || partition3 === "" || service === "" || resourcePath.join(ARN_DELIMITER) === "")
+      const [arn, partition2, service, region, accountId, ...resourcePath] = segments;
+      if (arn !== "arn" || partition2 === "" || service === "" || resourcePath.join(ARN_DELIMITER) === "")
         return null;
       const resourceId = resourcePath.map((resource) => resource.split(RESOURCE_DELIMITER)).flat();
       return {
-        partition: partition3,
+        partition: partition2,
         service,
         region,
         accountId,
@@ -13356,10 +13356,10 @@ var init_parseArn = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js
 var awsEndpointFunctions;
 var init_aws = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js"() {
     init_endpoints();
     init_isVirtualHostableS3Bucket();
     init_parseArn();
@@ -13373,17 +13373,17 @@ var init_aws = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js
 var init_resolveEndpoint2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js"() {
     init_endpoints();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js
 var resolveDefaultAwsRegionalEndpointsConfig, toEndpointV12;
 var init_resolveDefaultAwsRegionalEndpointsConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js"() {
     init_protocols();
     resolveDefaultAwsRegionalEndpointsConfig = (input) => {
       if (typeof input.endpointProvider !== "function") {
@@ -13406,22 +13406,22 @@ var init_resolveDefaultAwsRegionalEndpointsConfig = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js
 var init_EndpointError2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js"() {
     init_endpoints();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js
 var init_awsRegionConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js"() {
     init_config2();
     init_config2();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js
 function stsRegionDefaultResolver(loaderConfig = {}) {
   return loadConfig({
     ...NODE_REGION_CONFIG_OPTIONS,
@@ -13435,7 +13435,7 @@ function stsRegionDefaultResolver(loaderConfig = {}) {
 }
 var warning;
 var init_stsRegionDefaultResolver = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js"() {
     init_config2();
     warning = {
       silence: false
@@ -13443,10 +13443,10 @@ var init_stsRegionDefaultResolver = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js
 var getAwsRegionExtensionConfiguration, resolveAwsRegionExtensionConfiguration;
 var init_extensions = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js"() {
     getAwsRegionExtensionConfiguration = (runtimeConfig) => {
       return {
         setRegion(region) {
@@ -13465,7 +13465,7 @@ var init_extensions = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js
 var client_exports2 = {};
 __export(client_exports2, {
   DEFAULT_UA_APP_ID: () => DEFAULT_UA_APP_ID,
@@ -13520,7 +13520,7 @@ __export(client_exports2, {
   userAgentMiddleware: () => userAgentMiddleware
 });
 var init_client3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js"() {
     init_emitWarningIfUnsupportedVersion();
     init_longPollMiddleware();
     init_setCredentialFeature();
@@ -13551,28 +13551,28 @@ var init_client3 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js
 var getDateHeader, getAgeHeader;
 var init_getDateHeader = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js"() {
     init_protocols();
     getDateHeader = (response) => HttpResponse.isInstance(response) ? response.headers?.date ?? response.headers?.Date : void 0;
     getAgeHeader = (response) => HttpResponse.isInstance(response) ? response.headers?.age ?? response.headers?.Age : void 0;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js
 var getSkewCorrectedDate;
 var init_getSkewCorrectedDate = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js"() {
     getSkewCorrectedDate = (systemClockOffset) => new Date(Date.now() + systemClockOffset);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js
 var getUpdatedSystemClockOffset;
 var init_getUpdatedSystemClockOffset = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js"() {
     getUpdatedSystemClockOffset = (clockTime, currentSystemClockOffset, timeRequestSent, ageHeader) => {
       if (ageHeader !== void 0) {
         return currentSystemClockOffset;
@@ -13588,19 +13588,19 @@ var init_getUpdatedSystemClockOffset = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js
 var init_utils3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js"() {
     init_getDateHeader();
     init_getSkewCorrectedDate();
     init_getUpdatedSystemClockOffset();
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js
 var throwSigningPropertyError, validateSigningProperties, AwsSdkSigV4Signer, AWSSDKSigV4Signer;
 var init_AwsSdkSigV4Signer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js"() {
     init_protocols();
     init_utils3();
     throwSigningPropertyError = (name, property) => {
@@ -13695,10 +13695,10 @@ var init_AwsSdkSigV4Signer = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js
 var AwsSdkSigV4ASigner;
 var init_AwsSdkSigV4ASigner = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js"() {
     init_protocols();
     init_utils3();
     init_AwsSdkSigV4Signer();
@@ -13727,40 +13727,40 @@ var init_AwsSdkSigV4ASigner = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js
 var getArrayForCommaSeparatedString;
 var init_getArrayForCommaSeparatedString = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js"() {
     getArrayForCommaSeparatedString = (str) => typeof str === "string" && str.length > 0 ? str.split(",").map((item) => item.trim()) : [];
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js
 var getBearerTokenEnvKey;
 var init_getBearerTokenEnvKey = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js"() {
     getBearerTokenEnvKey = (signingName) => `AWS_BEARER_TOKEN_${signingName.replace(/[\s-]/g, "_").toUpperCase()}`;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js
 var NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY, NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY, NODE_AUTH_SCHEME_PREFERENCE_OPTIONS;
 var init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js"() {
     init_getArrayForCommaSeparatedString();
     init_getBearerTokenEnvKey();
     NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY = "AWS_AUTH_SCHEME_PREFERENCE";
     NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY = "auth_scheme_preference";
     NODE_AUTH_SCHEME_PREFERENCE_OPTIONS = {
-      environmentVariableSelector: (env3, options) => {
+      environmentVariableSelector: (env2, options) => {
         if (options?.signingName) {
           const bearerTokenKey = getBearerTokenEnvKey(options.signingName);
-          if (bearerTokenKey in env3)
+          if (bearerTokenKey in env2)
             return ["httpBearerAuth"];
         }
-        if (!(NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY in env3))
+        if (!(NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY in env2))
           return void 0;
-        return getArrayForCommaSeparatedString(env3[NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY]);
+        return getArrayForCommaSeparatedString(env2[NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY]);
       },
       configFileSelector: (profile) => {
         if (!(NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY in profile))
@@ -13772,10 +13772,10 @@ var init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js
 var resolveAwsSdkSigV4AConfig, NODE_SIGV4A_CONFIG_OPTIONS;
 var init_resolveAwsSdkSigV4AConfig = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js"() {
     init_dist_es();
     init_config2();
     resolveAwsSdkSigV4AConfig = (config) => {
@@ -13783,9 +13783,9 @@ var init_resolveAwsSdkSigV4AConfig = __esm({
       return config;
     };
     NODE_SIGV4A_CONFIG_OPTIONS = {
-      environmentVariableSelector(env3) {
-        if (env3.AWS_SIGV4A_SIGNING_REGION_SET) {
-          return env3.AWS_SIGV4A_SIGNING_REGION_SET.split(",").map((_) => _.trim());
+      environmentVariableSelector(env2) {
+        if (env2.AWS_SIGV4A_SIGNING_REGION_SET) {
+          return env2.AWS_SIGV4A_SIGNING_REGION_SET.split(",").map((_) => _.trim());
         }
         throw new ProviderError("AWS_SIGV4A_SIGNING_REGION_SET not set in env.", {
           tryNextLink: true
@@ -14184,7 +14184,7 @@ ${toHex2(hashedRequest)}`;
       }
       return request2;
     };
-    var SignatureV43 = class extends SignatureV4Base {
+    var SignatureV42 = class extends SignatureV4Base {
       headerFormatter = new HeaderFormatter();
       constructor({ applyChecksum, credentials, region, service, sha256, uriEscapePath = true }) {
         super({
@@ -14333,7 +14333,7 @@ ${toHex2(hashedRequest)}`;
     exports.SIGNATURE_HEADER = SIGNATURE_HEADER;
     exports.SIGNATURE_QUERY_PARAM = SIGNATURE_QUERY_PARAM;
     exports.SIGNED_HEADERS_QUERY_PARAM = SIGNED_HEADERS_QUERY_PARAM;
-    exports.SignatureV4 = SignatureV43;
+    exports.SignatureV4 = SignatureV42;
     exports.SignatureV4Base = SignatureV4Base;
     exports.TOKEN_HEADER = TOKEN_HEADER;
     exports.TOKEN_QUERY_PARAM = TOKEN_QUERY_PARAM;
@@ -14352,7 +14352,7 @@ ${toHex2(hashedRequest)}`;
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js
 function normalizeCredentialProvider(config, { credentials, credentialDefaultProvider }) {
   let credentialsProvider;
   if (credentials) {
@@ -14386,7 +14386,7 @@ function bindCallerConfig(config, credentialsProvider) {
 }
 var import_signature_v4, bindResolveAwsSdkSigV4Config;
 var init_resolveAwsSdkSigV4Config = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js"() {
     init_client3();
     init_dist_es();
     import_signature_v4 = __toESM(require_dist_cjs2());
@@ -14490,9 +14490,9 @@ var init_resolveAwsSdkSigV4Config = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js
 var init_aws_sdk = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js"() {
     init_AwsSdkSigV4Signer();
     init_AwsSdkSigV4ASigner();
     init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS();
@@ -14501,32 +14501,32 @@ var init_aws_sdk = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js
 var ENV_DISABLE_CLOCK_SKEW_CORRECTION, CONFIG_DISABLE_CLOCK_SKEW_CORRECTION, NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS;
 var init_clock_skew_node_config = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js"() {
     init_config2();
     ENV_DISABLE_CLOCK_SKEW_CORRECTION = "AWS_DISABLE_CLOCK_SKEW_CORRECTION";
     CONFIG_DISABLE_CLOCK_SKEW_CORRECTION = "disable_clock_skew_correction";
     NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_DISABLE_CLOCK_SKEW_CORRECTION, SelectorType.ENV),
+      environmentVariableSelector: (env2) => booleanSelector(env2, ENV_DISABLE_CLOCK_SKEW_CORRECTION, SelectorType.ENV),
       configFileSelector: (profile) => booleanSelector(profile, CONFIG_DISABLE_CLOCK_SKEW_CORRECTION, SelectorType.CONFIG),
       default: false
     };
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js
 var DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION;
 var init_clock_skew_defaults = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js"() {
     init_config2();
     init_clock_skew_node_config();
     DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION = loadConfig(NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS);
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js
 var httpAuthSchemes_exports = {};
 __export(httpAuthSchemes_exports, {
   AWSSDKSigV4Signer: () => AWSSDKSigV4Signer,
@@ -14542,7 +14542,7 @@ __export(httpAuthSchemes_exports, {
 });
 var resolveAwsSdkSigV4Config, resolveAWSSDKSigV4Config;
 var init_httpAuthSchemes2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js"() {
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js"() {
     init_aws_sdk();
     init_getBearerTokenEnvKey();
     init_aws_sdk();
@@ -14552,1237 +14552,10 @@ var init_httpAuthSchemes2 = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js
-var state2, emitWarningIfUnsupportedVersion3;
-var init_emitWarningIfUnsupportedVersion3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/emitWarningIfUnsupportedVersion.js"() {
-    state2 = {
-      warningEmitted: false
-    };
-    emitWarningIfUnsupportedVersion3 = (version) => {
-      if (version && !state2.warningEmitted) {
-        if (process.env.AWS_SDK_JS_NODE_VERSION_SUPPORT_WARNING_DISABLED === "true") {
-          state2.warningEmitted = true;
-          return;
-        }
-        const userMajorVersion = parseInt(version.substring(1, version.indexOf(".")));
-        const vv = 22;
-        if (userMajorVersion < vv) {
-          state2.warningEmitted = true;
-          process.emitWarning(`NodeVersionSupportWarning: The AWS SDK for JavaScript (v3)
-versions published after the first week of January 2027
-will require node >=${vv}. You are running node ${version}.
-
-To continue receiving updates to AWS services, bug fixes,
-and security updates please upgrade to node >=${vv}.
-
-More information can be found at: https://a.co/c895JFp`);
-        }
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js
-var longPollMiddleware2, longPollMiddlewareOptions2, getLongPollPlugin2;
-var init_longPollMiddleware2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/longPollMiddleware.js"() {
-    longPollMiddleware2 = () => (next, context) => async (args) => {
-      context.__retryLongPoll = true;
-      return next(args);
-    };
-    longPollMiddlewareOptions2 = {
-      name: "longPollMiddleware",
-      tags: ["RETRY"],
-      step: "initialize",
-      override: true
-    };
-    getLongPollPlugin2 = (options) => ({
-      applyToStack: (clientStack) => {
-        clientStack.add(longPollMiddleware2(), longPollMiddlewareOptions2);
-      }
-    });
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js
-function setCredentialFeature2(credentials, feature, value) {
-  if (!credentials.$source) {
-    credentials.$source = {};
-  }
-  credentials.$source[feature] = value;
-  return credentials;
-}
-var init_setCredentialFeature2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setCredentialFeature.js"() {
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js
-function setFeature4(context, feature, value) {
-  if (!context.__aws_sdk_context) {
-    context.__aws_sdk_context = {
-      features: {}
-    };
-  } else if (!context.__aws_sdk_context.features) {
-    context.__aws_sdk_context.features = {};
-  }
-  context.__aws_sdk_context.features[feature] = value;
-}
-var init_setFeature3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setFeature.js"() {
-    init_retry2();
-    Retry.v2026 ||= typeof process === "object" && process.env?.AWS_NEW_RETRIES_2026 === "true";
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js
-function setTokenFeature2(token, feature, value) {
-  if (!token.$source) {
-    token.$source = {};
-  }
-  token.$source[feature] = value;
-  return token;
-}
-var init_setTokenFeature2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/setTokenFeature.js"() {
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js
-function resolveHostHeaderConfig2(input) {
-  return input;
-}
-var hostHeaderMiddleware2, hostHeaderMiddlewareOptions2, getHostHeaderPlugin2;
-var init_hostHeaderMiddleware2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-host-header/hostHeaderMiddleware.js"() {
-    init_protocols();
-    hostHeaderMiddleware2 = (options) => (next) => async (args) => {
-      if (!HttpRequest.isInstance(args.request))
-        return next(args);
-      const { request: request2 } = args;
-      const { handlerProtocol = "" } = options.requestHandler.metadata || {};
-      if (handlerProtocol.indexOf("h2") >= 0 && !request2.headers[":authority"]) {
-        delete request2.headers["host"];
-        request2.headers[":authority"] = request2.hostname + (request2.port ? ":" + request2.port : "");
-      } else if (!request2.headers["host"]) {
-        let host = request2.hostname;
-        if (request2.port != null)
-          host += `:${request2.port}`;
-        request2.headers["host"] = host;
-      }
-      return next(args);
-    };
-    hostHeaderMiddlewareOptions2 = {
-      name: "hostHeaderMiddleware",
-      step: "build",
-      priority: "low",
-      tags: ["HOST"],
-      override: true
-    };
-    getHostHeaderPlugin2 = (options) => ({
-      applyToStack: (clientStack) => {
-        clientStack.add(hostHeaderMiddleware2(options), hostHeaderMiddlewareOptions2);
-      }
-    });
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js
-var loggerMiddleware2, loggerMiddlewareOptions2, getLoggerPlugin2;
-var init_loggerMiddleware2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-logger/loggerMiddleware.js"() {
-    loggerMiddleware2 = () => (next, context) => async (args) => {
-      try {
-        const response = await next(args);
-        const { clientName, commandName, logger: logger2, dynamoDbDocumentClientOptions = {} } = context;
-        const { overrideInputFilterSensitiveLog, overrideOutputFilterSensitiveLog } = dynamoDbDocumentClientOptions;
-        const inputFilterSensitiveLog = overrideInputFilterSensitiveLog ?? context.inputFilterSensitiveLog;
-        const outputFilterSensitiveLog = overrideOutputFilterSensitiveLog ?? context.outputFilterSensitiveLog;
-        const { $metadata, ...outputWithoutMetadata } = response.output;
-        logger2?.info?.({
-          clientName,
-          commandName,
-          input: inputFilterSensitiveLog(args.input),
-          output: outputFilterSensitiveLog(outputWithoutMetadata),
-          metadata: $metadata
-        });
-        return response;
-      } catch (error2) {
-        const { clientName, commandName, logger: logger2, dynamoDbDocumentClientOptions = {} } = context;
-        const { overrideInputFilterSensitiveLog } = dynamoDbDocumentClientOptions;
-        const inputFilterSensitiveLog = overrideInputFilterSensitiveLog ?? context.inputFilterSensitiveLog;
-        logger2?.error?.({
-          clientName,
-          commandName,
-          input: inputFilterSensitiveLog(args.input),
-          error: error2,
-          metadata: error2.$metadata
-        });
-        throw error2;
-      }
-    };
-    loggerMiddlewareOptions2 = {
-      name: "loggerMiddleware",
-      tags: ["LOGGER"],
-      step: "initialize",
-      override: true
-    };
-    getLoggerPlugin2 = (options) => ({
-      applyToStack: (clientStack) => {
-        clientStack.add(loggerMiddleware2(), loggerMiddlewareOptions2);
-      }
-    });
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js
-var recursionDetectionMiddlewareOptions2;
-var init_configuration2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/configuration.js"() {
-    recursionDetectionMiddlewareOptions2 = {
-      step: "build",
-      tags: ["RECURSION_DETECTION", "TRACE_CONTEXT_PROPAGATION"],
-      name: "recursionDetectionMiddleware",
-      override: true,
-      priority: "low"
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js
-function sanitizeTraceHeaders2(headers) {
-  for (const header of Object.keys(headers)) {
-    const lower = header.toLowerCase();
-    if (header !== lower && (lower === TRACEPARENT2 || lower === TRACESTATE2 || lower === BAGGAGE2)) {
-      headers[lower] = headers[header];
-      delete headers[header];
-    }
-  }
-}
-var AWS_LAMBDA_FUNCTION_NAME2, _X_AMZN_TRACE_ID2, X_AMZN_TRACE_ID2, TRACEPARENT2, TRACESTATE2, BAGGAGE2, recursionDetectionMiddleware2;
-var init_recursionDetectionMiddleware2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/recursionDetectionMiddleware.js"() {
-    init_invoke_store();
-    init_protocols();
-    AWS_LAMBDA_FUNCTION_NAME2 = "AWS_LAMBDA_FUNCTION_NAME";
-    _X_AMZN_TRACE_ID2 = "_X_AMZN_TRACE_ID";
-    X_AMZN_TRACE_ID2 = "X-Amzn-Trace-Id";
-    TRACEPARENT2 = "traceparent";
-    TRACESTATE2 = "tracestate";
-    BAGGAGE2 = "baggage";
-    recursionDetectionMiddleware2 = () => (next) => async (args) => {
-      const { request: request2 } = args;
-      if (!HttpRequest.isInstance(request2)) {
-        return next(args);
-      }
-      let invokeStore;
-      {
-        const traceIdHeader = Object.keys(request2.headers ?? {}).find((h5) => h5.toLowerCase() === X_AMZN_TRACE_ID2.toLowerCase()) ?? X_AMZN_TRACE_ID2;
-        if (!request2.headers.hasOwnProperty(traceIdHeader)) {
-          const functionName = process.env[AWS_LAMBDA_FUNCTION_NAME2];
-          const traceIdFromEnv = process.env[_X_AMZN_TRACE_ID2];
-          invokeStore ??= await InvokeStore.getInstanceAsync();
-          const traceIdFromInvokeStore = invokeStore?.getXRayTraceId();
-          const traceId = traceIdFromInvokeStore ?? traceIdFromEnv;
-          const nonEmptyString = (str) => typeof str === "string" && str.length > 0;
-          if (nonEmptyString(functionName) && nonEmptyString(traceId)) {
-            request2.headers[X_AMZN_TRACE_ID2] = traceId;
-          }
-        }
-      }
-      {
-        sanitizeTraceHeaders2(request2.headers);
-        const existingTraceparent = request2.headers[TRACEPARENT2];
-        if (!existingTraceparent) {
-          const traceparent = (invokeStore ??= await InvokeStore.getInstanceAsync())?.getTraceparent?.();
-          if (traceparent) {
-            request2.headers[TRACEPARENT2] = traceparent;
-            const tracestate = invokeStore?.getTracestate?.();
-            if (tracestate) {
-              request2.headers[TRACESTATE2] = tracestate;
-            }
-            const baggage = invokeStore?.getBaggage?.();
-            if (baggage) {
-              request2.headers[BAGGAGE2] = baggage;
-            }
-          }
-        }
-      }
-      return next(args);
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js
-var getRecursionDetectionPlugin2;
-var init_getRecursionDetectionPlugin2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-recursion-detection/getRecursionDetectionPlugin.js"() {
-    init_configuration2();
-    init_recursionDetectionMiddleware2();
-    getRecursionDetectionPlugin2 = (options) => ({
-      applyToStack: (clientStack) => {
-        clientStack.add(recursionDetectionMiddleware2(), recursionDetectionMiddlewareOptions2);
-      }
-    });
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js
-function isValidUserAgentAppId2(appId) {
-  if (appId === void 0) {
-    return true;
-  }
-  return typeof appId === "string" && appId.length <= 50;
-}
-function resolveUserAgentConfig2(input) {
-  const normalizedAppIdProvider = normalizeProvider2(input.userAgentAppId ?? DEFAULT_UA_APP_ID2);
-  const { customUserAgent } = input;
-  return Object.assign(input, {
-    customUserAgent: typeof customUserAgent === "string" ? [[customUserAgent]] : customUserAgent,
-    userAgentAppId: async () => {
-      const appId = await normalizedAppIdProvider();
-      if (!isValidUserAgentAppId2(appId)) {
-        const logger2 = input.logger?.constructor?.name === "NoOpLogger" || !input.logger ? console : input.logger;
-        if (typeof appId !== "string") {
-          logger2?.warn("userAgentAppId must be a string or undefined.");
-        } else if (appId.length > 50) {
-          logger2?.warn("The provided userAgentAppId exceeds the maximum length of 50 characters.");
-        }
-      }
-      return appId;
-    }
-  });
-}
-var DEFAULT_UA_APP_ID2;
-var init_configurations3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/configurations.js"() {
-    init_dist_es();
-    DEFAULT_UA_APP_ID2 = void 0;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js
-var partitionsInfo2;
-var init_partitions2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partitions.js"() {
-    partitionsInfo2 = {
-      "partitions": [
-        {
-          "id": "aws",
-          "outputs": {
-            "dnsSuffix": "amazonaws.com",
-            "dualStackDnsSuffix": "api.aws",
-            "implicitGlobalRegion": "us-east-1",
-            "name": "aws",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
-          "regions": {
-            "af-south-1": {
-              "description": "Africa (Cape Town)"
-            },
-            "ap-east-1": {
-              "description": "Asia Pacific (Hong Kong)"
-            },
-            "ap-east-2": {
-              "description": "Asia Pacific (Taipei)"
-            },
-            "ap-northeast-1": {
-              "description": "Asia Pacific (Tokyo)"
-            },
-            "ap-northeast-2": {
-              "description": "Asia Pacific (Seoul)"
-            },
-            "ap-northeast-3": {
-              "description": "Asia Pacific (Osaka)"
-            },
-            "ap-south-1": {
-              "description": "Asia Pacific (Mumbai)"
-            },
-            "ap-south-2": {
-              "description": "Asia Pacific (Hyderabad)"
-            },
-            "ap-southeast-1": {
-              "description": "Asia Pacific (Singapore)"
-            },
-            "ap-southeast-2": {
-              "description": "Asia Pacific (Sydney)"
-            },
-            "ap-southeast-3": {
-              "description": "Asia Pacific (Jakarta)"
-            },
-            "ap-southeast-4": {
-              "description": "Asia Pacific (Melbourne)"
-            },
-            "ap-southeast-5": {
-              "description": "Asia Pacific (Malaysia)"
-            },
-            "ap-southeast-6": {
-              "description": "Asia Pacific (New Zealand)"
-            },
-            "ap-southeast-7": {
-              "description": "Asia Pacific (Thailand)"
-            },
-            "aws-global": {
-              "description": "aws global region"
-            },
-            "ca-central-1": {
-              "description": "Canada (Central)"
-            },
-            "ca-west-1": {
-              "description": "Canada West (Calgary)"
-            },
-            "eu-central-1": {
-              "description": "Europe (Frankfurt)"
-            },
-            "eu-central-2": {
-              "description": "Europe (Zurich)"
-            },
-            "eu-north-1": {
-              "description": "Europe (Stockholm)"
-            },
-            "eu-south-1": {
-              "description": "Europe (Milan)"
-            },
-            "eu-south-2": {
-              "description": "Europe (Spain)"
-            },
-            "eu-west-1": {
-              "description": "Europe (Ireland)"
-            },
-            "eu-west-2": {
-              "description": "Europe (London)"
-            },
-            "eu-west-3": {
-              "description": "Europe (Paris)"
-            },
-            "il-central-1": {
-              "description": "Israel (Tel Aviv)"
-            },
-            "me-central-1": {
-              "description": "Middle East (UAE)"
-            },
-            "me-south-1": {
-              "description": "Middle East (Bahrain)"
-            },
-            "mx-central-1": {
-              "description": "Mexico (Central)"
-            },
-            "sa-east-1": {
-              "description": "South America (Sao Paulo)"
-            },
-            "us-east-1": {
-              "description": "US East (N. Virginia)"
-            },
-            "us-east-2": {
-              "description": "US East (Ohio)"
-            },
-            "us-west-1": {
-              "description": "US West (N. California)"
-            },
-            "us-west-2": {
-              "description": "US West (Oregon)"
-            }
-          }
-        },
-        {
-          "id": "aws-cn",
-          "outputs": {
-            "dnsSuffix": "amazonaws.com.cn",
-            "dualStackDnsSuffix": "api.amazonwebservices.com.cn",
-            "implicitGlobalRegion": "cn-northwest-1",
-            "name": "aws-cn",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^cn\\-\\w+\\-\\d+$",
-          "regions": {
-            "aws-cn-global": {
-              "description": "aws-cn global region"
-            },
-            "cn-north-1": {
-              "description": "China (Beijing)"
-            },
-            "cn-northwest-1": {
-              "description": "China (Ningxia)"
-            }
-          }
-        },
-        {
-          "id": "aws-eusc",
-          "outputs": {
-            "dnsSuffix": "amazonaws.eu",
-            "dualStackDnsSuffix": "api.amazonwebservices.eu",
-            "implicitGlobalRegion": "eusc-de-east-1",
-            "name": "aws-eusc",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^eusc\\-(de)\\-\\w+\\-\\d+$",
-          "regions": {
-            "eusc-de-east-1": {
-              "description": "AWS European Sovereign Cloud (Germany)"
-            }
-          }
-        },
-        {
-          "id": "aws-iso",
-          "outputs": {
-            "dnsSuffix": "c2s.ic.gov",
-            "dualStackDnsSuffix": "api.aws.ic.gov",
-            "implicitGlobalRegion": "us-iso-east-1",
-            "name": "aws-iso",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^us\\-iso\\-\\w+\\-\\d+$",
-          "regions": {
-            "aws-iso-global": {
-              "description": "aws-iso global region"
-            },
-            "us-iso-east-1": {
-              "description": "US ISO East"
-            },
-            "us-iso-west-1": {
-              "description": "US ISO WEST"
-            }
-          }
-        },
-        {
-          "id": "aws-iso-b",
-          "outputs": {
-            "dnsSuffix": "sc2s.sgov.gov",
-            "dualStackDnsSuffix": "api.aws.scloud",
-            "implicitGlobalRegion": "us-isob-east-1",
-            "name": "aws-iso-b",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^us\\-isob\\-\\w+\\-\\d+$",
-          "regions": {
-            "aws-iso-b-global": {
-              "description": "aws-iso-b global region"
-            },
-            "us-isob-east-1": {
-              "description": "US ISOB East (Ohio)"
-            },
-            "us-isob-west-1": {
-              "description": "US ISOB West"
-            }
-          }
-        },
-        {
-          "id": "aws-iso-e",
-          "outputs": {
-            "dnsSuffix": "cloud.adc-e.uk",
-            "dualStackDnsSuffix": "api.cloud-aws.adc-e.uk",
-            "implicitGlobalRegion": "eu-isoe-west-1",
-            "name": "aws-iso-e",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^eu\\-isoe\\-\\w+\\-\\d+$",
-          "regions": {
-            "aws-iso-e-global": {
-              "description": "aws-iso-e global region"
-            },
-            "eu-isoe-west-1": {
-              "description": "EU ISOE West"
-            }
-          }
-        },
-        {
-          "id": "aws-iso-f",
-          "outputs": {
-            "dnsSuffix": "csp.hci.ic.gov",
-            "dualStackDnsSuffix": "api.aws.hci.ic.gov",
-            "implicitGlobalRegion": "us-isof-south-1",
-            "name": "aws-iso-f",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^us\\-isof\\-\\w+\\-\\d+$",
-          "regions": {
-            "aws-iso-f-global": {
-              "description": "aws-iso-f global region"
-            },
-            "us-isof-east-1": {
-              "description": "US ISOF EAST"
-            },
-            "us-isof-south-1": {
-              "description": "US ISOF SOUTH"
-            }
-          }
-        },
-        {
-          "id": "aws-us-gov",
-          "outputs": {
-            "dnsSuffix": "amazonaws.com",
-            "dualStackDnsSuffix": "api.aws",
-            "implicitGlobalRegion": "us-gov-west-1",
-            "name": "aws-us-gov",
-            "supportsDualStack": true,
-            "supportsFIPS": true
-          },
-          "regionRegex": "^us\\-gov\\-\\w+\\-\\d+$",
-          "regions": {
-            "aws-us-gov-global": {
-              "description": "aws-us-gov global region"
-            },
-            "us-gov-east-1": {
-              "description": "AWS GovCloud (US-East)"
-            },
-            "us-gov-west-1": {
-              "description": "AWS GovCloud (US-West)"
-            }
-          }
-        }
-      ],
-      "version": "1.1"
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js
-var selectedPartitionsInfo2, selectedUserAgentPrefix2, partition2, setPartitionInfo2, useDefaultPartitionInfo2, getUserAgentPrefix2;
-var init_partition2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/partition.js"() {
-    init_partitions2();
-    selectedPartitionsInfo2 = partitionsInfo2;
-    selectedUserAgentPrefix2 = "";
-    partition2 = (value) => {
-      const { partitions } = selectedPartitionsInfo2;
-      for (const partition3 of partitions) {
-        const { regions, outputs } = partition3;
-        for (const [region, regionData] of Object.entries(regions)) {
-          if (region === value) {
-            return {
-              ...outputs,
-              ...regionData
-            };
-          }
-        }
-      }
-      for (const partition3 of partitions) {
-        const { regionRegex, outputs } = partition3;
-        if (new RegExp(regionRegex).test(value)) {
-          return {
-            ...outputs
-          };
-        }
-      }
-      const DEFAULT_PARTITION = partitions.find((partition3) => partition3.id === "aws");
-      if (!DEFAULT_PARTITION) {
-        throw new Error("Provided region was not found in the partition array or regex, and default partition with id 'aws' doesn't exist.");
-      }
-      return {
-        ...DEFAULT_PARTITION.outputs
-      };
-    };
-    setPartitionInfo2 = (partitionsInfo3, userAgentPrefix = "") => {
-      selectedPartitionsInfo2 = partitionsInfo3;
-      selectedUserAgentPrefix2 = userAgentPrefix;
-    };
-    useDefaultPartitionInfo2 = () => {
-      setPartitionInfo2(partitionsInfo2, "");
-    };
-    getUserAgentPrefix2 = () => selectedUserAgentPrefix2;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js
-async function checkFeatures2(context, config, args) {
-  const request2 = args.request;
-  if (request2?.headers?.["smithy-protocol"] === "rpc-v2-cbor") {
-    setFeature4(context, "PROTOCOL_RPC_V2_CBOR", "M");
-  }
-  if (typeof config.retryStrategy === "function") {
-    const retryStrategy = await config.retryStrategy();
-    if (typeof retryStrategy.mode === "string") {
-      switch (retryStrategy.mode) {
-        case RETRY_MODES.ADAPTIVE:
-          setFeature4(context, "RETRY_MODE_ADAPTIVE", "F");
-          break;
-        case RETRY_MODES.STANDARD:
-          setFeature4(context, "RETRY_MODE_STANDARD", "E");
-          break;
-      }
-    }
-  }
-  if (typeof config.accountIdEndpointMode === "function") {
-    const endpointV2 = context.endpointV2;
-    if (String(endpointV2?.url?.hostname).match(ACCOUNT_ID_ENDPOINT_REGEX2)) {
-      setFeature4(context, "ACCOUNT_ID_ENDPOINT", "O");
-    }
-    switch (await config.accountIdEndpointMode?.()) {
-      case "disabled":
-        setFeature4(context, "ACCOUNT_ID_MODE_DISABLED", "Q");
-        break;
-      case "preferred":
-        setFeature4(context, "ACCOUNT_ID_MODE_PREFERRED", "P");
-        break;
-      case "required":
-        setFeature4(context, "ACCOUNT_ID_MODE_REQUIRED", "R");
-        break;
-    }
-  }
-  const identity = context.__smithy_context?.selectedHttpAuthScheme?.identity;
-  if (identity?.$source) {
-    const credentials = identity;
-    if (credentials.accountId) {
-      setFeature4(context, "RESOLVED_ACCOUNT_ID", "T");
-    }
-    for (const [key, value] of Object.entries(credentials.$source ?? {})) {
-      setFeature4(context, key, value);
-    }
-  }
-}
-var ACCOUNT_ID_ENDPOINT_REGEX2;
-var init_check_features2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/check-features.js"() {
-    init_retry2();
-    init_setFeature3();
-    ACCOUNT_ID_ENDPOINT_REGEX2 = /\d{12}\.ddb/;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js
-var USER_AGENT2, X_AMZ_USER_AGENT2, SPACE2, UA_NAME_SEPARATOR2, UA_NAME_ESCAPE_REGEX2, UA_VALUE_ESCAPE_REGEX2, UA_ESCAPE_CHAR2;
-var init_constants7 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/constants.js"() {
-    USER_AGENT2 = "user-agent";
-    X_AMZ_USER_AGENT2 = "x-amz-user-agent";
-    SPACE2 = " ";
-    UA_NAME_SEPARATOR2 = "/";
-    UA_NAME_ESCAPE_REGEX2 = /[^!$%&'*+\-.^_`|~\w]/g;
-    UA_VALUE_ESCAPE_REGEX2 = /[^!$%&'*+\-.^_`|~\w#]/g;
-    UA_ESCAPE_CHAR2 = "-";
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js
-function encodeFeatures2(features) {
-  let buffer = "";
-  for (const key in features) {
-    const val = features[key];
-    if (buffer.length + val.length + 1 <= BYTE_LIMIT2) {
-      if (buffer.length) {
-        buffer += "," + val;
-      } else {
-        buffer += val;
-      }
-      continue;
-    }
-    break;
-  }
-  return buffer;
-}
-var BYTE_LIMIT2;
-var init_encode_features2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/encode-features.js"() {
-    BYTE_LIMIT2 = 1024;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js
-var userAgentMiddleware2, escapeUserAgent2, getUserAgentMiddlewareOptions2, getUserAgentPlugin2;
-var init_user_agent_middleware2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/middleware-user-agent/user-agent-middleware.js"() {
-    init_protocols();
-    init_partition2();
-    init_check_features2();
-    init_constants7();
-    init_encode_features2();
-    userAgentMiddleware2 = (options) => (next, context) => async (args) => {
-      const { request: request2 } = args;
-      if (!HttpRequest.isInstance(request2)) {
-        return next(args);
-      }
-      const { headers } = request2;
-      const userAgent2 = context?.userAgent?.map(escapeUserAgent2) || [];
-      const defaultUserAgent3 = (await options.defaultUserAgentProvider()).map(escapeUserAgent2);
-      await checkFeatures2(context, options, args);
-      const awsContext = context;
-      defaultUserAgent3.push(`m/${encodeFeatures2(Object.assign({}, context.__smithy_context?.features, awsContext.__aws_sdk_context?.features))}`);
-      const customUserAgent = options?.customUserAgent?.map(escapeUserAgent2) || [];
-      const appId = await options.userAgentAppId();
-      if (appId) {
-        defaultUserAgent3.push(escapeUserAgent2([`app`, `${appId}`]));
-      }
-      const prefix = getUserAgentPrefix2();
-      const sdkUserAgentValue = (prefix ? [prefix] : []).concat([...defaultUserAgent3, ...userAgent2, ...customUserAgent]).join(SPACE2);
-      const normalUAValue = [
-        ...defaultUserAgent3.filter((section) => section.startsWith("aws-sdk-")),
-        ...customUserAgent
-      ].join(SPACE2);
-      if (options.runtime !== "browser") {
-        if (normalUAValue) {
-          headers[X_AMZ_USER_AGENT2] = headers[X_AMZ_USER_AGENT2] ? `${headers[USER_AGENT2]} ${normalUAValue}` : normalUAValue;
-        }
-        headers[USER_AGENT2] = sdkUserAgentValue;
-      } else {
-        headers[X_AMZ_USER_AGENT2] = sdkUserAgentValue;
-      }
-      return next({
-        ...args,
-        request: request2
-      });
-    };
-    escapeUserAgent2 = (userAgentPair) => {
-      const name = userAgentPair[0].split(UA_NAME_SEPARATOR2).map((part) => part.replace(UA_NAME_ESCAPE_REGEX2, UA_ESCAPE_CHAR2)).join(UA_NAME_SEPARATOR2);
-      const version = userAgentPair[1]?.replace(UA_VALUE_ESCAPE_REGEX2, UA_ESCAPE_CHAR2);
-      const prefixSeparatorIndex = name.indexOf(UA_NAME_SEPARATOR2);
-      const prefix = name.substring(0, prefixSeparatorIndex);
-      let uaName = name.substring(prefixSeparatorIndex + 1);
-      if (prefix === "api") {
-        uaName = uaName.toLowerCase();
-      }
-      return [prefix, uaName, version].filter((item) => item && item.length > 0).reduce((acc, item, index) => {
-        switch (index) {
-          case 0:
-            return item;
-          case 1:
-            return `${acc}/${item}`;
-          default:
-            return `${acc}#${item}`;
-        }
-      }, "");
-    };
-    getUserAgentMiddlewareOptions2 = {
-      name: "getUserAgentMiddleware",
-      step: "build",
-      priority: "low",
-      tags: ["SET_USER_AGENT", "USER_AGENT"],
-      override: true
-    };
-    getUserAgentPlugin2 = (config) => ({
-      applyToStack: (clientStack) => {
-        clientStack.add(userAgentMiddleware2(config), getUserAgentMiddlewareOptions2);
-      }
-    });
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js
-import { versions as versions2 } from "node:process";
-var getRuntimeUserAgentPair2;
-var init_getRuntimeUserAgentPair2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/getRuntimeUserAgentPair.js"() {
-    getRuntimeUserAgentPair2 = () => {
-      const runtimesToCheck = ["deno", "bun", "llrt"];
-      for (const runtime of runtimesToCheck) {
-        if (versions2[runtime]) {
-          return [`md/${runtime}`, versions2[runtime]];
-        }
-      }
-      return ["md/nodejs", versions2.node];
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js
-var crtAvailability2;
-var init_crt_availability2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/crt-availability.js"() {
-    crtAvailability2 = {
-      isCrtAvailable: false
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js
-var isCrtAvailable2;
-var init_is_crt_available2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/is-crt-available.js"() {
-    init_crt_availability2();
-    isCrtAvailable2 = () => {
-      if (crtAvailability2.isCrtAvailable) {
-        return ["md/crt-avail"];
-      }
-      return null;
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js
-import { platform as platform2, release as release2 } from "node:os";
-import { env as env2 } from "node:process";
-var createDefaultUserAgentProvider2, defaultUserAgent2;
-var init_defaultUserAgent3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/defaultUserAgent.js"() {
-    init_getRuntimeUserAgentPair2();
-    init_is_crt_available2();
-    init_crt_availability2();
-    createDefaultUserAgentProvider2 = ({ serviceId, clientVersion }) => {
-      const runtimeUserAgentPair = getRuntimeUserAgentPair2();
-      return async (config) => {
-        const sections = [
-          ["aws-sdk-js", clientVersion],
-          ["ua", "2.1"],
-          [`os/${platform2()}`, release2()],
-          ["lang/js"],
-          runtimeUserAgentPair
-        ];
-        const crtAvailable = isCrtAvailable2();
-        if (crtAvailable) {
-          sections.push(crtAvailable);
-        }
-        if (serviceId) {
-          sections.push([`api/${serviceId}`, clientVersion]);
-        }
-        if (env2.AWS_EXECUTION_ENV) {
-          sections.push([`exec-env/${env2.AWS_EXECUTION_ENV}`]);
-        }
-        const appId = await config?.userAgentAppId?.();
-        const resolvedUserAgent = appId ? [...sections, [`app/${appId}`]] : [...sections];
-        return resolvedUserAgent;
-      };
-    };
-    defaultUserAgent2 = createDefaultUserAgentProvider2;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js
-var UA_APP_ID_ENV_NAME2, UA_APP_ID_INI_NAME2, UA_APP_ID_INI_NAME_DEPRECATED2, NODE_APP_ID_CONFIG_OPTIONS2;
-var init_nodeAppIdConfigOptions2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-node/nodeAppIdConfigOptions.js"() {
-    init_configurations3();
-    UA_APP_ID_ENV_NAME2 = "AWS_SDK_UA_APP_ID";
-    UA_APP_ID_INI_NAME2 = "sdk_ua_app_id";
-    UA_APP_ID_INI_NAME_DEPRECATED2 = "sdk-ua-app-id";
-    NODE_APP_ID_CONFIG_OPTIONS2 = {
-      environmentVariableSelector: (env3) => env3[UA_APP_ID_ENV_NAME2],
-      configFileSelector: (profile) => profile[UA_APP_ID_INI_NAME2] ?? profile[UA_APP_ID_INI_NAME_DEPRECATED2],
-      default: DEFAULT_UA_APP_ID2
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js
-var createUserAgentStringParsingProvider2;
-var init_createUserAgentStringParsingProvider2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/createUserAgentStringParsingProvider.js"() {
-    createUserAgentStringParsingProvider2 = ({ serviceId, clientVersion }) => async (config) => {
-      const module = await Promise.resolve().then(() => __toESM(require_es5()));
-      const parse3 = module.parse ?? module.default.parse ?? (() => "");
-      const parsedUA = typeof window !== "undefined" && window?.navigator?.userAgent ? parse3(window.navigator.userAgent) : void 0;
-      const sections = [
-        ["aws-sdk-js", clientVersion],
-        ["ua", "2.1"],
-        [`os/${parsedUA?.os?.name || "other"}`, parsedUA?.os?.version],
-        ["lang/js"],
-        ["md/browser", `${parsedUA?.browser?.name ?? "unknown"}_${parsedUA?.browser?.version ?? "unknown"}`]
-      ];
-      if (serviceId) {
-        sections.push([`api/${serviceId}`, clientVersion]);
-      }
-      const appId = await config?.userAgentAppId?.();
-      if (appId) {
-        sections.push([`app/${appId}`]);
-      }
-      return sections;
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js
-var fallback2;
-var init_defaultUserAgent4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-user-agent-browser/defaultUserAgent.js"() {
-    fallback2 = {
-      os(ua) {
-        if (/iPhone|iPad|iPod/.test(ua))
-          return "iOS";
-        if (/Macintosh|Mac OS X/.test(ua))
-          return "macOS";
-        if (/Windows NT/.test(ua))
-          return "Windows";
-        if (/Android/.test(ua))
-          return "Android";
-        if (/Linux/.test(ua))
-          return "Linux";
-        return void 0;
-      },
-      browser(ua) {
-        if (/EdgiOS|EdgA|Edg\//.test(ua))
-          return "Microsoft Edge";
-        if (/Firefox\//.test(ua))
-          return "Firefox";
-        if (/Chrome\//.test(ua))
-          return "Chrome";
-        if (/Safari\//.test(ua))
-          return "Safari";
-        return void 0;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js
-var init_isIpAddress3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/isIpAddress.js"() {
-    init_endpoints();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js
-var isVirtualHostableS3Bucket2;
-var init_isVirtualHostableS3Bucket2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/isVirtualHostableS3Bucket.js"() {
-    init_endpoints();
-    init_isIpAddress3();
-    isVirtualHostableS3Bucket2 = (value, allowSubDomains = false) => {
-      if (allowSubDomains) {
-        for (const label of value.split(".")) {
-          if (!isVirtualHostableS3Bucket2(label)) {
-            return false;
-          }
-        }
-        return true;
-      }
-      if (!isValidHostLabel(value)) {
-        return false;
-      }
-      if (value.length < 3 || value.length > 63) {
-        return false;
-      }
-      if (value !== value.toLowerCase()) {
-        return false;
-      }
-      if (isIpAddress(value)) {
-        return false;
-      }
-      return true;
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js
-var ARN_DELIMITER2, RESOURCE_DELIMITER2, parseArn2;
-var init_parseArn2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/lib/aws/parseArn.js"() {
-    ARN_DELIMITER2 = ":";
-    RESOURCE_DELIMITER2 = "/";
-    parseArn2 = (value) => {
-      const segments = value.split(ARN_DELIMITER2);
-      if (segments.length < 6)
-        return null;
-      const [arn, partition3, service, region, accountId, ...resourcePath] = segments;
-      if (arn !== "arn" || partition3 === "" || service === "" || resourcePath.join(ARN_DELIMITER2) === "")
-        return null;
-      const resourceId = resourcePath.map((resource) => resource.split(RESOURCE_DELIMITER2)).flat();
-      return {
-        partition: partition3,
-        service,
-        region,
-        accountId,
-        resourceId
-      };
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js
-var awsEndpointFunctions2;
-var init_aws2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/aws.js"() {
-    init_endpoints();
-    init_isVirtualHostableS3Bucket2();
-    init_parseArn2();
-    init_partition2();
-    awsEndpointFunctions2 = {
-      isVirtualHostableS3Bucket: isVirtualHostableS3Bucket2,
-      parseArn: parseArn2,
-      partition: partition2
-    };
-    customEndpointFunctions.aws = awsEndpointFunctions2;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js
-var init_resolveEndpoint3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveEndpoint.js"() {
-    init_endpoints();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js
-var resolveDefaultAwsRegionalEndpointsConfig2, toEndpointV13;
-var init_resolveDefaultAwsRegionalEndpointsConfig2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/resolveDefaultAwsRegionalEndpointsConfig.js"() {
-    init_protocols();
-    resolveDefaultAwsRegionalEndpointsConfig2 = (input) => {
-      if (typeof input.endpointProvider !== "function") {
-        throw new Error("@aws-sdk/util-endpoint - endpointProvider and endpoint missing in config for this client.");
-      }
-      const { endpoint: endpoint2 } = input;
-      if (endpoint2 === void 0) {
-        input.endpoint = async () => {
-          return toEndpointV13(input.endpointProvider({
-            Region: typeof input.region === "function" ? await input.region() : input.region,
-            UseDualStack: typeof input.useDualstackEndpoint === "function" ? await input.useDualstackEndpoint() : input.useDualstackEndpoint,
-            UseFIPS: typeof input.useFipsEndpoint === "function" ? await input.useFipsEndpoint() : input.useFipsEndpoint,
-            Endpoint: void 0
-          }, { logger: input.logger }));
-        };
-      }
-      return input;
-    };
-    toEndpointV13 = (endpoint2) => parseUrl(endpoint2.url);
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js
-var init_EndpointError3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/util-endpoints/types/EndpointError.js"() {
-    init_endpoints();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js
-var init_awsRegionConfig2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/awsRegionConfig.js"() {
-    init_config2();
-    init_config2();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js
-function stsRegionDefaultResolver2(loaderConfig = {}) {
-  return loadConfig({
-    ...NODE_REGION_CONFIG_OPTIONS,
-    async default() {
-      if (!warning2.silence) {
-        console.warn("@aws-sdk - WARN - default STS region of us-east-1 used. See @aws-sdk/credential-providers README and set a region explicitly.");
-      }
-      return "us-east-1";
-    }
-  }, { ...NODE_REGION_CONFIG_FILE_OPTIONS, ...loaderConfig });
-}
-var warning2;
-var init_stsRegionDefaultResolver2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/stsRegionDefaultResolver.js"() {
-    init_config2();
-    warning2 = {
-      silence: false
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js
-var getAwsRegionExtensionConfiguration2, resolveAwsRegionExtensionConfiguration2;
-var init_extensions2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/region-config-resolver/extensions.js"() {
-    getAwsRegionExtensionConfiguration2 = (runtimeConfig) => {
-      return {
-        setRegion(region) {
-          runtimeConfig.region = region;
-        },
-        region() {
-          return runtimeConfig.region;
-        }
-      };
-    };
-    resolveAwsRegionExtensionConfiguration2 = (awsRegionExtensionConfiguration) => {
-      return {
-        region: awsRegionExtensionConfiguration.region()
-      };
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js
-var client_exports3 = {};
-__export(client_exports3, {
-  DEFAULT_UA_APP_ID: () => DEFAULT_UA_APP_ID2,
-  EndpointError: () => EndpointError,
-  NODE_APP_ID_CONFIG_OPTIONS: () => NODE_APP_ID_CONFIG_OPTIONS2,
-  NODE_REGION_CONFIG_FILE_OPTIONS: () => NODE_REGION_CONFIG_FILE_OPTIONS,
-  NODE_REGION_CONFIG_OPTIONS: () => NODE_REGION_CONFIG_OPTIONS,
-  REGION_ENV_NAME: () => REGION_ENV_NAME,
-  REGION_INI_NAME: () => REGION_INI_NAME,
-  UA_APP_ID_ENV_NAME: () => UA_APP_ID_ENV_NAME2,
-  UA_APP_ID_INI_NAME: () => UA_APP_ID_INI_NAME2,
-  awsEndpointFunctions: () => awsEndpointFunctions2,
-  createDefaultUserAgentProvider: () => createDefaultUserAgentProvider2,
-  createUserAgentStringParsingProvider: () => createUserAgentStringParsingProvider2,
-  crtAvailability: () => crtAvailability2,
-  defaultUserAgent: () => defaultUserAgent2,
-  emitWarningIfUnsupportedVersion: () => emitWarningIfUnsupportedVersion3,
-  fallback: () => fallback2,
-  getAwsRegionExtensionConfiguration: () => getAwsRegionExtensionConfiguration2,
-  getHostHeaderPlugin: () => getHostHeaderPlugin2,
-  getLoggerPlugin: () => getLoggerPlugin2,
-  getLongPollPlugin: () => getLongPollPlugin2,
-  getRecursionDetectionPlugin: () => getRecursionDetectionPlugin2,
-  getUserAgentMiddlewareOptions: () => getUserAgentMiddlewareOptions2,
-  getUserAgentPlugin: () => getUserAgentPlugin2,
-  getUserAgentPrefix: () => getUserAgentPrefix2,
-  hostHeaderMiddleware: () => hostHeaderMiddleware2,
-  hostHeaderMiddlewareOptions: () => hostHeaderMiddlewareOptions2,
-  isIpAddress: () => isIpAddress,
-  isVirtualHostableS3Bucket: () => isVirtualHostableS3Bucket2,
-  loggerMiddleware: () => loggerMiddleware2,
-  loggerMiddlewareOptions: () => loggerMiddlewareOptions2,
-  parseArn: () => parseArn2,
-  partition: () => partition2,
-  recursionDetectionMiddleware: () => recursionDetectionMiddleware2,
-  recursionDetectionMiddlewareOptions: () => recursionDetectionMiddlewareOptions2,
-  resolveAwsRegionExtensionConfiguration: () => resolveAwsRegionExtensionConfiguration2,
-  resolveDefaultAwsRegionalEndpointsConfig: () => resolveDefaultAwsRegionalEndpointsConfig2,
-  resolveEndpoint: () => resolveEndpoint,
-  resolveHostHeaderConfig: () => resolveHostHeaderConfig2,
-  resolveRegionConfig: () => resolveRegionConfig,
-  resolveUserAgentConfig: () => resolveUserAgentConfig2,
-  setCredentialFeature: () => setCredentialFeature2,
-  setFeature: () => setFeature4,
-  setPartitionInfo: () => setPartitionInfo2,
-  setTokenFeature: () => setTokenFeature2,
-  state: () => state2,
-  stsRegionDefaultResolver: () => stsRegionDefaultResolver2,
-  stsRegionWarning: () => warning2,
-  toEndpointV1: () => toEndpointV13,
-  useDefaultPartitionInfo: () => useDefaultPartitionInfo2,
-  userAgentMiddleware: () => userAgentMiddleware2
-});
-var init_client4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/client/index.js"() {
-    init_emitWarningIfUnsupportedVersion3();
-    init_longPollMiddleware2();
-    init_setCredentialFeature2();
-    init_setFeature3();
-    init_setTokenFeature2();
-    init_hostHeaderMiddleware2();
-    init_loggerMiddleware2();
-    init_configuration2();
-    init_getRecursionDetectionPlugin2();
-    init_recursionDetectionMiddleware2();
-    init_configurations3();
-    init_user_agent_middleware2();
-    init_defaultUserAgent3();
-    init_nodeAppIdConfigOptions2();
-    init_defaultUserAgent4();
-    init_createUserAgentStringParsingProvider2();
-    init_aws2();
-    init_resolveEndpoint3();
-    init_resolveDefaultAwsRegionalEndpointsConfig2();
-    init_isIpAddress3();
-    init_isVirtualHostableS3Bucket2();
-    init_parseArn2();
-    init_partition2();
-    init_EndpointError3();
-    init_awsRegionConfig2();
-    init_stsRegionDefaultResolver2();
-    init_extensions2();
-  }
-});
-
 // node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.71/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js
 var require_dist_cjs3 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-env@3.972.71/node_modules/@aws-sdk/credential-provider-env/dist-cjs/index.js"(exports) {
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2 } = (init_config2(), __toCommonJS(config_exports));
     var ENV_KEY = "AWS_ACCESS_KEY_ID";
     var ENV_SECRET = "AWS_SECRET_ACCESS_KEY";
@@ -15807,7 +14580,7 @@ var require_dist_cjs3 = __commonJS({
           ...credentialScope && { credentialScope },
           ...accountId && { accountId }
         };
-        setCredentialFeature3(credentials, "CREDENTIALS_ENV_VARS", "g");
+        setCredentialFeature2(credentials, "CREDENTIALS_ENV_VARS", "g");
         return credentials;
       }
       throw new CredentialsProviderError2("Unable to find environment variable credentials.", { logger: init?.logger });
@@ -15966,7 +14739,7 @@ var require_dist_cjs4 = __commonJS({
     var ENV_ENDPOINT_NAME = "AWS_EC2_METADATA_SERVICE_ENDPOINT";
     var CONFIG_ENDPOINT_NAME = "ec2_metadata_service_endpoint";
     var ENDPOINT_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => env3[ENV_ENDPOINT_NAME],
+      environmentVariableSelector: (env2) => env2[ENV_ENDPOINT_NAME],
       configFileSelector: (profile) => profile[CONFIG_ENDPOINT_NAME],
       default: void 0
     };
@@ -15978,7 +14751,7 @@ var require_dist_cjs4 = __commonJS({
     var ENV_ENDPOINT_MODE_NAME = "AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE";
     var CONFIG_ENDPOINT_MODE_NAME = "ec2_metadata_service_endpoint_mode";
     var ENDPOINT_MODE_CONFIG_OPTIONS = {
-      environmentVariableSelector: (env3) => env3[ENV_ENDPOINT_MODE_NAME],
+      environmentVariableSelector: (env2) => env2[ENV_ENDPOINT_MODE_NAME],
       configFileSelector: (profile) => profile[CONFIG_ENDPOINT_MODE_NAME],
       default: EndpointMode.IPv4
     };
@@ -16048,8 +14821,8 @@ For more information, please visit: ` + STATIC_STABILITY_DOC_URL);
           let fallbackBlockedFromProfile = false;
           let fallbackBlockedFromProcessEnv = false;
           const configValue = await loadConfig2({
-            environmentVariableSelector: (env3) => {
-              const envValue = env3[AWS_EC2_METADATA_V1_DISABLED];
+            environmentVariableSelector: (env2) => {
+              const envValue = env2[AWS_EC2_METADATA_V1_DISABLED];
               fallbackBlockedFromProcessEnv = !!envValue && envValue !== "false";
               if (envValue === void 0) {
                 throw new CredentialsProviderError2(`${AWS_EC2_METADATA_V1_DISABLED} not set in env, checking config file next.`, { logger: init.logger });
@@ -16985,7 +15758,7 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
 // node_modules/.pnpm/@aws-sdk+credential-provider-http@3.972.73/node_modules/@aws-sdk/credential-provider-http/dist-cjs/index.js
 var require_dist_cjs6 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-http@3.972.73/node_modules/@aws-sdk/credential-provider-http/dist-cjs/index.js"(exports) {
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2 } = (init_config2(), __toCommonJS(config_exports));
     var { NodeHttpHandler } = require_dist_cjs5();
     var fs = __require("node:fs/promises");
@@ -17118,7 +15891,7 @@ Set AWS_CONTAINER_CREDENTIALS_FULL_URI or AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
         }
         try {
           const result = await requestHandler.handle(request2, { requestTimeout });
-          return getCredentials(result.response).then((creds) => setCredentialFeature3(creds, "CREDENTIALS_HTTP", "z"));
+          return getCredentials(result.response).then((creds) => setCredentialFeature2(creds, "CREDENTIALS_HTTP", "z"));
         } catch (e5) {
           throw new CredentialsProviderError2(String(e5), { logger: options.logger });
         }
@@ -17138,459 +15911,6 @@ Set AWS_CONTAINER_CREDENTIALS_FULL_URI or AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
       return token;
     };
     exports.fromHttp = fromHttp;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js
-var getDateHeader2, getAgeHeader2;
-var init_getDateHeader2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getDateHeader.js"() {
-    init_protocols();
-    getDateHeader2 = (response) => HttpResponse.isInstance(response) ? response.headers?.date ?? response.headers?.Date : void 0;
-    getAgeHeader2 = (response) => HttpResponse.isInstance(response) ? response.headers?.age ?? response.headers?.Age : void 0;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js
-var getSkewCorrectedDate2;
-var init_getSkewCorrectedDate2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getSkewCorrectedDate.js"() {
-    getSkewCorrectedDate2 = (systemClockOffset) => new Date(Date.now() + systemClockOffset);
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js
-var getUpdatedSystemClockOffset2;
-var init_getUpdatedSystemClockOffset2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getUpdatedSystemClockOffset.js"() {
-    getUpdatedSystemClockOffset2 = (clockTime, currentSystemClockOffset, timeRequestSent, ageHeader) => {
-      if (ageHeader !== void 0) {
-        return currentSystemClockOffset;
-      }
-      const serverTime = Date.parse(clockTime);
-      const timeResponseReceived = Date.now();
-      if (timeRequestSent !== void 0 && timeResponseReceived - timeRequestSent > 9e5) {
-        return currentSystemClockOffset;
-      }
-      const candidateSkew = timeRequestSent !== void 0 ? serverTime - (timeRequestSent + timeResponseReceived) / 2 : serverTime - timeResponseReceived;
-      return candidateSkew;
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js
-var init_utils4 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/index.js"() {
-    init_getDateHeader2();
-    init_getSkewCorrectedDate2();
-    init_getUpdatedSystemClockOffset2();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js
-var throwSigningPropertyError2, validateSigningProperties2, AwsSdkSigV4Signer2, AWSSDKSigV4Signer2;
-var init_AwsSdkSigV4Signer2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4Signer.js"() {
-    init_protocols();
-    init_utils4();
-    throwSigningPropertyError2 = (name, property) => {
-      if (!property) {
-        throw new Error(`Property \`${name}\` is not resolved for AWS SDK SigV4Auth`);
-      }
-      return property;
-    };
-    validateSigningProperties2 = async (signingProperties) => {
-      const context = throwSigningPropertyError2("context", signingProperties.context);
-      const config = throwSigningPropertyError2("config", signingProperties.config);
-      const authScheme = context.endpointV2?.properties?.authSchemes?.[0];
-      const signerFunction = throwSigningPropertyError2("signer", config.signer);
-      const signer = await signerFunction(authScheme);
-      const signingRegion = signingProperties?.signingRegion;
-      const signingRegionSet = signingProperties?.signingRegionSet;
-      const signingName = signingProperties?.signingName;
-      return {
-        config,
-        signer,
-        signingRegion,
-        signingRegionSet,
-        signingName
-      };
-    };
-    AwsSdkSigV4Signer2 = class {
-      async sign(httpRequest, identity, signingProperties) {
-        if (!HttpRequest.isInstance(httpRequest)) {
-          throw new Error("The request is not an instance of `HttpRequest` and cannot be signed");
-        }
-        const validatedProps = await validateSigningProperties2(signingProperties);
-        const { config, signer } = validatedProps;
-        let { signingRegion, signingName } = validatedProps;
-        const handlerExecutionContext = signingProperties.context;
-        if (handlerExecutionContext?.authSchemes?.length ?? 0 > 1) {
-          const [first, second] = handlerExecutionContext.authSchemes;
-          if (first?.name === "sigv4a" && second?.name === "sigv4") {
-            signingRegion = second?.signingRegion ?? signingRegion;
-            signingName = second?.signingName ?? signingName;
-          }
-        }
-        const noSkewCorrection = await config.disableClockSkewCorrection?.() === true;
-        signingProperties._disableClockSkewCorrection = noSkewCorrection;
-        if (!noSkewCorrection) {
-          signingProperties._preRequestSystemClockOffset = config.systemClockOffset;
-          signingProperties._requestSentAt = Date.now();
-        }
-        const signedRequest = await signer.sign(httpRequest, {
-          signingDate: noSkewCorrection ? /* @__PURE__ */ new Date() : getSkewCorrectedDate2(config.systemClockOffset),
-          signingRegion,
-          signingService: signingName
-        });
-        return signedRequest;
-      }
-      errorHandler(signingProperties) {
-        return (error2) => {
-          const errorException = error2;
-          if (!signingProperties._disableClockSkewCorrection) {
-            const serverTime = errorException.ServerTime ?? getDateHeader2(errorException.$response);
-            if (serverTime) {
-              const config = throwSigningPropertyError2("config", signingProperties.config);
-              const preRequestOffset = signingProperties._preRequestSystemClockOffset;
-              const timeRequestSent = signingProperties._requestSentAt;
-              const ageHeader = getAgeHeader2(errorException.$response);
-              const newOffset = getUpdatedSystemClockOffset2(serverTime, config.systemClockOffset, timeRequestSent, ageHeader);
-              config.systemClockOffset = newOffset;
-              const skewExceedsThreshold = Math.abs(newOffset) >= 24e4;
-              const isLocalCorrection = newOffset !== preRequestOffset;
-              const isConcurrentCorrection = preRequestOffset !== void 0 && preRequestOffset !== newOffset;
-              if (skewExceedsThreshold && (isLocalCorrection || isConcurrentCorrection) && errorException.$metadata) {
-                errorException.$metadata.clockSkewCorrected = true;
-              }
-            }
-          }
-          throw error2;
-        };
-      }
-      successHandler(httpResponse, signingProperties) {
-        if (signingProperties._disableClockSkewCorrection) {
-          return;
-        }
-        const dateHeader = getDateHeader2(httpResponse);
-        if (dateHeader) {
-          const config = throwSigningPropertyError2("config", signingProperties.config);
-          const timeRequestSent = signingProperties._requestSentAt;
-          const ageHeader = getAgeHeader2(httpResponse);
-          config.systemClockOffset = getUpdatedSystemClockOffset2(dateHeader, config.systemClockOffset, timeRequestSent, ageHeader);
-        }
-      }
-    };
-    AWSSDKSigV4Signer2 = AwsSdkSigV4Signer2;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js
-var AwsSdkSigV4ASigner2;
-var init_AwsSdkSigV4ASigner2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/AwsSdkSigV4ASigner.js"() {
-    init_protocols();
-    init_utils4();
-    init_AwsSdkSigV4Signer2();
-    AwsSdkSigV4ASigner2 = class extends AwsSdkSigV4Signer2 {
-      async sign(httpRequest, identity, signingProperties) {
-        if (!HttpRequest.isInstance(httpRequest)) {
-          throw new Error("The request is not an instance of `HttpRequest` and cannot be signed");
-        }
-        const { config, signer, signingRegion, signingRegionSet, signingName } = await validateSigningProperties2(signingProperties);
-        const configResolvedSigningRegionSet = await config.sigv4aSigningRegionSet?.();
-        const multiRegionOverride = (configResolvedSigningRegionSet ?? signingRegionSet ?? [signingRegion]).join(",");
-        const noSkewCorrection = await config.disableClockSkewCorrection?.() === true;
-        signingProperties._disableClockSkewCorrection = noSkewCorrection;
-        if (!noSkewCorrection) {
-          signingProperties._preRequestSystemClockOffset = config.systemClockOffset;
-          signingProperties._requestSentAt = Date.now();
-        }
-        const signedRequest = await signer.sign(httpRequest, {
-          signingDate: noSkewCorrection ? /* @__PURE__ */ new Date() : getSkewCorrectedDate2(config.systemClockOffset),
-          signingRegion: multiRegionOverride,
-          signingService: signingName
-        });
-        return signedRequest;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js
-var getArrayForCommaSeparatedString2;
-var init_getArrayForCommaSeparatedString2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getArrayForCommaSeparatedString.js"() {
-    getArrayForCommaSeparatedString2 = (str) => typeof str === "string" && str.length > 0 ? str.split(",").map((item) => item.trim()) : [];
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js
-var getBearerTokenEnvKey2;
-var init_getBearerTokenEnvKey2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/utils/getBearerTokenEnvKey.js"() {
-    getBearerTokenEnvKey2 = (signingName) => `AWS_BEARER_TOKEN_${signingName.replace(/[\s-]/g, "_").toUpperCase()}`;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js
-var NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY2, NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY2, NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2;
-var init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/NODE_AUTH_SCHEME_PREFERENCE_OPTIONS.js"() {
-    init_getArrayForCommaSeparatedString2();
-    init_getBearerTokenEnvKey2();
-    NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY2 = "AWS_AUTH_SCHEME_PREFERENCE";
-    NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY2 = "auth_scheme_preference";
-    NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2 = {
-      environmentVariableSelector: (env3, options) => {
-        if (options?.signingName) {
-          const bearerTokenKey = getBearerTokenEnvKey2(options.signingName);
-          if (bearerTokenKey in env3)
-            return ["httpBearerAuth"];
-        }
-        if (!(NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY2 in env3))
-          return void 0;
-        return getArrayForCommaSeparatedString2(env3[NODE_AUTH_SCHEME_PREFERENCE_ENV_KEY2]);
-      },
-      configFileSelector: (profile) => {
-        if (!(NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY2 in profile))
-          return void 0;
-        return getArrayForCommaSeparatedString2(profile[NODE_AUTH_SCHEME_PREFERENCE_CONFIG_KEY2]);
-      },
-      default: []
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js
-var resolveAwsSdkSigV4AConfig2, NODE_SIGV4A_CONFIG_OPTIONS2;
-var init_resolveAwsSdkSigV4AConfig2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4AConfig.js"() {
-    init_dist_es();
-    init_config2();
-    resolveAwsSdkSigV4AConfig2 = (config) => {
-      config.sigv4aSigningRegionSet = normalizeProvider2(config.sigv4aSigningRegionSet);
-      return config;
-    };
-    NODE_SIGV4A_CONFIG_OPTIONS2 = {
-      environmentVariableSelector(env3) {
-        if (env3.AWS_SIGV4A_SIGNING_REGION_SET) {
-          return env3.AWS_SIGV4A_SIGNING_REGION_SET.split(",").map((_) => _.trim());
-        }
-        throw new ProviderError("AWS_SIGV4A_SIGNING_REGION_SET not set in env.", {
-          tryNextLink: true
-        });
-      },
-      configFileSelector(profile) {
-        if (profile.sigv4a_signing_region_set) {
-          return (profile.sigv4a_signing_region_set ?? "").split(",").map((_) => _.trim());
-        }
-        throw new ProviderError("sigv4a_signing_region_set not set in profile.", {
-          tryNextLink: true
-        });
-      },
-      default: void 0
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js
-function normalizeCredentialProvider2(config, { credentials, credentialDefaultProvider }) {
-  let credentialsProvider;
-  if (credentials) {
-    if (!credentials?.memoized) {
-      credentialsProvider = memoizeIdentityProvider(credentials, isIdentityExpired, doesIdentityRequireRefresh);
-    } else {
-      credentialsProvider = credentials;
-    }
-  } else {
-    if (credentialDefaultProvider) {
-      credentialsProvider = normalizeProvider2(credentialDefaultProvider(Object.assign({}, config, {
-        parentClientConfig: config
-      })));
-    } else {
-      credentialsProvider = async () => {
-        throw new Error("@aws-sdk/core::resolveAwsSdkSigV4Config - `credentials` not provided and no credentialDefaultProvider was configured.");
-      };
-    }
-  }
-  credentialsProvider.memoized = true;
-  return credentialsProvider;
-}
-function bindCallerConfig2(config, credentialsProvider) {
-  if (credentialsProvider.configBound) {
-    return credentialsProvider;
-  }
-  const fn = async (options) => credentialsProvider({ ...options, callerClientConfig: config });
-  fn.memoized = credentialsProvider.memoized;
-  fn.configBound = true;
-  return fn;
-}
-var import_signature_v42, bindResolveAwsSdkSigV4Config2;
-var init_resolveAwsSdkSigV4Config2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/resolveAwsSdkSigV4Config.js"() {
-    init_client4();
-    init_dist_es();
-    import_signature_v42 = __toESM(require_dist_cjs2());
-    bindResolveAwsSdkSigV4Config2 = (defaultDisableClockSkewCorrection) => (config) => {
-      let inputCredentials = config.credentials;
-      let isUserSupplied = !!config.credentials;
-      let resolvedCredentials = void 0;
-      Object.defineProperty(config, "credentials", {
-        set(credentials) {
-          if (credentials && credentials !== inputCredentials && credentials !== resolvedCredentials) {
-            isUserSupplied = true;
-          }
-          inputCredentials = credentials;
-          const memoizedProvider = normalizeCredentialProvider2(config, {
-            credentials: inputCredentials,
-            credentialDefaultProvider: config.credentialDefaultProvider
-          });
-          const boundProvider = bindCallerConfig2(config, memoizedProvider);
-          if (isUserSupplied && !boundProvider.attributed) {
-            const isCredentialObject = typeof inputCredentials === "object" && inputCredentials !== null;
-            resolvedCredentials = async (options) => {
-              const creds = await boundProvider(options);
-              const attributedCreds = creds;
-              if (isCredentialObject && (!attributedCreds.$source || Object.keys(attributedCreds.$source).length === 0)) {
-                return setCredentialFeature2(attributedCreds, "CREDENTIALS_CODE", "e");
-              }
-              return attributedCreds;
-            };
-            resolvedCredentials.memoized = boundProvider.memoized;
-            resolvedCredentials.configBound = boundProvider.configBound;
-            resolvedCredentials.attributed = true;
-          } else {
-            resolvedCredentials = boundProvider;
-          }
-        },
-        get() {
-          return resolvedCredentials;
-        },
-        enumerable: true,
-        configurable: true
-      });
-      config.credentials = inputCredentials;
-      const { signingEscapePath = true, systemClockOffset = config.systemClockOffset || 0, sha256 } = config;
-      let signer;
-      if (config.signer) {
-        signer = normalizeProvider2(config.signer);
-      } else if (config.regionInfoProvider) {
-        signer = () => normalizeProvider2(config.region)().then(async (region) => [
-          await config.regionInfoProvider(region, {
-            useFipsEndpoint: await config.useFipsEndpoint(),
-            useDualstackEndpoint: await config.useDualstackEndpoint()
-          }) || {},
-          region
-        ]).then(([regionInfo, region]) => {
-          const { signingRegion, signingService } = regionInfo;
-          config.signingRegion = config.signingRegion || signingRegion || region;
-          config.signingName = config.signingName || signingService || config.serviceId;
-          const params = {
-            ...config,
-            credentials: config.credentials,
-            region: config.signingRegion,
-            service: config.signingName,
-            sha256,
-            uriEscapePath: signingEscapePath
-          };
-          const SignerCtor = config.signerConstructor || import_signature_v42.SignatureV4;
-          return new SignerCtor(params);
-        });
-      } else {
-        signer = async (authScheme) => {
-          authScheme = Object.assign({}, {
-            name: "sigv4",
-            signingName: config.signingName || config.defaultSigningName,
-            signingRegion: await normalizeProvider2(config.region)(),
-            properties: {}
-          }, authScheme);
-          const signingRegion = authScheme.signingRegion;
-          const signingService = authScheme.signingName;
-          config.signingRegion = config.signingRegion || signingRegion;
-          config.signingName = config.signingName || signingService || config.serviceId;
-          const params = {
-            ...config,
-            credentials: config.credentials,
-            region: config.signingRegion,
-            service: config.signingName,
-            sha256,
-            uriEscapePath: signingEscapePath
-          };
-          const SignerCtor = config.signerConstructor || import_signature_v42.SignatureV4;
-          return new SignerCtor(params);
-        };
-      }
-      const resolvedConfig = Object.assign(config, {
-        systemClockOffset,
-        signingEscapePath,
-        signer,
-        disableClockSkewCorrection: normalizeProvider2(config.disableClockSkewCorrection ?? defaultDisableClockSkewCorrection)
-      });
-      return resolvedConfig;
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js
-var init_aws_sdk2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/index.js"() {
-    init_AwsSdkSigV4Signer2();
-    init_AwsSdkSigV4ASigner2();
-    init_NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2();
-    init_resolveAwsSdkSigV4AConfig2();
-    init_resolveAwsSdkSigV4Config2();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js
-var ENV_DISABLE_CLOCK_SKEW_CORRECTION2, CONFIG_DISABLE_CLOCK_SKEW_CORRECTION2, NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS2;
-var init_clock_skew_node_config2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-node-config.js"() {
-    init_config2();
-    ENV_DISABLE_CLOCK_SKEW_CORRECTION2 = "AWS_DISABLE_CLOCK_SKEW_CORRECTION";
-    CONFIG_DISABLE_CLOCK_SKEW_CORRECTION2 = "disable_clock_skew_correction";
-    NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS2 = {
-      environmentVariableSelector: (env3) => booleanSelector(env3, ENV_DISABLE_CLOCK_SKEW_CORRECTION2, SelectorType.ENV),
-      configFileSelector: (profile) => booleanSelector(profile, CONFIG_DISABLE_CLOCK_SKEW_CORRECTION2, SelectorType.CONFIG),
-      default: false
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js
-var DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION2;
-var init_clock_skew_defaults2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/aws_sdk/clock-skew-defaults.js"() {
-    init_config2();
-    init_clock_skew_node_config2();
-    DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION2 = loadConfig(NODE_DISABLE_CLOCK_SKEW_CORRECTION_CONFIG_OPTIONS2);
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js
-var httpAuthSchemes_exports2 = {};
-__export(httpAuthSchemes_exports2, {
-  AWSSDKSigV4Signer: () => AWSSDKSigV4Signer2,
-  AwsSdkSigV4ASigner: () => AwsSdkSigV4ASigner2,
-  AwsSdkSigV4Signer: () => AwsSdkSigV4Signer2,
-  NODE_AUTH_SCHEME_PREFERENCE_OPTIONS: () => NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2,
-  NODE_SIGV4A_CONFIG_OPTIONS: () => NODE_SIGV4A_CONFIG_OPTIONS2,
-  getBearerTokenEnvKey: () => getBearerTokenEnvKey2,
-  resolveAWSSDKSigV4Config: () => resolveAWSSDKSigV4Config2,
-  resolveAwsSdkSigV4AConfig: () => resolveAwsSdkSigV4AConfig2,
-  resolveAwsSdkSigV4Config: () => resolveAwsSdkSigV4Config2,
-  validateSigningProperties: () => validateSigningProperties2
-});
-var resolveAwsSdkSigV4Config2, resolveAWSSDKSigV4Config2;
-var init_httpAuthSchemes3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/httpAuthSchemes/index.js"() {
-    init_aws_sdk2();
-    init_getBearerTokenEnvKey2();
-    init_aws_sdk2();
-    init_clock_skew_defaults2();
-    resolveAwsSdkSigV4Config2 = bindResolveAwsSdkSigV4Config2(DEFAULT_DISABLE_CLOCK_SKEW_CORRECTION2);
-    resolveAWSSDKSigV4Config2 = resolveAwsSdkSigV4Config2;
   }
 });
 
@@ -17618,7 +15938,7 @@ function createSmithyApiNoAuthHttpAuthOption(authParameters) {
 var defaultSSOOIDCHttpAuthSchemeParametersProvider, defaultSSOOIDCHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig;
 var init_httpAuthSchemeProvider = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/auth/httpAuthSchemeProvider.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_client2();
     defaultSSOOIDCHttpAuthSchemeParametersProvider = async (config, context, input) => {
       return {
@@ -17644,7 +15964,7 @@ var init_httpAuthSchemeProvider = __esm({
       return options;
     };
     resolveHttpAuthSchemeConfig = (config) => {
-      const config_0 = resolveAwsSdkSigV4Config2(config);
+      const config_0 = resolveAwsSdkSigV4Config(config);
       return Object.assign(config_0, {
         authSchemePreference: normalizeProvider(config.authSchemePreference ?? [])
       });
@@ -17831,7 +16151,7 @@ var init_parseCborBody = __esm({
   "node_modules/.pnpm/@smithy+core@3.33.3/node_modules/@smithy/core/dist-es/submodules/cbor/parseCborBody.js"() {
     init_transport();
     loadSmithyRpcV2CborErrorCode = (output, data) => {
-      const sanitizeErrorCode3 = (rawValue) => {
+      const sanitizeErrorCode2 = (rawValue) => {
         let cleanValue = rawValue;
         if (typeof cleanValue === "number") {
           cleanValue = cleanValue.toString();
@@ -17848,7 +16168,7 @@ var init_parseCborBody = __esm({
         return cleanValue;
       };
       if (data["__type"] !== void 0) {
-        return sanitizeErrorCode3(data["__type"]);
+        return sanitizeErrorCode2(data["__type"]);
       }
       let codeKey;
       for (const key in data) {
@@ -17860,7 +16180,7 @@ var init_parseCborBody = __esm({
         }
       }
       if (codeKey && data[codeKey] !== void 0) {
-        return sanitizeErrorCode3(data[codeKey]);
+        return sanitizeErrorCode2(data[codeKey]);
       }
     };
   }
@@ -19372,6 +17692,63 @@ var init_ProtocolLib = __esm({
   }
 });
 
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/cbor/AwsSmithyRpcV2CborProtocol.js
+var AwsSmithyRpcV2CborProtocol;
+var init_AwsSmithyRpcV2CborProtocol = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/cbor/AwsSmithyRpcV2CborProtocol.js"() {
+    init_cbor();
+    init_schema();
+    init_ProtocolLib();
+    AwsSmithyRpcV2CborProtocol = class extends SmithyRpcV2CborProtocol {
+      awsQueryCompatible;
+      mixin;
+      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, awsQueryCompatible }) {
+        super({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5 });
+        this.awsQueryCompatible = !!awsQueryCompatible;
+        this.mixin = new ProtocolLib(this.awsQueryCompatible);
+      }
+      async serializeRequest(operationSchema, input, context) {
+        const request2 = await super.serializeRequest(operationSchema, input, context);
+        if (this.awsQueryCompatible) {
+          request2.headers["x-amzn-query-mode"] = "true";
+        }
+        return request2;
+      }
+      async handleError(operationSchema, context, response, dataObject, metadata) {
+        if (this.awsQueryCompatible) {
+          this.mixin.setQueryCompatError(dataObject, response);
+        }
+        const errorName = (() => {
+          const compatHeader = response.headers["x-amzn-query-error"];
+          if (compatHeader && this.awsQueryCompatible) {
+            return compatHeader.split(";")[0];
+          }
+          return loadSmithyRpcV2CborErrorCode(response, dataObject) ?? "Unknown";
+        })();
+        this.mixin.compose(this.compositeErrorRegistry, errorName, this.options.defaultNamespace);
+        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorName, this.options.defaultNamespace, response, dataObject, metadata, this.awsQueryCompatible ? this.mixin.findQueryCompatibleError : void 0);
+        const ns = NormalizedSchema.of(errorSchema);
+        const message = dataObject.message ?? dataObject.Message ?? "UnknownError";
+        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
+        const exception = new ErrorCtor({});
+        const output = {};
+        for (const [name, member2] of ns.structIterator()) {
+          if (dataObject[name] != null) {
+            output[name] = this.deserializer.readValue(member2, dataObject[name]);
+          }
+        }
+        if (this.awsQueryCompatible) {
+          this.mixin.queryCompatOutput(dataObject, output);
+        }
+        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
+          $fault: ns.getMergedTraits().error,
+          message
+        }, output), dataObject);
+      }
+    };
+  }
+});
+
 // node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js
 var SerdeContextConfig;
 var init_ConfigurableSerdeContext = __esm({
@@ -19647,7 +18024,7 @@ async function parseJsonBody(streamBody, context, schema) {
     throw e5;
   }
 }
-var findKey, sanitizeErrorCode, loadRestJsonErrorCode, loadErrorCode;
+var parseJsonErrorBody, findKey, sanitizeErrorCode, loadRestJsonErrorCode, loadJsonRpcErrorCode, loadErrorCode;
 var init_parseJsonBody = __esm({
   "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js"() {
     init_protocols();
@@ -19655,6 +18032,11 @@ var init_parseJsonBody = __esm({
     init_detectBufferParsing();
     init_jsonReviver();
     init_needsReviver();
+    parseJsonErrorBody = async (errorBody, context) => {
+      const value = await parseJsonBody(errorBody, context);
+      value.message = value.message ?? value.Message;
+      return value;
+    };
     findKey = (object, key) => Object.keys(object).find((k5) => k5.toLowerCase() === key.toLowerCase());
     sanitizeErrorCode = (rawValue) => {
       let cleanValue = rawValue;
@@ -19674,6 +18056,9 @@ var init_parseJsonBody = __esm({
     };
     loadRestJsonErrorCode = (output, data) => {
       return loadErrorCode(output, data, ["header", "code", "type"]);
+    };
+    loadJsonRpcErrorCode = (output, data, queryCompat = false) => {
+      return loadErrorCode(output, data, queryCompat ? ["code", "header", "type"] : ["type", "code", "header"]);
     };
     loadErrorCode = ({ headers }, data, order) => {
       while (order.length > 0) {
@@ -20561,6 +18946,145 @@ var init_JsonCodec2 = __esm({
   }
 });
 
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJsonRpcProtocol.js
+var AwsJsonRpcProtocol;
+var init_AwsJsonRpcProtocol = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJsonRpcProtocol.js"() {
+    init_protocols();
+    init_schema();
+    init_ProtocolLib();
+    init_JsonCodec2();
+    init_parseJsonBody();
+    AwsJsonRpcProtocol = class extends RpcProtocol {
+      serializer;
+      deserializer;
+      serviceTarget;
+      codec;
+      mixin;
+      awsQueryCompatible;
+      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, serviceTarget, awsQueryCompatible, jsonCodec }) {
+        super({
+          defaultNamespace,
+          errorTypeRegistries: errorTypeRegistries5
+        });
+        this.serviceTarget = serviceTarget;
+        this.codec = jsonCodec ?? new JsonCodec2({
+          timestampFormat: {
+            useTrait: true,
+            default: 7
+          },
+          jsonName: false
+        });
+        this.serializer = this.codec.createSerializer();
+        this.deserializer = this.codec.createDeserializer();
+        this.awsQueryCompatible = !!awsQueryCompatible;
+        this.mixin = new ProtocolLib(this.awsQueryCompatible);
+      }
+      async serializeRequest(operationSchema, input, context) {
+        const request2 = await super.serializeRequest(operationSchema, input, context);
+        if (!request2.path.endsWith("/")) {
+          request2.path += "/";
+        }
+        request2.headers["content-type"] = `application/x-amz-json-${this.getJsonRpcVersion()}`;
+        request2.headers["x-amz-target"] = `${this.serviceTarget}.${operationSchema.name}`;
+        if (this.awsQueryCompatible) {
+          request2.headers["x-amzn-query-mode"] = "true";
+        }
+        if (deref(operationSchema.input) === "unit" || !request2.body) {
+          request2.body = "{}";
+        }
+        return request2;
+      }
+      getPayloadCodec() {
+        return this.codec;
+      }
+      async handleError(operationSchema, context, response, dataObject, metadata) {
+        const { awsQueryCompatible } = this;
+        if (awsQueryCompatible) {
+          this.mixin.setQueryCompatError(dataObject, response);
+        }
+        const errorIdentifier = loadJsonRpcErrorCode(response, dataObject, awsQueryCompatible) ?? "Unknown";
+        this.mixin.compose(this.compositeErrorRegistry, errorIdentifier, this.options.defaultNamespace);
+        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorIdentifier, this.options.defaultNamespace, response, dataObject, metadata, awsQueryCompatible ? this.mixin.findQueryCompatibleError : void 0);
+        const ns = NormalizedSchema.of(errorSchema);
+        const message = dataObject.message ?? dataObject.Message ?? "UnknownError";
+        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
+        const exception = new ErrorCtor({});
+        const output = {};
+        const errorDeserializer = this.codec.createDeserializer();
+        for (const [name, member2] of ns.structIterator()) {
+          if (dataObject[name] != null) {
+            output[name] = errorDeserializer.readObject(member2, dataObject[name]);
+          }
+        }
+        if (awsQueryCompatible) {
+          this.mixin.queryCompatOutput(dataObject, output);
+        }
+        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
+          $fault: ns.getMergedTraits().error,
+          message
+        }, output), dataObject);
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_0Protocol.js
+var AwsJson1_0Protocol;
+var init_AwsJson1_0Protocol = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_0Protocol.js"() {
+    init_AwsJsonRpcProtocol();
+    AwsJson1_0Protocol = class extends AwsJsonRpcProtocol {
+      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, serviceTarget, awsQueryCompatible, jsonCodec }) {
+        super({
+          defaultNamespace,
+          errorTypeRegistries: errorTypeRegistries5,
+          serviceTarget,
+          awsQueryCompatible,
+          jsonCodec
+        });
+      }
+      getShapeId() {
+        return "aws.protocols#awsJson1_0";
+      }
+      getJsonRpcVersion() {
+        return "1.0";
+      }
+      getDefaultContentType() {
+        return "application/x-amz-json-1.0";
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_1Protocol.js
+var AwsJson1_1Protocol;
+var init_AwsJson1_1Protocol = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_1Protocol.js"() {
+    init_AwsJsonRpcProtocol();
+    AwsJson1_1Protocol = class extends AwsJsonRpcProtocol {
+      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, serviceTarget, awsQueryCompatible, jsonCodec }) {
+        super({
+          defaultNamespace,
+          errorTypeRegistries: errorTypeRegistries5,
+          serviceTarget,
+          awsQueryCompatible,
+          jsonCodec
+        });
+      }
+      getShapeId() {
+        return "aws.protocols#awsJson1_1";
+      }
+      getJsonRpcVersion() {
+        return "1.1";
+      }
+      getDefaultContentType() {
+        return "application/x-amz-json-1.1";
+      }
+    };
+  }
+});
+
 // node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js
 var AwsRestJsonProtocol;
 var init_AwsRestJsonProtocol = __esm({
@@ -20648,6 +19172,447 @@ var init_AwsRestJsonProtocol = __esm({
       }
       getDefaultContentType() {
         return "application/json";
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeDeserializer.js
+var JsonShapeDeserializer;
+var init_JsonShapeDeserializer = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeDeserializer.js"() {
+    init_protocols();
+    init_schema();
+    init_serde();
+    init_serde();
+    init_ConfigurableSerdeContext();
+    init_UnionSerde();
+    init_jsonReviver();
+    init_needsReviver();
+    init_parseJsonBody();
+    init_writeKey();
+    JsonShapeDeserializer = class extends SerdeContextConfig {
+      settings;
+      constructor(settings) {
+        super();
+        this.settings = settings;
+      }
+      async read(schema, data) {
+        const reviver = needsReviver(schema) ? jsonReviver : void 0;
+        return this._read(schema, typeof data === "string" ? JSON.parse(data, reviver) : await parseJsonBody(data, this.serdeContext, schema));
+      }
+      readObject(schema, data) {
+        return this._read(schema, data);
+      }
+      _read(schema, value) {
+        const isObject2 = value !== null && typeof value === "object";
+        const ns = NormalizedSchema.of(schema);
+        if (isObject2) {
+          if (ns.isStructSchema()) {
+            const record = value;
+            const union = ns.isUnionSchema();
+            const out = {};
+            let nameMap = void 0;
+            const { jsonName } = this.settings;
+            if (jsonName) {
+              nameMap = {};
+            }
+            let unionSerde;
+            if (union) {
+              unionSerde = new UnionSerde(record, out);
+            }
+            for (const [memberName, memberSchema] of ns.structIterator()) {
+              let fromKey = memberName;
+              if (jsonName) {
+                fromKey = memberSchema.getMergedTraits().jsonName ?? fromKey;
+                nameMap[fromKey] = memberName;
+              }
+              if (union) {
+                unionSerde.mark(fromKey);
+              }
+              if (record[fromKey] != null) {
+                out[memberName] = this._read(memberSchema, record[fromKey]);
+              }
+            }
+            if (union) {
+              unionSerde.writeUnknown();
+            } else if (typeof record.__type === "string") {
+              for (const k5 in record) {
+                const v = record[k5];
+                const t = jsonName ? nameMap[k5] ?? k5 : k5;
+                if (!(t in out)) {
+                  out[t] = v;
+                }
+              }
+            }
+            return out;
+          }
+          if (Array.isArray(value) && ns.isListSchema()) {
+            const listMember = ns.getValueSchema();
+            const out = [];
+            for (const item of value) {
+              out.push(this._read(listMember, item));
+            }
+            return out;
+          }
+          if (ns.isMapSchema()) {
+            const mapMember = ns.getValueSchema();
+            const out = {};
+            for (const _k in value) {
+              if (_k === "__proto__") {
+                writeKey(out);
+              }
+              out[_k] = this._read(mapMember, value[_k]);
+            }
+            return out;
+          }
+        }
+        if (ns.isBlobSchema() && typeof value === "string") {
+          return fromBase64(value);
+        }
+        const mediaType = ns.getMergedTraits().mediaType;
+        if (ns.isStringSchema() && typeof value === "string" && mediaType) {
+          const isJson = mediaType === "application/json" || mediaType.endsWith("+json");
+          if (isJson) {
+            return LazyJsonString.from(value);
+          }
+          return value;
+        }
+        if (ns.isTimestampSchema() && value != null) {
+          const format2 = determineTimestampFormat(ns, this.settings);
+          switch (format2) {
+            case 5:
+              return parseRfc3339DateTimeWithOffset(value);
+            case 6:
+              return parseRfc7231DateTime(value);
+            case 7:
+              return parseEpochTimestamp(value);
+            default:
+              console.warn("Missing timestamp format, parsing value with Date constructor:", value);
+              return new Date(value);
+          }
+        }
+        if (ns.isBigIntegerSchema() && (typeof value === "number" || typeof value === "string")) {
+          return BigInt(value);
+        }
+        if (ns.isBigDecimalSchema() && value != void 0) {
+          if (value instanceof NumericValue) {
+            return value;
+          }
+          const untyped = value;
+          if (untyped.type === "bigDecimal" && "string" in untyped) {
+            return new NumericValue(untyped.string, untyped.type);
+          }
+          return new NumericValue(String(value), "bigDecimal");
+        }
+        if (ns.isNumericSchema() && typeof value === "string") {
+          switch (value) {
+            case "Infinity":
+              return Infinity;
+            case "-Infinity":
+              return -Infinity;
+            case "NaN":
+              return NaN;
+          }
+          return value;
+        }
+        if (ns.isDocumentSchema()) {
+          if (isObject2) {
+            const out = Array.isArray(value) ? [] : {};
+            for (const k5 in value) {
+              if (k5 === "__proto__") {
+                writeKey(out);
+              }
+              const v = value[k5];
+              if (v instanceof NumericValue) {
+                out[k5] = v;
+              } else {
+                out[k5] = this._read(ns, v);
+              }
+            }
+            return out;
+          } else {
+            return structuredClone(value);
+          }
+        }
+        return value;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReplacer.js
+var NUMERIC_CONTROL_CHAR, JsonReplacer;
+var init_jsonReplacer = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReplacer.js"() {
+    init_serde();
+    NUMERIC_CONTROL_CHAR = String.fromCharCode(925);
+    JsonReplacer = class {
+      values = /* @__PURE__ */ new Map();
+      counter = 0;
+      stage = 0;
+      createReplacer() {
+        if (this.stage === 1) {
+          throw new Error("@aws-sdk/core/protocols - JsonReplacer already created.");
+        }
+        if (this.stage === 2) {
+          throw new Error("@aws-sdk/core/protocols - JsonReplacer exhausted.");
+        }
+        this.stage = 1;
+        return (key, value) => {
+          if (value instanceof NumericValue) {
+            const v = `${NUMERIC_CONTROL_CHAR + "nv" + this.counter++}_` + value.string;
+            this.values.set(`"${v}"`, value.string);
+            return v;
+          }
+          if (typeof value === "bigint") {
+            const s2 = value.toString();
+            const v = `${NUMERIC_CONTROL_CHAR + "b" + this.counter++}_` + s2;
+            this.values.set(`"${v}"`, s2);
+            return v;
+          }
+          return value;
+        };
+      }
+      replaceInJson(json) {
+        if (this.stage === 0) {
+          throw new Error("@aws-sdk/core/protocols - JsonReplacer not created yet.");
+        }
+        if (this.stage === 2) {
+          throw new Error("@aws-sdk/core/protocols - JsonReplacer exhausted.");
+        }
+        this.stage = 2;
+        if (this.counter === 0) {
+          return json;
+        }
+        for (const [key, value] of this.values) {
+          json = json.replace(key, value);
+        }
+        return json;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeSerializer.js
+var JsonShapeSerializer;
+var init_JsonShapeSerializer = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeSerializer.js"() {
+    init_protocols();
+    init_schema();
+    init_serde();
+    init_ConfigurableSerdeContext();
+    init_jsonReplacer();
+    init_writeKey();
+    JsonShapeSerializer = class extends SerdeContextConfig {
+      settings;
+      buffer;
+      useReplacer = false;
+      rootSchema;
+      constructor(settings) {
+        super();
+        this.settings = settings;
+      }
+      write(schema, value) {
+        this.rootSchema = NormalizedSchema.of(schema);
+        this.buffer = this._write(this.rootSchema, value);
+      }
+      flush() {
+        const { rootSchema, useReplacer } = this;
+        this.rootSchema = void 0;
+        this.useReplacer = false;
+        if (rootSchema?.isStructSchema() || rootSchema?.isDocumentSchema()) {
+          if (!useReplacer) {
+            return JSON.stringify(this.buffer);
+          }
+          const replacer = new JsonReplacer();
+          return replacer.replaceInJson(JSON.stringify(this.buffer, replacer.createReplacer(), 0));
+        }
+        return this.buffer;
+      }
+      writeDiscriminatedDocument(schema, value) {
+        this.write(schema, value);
+        if (typeof this.buffer === "object") {
+          this.buffer.__type = NormalizedSchema.of(schema).getName(true);
+        }
+      }
+      _write(schema, value, container) {
+        const isObject2 = value !== null && typeof value === "object";
+        const ns = NormalizedSchema.of(schema);
+        if (isObject2) {
+          if (ns.isStructSchema()) {
+            const record = value;
+            const out = {};
+            const { jsonName } = this.settings;
+            let nameMap = void 0;
+            if (jsonName) {
+              nameMap = {};
+            }
+            let outCount = 0;
+            for (const [memberName, memberSchema] of ns.structIterator()) {
+              const serializableValue = this._write(memberSchema, record[memberName], ns);
+              if (serializableValue !== void 0) {
+                let targetKey = memberName;
+                if (jsonName) {
+                  targetKey = memberSchema.getMergedTraits().jsonName ?? memberName;
+                  nameMap[memberName] = targetKey;
+                }
+                out[targetKey] = serializableValue;
+                outCount++;
+              }
+            }
+            if (ns.isUnionSchema() && outCount === 0) {
+              const { $unknown } = record;
+              if (Array.isArray($unknown)) {
+                const [k5, v] = $unknown;
+                if (k5 === "__proto__") {
+                  writeKey(out);
+                }
+                out[k5] = this._write(15, v);
+              }
+            } else if (typeof record.__type === "string") {
+              for (const k5 in record) {
+                const v = record[k5];
+                const targetKey = jsonName ? nameMap[k5] ?? k5 : k5;
+                if (!(targetKey in out)) {
+                  out[targetKey] = this._write(15, v);
+                }
+              }
+            }
+            return out;
+          }
+          if (Array.isArray(value) && ns.isListSchema()) {
+            const listMember = ns.getValueSchema();
+            const out = [];
+            const sparse = !!ns.getMergedTraits().sparse;
+            for (const item of value) {
+              if (sparse || item != null) {
+                out.push(this._write(listMember, item));
+              }
+            }
+            return out;
+          }
+          if (ns.isMapSchema()) {
+            const mapMember = ns.getValueSchema();
+            const out = {};
+            const sparse = !!ns.getMergedTraits().sparse;
+            for (const _k in value) {
+              const _v = value[_k];
+              if (sparse || _v != null) {
+                if (_k === "__proto__") {
+                  writeKey(out);
+                }
+                out[_k] = this._write(mapMember, _v);
+              }
+            }
+            return out;
+          }
+          if (value instanceof Uint8Array && ns.isBlobSchema()) {
+            if (ns === this.rootSchema) {
+              return value;
+            }
+            return (this.serdeContext?.base64Encoder ?? toBase64)(value);
+          }
+          if (value instanceof Date && (ns.isTimestampSchema() || ns.isDocumentSchema())) {
+            const format2 = determineTimestampFormat(ns, this.settings);
+            switch (format2) {
+              case 5:
+                return value.toISOString().replace(".000Z", "Z");
+              case 6:
+                return dateToUtcString(value);
+              case 7:
+                return value.getTime() / 1e3;
+              default:
+                console.warn("Missing timestamp format, using epoch seconds", value);
+                return value.getTime() / 1e3;
+            }
+          }
+          if (value instanceof NumericValue) {
+            this.useReplacer = true;
+          }
+        }
+        if (value === null && container?.isStructSchema()) {
+          return void 0;
+        }
+        if (ns.isStringSchema()) {
+          if (typeof value === "undefined" && ns.isIdempotencyToken()) {
+            return generateIdempotencyToken();
+          }
+          const mediaType = ns.getMergedTraits().mediaType;
+          if (value != null && mediaType) {
+            const isJson = mediaType === "application/json" || mediaType.endsWith("+json");
+            if (isJson) {
+              return LazyJsonString.from(value);
+            }
+          }
+          return value;
+        }
+        if (typeof value === "number") {
+          if (Math.abs(value) === Infinity || isNaN(value)) {
+            return String(value);
+          }
+          return value;
+        }
+        if (typeof value === "string" && ns.isBlobSchema()) {
+          if (ns === this.rootSchema) {
+            return value;
+          }
+          return (this.serdeContext?.base64Encoder ?? toBase64)(value);
+        }
+        if (typeof value === "bigint") {
+          this.useReplacer = true;
+        }
+        if (ns.isDocumentSchema()) {
+          if (isObject2) {
+            if (value instanceof Uint8Array) {
+              return (this.serdeContext?.base64Encoder ?? toBase64)(value);
+            }
+            const out = Array.isArray(value) ? [] : {};
+            for (const k5 in value) {
+              const v = value[k5];
+              if (k5 === "__proto__") {
+                writeKey(out);
+              }
+              if (v instanceof NumericValue) {
+                this.useReplacer = true;
+                out[k5] = v;
+              } else {
+                out[k5] = this._write(ns, v);
+              }
+            }
+            return out;
+          } else {
+            return structuredClone(value);
+          }
+        }
+        return value;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonCodec.js
+var JsonCodec;
+var init_JsonCodec = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonCodec.js"() {
+    init_ConfigurableSerdeContext();
+    init_JsonShapeDeserializer();
+    init_JsonShapeSerializer();
+    JsonCodec = class extends SerdeContextConfig {
+      settings;
+      constructor(settings) {
+        super();
+        this.settings = settings;
+      }
+      createSerializer() {
+        const serializer = new JsonShapeSerializer(this.settings);
+        serializer.setSerdeContext(this.serdeContext);
+        return serializer;
+      }
+      createDeserializer() {
+        const deserializer = new JsonShapeDeserializer(this.settings);
+        deserializer.setSerdeContext(this.serdeContext);
+        return deserializer;
       }
     };
   }
@@ -20776,12 +19741,12 @@ var require_dist_cjs7 = __commonJS({
         return xmlText += !hasChildren ? "/>" : `>${this.children.map((c5) => c5.toString()).join("")}</${this.name}>`;
       }
     };
-    function writeKey3(obj) {
+    function writeKey2(obj) {
       Object.defineProperty(obj, "__proto__", { value: void 0, writable: true, enumerable: true, configurable: true });
     }
-    function parseXML4(xml) {
-      const state3 = new AwsXmlParser(xml);
-      return state3.parse();
+    function parseXML3(xml) {
+      const state2 = new AwsXmlParser(xml);
+      return state2.parse();
     }
     var AwsXmlParser = class _AwsXmlParser {
       x;
@@ -20877,7 +19842,7 @@ var require_dist_cjs7 = __commonJS({
           ++p3.i;
           p3.trim();
           if (name === "__proto__") {
-            writeKey3(attrs);
+            writeKey2(attrs);
           }
           attrs[name] = p3.readAttrValue();
           hasAttrs = true;
@@ -20951,7 +19916,7 @@ var require_dist_cjs7 = __commonJS({
         }
         for (const child of childTags) {
           if (child.tag === "__proto__") {
-            writeKey3(obj);
+            writeKey2(obj);
           }
           if (child.tag in obj) {
             if (Array.isArray(obj[child.tag])) {
@@ -20965,7 +19930,7 @@ var require_dist_cjs7 = __commonJS({
         }
         for (const [k5, v] of Object.entries(attrs)) {
           if (k5 === "__proto__") {
-            writeKey3(obj);
+            writeKey2(obj);
           }
           obj[k5] = v;
         }
@@ -21010,7 +19975,7 @@ var require_dist_cjs7 = __commonJS({
     };
     exports.XmlNode = XmlNode2;
     exports.XmlText = XmlText2;
-    exports.parseXML = parseXML4;
+    exports.parseXML = parseXML3;
   }
 });
 
@@ -21491,11 +20456,624 @@ var init_AwsQueryProtocol = __esm({
   }
 });
 
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsEc2QueryProtocol.js
+var AwsEc2QueryProtocol;
+var init_AwsEc2QueryProtocol = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsEc2QueryProtocol.js"() {
+    init_AwsQueryProtocol();
+    AwsEc2QueryProtocol = class extends AwsQueryProtocol {
+      options;
+      constructor(options) {
+        super(options);
+        this.options = options;
+        const ec2Settings = {
+          capitalizeKeys: true,
+          flattenLists: true,
+          serializeEmptyLists: false,
+          ec2: true
+        };
+        Object.assign(this.serializer.settings, ec2Settings);
+      }
+      getShapeId() {
+        return "aws.protocols#ec2Query";
+      }
+      useNestedResult() {
+        return false;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js
+var import_xml_builder2, parseXmlBody, parseXmlErrorBody, loadRestXmlErrorCode;
+var init_parseXmlBody = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js"() {
+    import_xml_builder2 = __toESM(require_dist_cjs7());
+    init_client2();
+    init_common();
+    parseXmlBody = (streamBody, context) => collectBodyString(streamBody, context).then((encoded) => {
+      if (encoded.length) {
+        let parsedObj;
+        try {
+          parsedObj = (0, import_xml_builder2.parseXML)(encoded);
+        } catch (e5) {
+          if (e5 && typeof e5 === "object") {
+            Object.defineProperty(e5, "$responseBodyText", {
+              value: encoded
+            });
+          }
+          throw e5;
+        }
+        const textNodeName = "#text";
+        const key = Object.keys(parsedObj)[0];
+        const parsedObjToReturn = parsedObj[key];
+        if (parsedObjToReturn[textNodeName]) {
+          parsedObjToReturn[key] = parsedObjToReturn[textNodeName];
+          delete parsedObjToReturn[textNodeName];
+        }
+        return getValueFromTextNode(parsedObjToReturn);
+      }
+      return {};
+    });
+    parseXmlErrorBody = async (errorBody, context) => {
+      const value = await parseXmlBody(errorBody, context);
+      if (value.Error) {
+        value.Error.message = value.Error.message ?? value.Error.Message;
+      }
+      return value;
+    };
+    loadRestXmlErrorCode = (output, data) => {
+      if (data?.Error?.Code !== void 0) {
+        return data.Error.Code;
+      }
+      if (data?.Code !== void 0) {
+        return data.Code;
+      }
+      if (output.statusCode == 404) {
+        return "NotFound";
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js
+var import_xml_builder3, XmlShapeSerializer;
+var init_XmlShapeSerializer = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js"() {
+    import_xml_builder3 = __toESM(require_dist_cjs7());
+    init_protocols();
+    init_schema();
+    init_serde();
+    init_serde();
+    init_ConfigurableSerdeContext();
+    XmlShapeSerializer = class extends SerdeContextConfig {
+      settings;
+      stringBuffer;
+      byteBuffer;
+      buffer;
+      constructor(settings) {
+        super();
+        this.settings = settings;
+      }
+      write(schema, value) {
+        const ns = NormalizedSchema.of(schema);
+        if (ns.isStringSchema() && typeof value === "string") {
+          this.stringBuffer = value;
+        } else if (ns.isBlobSchema()) {
+          this.byteBuffer = "byteLength" in value ? value : (this.serdeContext?.base64Decoder ?? fromBase64)(value);
+        } else {
+          this.buffer = this.writeStruct(ns, value, void 0);
+          const traits = ns.getMergedTraits();
+          if (traits.httpPayload && !traits.xmlName) {
+            this.buffer.withName(ns.getName());
+          }
+        }
+      }
+      flush() {
+        if (this.byteBuffer !== void 0) {
+          const bytes = this.byteBuffer;
+          delete this.byteBuffer;
+          return bytes;
+        }
+        if (this.stringBuffer !== void 0) {
+          const str = this.stringBuffer;
+          delete this.stringBuffer;
+          return str;
+        }
+        const buffer = this.buffer;
+        if (this.settings.xmlNamespace) {
+          if (!buffer?.attributes?.["xmlns"]) {
+            buffer.addAttribute("xmlns", this.settings.xmlNamespace);
+          }
+        }
+        delete this.buffer;
+        return buffer.toString();
+      }
+      writeStruct(ns, value, parentXmlns) {
+        const traits = ns.getMergedTraits();
+        const name = ns.isMemberSchema() && !traits.httpPayload ? ns.getMemberTraits().xmlName ?? ns.getMemberName() : traits.xmlName ?? ns.getName();
+        if (!name || !ns.isStructSchema()) {
+          throw new Error(`@aws-sdk/core/protocols - xml serializer, cannot write struct with empty name or non-struct, schema=${ns.getName(true)}.`);
+        }
+        const structXmlNode = import_xml_builder3.XmlNode.of(name);
+        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(ns, parentXmlns);
+        for (const [memberName, memberSchema] of ns.structIterator()) {
+          const val = value[memberName];
+          if (val != null || memberSchema.isIdempotencyToken()) {
+            if (memberSchema.getMergedTraits().xmlAttribute) {
+              structXmlNode.addAttribute(memberSchema.getMergedTraits().xmlName ?? memberName, this.writeSimple(memberSchema, val));
+              continue;
+            }
+            if (memberSchema.isListSchema()) {
+              this.writeList(memberSchema, val, structXmlNode, xmlns);
+            } else if (memberSchema.isMapSchema()) {
+              this.writeMap(memberSchema, val, structXmlNode, xmlns);
+            } else if (memberSchema.isStructSchema()) {
+              structXmlNode.addChildNode(this.writeStruct(memberSchema, val, xmlns));
+            } else {
+              const memberNode = import_xml_builder3.XmlNode.of(memberSchema.getMergedTraits().xmlName ?? memberSchema.getMemberName());
+              this.writeSimpleInto(memberSchema, val, memberNode, xmlns);
+              structXmlNode.addChildNode(memberNode);
+            }
+          }
+        }
+        const { $unknown } = value;
+        if ($unknown && ns.isUnionSchema() && Array.isArray($unknown) && Object.keys(value).length === 1) {
+          const [k5, v] = $unknown;
+          const node = import_xml_builder3.XmlNode.of(k5);
+          if (typeof v !== "string") {
+            if (value instanceof import_xml_builder3.XmlNode || value instanceof import_xml_builder3.XmlText) {
+              structXmlNode.addChildNode(value);
+            } else {
+              throw new Error(`@aws-sdk - $unknown union member in XML requires value of type string, @aws-sdk/xml-builder::XmlNode or XmlText.`);
+            }
+          }
+          this.writeSimpleInto(0, v, node, xmlns);
+          structXmlNode.addChildNode(node);
+        }
+        if (xmlns) {
+          structXmlNode.addAttribute(xmlnsAttr, xmlns);
+        }
+        return structXmlNode;
+      }
+      writeList(listMember, array, container, parentXmlns) {
+        if (!listMember.isMemberSchema()) {
+          throw new Error(`@aws-sdk/core/protocols - xml serializer, cannot write non-member list: ${listMember.getName(true)}`);
+        }
+        const listTraits = listMember.getMergedTraits();
+        const listValueSchema = listMember.getValueSchema();
+        const listValueTraits = listValueSchema.getMergedTraits();
+        const sparse = !!listValueTraits.sparse;
+        const flat = !!listTraits.xmlFlattened;
+        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(listMember, parentXmlns);
+        const writeItem = (container2, value) => {
+          if (listValueSchema.isListSchema()) {
+            this.writeList(listValueSchema, Array.isArray(value) ? value : [value], container2, xmlns);
+          } else if (listValueSchema.isMapSchema()) {
+            this.writeMap(listValueSchema, value, container2, xmlns);
+          } else if (listValueSchema.isStructSchema()) {
+            const struct2 = this.writeStruct(listValueSchema, value, xmlns);
+            container2.addChildNode(struct2.withName(flat ? listTraits.xmlName ?? listMember.getMemberName() : listValueTraits.xmlName ?? "member"));
+          } else {
+            const listItemNode = import_xml_builder3.XmlNode.of(flat ? listTraits.xmlName ?? listMember.getMemberName() : listValueTraits.xmlName ?? "member");
+            this.writeSimpleInto(listValueSchema, value, listItemNode, xmlns);
+            container2.addChildNode(listItemNode);
+          }
+        };
+        if (flat) {
+          for (const value of array) {
+            if (sparse || value != null) {
+              writeItem(container, value);
+            }
+          }
+        } else {
+          const listNode = import_xml_builder3.XmlNode.of(listTraits.xmlName ?? listMember.getMemberName());
+          if (xmlns) {
+            listNode.addAttribute(xmlnsAttr, xmlns);
+          }
+          for (const value of array) {
+            if (sparse || value != null) {
+              writeItem(listNode, value);
+            }
+          }
+          container.addChildNode(listNode);
+        }
+      }
+      writeMap(mapMember, map3, container, parentXmlns, containerIsMap = false) {
+        if (!mapMember.isMemberSchema()) {
+          throw new Error(`@aws-sdk/core/protocols - xml serializer, cannot write non-member map: ${mapMember.getName(true)}`);
+        }
+        const mapTraits = mapMember.getMergedTraits();
+        const mapKeySchema = mapMember.getKeySchema();
+        const mapKeyTraits = mapKeySchema.getMergedTraits();
+        const keyTag = mapKeyTraits.xmlName ?? "key";
+        const mapValueSchema = mapMember.getValueSchema();
+        const mapValueTraits = mapValueSchema.getMergedTraits();
+        const valueTag = mapValueTraits.xmlName ?? "value";
+        const sparse = !!mapValueTraits.sparse;
+        const flat = !!mapTraits.xmlFlattened;
+        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(mapMember, parentXmlns);
+        const addKeyValue = (entry, key, val) => {
+          const keyNode = import_xml_builder3.XmlNode.of(keyTag, key);
+          const [keyXmlnsAttr, keyXmlns] = this.getXmlnsAttribute(mapKeySchema, xmlns);
+          if (keyXmlns) {
+            keyNode.addAttribute(keyXmlnsAttr, keyXmlns);
+          }
+          entry.addChildNode(keyNode);
+          let valueNode = import_xml_builder3.XmlNode.of(valueTag);
+          if (mapValueSchema.isListSchema()) {
+            this.writeList(mapValueSchema, val, valueNode, xmlns);
+          } else if (mapValueSchema.isMapSchema()) {
+            this.writeMap(mapValueSchema, val, valueNode, xmlns, true);
+          } else if (mapValueSchema.isStructSchema()) {
+            valueNode = this.writeStruct(mapValueSchema, val, xmlns);
+          } else {
+            this.writeSimpleInto(mapValueSchema, val, valueNode, xmlns);
+          }
+          entry.addChildNode(valueNode);
+        };
+        if (flat) {
+          for (const key in map3) {
+            const val = map3[key];
+            if (sparse || val != null) {
+              const entry = import_xml_builder3.XmlNode.of(mapTraits.xmlName ?? mapMember.getMemberName());
+              addKeyValue(entry, key, val);
+              container.addChildNode(entry);
+            }
+          }
+        } else {
+          let mapNode;
+          if (!containerIsMap) {
+            mapNode = import_xml_builder3.XmlNode.of(mapTraits.xmlName ?? mapMember.getMemberName());
+            if (xmlns) {
+              mapNode.addAttribute(xmlnsAttr, xmlns);
+            }
+            container.addChildNode(mapNode);
+          }
+          for (const key in map3) {
+            const val = map3[key];
+            if (sparse || val != null) {
+              const entry = import_xml_builder3.XmlNode.of("entry");
+              addKeyValue(entry, key, val);
+              (containerIsMap ? container : mapNode).addChildNode(entry);
+            }
+          }
+        }
+      }
+      writeSimple(_schema, value) {
+        if (null === value) {
+          throw new Error("@aws-sdk/core/protocols - (XML serializer) cannot write null value.");
+        }
+        const ns = NormalizedSchema.of(_schema);
+        let nodeContents = null;
+        if (value && typeof value === "object") {
+          if (ns.isBlobSchema()) {
+            nodeContents = (this.serdeContext?.base64Encoder ?? toBase64)(value);
+          } else if (ns.isTimestampSchema() && value instanceof Date) {
+            const format2 = determineTimestampFormat(ns, this.settings);
+            switch (format2) {
+              case 5:
+                nodeContents = value.toISOString().replace(".000Z", "Z");
+                break;
+              case 6:
+                nodeContents = dateToUtcString(value);
+                break;
+              case 7:
+                nodeContents = String(value.getTime() / 1e3);
+                break;
+              default:
+                console.warn("Missing timestamp format, using http date", value);
+                nodeContents = dateToUtcString(value);
+                break;
+            }
+          } else if (ns.isBigDecimalSchema() && value) {
+            if (value instanceof NumericValue) {
+              return value.string;
+            }
+            return String(value);
+          } else if (ns.isMapSchema() || ns.isListSchema()) {
+            throw new Error("@aws-sdk/core/protocols - xml serializer, cannot call _write() on List/Map schema, call writeList or writeMap() instead.");
+          } else {
+            throw new Error(`@aws-sdk/core/protocols - xml serializer, unhandled schema type for object value and schema: ${ns.getName(true)}`);
+          }
+        }
+        if (ns.isBooleanSchema() || ns.isNumericSchema() || ns.isBigIntegerSchema() || ns.isBigDecimalSchema()) {
+          nodeContents = String(value);
+        }
+        if (ns.isStringSchema()) {
+          if (value === void 0 && ns.isIdempotencyToken()) {
+            nodeContents = generateIdempotencyToken();
+          } else {
+            nodeContents = String(value);
+          }
+        }
+        if (nodeContents === null) {
+          throw new Error(`Unhandled schema-value pair ${ns.getName(true)}=${value}`);
+        }
+        return nodeContents;
+      }
+      writeSimpleInto(_schema, value, into, parentXmlns) {
+        const nodeContents = this.writeSimple(_schema, value);
+        const ns = NormalizedSchema.of(_schema);
+        const content = new import_xml_builder3.XmlText(nodeContents);
+        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(ns, parentXmlns);
+        if (xmlns) {
+          into.addAttribute(xmlnsAttr, xmlns);
+        }
+        into.addChildNode(content);
+      }
+      getXmlnsAttribute(ns, parentXmlns) {
+        const traits = ns.getMergedTraits();
+        const [prefix, xmlns] = traits.xmlNamespace ?? [];
+        if (xmlns && xmlns !== parentXmlns) {
+          return [prefix ? `xmlns:${prefix}` : "xmlns", xmlns];
+        }
+        return [void 0, void 0];
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js
+var XmlCodec;
+var init_XmlCodec = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js"() {
+    init_ConfigurableSerdeContext();
+    init_XmlShapeDeserializer();
+    init_XmlShapeSerializer();
+    XmlCodec = class extends SerdeContextConfig {
+      settings;
+      constructor(settings) {
+        super();
+        this.settings = settings;
+      }
+      createSerializer() {
+        const serializer = new XmlShapeSerializer(this.settings);
+        serializer.setSerdeContext(this.serdeContext);
+        return serializer;
+      }
+      createDeserializer() {
+        const deserializer = new XmlShapeDeserializer(this.settings);
+        deserializer.setSerdeContext(this.serdeContext);
+        return deserializer;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js
+var AwsRestXmlProtocol;
+var init_AwsRestXmlProtocol = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js"() {
+    init_protocols();
+    init_schema();
+    init_ProtocolLib();
+    init_parseXmlBody();
+    init_XmlCodec();
+    AwsRestXmlProtocol = class extends HttpBindingProtocol {
+      codec;
+      serializer;
+      deserializer;
+      mixin = new ProtocolLib();
+      constructor(options) {
+        super(options);
+        const settings = {
+          timestampFormat: {
+            useTrait: true,
+            default: 5
+          },
+          httpBindings: true,
+          xmlNamespace: options.xmlNamespace,
+          serviceNamespace: options.defaultNamespace
+        };
+        this.codec = new XmlCodec(settings);
+        this.serializer = new HttpInterceptingShapeSerializer(this.codec.createSerializer(), settings);
+        this.deserializer = new HttpInterceptingShapeDeserializer(this.codec.createDeserializer(), settings);
+      }
+      getPayloadCodec() {
+        return this.codec;
+      }
+      getShapeId() {
+        return "aws.protocols#restXml";
+      }
+      async serializeRequest(operationSchema, input, context) {
+        const request2 = await super.serializeRequest(operationSchema, input, context);
+        const inputSchema = NormalizedSchema.of(operationSchema.input);
+        if (!request2.headers["content-type"]) {
+          const contentType = this.mixin.resolveRestContentType(this.getDefaultContentType(), inputSchema);
+          if (contentType) {
+            request2.headers["content-type"] = contentType;
+          }
+        }
+        if (typeof request2.body === "string" && request2.headers["content-type"] === this.getDefaultContentType() && !request2.body.startsWith("<?xml ") && !this.hasUnstructuredPayloadBinding(inputSchema)) {
+          request2.body = '<?xml version="1.0" encoding="UTF-8"?>' + request2.body;
+        }
+        return request2;
+      }
+      async deserializeResponse(operationSchema, context, response) {
+        return super.deserializeResponse(operationSchema, context, response);
+      }
+      async handleError(operationSchema, context, response, dataObject, metadata) {
+        const errorIdentifier = loadRestXmlErrorCode(response, dataObject) ?? "Unknown";
+        this.mixin.compose(this.compositeErrorRegistry, errorIdentifier, this.options.defaultNamespace);
+        if (dataObject.Error && typeof dataObject.Error === "object") {
+          for (const key of Object.keys(dataObject.Error)) {
+            dataObject[key] = dataObject.Error[key];
+            if (key.toLowerCase() === "message") {
+              dataObject.message = dataObject.Error[key];
+            }
+          }
+        }
+        if (dataObject.RequestId && !metadata.requestId) {
+          metadata.requestId = dataObject.RequestId;
+        }
+        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorIdentifier, this.options.defaultNamespace, response, dataObject, metadata);
+        const ns = NormalizedSchema.of(errorSchema);
+        const message = dataObject.Error?.message ?? dataObject.Error?.Message ?? dataObject.message ?? dataObject.Message ?? "UnknownError";
+        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
+        const exception = new ErrorCtor({});
+        await this.deserializeHttpMessage(errorSchema, context, response, dataObject);
+        const output = {};
+        const errorDeserializer = this.codec.createDeserializer();
+        for (const [name, member2] of ns.structIterator()) {
+          const target = member2.getMergedTraits().xmlName ?? name;
+          const value = dataObject.Error?.[target] ?? dataObject[target];
+          output[name] = errorDeserializer.readSchema(member2, value);
+        }
+        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
+          $fault: ns.getMergedTraits().error,
+          message
+        }, output), dataObject);
+      }
+      getDefaultContentType() {
+        return "application/xml";
+      }
+      hasUnstructuredPayloadBinding(ns) {
+        for (const [, member2] of ns.structIterator()) {
+          if (member2.getMergedTraits().httpPayload) {
+            return !(member2.isStructSchema() || member2.isMapSchema() || member2.isListSchema());
+          }
+        }
+        return false;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/awsExpectUnion.js
+var awsExpectUnion;
+var init_awsExpectUnion = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/awsExpectUnion.js"() {
+    init_serde();
+    awsExpectUnion = (value) => {
+      if (value == null) {
+        return void 0;
+      }
+      if (typeof value === "object" && "__type" in value) {
+        delete value.__type;
+      }
+      return expectUnion(value);
+    };
+  }
+});
+
+// node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/coercing-serializers.js
+var _toStr, _toBool, _toNum;
+var init_coercing_serializers = __esm({
+  "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/coercing-serializers.js"() {
+    _toStr = (val) => {
+      if (val == null) {
+        return val;
+      }
+      if (typeof val === "number" || typeof val === "bigint") {
+        const warning2 = new Error(`Received number ${val} where a string was expected.`);
+        warning2.name = "Warning";
+        console.warn(warning2);
+        return String(val);
+      }
+      if (typeof val === "boolean") {
+        const warning2 = new Error(`Received boolean ${val} where a string was expected.`);
+        warning2.name = "Warning";
+        console.warn(warning2);
+        return String(val);
+      }
+      return val;
+    };
+    _toBool = (val) => {
+      if (val == null) {
+        return val;
+      }
+      if (typeof val === "number") {
+      }
+      if (typeof val === "string") {
+        const lowercase = val.toLowerCase();
+        if (val !== "" && lowercase !== "false" && lowercase !== "true") {
+          const warning2 = new Error(`Received string "${val}" where a boolean was expected.`);
+          warning2.name = "Warning";
+          console.warn(warning2);
+        }
+        return val !== "" && lowercase !== "false";
+      }
+      return val;
+    };
+    _toNum = (val) => {
+      if (val == null) {
+        return val;
+      }
+      if (typeof val === "boolean") {
+      }
+      if (typeof val === "string") {
+        const num = Number(val);
+        if (num.toString() !== val) {
+          const warning2 = new Error(`Received string "${val}" where a number was expected.`);
+          warning2.name = "Warning";
+          console.warn(warning2);
+          return val;
+        }
+        return num;
+      }
+      return val;
+    };
+  }
+});
+
 // node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js
+var protocols_exports2 = {};
+__export(protocols_exports2, {
+  AwsEc2QueryProtocol: () => AwsEc2QueryProtocol,
+  AwsJson1_0Protocol: () => AwsJson1_0Protocol,
+  AwsJson1_1Protocol: () => AwsJson1_1Protocol,
+  AwsJsonRpcProtocol: () => AwsJsonRpcProtocol,
+  AwsQueryProtocol: () => AwsQueryProtocol,
+  AwsRestJsonProtocol: () => AwsRestJsonProtocol,
+  AwsRestXmlProtocol: () => AwsRestXmlProtocol,
+  AwsSmithyRpcV2CborProtocol: () => AwsSmithyRpcV2CborProtocol,
+  JsonCodec: () => JsonCodec,
+  JsonCodec2: () => JsonCodec2,
+  JsonShapeDeserializer: () => JsonShapeDeserializer,
+  JsonShapeDeserializer2: () => JsonShapeDeserializer2,
+  JsonShapeSerializer: () => JsonShapeSerializer,
+  JsonShapeSerializer2: () => JsonShapeSerializer2,
+  QueryShapeSerializer: () => QueryShapeSerializer,
+  XmlCodec: () => XmlCodec,
+  XmlShapeDeserializer: () => XmlShapeDeserializer,
+  XmlShapeSerializer: () => XmlShapeSerializer,
+  _toBool: () => _toBool,
+  _toNum: () => _toNum,
+  _toStr: () => _toStr,
+  awsExpectUnion: () => awsExpectUnion,
+  loadJsonRpcErrorCode: () => loadJsonRpcErrorCode,
+  loadRestJsonErrorCode: () => loadRestJsonErrorCode,
+  loadRestXmlErrorCode: () => loadRestXmlErrorCode,
+  parseJsonBody: () => parseJsonBody,
+  parseJsonErrorBody: () => parseJsonErrorBody,
+  parseXmlBody: () => parseXmlBody,
+  parseXmlErrorBody: () => parseXmlErrorBody
+});
 var init_protocols2 = __esm({
   "node_modules/.pnpm/@aws-sdk+core@3.978.0/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js"() {
+    init_AwsSmithyRpcV2CborProtocol();
+    init_AwsJson1_0Protocol();
+    init_AwsJson1_1Protocol();
+    init_AwsJsonRpcProtocol();
     init_AwsRestJsonProtocol();
+    init_JsonCodec();
+    init_JsonShapeDeserializer();
+    init_JsonShapeSerializer();
+    init_JsonCodec2();
+    init_JsonShapeDeserializer2();
+    init_JsonShapeSerializer2();
+    init_parseJsonBody();
+    init_AwsEc2QueryProtocol();
     init_AwsQueryProtocol();
+    init_QueryShapeSerializer();
+    init_AwsRestXmlProtocol();
+    init_XmlCodec();
+    init_XmlShapeDeserializer();
+    init_XmlShapeSerializer();
+    init_parseXmlBody();
+    init_awsExpectUnion();
+    init_coercing_serializers();
   }
 });
 
@@ -21596,7 +21174,7 @@ var init_bdd = __esm({
 var cache, defaultEndpointResolver;
 var init_endpointResolver = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/endpoint/endpointResolver.js"() {
-    init_client4();
+    init_client3();
     init_endpoints();
     init_bdd();
     cache = new EndpointCache({
@@ -21609,7 +21187,7 @@ var init_endpointResolver = __esm({
         logger: context.logger
       }));
     };
-    customEndpointFunctions.aws = awsEndpointFunctions2;
+    customEndpointFunctions.aws = awsEndpointFunctions;
   }
 });
 
@@ -22008,7 +21586,7 @@ var init_schemas_0 = __esm({
 var getRuntimeConfig;
 var init_runtimeConfig_shared = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.shared.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_protocols2();
     init_dist_es();
     init_checksum2();
@@ -22031,7 +21609,7 @@ var init_runtimeConfig_shared = __esm({
           {
             schemeId: "aws.auth#sigv4",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4"),
-            signer: new AwsSdkSigV4Signer2()
+            signer: new AwsSdkSigV4Signer()
           },
           {
             schemeId: "smithy.api#noAuth",
@@ -22062,8 +21640,8 @@ var import_node_http_handler, getRuntimeConfig2;
 var init_runtimeConfig = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeConfig.js"() {
     init_package();
-    init_client4();
-    init_httpAuthSchemes3();
+    init_client3();
+    init_httpAuthSchemes2();
     init_client2();
     init_config2();
     init_retry2();
@@ -22075,7 +21653,7 @@ var init_runtimeConfig = __esm({
       const defaultsMode = resolveDefaultsModeConfig(config);
       const defaultConfigProvider = () => defaultsMode().then(loadConfigsForDefaultMode);
       const clientSharedValues = getRuntimeConfig(config);
-      emitWarningIfUnsupportedVersion3(process.version);
+      emitWarningIfUnsupportedVersion(process.version);
       const loaderConfig = {
         profile: config?.profile,
         logger: clientSharedValues.logger
@@ -22085,9 +21663,9 @@ var init_runtimeConfig = __esm({
         ...config,
         runtime: "node",
         defaultsMode,
-        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2, loaderConfig),
+        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS, loaderConfig),
         bodyLengthChecker: config?.bodyLengthChecker ?? calculateBodyLength,
-        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider2({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
+        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
         maxAttempts: config?.maxAttempts ?? loadConfig(NODE_MAX_ATTEMPT_CONFIG_OPTIONS, config),
         region: config?.region ?? loadConfig(NODE_REGION_CONFIG_OPTIONS, { ...NODE_REGION_CONFIG_FILE_OPTIONS, ...loaderConfig }),
         requestHandler: import_node_http_handler.NodeHttpHandler.create(config?.requestHandler ?? defaultConfigProvider),
@@ -22098,7 +21676,7 @@ var init_runtimeConfig = __esm({
         streamCollector: config?.streamCollector ?? import_node_http_handler.streamCollector,
         useDualstackEndpoint: config?.useDualstackEndpoint ?? loadConfig(NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
         useFipsEndpoint: config?.useFipsEndpoint ?? loadConfig(NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
-        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS2, loaderConfig)
+        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS, loaderConfig)
       };
     };
   }
@@ -22152,14 +21730,14 @@ var init_httpAuthExtensionConfiguration = __esm({
 var resolveRuntimeExtensions;
 var init_runtimeExtensions = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/runtimeExtensions.js"() {
-    init_client4();
+    init_client3();
     init_client2();
     init_protocols();
     init_httpAuthExtensionConfiguration();
     resolveRuntimeExtensions = (runtimeConfig, extensions) => {
-      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration2(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration(runtimeConfig));
+      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration(runtimeConfig));
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
-      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration2(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig(extensionConfiguration));
+      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig(extensionConfiguration));
     };
   }
 });
@@ -22168,7 +21746,7 @@ var init_runtimeExtensions = __esm({
 var SSOOIDCClient;
 var init_SSOOIDCClient = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso-oidc/SSOOIDCClient.js"() {
-    init_client4();
+    init_client3();
     init_dist_es();
     init_client2();
     init_config2();
@@ -22187,21 +21765,21 @@ var init_SSOOIDCClient = __esm({
         super(_config_0);
         this.initConfig = _config_0;
         const _config_1 = resolveClientEndpointParameters(_config_0);
-        const _config_2 = resolveUserAgentConfig2(_config_1);
+        const _config_2 = resolveUserAgentConfig(_config_1);
         const _config_3 = resolveRetryConfig(_config_2);
         const _config_4 = resolveRegionConfig(_config_3);
-        const _config_5 = resolveHostHeaderConfig2(_config_4);
+        const _config_5 = resolveHostHeaderConfig(_config_4);
         const _config_6 = resolveEndpointConfig(_config_5);
         const _config_7 = resolveHttpAuthSchemeConfig(_config_6);
         const _config_8 = resolveRuntimeExtensions(_config_7, configuration?.extensions || []);
         this.config = _config_8;
         this.middlewareStack.use(getSchemaSerdePlugin(this.config));
-        this.middlewareStack.use(getUserAgentPlugin2(this.config));
+        this.middlewareStack.use(getUserAgentPlugin(this.config));
         this.middlewareStack.use(getRetryPlugin(this.config));
         this.middlewareStack.use(getContentLengthPlugin(this.config));
-        this.middlewareStack.use(getHostHeaderPlugin2(this.config));
-        this.middlewareStack.use(getLoggerPlugin2(this.config));
-        this.middlewareStack.use(getRecursionDetectionPlugin2(this.config));
+        this.middlewareStack.use(getHostHeaderPlugin(this.config));
+        this.middlewareStack.use(getLoggerPlugin(this.config));
+        this.middlewareStack.use(getRecursionDetectionPlugin(this.config));
         this.middlewareStack.use(getHttpAuthSchemeEndpointRuleSetPlugin(this.config, {
           httpAuthSchemeParametersProvider: defaultSSOOIDCHttpAuthSchemeParametersProvider,
           identityProviderConfigProvider: async (config) => new DefaultIdentityProviderConfig({
@@ -22342,8 +21920,8 @@ var init_sso_oidc = __esm({
 // node_modules/.pnpm/@aws-sdk+token-providers@3.1129.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js
 var require_dist_cjs8 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+token-providers@3.1129.0/node_modules/@aws-sdk/token-providers/dist-cjs/index.js"(exports) {
-    var { setTokenFeature: setTokenFeature3 } = (init_client4(), __toCommonJS(client_exports3));
-    var { getBearerTokenEnvKey: getBearerTokenEnvKey3 } = (init_httpAuthSchemes3(), __toCommonJS(httpAuthSchemes_exports2));
+    var { setTokenFeature: setTokenFeature2 } = (init_client3(), __toCommonJS(client_exports2));
+    var { getBearerTokenEnvKey: getBearerTokenEnvKey2 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
     var { TokenProviderError: TokenProviderError2, getSSOTokenFilepath: getSSOTokenFilepath2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2, loadSsoSessionData: loadSsoSessionData2, getSSOTokenFromFile: getSSOTokenFromFile2, memoize: memoize2, chain: chain2 } = (init_config2(), __toCommonJS(config_exports));
     var { promises } = __require("node:fs");
     var fromEnvSigningName = ({ logger: logger2, signingName } = {}) => async () => {
@@ -22351,12 +21929,12 @@ var require_dist_cjs8 = __commonJS({
       if (!signingName) {
         throw new TokenProviderError2("Please pass 'signingName' to compute environment variable key", { logger: logger2 });
       }
-      const bearerTokenKey = getBearerTokenEnvKey3(signingName);
+      const bearerTokenKey = getBearerTokenEnvKey2(signingName);
       if (!(bearerTokenKey in process.env)) {
         throw new TokenProviderError2(`Token not present in '${bearerTokenKey}' environment variable`, { logger: logger2 });
       }
       const token = { token: process.env[bearerTokenKey] };
-      setTokenFeature3(token, "BEARER_SERVICE_ENV_VARS", "3");
+      setTokenFeature2(token, "BEARER_SERVICE_ENV_VARS", "3");
       return token;
     };
     var EXPIRE_WINDOW_MS = 5 * 60 * 1e3;
@@ -22512,7 +22090,7 @@ function createSmithyApiNoAuthHttpAuthOption2(authParameters) {
 var defaultSSOHttpAuthSchemeParametersProvider, defaultSSOHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig2;
 var init_httpAuthSchemeProvider2 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/auth/httpAuthSchemeProvider.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_client2();
     defaultSSOHttpAuthSchemeParametersProvider = async (config, context, input) => {
       return {
@@ -22538,7 +22116,7 @@ var init_httpAuthSchemeProvider2 = __esm({
       return options;
     };
     resolveHttpAuthSchemeConfig2 = (config) => {
-      const config_0 = resolveAwsSdkSigV4Config2(config);
+      const config_0 = resolveAwsSdkSigV4Config(config);
       return Object.assign(config_0, {
         authSchemePreference: normalizeProvider(config.authSchemePreference ?? [])
       });
@@ -22663,7 +22241,7 @@ var init_bdd2 = __esm({
 var cache2, defaultEndpointResolver2;
 var init_endpointResolver2 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/endpoint/endpointResolver.js"() {
-    init_client4();
+    init_client3();
     init_endpoints();
     init_bdd2();
     cache2 = new EndpointCache({
@@ -22676,7 +22254,7 @@ var init_endpointResolver2 = __esm({
         logger: context.logger
       }));
     };
-    customEndpointFunctions.aws = awsEndpointFunctions2;
+    customEndpointFunctions.aws = awsEndpointFunctions;
   }
 });
 
@@ -22875,7 +22453,7 @@ var init_schemas_02 = __esm({
 var getRuntimeConfig3;
 var init_runtimeConfig_shared2 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.shared.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_protocols2();
     init_dist_es();
     init_checksum2();
@@ -22898,7 +22476,7 @@ var init_runtimeConfig_shared2 = __esm({
           {
             schemeId: "aws.auth#sigv4",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4"),
-            signer: new AwsSdkSigV4Signer2()
+            signer: new AwsSdkSigV4Signer()
           },
           {
             schemeId: "smithy.api#noAuth",
@@ -22929,8 +22507,8 @@ var import_node_http_handler2, getRuntimeConfig4;
 var init_runtimeConfig2 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeConfig.js"() {
     init_package();
-    init_client4();
-    init_httpAuthSchemes3();
+    init_client3();
+    init_httpAuthSchemes2();
     init_client2();
     init_config2();
     init_retry2();
@@ -22942,7 +22520,7 @@ var init_runtimeConfig2 = __esm({
       const defaultsMode = resolveDefaultsModeConfig(config);
       const defaultConfigProvider = () => defaultsMode().then(loadConfigsForDefaultMode);
       const clientSharedValues = getRuntimeConfig3(config);
-      emitWarningIfUnsupportedVersion3(process.version);
+      emitWarningIfUnsupportedVersion(process.version);
       const loaderConfig = {
         profile: config?.profile,
         logger: clientSharedValues.logger
@@ -22952,9 +22530,9 @@ var init_runtimeConfig2 = __esm({
         ...config,
         runtime: "node",
         defaultsMode,
-        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2, loaderConfig),
+        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS, loaderConfig),
         bodyLengthChecker: config?.bodyLengthChecker ?? calculateBodyLength,
-        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider2({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
+        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
         maxAttempts: config?.maxAttempts ?? loadConfig(NODE_MAX_ATTEMPT_CONFIG_OPTIONS, config),
         region: config?.region ?? loadConfig(NODE_REGION_CONFIG_OPTIONS, { ...NODE_REGION_CONFIG_FILE_OPTIONS, ...loaderConfig }),
         requestHandler: import_node_http_handler2.NodeHttpHandler.create(config?.requestHandler ?? defaultConfigProvider),
@@ -22965,7 +22543,7 @@ var init_runtimeConfig2 = __esm({
         streamCollector: config?.streamCollector ?? import_node_http_handler2.streamCollector,
         useDualstackEndpoint: config?.useDualstackEndpoint ?? loadConfig(NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
         useFipsEndpoint: config?.useFipsEndpoint ?? loadConfig(NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
-        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS2, loaderConfig)
+        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS, loaderConfig)
       };
     };
   }
@@ -23019,14 +22597,14 @@ var init_httpAuthExtensionConfiguration2 = __esm({
 var resolveRuntimeExtensions2;
 var init_runtimeExtensions2 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/runtimeExtensions.js"() {
-    init_client4();
+    init_client3();
     init_client2();
     init_protocols();
     init_httpAuthExtensionConfiguration2();
     resolveRuntimeExtensions2 = (runtimeConfig, extensions) => {
-      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration2(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration2(runtimeConfig));
+      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration2(runtimeConfig));
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
-      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration2(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig2(extensionConfiguration));
+      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig2(extensionConfiguration));
     };
   }
 });
@@ -23035,7 +22613,7 @@ var init_runtimeExtensions2 = __esm({
 var SSOClient;
 var init_SSOClient = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sso/SSOClient.js"() {
-    init_client4();
+    init_client3();
     init_dist_es();
     init_client2();
     init_config2();
@@ -23054,21 +22632,21 @@ var init_SSOClient = __esm({
         super(_config_0);
         this.initConfig = _config_0;
         const _config_1 = resolveClientEndpointParameters2(_config_0);
-        const _config_2 = resolveUserAgentConfig2(_config_1);
+        const _config_2 = resolveUserAgentConfig(_config_1);
         const _config_3 = resolveRetryConfig(_config_2);
         const _config_4 = resolveRegionConfig(_config_3);
-        const _config_5 = resolveHostHeaderConfig2(_config_4);
+        const _config_5 = resolveHostHeaderConfig(_config_4);
         const _config_6 = resolveEndpointConfig(_config_5);
         const _config_7 = resolveHttpAuthSchemeConfig2(_config_6);
         const _config_8 = resolveRuntimeExtensions2(_config_7, configuration?.extensions || []);
         this.config = _config_8;
         this.middlewareStack.use(getSchemaSerdePlugin(this.config));
-        this.middlewareStack.use(getUserAgentPlugin2(this.config));
+        this.middlewareStack.use(getUserAgentPlugin(this.config));
         this.middlewareStack.use(getRetryPlugin(this.config));
         this.middlewareStack.use(getContentLengthPlugin(this.config));
-        this.middlewareStack.use(getHostHeaderPlugin2(this.config));
-        this.middlewareStack.use(getLoggerPlugin2(this.config));
-        this.middlewareStack.use(getRecursionDetectionPlugin2(this.config));
+        this.middlewareStack.use(getHostHeaderPlugin(this.config));
+        this.middlewareStack.use(getLoggerPlugin(this.config));
+        this.middlewareStack.use(getRecursionDetectionPlugin(this.config));
         this.middlewareStack.use(getHttpAuthSchemeEndpointRuleSetPlugin(this.config, {
           httpAuthSchemeParametersProvider: defaultSSOHttpAuthSchemeParametersProvider,
           identityProviderConfigProvider: async (config) => new DefaultIdentityProviderConfig({
@@ -23187,7 +22765,7 @@ var require_loadSso_BGYXHf8s = __commonJS({
 var require_dist_cjs9 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-sso@3.973.15/node_modules/@aws-sdk/credential-provider-sso/dist-cjs/index.js"(exports) {
     var { CredentialsProviderError: CredentialsProviderError2, getSSOTokenFromFile: getSSOTokenFromFile2, getProfileName: getProfileName2, parseKnownFiles: parseKnownFiles2, loadSsoSessionData: loadSsoSessionData2 } = (init_config2(), __toCommonJS(config_exports));
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { fromSso } = require_dist_cjs8();
     var isSsoProfile = (arg) => arg && (typeof arg.sso_start_url === "string" || typeof arg.sso_account_id === "string" || typeof arg.sso_session === "string" || typeof arg.sso_region === "string" || typeof arg.sso_role_name === "string");
     var SHOULD_FAIL_CREDENTIAL_CHAIN = false;
@@ -23267,9 +22845,9 @@ var require_dist_cjs9 = __commonJS({
         ...accountId && { accountId }
       };
       if (ssoSession) {
-        setCredentialFeature3(credentials, "CREDENTIALS_SSO", "s");
+        setCredentialFeature2(credentials, "CREDENTIALS_SSO", "s");
       } else {
-        setCredentialFeature3(credentials, "CREDENTIALS_SSO_LEGACY", "u");
+        setCredentialFeature2(credentials, "CREDENTIALS_SSO_LEGACY", "u");
       }
       return credentials;
     };
@@ -23365,13 +22943,13 @@ Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.ht
 // node_modules/.pnpm/@aws-sdk+signature-v4-multi-region@3.996.46/node_modules/@aws-sdk/signature-v4-multi-region/dist-cjs/index.js
 var require_dist_cjs10 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+signature-v4-multi-region@3.996.46/node_modules/@aws-sdk/signature-v4-multi-region/dist-cjs/index.js"(exports) {
-    var { SignatureV4: SignatureV43, signatureV4aContainer } = require_dist_cjs2();
+    var { SignatureV4: SignatureV42, signatureV4aContainer } = require_dist_cjs2();
     var signatureV4CrtContainer = {
       CrtSignerV4: null
     };
     var SESSION_TOKEN_QUERY_PARAM = "X-Amz-S3session-Token";
     var SESSION_TOKEN_HEADER = SESSION_TOKEN_QUERY_PARAM.toLowerCase();
-    var SignatureV4SignWithCredentials = class extends SignatureV43 {
+    var SignatureV4SignWithCredentials = class extends SignatureV42 {
       async signWithCredentials(requestToSign, credentials, options) {
         const credentialsWithoutSessionToken = getCredentialsWithoutSessionToken(credentials);
         requestToSign.headers[SESSION_TOKEN_HEADER] = credentials.sessionToken;
@@ -23667,7 +23245,7 @@ var init_bdd3 = __esm({
 var cache3, defaultEndpointResolver3;
 var init_endpointResolver3 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/endpoint/endpointResolver.js"() {
-    init_client4();
+    init_client3();
     init_endpoints();
     init_bdd3();
     cache3 = new EndpointCache({
@@ -23680,7 +23258,7 @@ var init_endpointResolver3 = __esm({
         logger: context.logger
       }));
     };
-    customEndpointFunctions.aws = awsEndpointFunctions2;
+    customEndpointFunctions.aws = awsEndpointFunctions;
   }
 });
 
@@ -23723,7 +23301,7 @@ function createSmithyApiNoAuthHttpAuthOption3(authParameters) {
 var import_signature_v4_multi_region, createEndpointRuleSetHttpAuthSchemeParametersProvider, _defaultSTSHttpAuthSchemeParametersProvider, defaultSTSHttpAuthSchemeParametersProvider, createEndpointRuleSetHttpAuthSchemeProvider, _defaultSTSHttpAuthSchemeProvider, defaultSTSHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig3;
 var init_httpAuthSchemeProvider3 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/auth/httpAuthSchemeProvider.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     import_signature_v4_multi_region = __toESM(require_dist_cjs10());
     init_client2();
     init_endpoints();
@@ -23812,8 +23390,8 @@ var init_httpAuthSchemeProvider3 = __esm({
       "smithy.api#noAuth": createSmithyApiNoAuthHttpAuthOption3
     });
     resolveHttpAuthSchemeConfig3 = (config) => {
-      const config_0 = resolveAwsSdkSigV4Config2(config);
-      const config_1 = resolveAwsSdkSigV4AConfig2(config_0);
+      const config_0 = resolveAwsSdkSigV4Config(config);
+      const config_1 = resolveAwsSdkSigV4AConfig(config_0);
       return Object.assign(config_1, {
         authSchemePreference: normalizeProvider(config.authSchemePreference ?? [])
       });
@@ -24211,7 +23789,7 @@ var init_schemas_03 = __esm({
 var import_signature_v4_multi_region2, getRuntimeConfig5;
 var init_runtimeConfig_shared3 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.shared.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_protocols2();
     import_signature_v4_multi_region2 = __toESM(require_dist_cjs10());
     init_dist_es();
@@ -24235,12 +23813,12 @@ var init_runtimeConfig_shared3 = __esm({
           {
             schemeId: "aws.auth#sigv4",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4"),
-            signer: new AwsSdkSigV4Signer2()
+            signer: new AwsSdkSigV4Signer()
           },
           {
             schemeId: "aws.auth#sigv4a",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4a"),
-            signer: new AwsSdkSigV4ASigner2()
+            signer: new AwsSdkSigV4ASigner()
           },
           {
             schemeId: "smithy.api#noAuth",
@@ -24273,8 +23851,8 @@ var import_node_http_handler3, getRuntimeConfig6;
 var init_runtimeConfig3 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeConfig.js"() {
     init_package();
-    init_client4();
-    init_httpAuthSchemes3();
+    init_client3();
+    init_httpAuthSchemes2();
     init_dist_es();
     init_client2();
     init_config2();
@@ -24287,7 +23865,7 @@ var init_runtimeConfig3 = __esm({
       const defaultsMode = resolveDefaultsModeConfig(config);
       const defaultConfigProvider = () => defaultsMode().then(loadConfigsForDefaultMode);
       const clientSharedValues = getRuntimeConfig5(config);
-      emitWarningIfUnsupportedVersion3(process.version);
+      emitWarningIfUnsupportedVersion(process.version);
       const loaderConfig = {
         profile: config?.profile,
         logger: clientSharedValues.logger
@@ -24297,19 +23875,19 @@ var init_runtimeConfig3 = __esm({
         ...config,
         runtime: "node",
         defaultsMode,
-        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2, loaderConfig),
+        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS, loaderConfig),
         bodyLengthChecker: config?.bodyLengthChecker ?? calculateBodyLength,
-        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider2({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
+        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
         httpAuthSchemes: config?.httpAuthSchemes ?? [
           {
             schemeId: "aws.auth#sigv4",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4") || (async (idProps) => await config.credentialDefaultProvider(idProps?.__config || {})()),
-            signer: new AwsSdkSigV4Signer2()
+            signer: new AwsSdkSigV4Signer()
           },
           {
             schemeId: "aws.auth#sigv4a",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4a"),
-            signer: new AwsSdkSigV4ASigner2()
+            signer: new AwsSdkSigV4ASigner()
           },
           {
             schemeId: "smithy.api#noAuth",
@@ -24324,11 +23902,11 @@ var init_runtimeConfig3 = __esm({
           ...NODE_RETRY_MODE_CONFIG_OPTIONS,
           default: async () => (await defaultConfigProvider()).retryMode || DEFAULT_RETRY_MODE
         }, config),
-        sigv4aSigningRegionSet: config?.sigv4aSigningRegionSet ?? loadConfig(NODE_SIGV4A_CONFIG_OPTIONS2, loaderConfig),
+        sigv4aSigningRegionSet: config?.sigv4aSigningRegionSet ?? loadConfig(NODE_SIGV4A_CONFIG_OPTIONS, loaderConfig),
         streamCollector: config?.streamCollector ?? import_node_http_handler3.streamCollector,
         useDualstackEndpoint: config?.useDualstackEndpoint ?? loadConfig(NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
         useFipsEndpoint: config?.useFipsEndpoint ?? loadConfig(NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
-        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS2, loaderConfig)
+        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS, loaderConfig)
       };
     };
   }
@@ -24382,14 +23960,14 @@ var init_httpAuthExtensionConfiguration3 = __esm({
 var resolveRuntimeExtensions3;
 var init_runtimeExtensions3 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/runtimeExtensions.js"() {
-    init_client4();
+    init_client3();
     init_client2();
     init_protocols();
     init_httpAuthExtensionConfiguration3();
     resolveRuntimeExtensions3 = (runtimeConfig, extensions) => {
-      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration2(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration3(runtimeConfig));
+      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration3(runtimeConfig));
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
-      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration2(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig3(extensionConfiguration));
+      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig3(extensionConfiguration));
     };
   }
 });
@@ -24398,7 +23976,7 @@ var init_runtimeExtensions3 = __esm({
 var STSClient;
 var init_STSClient = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/STSClient.js"() {
-    init_client4();
+    init_client3();
     init_dist_es();
     init_client2();
     init_config2();
@@ -24417,21 +23995,21 @@ var init_STSClient = __esm({
         super(_config_0);
         this.initConfig = _config_0;
         const _config_1 = resolveClientEndpointParameters3(_config_0);
-        const _config_2 = resolveUserAgentConfig2(_config_1);
+        const _config_2 = resolveUserAgentConfig(_config_1);
         const _config_3 = resolveRetryConfig(_config_2);
         const _config_4 = resolveRegionConfig(_config_3);
-        const _config_5 = resolveHostHeaderConfig2(_config_4);
+        const _config_5 = resolveHostHeaderConfig(_config_4);
         const _config_6 = resolveEndpointConfig(_config_5);
         const _config_7 = resolveHttpAuthSchemeConfig3(_config_6);
         const _config_8 = resolveRuntimeExtensions3(_config_7, configuration?.extensions || []);
         this.config = _config_8;
         this.middlewareStack.use(getSchemaSerdePlugin(this.config));
-        this.middlewareStack.use(getUserAgentPlugin2(this.config));
+        this.middlewareStack.use(getUserAgentPlugin(this.config));
         this.middlewareStack.use(getRetryPlugin(this.config));
         this.middlewareStack.use(getContentLengthPlugin(this.config));
-        this.middlewareStack.use(getHostHeaderPlugin2(this.config));
-        this.middlewareStack.use(getLoggerPlugin2(this.config));
-        this.middlewareStack.use(getRecursionDetectionPlugin2(this.config));
+        this.middlewareStack.use(getHostHeaderPlugin(this.config));
+        this.middlewareStack.use(getLoggerPlugin(this.config));
+        this.middlewareStack.use(getRecursionDetectionPlugin(this.config));
         this.middlewareStack.use(getHttpAuthSchemeEndpointRuleSetPlugin(this.config, {
           httpAuthSchemeParametersProvider: defaultSTSHttpAuthSchemeParametersProvider,
           identityProviderConfigProvider: async (config) => new DefaultIdentityProviderConfig({
@@ -24519,7 +24097,7 @@ var init_models_03 = __esm({
 var getAccountIdFromAssumedRoleUser, resolveRegion, getDefaultRoleAssumer, getDefaultRoleAssumerWithWebIdentity, isH2;
 var init_defaultStsRoleAssumers = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/sts/defaultStsRoleAssumers.js"() {
-    init_client4();
+    init_client3();
     init_AssumeRoleCommand();
     init_AssumeRoleWithWebIdentityCommand();
     getAccountIdFromAssumedRoleUser = (assumedRoleUser) => {
@@ -24535,7 +24113,7 @@ var init_defaultStsRoleAssumers = __esm({
       const region = typeof _region === "function" ? await _region() : _region;
       const parentRegion = typeof _parentRegion === "function" ? await _parentRegion() : _parentRegion;
       let stsDefaultRegion = "";
-      const resolvedRegion = region ?? parentRegion ?? (stsDefaultRegion = await stsRegionDefaultResolver2(loaderConfig)());
+      const resolvedRegion = region ?? parentRegion ?? (stsDefaultRegion = await stsRegionDefaultResolver(loaderConfig)());
       credentialProviderLogger?.debug?.("@aws-sdk/client-sts::resolveRegion", "accepting first of:", `${region} (credential provider clientConfig)`, `${parentRegion} (contextual client)`, `${stsDefaultRegion} (STS default: AWS_REGION, profile region, or us-east-1)`);
       return resolvedRegion;
     };
@@ -24574,7 +24152,7 @@ var init_defaultStsRoleAssumers = __esm({
           ...Credentials.CredentialScope && { credentialScope: Credentials.CredentialScope },
           ...accountId && { accountId }
         };
-        setCredentialFeature2(credentials, "CREDENTIALS_STS_ASSUME_ROLE", "i");
+        setCredentialFeature(credentials, "CREDENTIALS_STS_ASSUME_ROLE", "i");
         return credentials;
       };
     };
@@ -24611,9 +24189,9 @@ var init_defaultStsRoleAssumers = __esm({
           ...accountId && { accountId }
         };
         if (accountId) {
-          setCredentialFeature2(credentials, "RESOLVED_ACCOUNT_ID", "T");
+          setCredentialFeature(credentials, "RESOLVED_ACCOUNT_ID", "T");
         }
-        setCredentialFeature2(credentials, "CREDENTIALS_STS_ASSUME_ROLE_WEB_ID", "k");
+        setCredentialFeature(credentials, "CREDENTIALS_STS_ASSUME_ROLE_WEB_ID", "k");
         return credentials;
       };
     };
@@ -24731,7 +24309,7 @@ function createSmithyApiNoAuthHttpAuthOption4(authParameters) {
 var defaultSigninHttpAuthSchemeParametersProvider, defaultSigninHttpAuthSchemeProvider, resolveHttpAuthSchemeConfig4;
 var init_httpAuthSchemeProvider4 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/auth/httpAuthSchemeProvider.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_client2();
     defaultSigninHttpAuthSchemeParametersProvider = async (config, context, input) => {
       return {
@@ -24757,7 +24335,7 @@ var init_httpAuthSchemeProvider4 = __esm({
       return options;
     };
     resolveHttpAuthSchemeConfig4 = (config) => {
-      const config_0 = resolveAwsSdkSigV4Config2(config);
+      const config_0 = resolveAwsSdkSigV4Config(config);
       return Object.assign(config_0, {
         authSchemePreference: normalizeProvider(config.authSchemePreference ?? [])
       });
@@ -24992,7 +24570,7 @@ var init_bdd4 = __esm({
 var cache4, defaultEndpointResolver4;
 var init_endpointResolver4 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/endpoint/endpointResolver.js"() {
-    init_client4();
+    init_client3();
     init_endpoints();
     init_bdd4();
     cache4 = new EndpointCache({
@@ -25005,7 +24583,7 @@ var init_endpointResolver4 = __esm({
         logger: context.logger
       }));
     };
-    customEndpointFunctions.aws = awsEndpointFunctions2;
+    customEndpointFunctions.aws = awsEndpointFunctions;
   }
 });
 
@@ -25274,7 +24852,7 @@ var init_schemas_04 = __esm({
 var getRuntimeConfig7;
 var init_runtimeConfig_shared4 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.shared.js"() {
-    init_httpAuthSchemes3();
+    init_httpAuthSchemes2();
     init_protocols2();
     init_dist_es();
     init_checksum2();
@@ -25297,7 +24875,7 @@ var init_runtimeConfig_shared4 = __esm({
           {
             schemeId: "aws.auth#sigv4",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4"),
-            signer: new AwsSdkSigV4Signer2()
+            signer: new AwsSdkSigV4Signer()
           },
           {
             schemeId: "smithy.api#noAuth",
@@ -25328,8 +24906,8 @@ var import_node_http_handler4, getRuntimeConfig8;
 var init_runtimeConfig4 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeConfig.js"() {
     init_package();
-    init_client4();
-    init_httpAuthSchemes3();
+    init_client3();
+    init_httpAuthSchemes2();
     init_client2();
     init_config2();
     init_retry2();
@@ -25341,7 +24919,7 @@ var init_runtimeConfig4 = __esm({
       const defaultsMode = resolveDefaultsModeConfig(config);
       const defaultConfigProvider = () => defaultsMode().then(loadConfigsForDefaultMode);
       const clientSharedValues = getRuntimeConfig7(config);
-      emitWarningIfUnsupportedVersion3(process.version);
+      emitWarningIfUnsupportedVersion(process.version);
       const loaderConfig = {
         profile: config?.profile,
         logger: clientSharedValues.logger
@@ -25351,9 +24929,9 @@ var init_runtimeConfig4 = __esm({
         ...config,
         runtime: "node",
         defaultsMode,
-        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2, loaderConfig),
+        authSchemePreference: config?.authSchemePreference ?? loadConfig(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS, loaderConfig),
         bodyLengthChecker: config?.bodyLengthChecker ?? calculateBodyLength,
-        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider2({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
+        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider({ serviceId: clientSharedValues.serviceId, clientVersion: package_default.version }),
         maxAttempts: config?.maxAttempts ?? loadConfig(NODE_MAX_ATTEMPT_CONFIG_OPTIONS, config),
         region: config?.region ?? loadConfig(NODE_REGION_CONFIG_OPTIONS, { ...NODE_REGION_CONFIG_FILE_OPTIONS, ...loaderConfig }),
         requestHandler: import_node_http_handler4.NodeHttpHandler.create(config?.requestHandler ?? defaultConfigProvider),
@@ -25364,7 +24942,7 @@ var init_runtimeConfig4 = __esm({
         streamCollector: config?.streamCollector ?? import_node_http_handler4.streamCollector,
         useDualstackEndpoint: config?.useDualstackEndpoint ?? loadConfig(NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
         useFipsEndpoint: config?.useFipsEndpoint ?? loadConfig(NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS, loaderConfig),
-        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS2, loaderConfig)
+        userAgentAppId: config?.userAgentAppId ?? loadConfig(NODE_APP_ID_CONFIG_OPTIONS, loaderConfig)
       };
     };
   }
@@ -25418,14 +24996,14 @@ var init_httpAuthExtensionConfiguration4 = __esm({
 var resolveRuntimeExtensions4;
 var init_runtimeExtensions4 = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/runtimeExtensions.js"() {
-    init_client4();
+    init_client3();
     init_client2();
     init_protocols();
     init_httpAuthExtensionConfiguration4();
     resolveRuntimeExtensions4 = (runtimeConfig, extensions) => {
-      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration2(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration4(runtimeConfig));
+      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration(runtimeConfig), getDefaultExtensionConfiguration(runtimeConfig), getHttpHandlerExtensionConfiguration(runtimeConfig), getHttpAuthExtensionConfiguration4(runtimeConfig));
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
-      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration2(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig4(extensionConfiguration));
+      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration(extensionConfiguration), resolveDefaultRuntimeConfig(extensionConfiguration), resolveHttpHandlerRuntimeConfig(extensionConfiguration), resolveHttpAuthRuntimeConfig4(extensionConfiguration));
     };
   }
 });
@@ -25434,7 +25012,7 @@ var init_runtimeExtensions4 = __esm({
 var SigninClient;
 var init_SigninClient = __esm({
   "node_modules/.pnpm/@aws-sdk+nested-clients@3.997.45/node_modules/@aws-sdk/nested-clients/dist-es/submodules/signin/SigninClient.js"() {
-    init_client4();
+    init_client3();
     init_dist_es();
     init_client2();
     init_config2();
@@ -25453,21 +25031,21 @@ var init_SigninClient = __esm({
         super(_config_0);
         this.initConfig = _config_0;
         const _config_1 = resolveClientEndpointParameters4(_config_0);
-        const _config_2 = resolveUserAgentConfig2(_config_1);
+        const _config_2 = resolveUserAgentConfig(_config_1);
         const _config_3 = resolveRetryConfig(_config_2);
         const _config_4 = resolveRegionConfig(_config_3);
-        const _config_5 = resolveHostHeaderConfig2(_config_4);
+        const _config_5 = resolveHostHeaderConfig(_config_4);
         const _config_6 = resolveEndpointConfig(_config_5);
         const _config_7 = resolveHttpAuthSchemeConfig4(_config_6);
         const _config_8 = resolveRuntimeExtensions4(_config_7, configuration?.extensions || []);
         this.config = _config_8;
         this.middlewareStack.use(getSchemaSerdePlugin(this.config));
-        this.middlewareStack.use(getUserAgentPlugin2(this.config));
+        this.middlewareStack.use(getUserAgentPlugin(this.config));
         this.middlewareStack.use(getRetryPlugin(this.config));
         this.middlewareStack.use(getContentLengthPlugin(this.config));
-        this.middlewareStack.use(getHostHeaderPlugin2(this.config));
-        this.middlewareStack.use(getLoggerPlugin2(this.config));
-        this.middlewareStack.use(getRecursionDetectionPlugin2(this.config));
+        this.middlewareStack.use(getHostHeaderPlugin(this.config));
+        this.middlewareStack.use(getLoggerPlugin(this.config));
+        this.middlewareStack.use(getRecursionDetectionPlugin(this.config));
         this.middlewareStack.use(getHttpAuthSchemeEndpointRuleSetPlugin(this.config, {
           httpAuthSchemeParametersProvider: defaultSigninHttpAuthSchemeParametersProvider,
           identityProviderConfigProvider: async (config) => new DefaultIdentityProviderConfig({
@@ -25621,7 +25199,7 @@ var init_signin = __esm({
 // node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.78/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
 var require_dist_cjs11 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.78/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js"(exports) {
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2 } = (init_config2(), __toCommonJS(config_exports));
     var { HttpRequest: HttpRequest2 } = (init_protocols(), __toCommonJS(protocols_exports));
     var { createHash: createHash5, createPrivateKey: createPrivateKey2, createPublicKey, sign: sign3 } = __require("node:crypto");
@@ -25897,7 +25475,7 @@ var require_dist_cjs11 = __commonJS({
       }
       const fetcher = new LoginCredentialsFetcher(profile, init, callerClientConfig);
       const credentials = await fetcher.loadCredentials();
-      return setCredentialFeature3(credentials, "CREDENTIALS_LOGIN", "AD");
+      return setCredentialFeature2(credentials, "CREDENTIALS_LOGIN", "AD");
     };
     exports.fromLoginCredentials = fromLoginCredentials;
   }
@@ -25909,7 +25487,7 @@ var require_dist_cjs12 = __commonJS({
     var { externalDataInterceptor: externalDataInterceptor2, CredentialsProviderError: CredentialsProviderError2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2 } = (init_config2(), __toCommonJS(config_exports));
     var { exec } = __require("node:child_process");
     var { promisify } = __require("node:util");
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var getValidatedProcessCredentials = (profileName, data, profiles) => {
       if (data.Version !== 1) {
         throw Error(`Profile ${profileName} credential_process did not return Version 1.`);
@@ -25936,7 +25514,7 @@ var require_dist_cjs12 = __commonJS({
         ...data.CredentialScope && { credentialScope: data.CredentialScope },
         ...accountId && { accountId }
       };
-      setCredentialFeature3(credentials, "CREDENTIALS_PROCESS", "w");
+      setCredentialFeature2(credentials, "CREDENTIALS_PROCESS", "w");
       return credentials;
     };
     var resolveProcessCredentials = async (profileName, profiles, logger2) => {
@@ -25980,7 +25558,7 @@ var require_dist_cjs12 = __commonJS({
 // node_modules/.pnpm/@aws-sdk+credential-provider-web-identity@3.972.77/node_modules/@aws-sdk/credential-provider-web-identity/dist-cjs/index.js
 var require_dist_cjs13 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-web-identity@3.972.77/node_modules/@aws-sdk/credential-provider-web-identity/dist-cjs/index.js"(exports) {
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2, externalDataInterceptor: externalDataInterceptor2 } = (init_config2(), __toCommonJS(config_exports));
     var { readFileSync } = __require("node:fs");
     var fromWebToken = (init) => async (awsIdentityProperties) => {
@@ -26028,7 +25606,7 @@ var require_dist_cjs13 = __commonJS({
         roleSessionName
       })(awsIdentityProperties);
       if (webIdentityTokenFile === process.env[ENV_TOKEN_FILE]) {
-        setCredentialFeature3(credentials, "CREDENTIALS_ENV_VARS_STS_WEB_ID_TOKEN", "h");
+        setCredentialFeature2(credentials, "CREDENTIALS_ENV_VARS_STS_WEB_ID_TOKEN", "h");
       }
       return credentials;
     };
@@ -26041,7 +25619,7 @@ var require_dist_cjs13 = __commonJS({
 var require_dist_cjs14 = __commonJS({
   "node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.16/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js"(exports) {
     var { CredentialsProviderError: CredentialsProviderError2, chain: chain2, getProfileName: getProfileName2, parseKnownFiles: parseKnownFiles2 } = (init_config2(), __toCommonJS(config_exports));
-    var { setCredentialFeature: setCredentialFeature3 } = (init_client4(), __toCommonJS(client_exports3));
+    var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var resolveCredentialSource = (credentialSource, profileName, logger2) => {
       const sourceProvidersMap = {
         EcsContainer: async (options) => {
@@ -26067,7 +25645,7 @@ var require_dist_cjs14 = __commonJS({
         throw new CredentialsProviderError2(`Unsupported credential source in profile ${profileName}. Got ${credentialSource}, expected EcsContainer or Ec2InstanceMetadata or Environment.`, { logger: logger2 });
       }
     };
-    var setNamedProvider = (creds) => setCredentialFeature3(creds, "CREDENTIALS_PROFILE_NAMED_PROVIDER", "p");
+    var setNamedProvider = (creds) => setCredentialFeature2(creds, "CREDENTIALS_PROFILE_NAMED_PROVIDER", "p");
     var isAssumeRoleProfile = (arg, { profile = "default", logger: logger2 } = {}) => {
       return Boolean(arg) && typeof arg === "object" && typeof arg.role_arn === "string" && ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1 && ["undefined", "string"].indexOf(typeof arg.external_id) > -1 && ["undefined", "string"].indexOf(typeof arg.mfa_serial) > -1 && (isAssumeRoleWithSourceProfile(arg, { profile, logger: logger2 }) || isCredentialSourceProfile(arg, { profile, logger: logger2 }));
     };
@@ -26110,7 +25688,7 @@ var require_dist_cjs14 = __commonJS({
         [source_profile]: true
       }, isCredentialSourceWithoutRoleArn(profiles[source_profile] ?? {})) : (await resolveCredentialSource(profileData.credential_source, profileName, options.logger)(options))();
       if (isCredentialSourceWithoutRoleArn(profileData)) {
-        return sourceCredsProvider.then((creds) => setCredentialFeature3(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
+        return sourceCredsProvider.then((creds) => setCredentialFeature2(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
       } else {
         const params = {
           RoleArn: profileData.role_arn,
@@ -26127,7 +25705,7 @@ var require_dist_cjs14 = __commonJS({
           params.TokenCode = await options.mfaCodeProvider(mfa_serial);
         }
         const sourceCreds = await sourceCredsProvider;
-        return options.roleAssumer(sourceCreds, params).then((creds) => setCredentialFeature3(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
+        return options.roleAssumer(sourceCreds, params).then((creds) => setCredentialFeature2(creds, "CREDENTIALS_PROFILE_SOURCE_PROFILE", "o"));
       }
     };
     var isCredentialSourceWithoutRoleArn = (section) => {
@@ -26142,7 +25720,7 @@ var require_dist_cjs14 = __commonJS({
         ...options,
         profile: profileName
       })({ callerClientConfig });
-      return setCredentialFeature3(credentials, "CREDENTIALS_PROFILE_LOGIN", "AC");
+      return setCredentialFeature2(credentials, "CREDENTIALS_PROFILE_LOGIN", "AC");
     };
     var isProcessProfile = (arg) => Boolean(arg) && typeof arg === "object" && typeof arg.credential_process === "string";
     var resolveProcessCredentials = async (options, profile) => {
@@ -26151,7 +25729,7 @@ var require_dist_cjs14 = __commonJS({
         ...options,
         profile
       })();
-      return setCredentialFeature3(credentials, "CREDENTIALS_PROFILE_PROCESS", "v");
+      return setCredentialFeature2(credentials, "CREDENTIALS_PROFILE_PROCESS", "v");
     };
     var resolveSsoCredentials = async (profile, profileData, options = {}, callerClientConfig) => {
       const { fromSSO } = require_dist_cjs9();
@@ -26164,9 +25742,9 @@ var require_dist_cjs14 = __commonJS({
         callerClientConfig
       }).then((creds) => {
         if (profileData.sso_session) {
-          return setCredentialFeature3(creds, "CREDENTIALS_PROFILE_SSO", "r");
+          return setCredentialFeature2(creds, "CREDENTIALS_PROFILE_SSO", "r");
         } else {
-          return setCredentialFeature3(creds, "CREDENTIALS_PROFILE_SSO_LEGACY", "t");
+          return setCredentialFeature2(creds, "CREDENTIALS_PROFILE_SSO_LEGACY", "t");
         }
       });
     };
@@ -26181,7 +25759,7 @@ var require_dist_cjs14 = __commonJS({
         ...profile.aws_credential_scope && { credentialScope: profile.aws_credential_scope },
         ...profile.aws_account_id && { accountId: profile.aws_account_id }
       };
-      return setCredentialFeature3(credentials, "CREDENTIALS_PROFILE", "n");
+      return setCredentialFeature2(credentials, "CREDENTIALS_PROFILE", "n");
     };
     var isWebIdentityProfile = (arg) => Boolean(arg) && typeof arg === "object" && typeof arg.web_identity_token_file === "string" && typeof arg.role_arn === "string" && ["undefined", "string"].indexOf(typeof arg.role_session_name) > -1;
     var resolveWebIdentityCredentials = async (profile, options, callerClientConfig) => {
@@ -26196,7 +25774,7 @@ var require_dist_cjs14 = __commonJS({
       })({
         callerClientConfig
       });
-      return setCredentialFeature3(credentials, "CREDENTIALS_PROFILE_STS_WEB_ID_TOKEN", "q");
+      return setCredentialFeature2(credentials, "CREDENTIALS_PROFILE_STS_WEB_ID_TOKEN", "q");
     };
     var resolveProfileData = async (profileName, profiles, options, callerClientConfig, visitedProfiles = {}, isAssumeRoleRecursiveCall = false) => {
       const data = profiles[profileName];
@@ -26390,3177 +25968,12 @@ var require_dist_cjs15 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ProtocolLib.js
-var ProtocolLib2;
-var init_ProtocolLib2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ProtocolLib.js"() {
-    init_client2();
-    init_schema();
-    ProtocolLib2 = class {
-      queryCompat;
-      errorRegistry;
-      constructor(queryCompat = false) {
-        this.queryCompat = queryCompat;
-      }
-      resolveRestContentType(defaultContentType, inputSchema) {
-        const members = inputSchema.getMemberSchemas();
-        const httpPayloadMember = Object.values(members).find((m3) => {
-          return !!m3.getMergedTraits().httpPayload;
-        });
-        if (httpPayloadMember) {
-          const mediaType = httpPayloadMember.getMergedTraits().mediaType;
-          if (mediaType) {
-            return mediaType;
-          } else if (httpPayloadMember.isStringSchema()) {
-            return "text/plain";
-          } else if (httpPayloadMember.isBlobSchema()) {
-            return "application/octet-stream";
-          } else {
-            return defaultContentType;
-          }
-        } else if (!inputSchema.isUnitSchema()) {
-          const hasBody = Object.values(members).find((m3) => {
-            const { httpQuery, httpQueryParams, httpHeader, httpLabel, httpPrefixHeaders } = m3.getMergedTraits();
-            const noPrefixHeaders = httpPrefixHeaders === void 0;
-            return !httpQuery && !httpQueryParams && !httpHeader && !httpLabel && noPrefixHeaders;
-          });
-          if (hasBody) {
-            return defaultContentType;
-          }
-        }
-      }
-      async getErrorSchemaOrThrowBaseException(errorIdentifier, defaultNamespace, response, dataObject, metadata, getErrorSchema) {
-        let errorName = errorIdentifier;
-        if (errorIdentifier.includes("#")) {
-          [, errorName] = errorIdentifier.split("#");
-        }
-        const errorMetadata = {
-          $metadata: metadata,
-          $fault: response.statusCode < 500 ? "client" : "server"
-        };
-        if (!this.errorRegistry) {
-          throw new Error("@aws-sdk/core/protocols - error handler not initialized.");
-        }
-        try {
-          const errorSchema = getErrorSchema?.(this.errorRegistry, errorName) ?? this.errorRegistry.getSchema(errorIdentifier);
-          return { errorSchema, errorMetadata };
-        } catch (e5) {
-          dataObject.message = dataObject.message ?? dataObject.Message ?? "UnknownError";
-          const synthetic = this.errorRegistry;
-          const baseExceptionSchema = synthetic.getBaseException();
-          if (baseExceptionSchema) {
-            const ErrorCtor = synthetic.getErrorCtor(baseExceptionSchema) ?? Error;
-            throw this.decorateServiceException(Object.assign(new ErrorCtor({ name: errorName }), errorMetadata), dataObject);
-          }
-          const d5 = dataObject;
-          const message = d5?.message ?? d5?.Message ?? d5?.Error?.Message ?? d5?.Error?.message;
-          throw this.decorateServiceException(Object.assign(new Error(message), {
-            name: errorName
-          }, errorMetadata), dataObject);
-        }
-      }
-      compose(composite, errorIdentifier, defaultNamespace) {
-        let namespace = defaultNamespace;
-        if (errorIdentifier.includes("#")) {
-          [namespace] = errorIdentifier.split("#");
-        }
-        const staticRegistry = TypeRegistry.for(namespace);
-        const defaultSyntheticRegistry = TypeRegistry.for("smithy.ts.sdk.synthetic." + defaultNamespace);
-        composite.copyFrom(staticRegistry);
-        composite.copyFrom(defaultSyntheticRegistry);
-        this.errorRegistry = composite;
-      }
-      decorateServiceException(exception, additions = {}) {
-        if (this.queryCompat) {
-          const msg = exception.Message ?? additions.Message;
-          const error2 = decorateServiceException(exception, additions);
-          if (msg) {
-            error2.message = msg;
-          }
-          const errorObj = error2.Error ?? {};
-          errorObj.Type = error2.Error?.Type;
-          errorObj.Code = error2.Error?.Code;
-          errorObj.Message = error2.Error?.message ?? error2.Error?.Message ?? msg;
-          error2.Error = errorObj;
-          const reqId = error2.$metadata.requestId;
-          if (reqId) {
-            error2.RequestId = reqId;
-          }
-          return error2;
-        }
-        return decorateServiceException(exception, additions);
-      }
-      setQueryCompatError(output, response) {
-        const queryErrorHeader = response.headers?.["x-amzn-query-error"];
-        if (output !== void 0 && queryErrorHeader != null) {
-          const [Code, Type] = queryErrorHeader.split(";");
-          const keys = Object.keys(output);
-          const Error2 = {
-            Code,
-            Type
-          };
-          output.Code = Code;
-          output.Type = Type;
-          for (let i5 = 0; i5 < keys.length; i5++) {
-            const k5 = keys[i5];
-            Error2[k5 === "message" ? "Message" : k5] = output[k5];
-          }
-          delete Error2.__type;
-          output.Error = Error2;
-        }
-      }
-      queryCompatOutput(queryCompatErrorData, errorData) {
-        if (queryCompatErrorData.Error) {
-          errorData.Error = queryCompatErrorData.Error;
-        }
-        if (queryCompatErrorData.Type) {
-          errorData.Type = queryCompatErrorData.Type;
-        }
-        if (queryCompatErrorData.Code) {
-          errorData.Code = queryCompatErrorData.Code;
-        }
-      }
-      findQueryCompatibleError(registry, errorName) {
-        try {
-          return registry.getSchema(errorName);
-        } catch (e5) {
-          return registry.find((schema) => NormalizedSchema.of(schema).getMergedTraits().awsQueryError?.[0] === errorName);
-        }
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/cbor/AwsSmithyRpcV2CborProtocol.js
-var AwsSmithyRpcV2CborProtocol;
-var init_AwsSmithyRpcV2CborProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/cbor/AwsSmithyRpcV2CborProtocol.js"() {
-    init_cbor();
-    init_schema();
-    init_ProtocolLib2();
-    AwsSmithyRpcV2CborProtocol = class extends SmithyRpcV2CborProtocol {
-      awsQueryCompatible;
-      mixin;
-      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, awsQueryCompatible }) {
-        super({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5 });
-        this.awsQueryCompatible = !!awsQueryCompatible;
-        this.mixin = new ProtocolLib2(this.awsQueryCompatible);
-      }
-      async serializeRequest(operationSchema, input, context) {
-        const request2 = await super.serializeRequest(operationSchema, input, context);
-        if (this.awsQueryCompatible) {
-          request2.headers["x-amzn-query-mode"] = "true";
-        }
-        return request2;
-      }
-      async handleError(operationSchema, context, response, dataObject, metadata) {
-        if (this.awsQueryCompatible) {
-          this.mixin.setQueryCompatError(dataObject, response);
-        }
-        const errorName = (() => {
-          const compatHeader = response.headers["x-amzn-query-error"];
-          if (compatHeader && this.awsQueryCompatible) {
-            return compatHeader.split(";")[0];
-          }
-          return loadSmithyRpcV2CborErrorCode(response, dataObject) ?? "Unknown";
-        })();
-        this.mixin.compose(this.compositeErrorRegistry, errorName, this.options.defaultNamespace);
-        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorName, this.options.defaultNamespace, response, dataObject, metadata, this.awsQueryCompatible ? this.mixin.findQueryCompatibleError : void 0);
-        const ns = NormalizedSchema.of(errorSchema);
-        const message = dataObject.message ?? dataObject.Message ?? "UnknownError";
-        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
-        const exception = new ErrorCtor({});
-        const output = {};
-        for (const [name, member2] of ns.structIterator()) {
-          if (dataObject[name] != null) {
-            output[name] = this.deserializer.readValue(member2, dataObject[name]);
-          }
-        }
-        if (this.awsQueryCompatible) {
-          this.mixin.queryCompatOutput(dataObject, output);
-        }
-        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
-          $fault: ns.getMergedTraits().error,
-          message
-        }, output), dataObject);
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js
-var SerdeContextConfig2;
-var init_ConfigurableSerdeContext2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/ConfigurableSerdeContext.js"() {
-    SerdeContextConfig2 = class {
-      serdeContext;
-      setSerdeContext(serdeContext) {
-        this.serdeContext = serdeContext;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/UnionSerde.js
-var UnionSerde2;
-var init_UnionSerde2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/UnionSerde.js"() {
-    UnionSerde2 = class {
-      from;
-      to;
-      keys;
-      constructor(from, to) {
-        this.from = from;
-        this.to = to;
-        const keys = Object.keys(this.from);
-        const set3 = new Set(keys);
-        set3.delete("__type");
-        this.keys = set3;
-      }
-      mark(key) {
-        this.keys.delete(key);
-      }
-      hasUnknown() {
-        return this.keys.size === 1 && Object.keys(this.to).length === 0;
-      }
-      writeUnknown() {
-        if (this.hasUnknown()) {
-          const k5 = this.keys.values().next().value;
-          const v = this.from[k5];
-          this.to.$unknown = [k5, v];
-        }
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/detectBufferParsing.js
-function detectBufferParsing2() {
-  if (canParseBuffer2 === void 0) {
-    try {
-      if (typeof Buffer !== "function") {
-        canParseBuffer2 = false;
-      } else {
-        const result = JSON.parse(Buffer.from([123, 125]));
-        canParseBuffer2 = result !== null && typeof result === "object";
-      }
-    } catch {
-      canParseBuffer2 = false;
-    }
-  }
-  return canParseBuffer2;
-}
-var canParseBuffer2;
-var init_detectBufferParsing2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/detectBufferParsing.js"() {
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReviver.js
-function jsonReviver2(key, value, context) {
-  if (context?.source) {
-    const numericString = context.source;
-    if (typeof value === "number") {
-      const inSafeRange = value <= Number.MAX_SAFE_INTEGER && value >= Number.MIN_SAFE_INTEGER;
-      if (inSafeRange) {
-        if (isRepresentable2(numericString, value)) {
-          return value;
-        }
-        return new NumericValue(numericString, "bigDecimal");
-      } else {
-        if (isFractionalBigNumeric2(numericString)) {
-          return new NumericValue(numericString, "bigDecimal");
-        }
-        if (/[eE]/.test(numericString)) {
-          return expandExponentToBigInt2(numericString);
-        }
-        return BigInt(numericString);
-      }
-    }
-  }
-  return value;
-}
-function isFractionalBigNumeric2(s2) {
-  const dotIndex = s2.indexOf(".");
-  if (dotIndex === -1) {
-    return false;
-  }
-  const eIndex = s2.search(/[eE]/);
-  if (eIndex === -1) {
-    return true;
-  }
-  const fracDigits = eIndex - dotIndex - 1;
-  const exp = parseInt(s2.slice(eIndex + 1), 10);
-  return exp < fracDigits;
-}
-function isRepresentable2(numericString, value) {
-  if (numericString === String(value)) {
-    return true;
-  }
-  if (Object.is(value, -0)) {
-    return true;
-  }
-  if (/[eE]/.test(numericString)) {
-    return expandToDecimal2(numericString) === expandToDecimal2(String(value));
-  }
-  const normalized = numericString.replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
-  const canonical = String(value);
-  if (normalized === canonical) {
-    return true;
-  }
-  if (/[eE]/.test(canonical)) {
-    return normalized === expandToDecimal2(canonical);
-  }
-  return false;
-}
-function expandToDecimal2(s2) {
-  const negative = s2.startsWith("-");
-  const abs = negative ? s2.slice(1) : s2;
-  const eIndex = abs.search(/[eE]/);
-  let result;
-  if (eIndex === -1) {
-    result = abs;
-  } else {
-    const exp = parseInt(abs.slice(eIndex + 1), 10);
-    const mantissa = abs.slice(0, eIndex);
-    const dotIndex = mantissa.indexOf(".");
-    let digits;
-    let intLen;
-    if (dotIndex === -1) {
-      digits = mantissa;
-      intLen = mantissa.length;
-    } else {
-      digits = mantissa.slice(0, dotIndex) + mantissa.slice(dotIndex + 1);
-      intLen = dotIndex;
-    }
-    digits = digits.replace(/0+$/, "") || "0";
-    const newDotPos = intLen + exp;
-    if (digits === "0") {
-      result = "0";
-    } else if (newDotPos <= 0) {
-      result = "0." + "0".repeat(-newDotPos) + digits;
-    } else if (newDotPos >= digits.length) {
-      result = digits + "0".repeat(newDotPos - digits.length);
-    } else {
-      result = digits.slice(0, newDotPos) + "." + digits.slice(newDotPos);
-    }
-  }
-  if (result.includes(".")) {
-    result = result.replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
-  }
-  return (negative ? "-" : "") + result;
-}
-function expandExponentToBigInt2(s2) {
-  const eIndex = s2.search(/[eE]/);
-  const exp = parseInt(s2.slice(eIndex + 1), 10);
-  const negative = s2.startsWith("-");
-  const mantissa = s2.slice(negative ? 1 : 0, eIndex);
-  const dotIndex = mantissa.indexOf(".");
-  let digits;
-  let shift;
-  if (dotIndex === -1) {
-    digits = mantissa;
-    shift = exp;
-  } else {
-    digits = mantissa.slice(0, dotIndex) + mantissa.slice(dotIndex + 1);
-    const fracDigits = mantissa.length - dotIndex - 1;
-    shift = exp - fracDigits;
-  }
-  digits = digits.replace(/0+$/, "") || "0";
-  const result = BigInt(digits) * 10n ** BigInt(shift + (mantissa.replace(".", "").length - digits.length));
-  return negative ? -result : result;
-}
-var init_jsonReviver2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReviver.js"() {
-    init_serde();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/needsReviver.js
-function needsReviver2(schema) {
-  const ns = NormalizedSchema.of(schema);
-  const raw = ns.getSchema();
-  if (Array.isArray(raw) && ns.isStructSchema()) {
-    if (REVIVER_SYMBOL2 in raw) {
-      return raw[REVIVER_SYMBOL2];
-    }
-    const result = _check2(ns, /* @__PURE__ */ new Set());
-    raw[REVIVER_SYMBOL2] = result;
-    return result;
-  }
-  return _check2(ns, /* @__PURE__ */ new Set());
-}
-function _check2(ns, seen) {
-  const raw = ns.getSchema();
-  if (seen.has(raw)) {
-    return false;
-  }
-  seen.add(raw);
-  if (ns.isBigIntegerSchema() || ns.isBigDecimalSchema()) {
-    return true;
-  }
-  if (ns.isStructSchema()) {
-    for (const [, memberSchema] of ns.structIterator()) {
-      if (_check2(memberSchema, seen)) {
-        return true;
-      }
-    }
-  } else if (ns.isListSchema() || ns.isMapSchema()) {
-    if (_check2(ns.getValueSchema(), seen)) {
-      return true;
-    }
-  } else if (ns.isDocumentSchema()) {
-    return true;
-  }
-  return false;
-}
-var REVIVER_SYMBOL2;
-var init_needsReviver2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/needsReviver.js"() {
-    init_schema();
-    REVIVER_SYMBOL2 = /* @__PURE__ */ Symbol.for("@aws-sdk/reviver");
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/common.js
-var collectBodyString2;
-var init_common2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/common.js"() {
-    init_protocols();
-    init_serde();
-    collectBodyString2 = (streamBody, context) => collectBody(streamBody, context).then((body) => (context?.utf8Encoder ?? toUtf8)(body));
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js
-async function parseJsonBody2(streamBody, context, schema) {
-  let parsingInput;
-  if (detectBufferParsing2() && typeof streamBody?.[Symbol.asyncIterator] === "function") {
-    const buffer = await collectBody(streamBody, context);
-    if (typeof Buffer === "function") {
-      if (Buffer.isBuffer(buffer)) {
-        parsingInput = buffer;
-      } else {
-        parsingInput = Buffer.from(buffer.buffer, buffer.byteOffset, buffer.byteLength);
-      }
-    }
-  }
-  if (!parsingInput) {
-    parsingInput = await collectBodyString2(streamBody, context);
-  }
-  if (parsingInput.length === 0) {
-    return {};
-  }
-  const reviver = schema && needsReviver2(schema) ? jsonReviver2 : void 0;
-  try {
-    return JSON.parse(parsingInput, reviver);
-  } catch (e5) {
-    if (e5?.name === "SyntaxError") {
-      Object.defineProperty(e5, "$responseBodyText", {
-        value: typeof parsingInput === "string" ? parsingInput : parsingInput.toString("utf8")
-      });
-    }
-    throw e5;
-  }
-}
-var parseJsonErrorBody, findKey2, sanitizeErrorCode2, loadRestJsonErrorCode2, loadJsonRpcErrorCode, loadErrorCode2;
-var init_parseJsonBody2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/parseJsonBody.js"() {
-    init_protocols();
-    init_common2();
-    init_detectBufferParsing2();
-    init_jsonReviver2();
-    init_needsReviver2();
-    parseJsonErrorBody = async (errorBody, context) => {
-      const value = await parseJsonBody2(errorBody, context);
-      value.message = value.message ?? value.Message;
-      return value;
-    };
-    findKey2 = (object, key) => Object.keys(object).find((k5) => k5.toLowerCase() === key.toLowerCase());
-    sanitizeErrorCode2 = (rawValue) => {
-      let cleanValue = rawValue;
-      if (typeof cleanValue === "number") {
-        cleanValue = cleanValue.toString();
-      }
-      if (cleanValue.indexOf(",") >= 0) {
-        cleanValue = cleanValue.split(",")[0];
-      }
-      if (cleanValue.indexOf(":") >= 0) {
-        cleanValue = cleanValue.split(":")[0];
-      }
-      if (cleanValue.indexOf("#") >= 0) {
-        cleanValue = cleanValue.split("#")[1];
-      }
-      return cleanValue;
-    };
-    loadRestJsonErrorCode2 = (output, data) => {
-      return loadErrorCode2(output, data, ["header", "code", "type"]);
-    };
-    loadJsonRpcErrorCode = (output, data, queryCompat = false) => {
-      return loadErrorCode2(output, data, queryCompat ? ["code", "header", "type"] : ["type", "code", "header"]);
-    };
-    loadErrorCode2 = ({ headers }, data, order) => {
-      while (order.length > 0) {
-        const location = order.shift();
-        switch (location) {
-          case "header":
-            const headerKey = findKey2(headers ?? {}, "x-amzn-errortype");
-            if (headerKey !== void 0) {
-              return sanitizeErrorCode2(headers[headerKey]);
-            }
-            break;
-          case "code":
-            const codeKey = findKey2(data ?? {}, "code");
-            if (codeKey && data[codeKey] !== void 0) {
-              return sanitizeErrorCode2(data[codeKey]);
-            }
-            break;
-          case "type":
-            if (data?.__type !== void 0) {
-              return sanitizeErrorCode2(data.__type);
-            }
-            break;
-        }
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/writeKey.js
-function writeKey2(obj) {
-  Object.defineProperty(obj, "__proto__", { value: void 0, writable: true, enumerable: true, configurable: true });
-}
-var init_writeKey2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/writeKey.js"() {
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeDeserializer2.js
-var JsonShapeDeserializer22;
-var init_JsonShapeDeserializer22 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeDeserializer2.js"() {
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    init_UnionSerde2();
-    init_detectBufferParsing2();
-    init_jsonReviver2();
-    init_needsReviver2();
-    init_parseJsonBody2();
-    init_writeKey2();
-    JsonShapeDeserializer22 = class extends SerdeContextConfig2 {
-      settings;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      async read(schema, data) {
-        const reviver = needsReviver2(schema) ? jsonReviver2 : void 0;
-        let parsed;
-        if (typeof data === "string") {
-          if (data.length === 0) {
-            return {};
-          }
-          parsed = JSON.parse(data, reviver);
-        } else if (data instanceof Uint8Array && detectBufferParsing2()) {
-          if (data.byteLength === 0) {
-            return {};
-          }
-          const buf2 = Buffer.isBuffer(data) ? data : Buffer.from(data.buffer, data.byteOffset, data.byteLength);
-          parsed = JSON.parse(buf2, reviver);
-        } else {
-          parsed = await parseJsonBody2(data, this.serdeContext, schema);
-        }
-        return this._read(schema, parsed);
-      }
-      readObject(schema, data) {
-        return this._read(schema, data);
-      }
-      _read(schema, value) {
-        const isObject2 = value !== null && typeof value === "object";
-        const ns = NormalizedSchema.of(schema);
-        if (isObject2) {
-          if (ns.isStructSchema()) {
-            return this._readStruct(ns, value);
-          }
-          if (Array.isArray(value) && ns.isListSchema()) {
-            const listMember = ns.getValueSchema();
-            if (this.needsTransform(listMember)) {
-              for (let i5 = 0; i5 < value.length; ++i5) {
-                value[i5] = this._read(listMember, value[i5]);
-              }
-            }
-            return value;
-          }
-          if (ns.isMapSchema()) {
-            const mapMember = ns.getValueSchema();
-            const map3 = value;
-            if (this.needsTransform(mapMember)) {
-              for (const k5 in map3) {
-                if (k5 === "__proto__") {
-                  writeKey2(map3);
-                }
-                map3[k5] = this._read(mapMember, map3[k5]);
-              }
-            }
-            return map3;
-          }
-        }
-        if (ns.isBlobSchema() && typeof value === "string") {
-          return fromBase64(value);
-        }
-        const mediaType = ns.getMergedTraits().mediaType;
-        if (ns.isStringSchema() && typeof value === "string" && mediaType) {
-          const isJson = mediaType === "application/json" || mediaType.endsWith("+json");
-          if (isJson) {
-            return LazyJsonString.from(value);
-          }
-          return value;
-        }
-        if (ns.isTimestampSchema() && value != null) {
-          const format2 = determineTimestampFormat(ns, this.settings);
-          switch (format2) {
-            case 5:
-              return parseRfc3339DateTimeWithOffset(value);
-            case 6:
-              return parseRfc7231DateTime(value);
-            case 7:
-              return parseEpochTimestamp(value);
-            default:
-              console.warn("Missing timestamp format, parsing value with Date constructor:", value);
-              return new Date(value);
-          }
-        }
-        if (ns.isBigIntegerSchema() && (typeof value === "number" || typeof value === "string")) {
-          return BigInt(value);
-        }
-        if (ns.isBigDecimalSchema() && value != void 0) {
-          if (value instanceof NumericValue) {
-            return value;
-          }
-          const untyped = value;
-          if (untyped.type === "bigDecimal" && "string" in untyped) {
-            return new NumericValue(untyped.string, untyped.type);
-          }
-          return new NumericValue(String(value), "bigDecimal");
-        }
-        if (ns.isNumericSchema() && typeof value === "string") {
-          switch (value) {
-            case "Infinity":
-              return Infinity;
-            case "-Infinity":
-              return -Infinity;
-            case "NaN":
-              return NaN;
-          }
-          return value;
-        }
-        if (ns.isDocumentSchema()) {
-          if (isObject2) {
-            if (Array.isArray(value)) {
-              for (let i5 = 0; i5 < value.length; ++i5) {
-                const v = value[i5];
-                if (!(v instanceof NumericValue)) {
-                  value[i5] = this._read(ns, v);
-                }
-              }
-            } else {
-              const doc = value;
-              for (const k5 in doc) {
-                if (k5 === "__proto__") {
-                  writeKey2(doc);
-                }
-                const v = doc[k5];
-                if (!(v instanceof NumericValue)) {
-                  doc[k5] = this._read(ns, v);
-                }
-              }
-            }
-          }
-        }
-        return value;
-      }
-      _readStruct(ns, record) {
-        const union = ns.isUnionSchema();
-        const out = {};
-        let nameMap;
-        const hasType = typeof record.__type === "string";
-        const { jsonName } = this.settings;
-        if (jsonName && hasType) {
-          nameMap = {};
-        }
-        let unionSerde;
-        if (union) {
-          unionSerde = new UnionSerde2(record, out);
-        }
-        for (const [memberName, memberSchema] of ns.structIterator()) {
-          let fromKey = memberName;
-          if (jsonName) {
-            fromKey = memberSchema.getMergedTraits().jsonName ?? fromKey;
-            if (hasType) {
-              nameMap[fromKey] = memberName;
-            }
-          }
-          if (union) {
-            unionSerde.mark(fromKey);
-          }
-          if (record[fromKey] != null) {
-            out[memberName] = this._read(memberSchema, record[fromKey]);
-          }
-        }
-        if (union) {
-          unionSerde.writeUnknown();
-        } else if (hasType) {
-          for (const k5 in record) {
-            const v = record[k5];
-            const t = jsonName ? nameMap[k5] ?? k5 : k5;
-            if (!(t in out)) {
-              out[t] = v;
-            }
-          }
-        }
-        return out;
-      }
-      needsTransform(ns) {
-        if (ns.isBlobSchema() || ns.isTimestampSchema() || ns.isBigIntegerSchema() || ns.isBigDecimalSchema()) {
-          return true;
-        }
-        if (ns.isDocumentSchema() || ns.isStructSchema() || ns.isListSchema() || ns.isMapSchema()) {
-          return true;
-        }
-        if (ns.isStringSchema() && ns.getMergedTraits().mediaType) {
-          return true;
-        }
-        return false;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonBytesStringAdapter.js
-var JsonBytesStringAdapter2, warned2;
-var init_JsonBytesStringAdapter2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonBytesStringAdapter.js"() {
-    init_serde();
-    JsonBytesStringAdapter2 = class _JsonBytesStringAdapter extends Uint8Array {
-      string = null;
-      static allocUnsafe(bytes) {
-        if (typeof Buffer === "function") {
-          const buffer = Buffer.allocUnsafe(bytes);
-          return new _JsonBytesStringAdapter(buffer.buffer, buffer.byteOffset, buffer.byteLength);
-        }
-        return new _JsonBytesStringAdapter(bytes);
-      }
-      toString() {
-        return this.s();
-      }
-      valueOf() {
-        return this.s();
-      }
-      includes(searchString, position) {
-        if (typeof searchString === "string") {
-          return this.s().includes(searchString, position);
-        }
-        return Uint8Array.prototype.includes.call(this, searchString, position);
-      }
-      indexOf(searchString, position) {
-        if (typeof searchString === "string") {
-          return this.s().indexOf(searchString, position);
-        }
-        return Uint8Array.prototype.indexOf.call(this, searchString, position);
-      }
-      lastIndexOf(searchString, position) {
-        if (typeof searchString === "string") {
-          return this.s().lastIndexOf(searchString, position);
-        }
-        const fn = Uint8Array.prototype.lastIndexOf;
-        if (position !== void 0) {
-          return fn.call(this, searchString, position);
-        }
-        return fn.call(this, searchString);
-      }
-      startsWith(searchString, position) {
-        return this.s().startsWith(searchString, position);
-      }
-      endsWith(searchString, endPosition) {
-        return this.s().endsWith(searchString, endPosition);
-      }
-      match(regexp) {
-        return this.s().match(regexp);
-      }
-      replace(searchValue, replaceValue) {
-        return this.s().replace(searchValue, replaceValue);
-      }
-      search(regexp) {
-        return this.s().search(regexp);
-      }
-      split(separator, limit) {
-        return this.s().split(separator, limit);
-      }
-      substring(start, end2) {
-        return this.s().substring(start, end2);
-      }
-      trim() {
-        return this.s().trim();
-      }
-      trimStart() {
-        return this.s().trimStart();
-      }
-      trimEnd() {
-        return this.s().trimEnd();
-      }
-      charAt(pos2) {
-        return this.s().charAt(pos2);
-      }
-      charCodeAt(index) {
-        return this.s().charCodeAt(index);
-      }
-      padStart(maxLength, fillString) {
-        return this.s().padStart(maxLength, fillString);
-      }
-      padEnd(maxLength, fillString) {
-        return this.s().padEnd(maxLength, fillString);
-      }
-      repeat(count) {
-        return this.s().repeat(count);
-      }
-      toUpperCase() {
-        return this.s().toUpperCase();
-      }
-      toLowerCase() {
-        return this.s().toLowerCase();
-      }
-      s() {
-        if (this.string == null) {
-          const n3 = Date.now();
-          if (n3 > warned2 + 6e4) {
-            console.warn("@aws-sdk/core/protocols - WARN - JsonCodec2: you have called a string method on a Uint8Array request body. It has been automatically converted to string. In a future version this will throw an error.");
-            warned2 = n3;
-          }
-          this.string = toUtf8(this);
-        }
-        return this.string;
-      }
-    };
-    warned2 = 0;
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeSerializer2.js
-function alloc2(size) {
-  return JsonBytesStringAdapter2.allocUnsafe(size);
-}
-var encoder2, OPEN_BRACE2, CLOSE_BRACE2, OPEN_BRACKET2, CLOSE_BRACKET2, QUOTE2, COLON2, COMMA2, BACKSLASH2, TRUE2, FALSE2, NULL2, ESCAPE_TABLE2, INITIAL_BUFFER_SIZE3, JsonShapeSerializer22;
-var init_JsonShapeSerializer22 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonShapeSerializer2.js"() {
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    init_JsonBytesStringAdapter2();
-    encoder2 = new TextEncoder();
-    OPEN_BRACE2 = 123;
-    CLOSE_BRACE2 = 125;
-    OPEN_BRACKET2 = 91;
-    CLOSE_BRACKET2 = 93;
-    QUOTE2 = 34;
-    COLON2 = 58;
-    COMMA2 = 44;
-    BACKSLASH2 = 92;
-    TRUE2 = new Uint8Array([116, 114, 117, 101]);
-    FALSE2 = new Uint8Array([102, 97, 108, 115, 101]);
-    NULL2 = new Uint8Array([110, 117, 108, 108]);
-    ESCAPE_TABLE2 = new Array(128).fill(null);
-    ESCAPE_TABLE2[8] = "b";
-    ESCAPE_TABLE2[9] = "t";
-    ESCAPE_TABLE2[10] = "n";
-    ESCAPE_TABLE2[12] = "f";
-    ESCAPE_TABLE2[13] = "r";
-    ESCAPE_TABLE2[34] = '"';
-    ESCAPE_TABLE2[92] = "\\";
-    for (let i5 = 0; i5 < 32; i5++) {
-      if (ESCAPE_TABLE2[i5] === null) {
-        ESCAPE_TABLE2[i5] = "u00" + i5.toString(16).padStart(2, "0");
-      }
-    }
-    INITIAL_BUFFER_SIZE3 = 2048;
-    JsonShapeSerializer22 = class _JsonShapeSerializer2 extends SerdeContextConfig2 {
-      settings;
-      json;
-      i = 0;
-      rootSchema;
-      rawValue;
-      passthrough = false;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-        this.json = alloc2(INITIAL_BUFFER_SIZE3);
-      }
-      write(schema, value) {
-        this.i = 0;
-        this.rawValue = value;
-        this.rootSchema = NormalizedSchema.of(schema);
-        this.passthrough = this.rootSchema.isBlobSchema() || this.rootSchema.isStringSchema();
-        if (!this.passthrough) {
-          this.writeValue(this.rootSchema, value, void 0);
-        }
-      }
-      writeDiscriminatedDocument(schema, value) {
-        this.i = 0;
-        this.rootSchema = NormalizedSchema.of(schema);
-        const ns = this.rootSchema;
-        if (ns.isStructSchema() && value != null && typeof value === "object") {
-          this.writeValue(ns, value, void 0);
-          const prefix = `"__type":"${ns.getName(true) ?? "Unknown"}",`;
-          const z = prefix.length;
-          this.ensure(z);
-          this.json.copyWithin(1 + z, 1, this.i);
-          encoder2.encodeInto(prefix, this.json.subarray(1));
-          this.i += z;
-        } else {
-          this.writeValue(ns, value, void 0);
-        }
-      }
-      flush() {
-        this.rootSchema = void 0;
-        const finalPosition = this.i;
-        this.i = 0;
-        const raw = this.rawValue;
-        this.rawValue = void 0;
-        if (finalPosition === 0) {
-          return raw;
-        }
-        const result = this.json.subarray(0, finalPosition);
-        this.json = alloc2(INITIAL_BUFFER_SIZE3);
-        return result;
-      }
-      ensure(byteCount) {
-        const { i: i5, json } = this;
-        if (i5 + byteCount > json.length) {
-          let newSize = json.length * 2;
-          while (newSize < i5 + byteCount) {
-            newSize *= 2;
-          }
-          const next = alloc2(newSize);
-          next.set(this.json);
-          this.json = next;
-        }
-      }
-      writeAscii(s2) {
-        const z = s2.length;
-        this.ensure(z);
-        let { i: i5, json } = this;
-        for (let j5 = 0; j5 < z; ++j5) {
-          json[i5] = s2.charCodeAt(j5);
-          i5 += 1;
-        }
-        this.i = i5;
-      }
-      writeAsciiQuoted(s2) {
-        const z = s2.length;
-        this.ensure(z + 4);
-        let { json, i: i5 } = this;
-        json[i5++] = QUOTE2;
-        for (let j5 = 0; j5 < z; ++j5) {
-          json[i5++] = s2.charCodeAt(j5);
-        }
-        json[i5++] = QUOTE2;
-        this.i = i5;
-      }
-      writeJsonString(s2) {
-        this.ensure(s2.length * 3 + 2);
-        this.json[this.i++] = QUOTE2;
-        const z = s2.length;
-        for (let j5 = 0; j5 < z; ++j5) {
-          const c5 = s2.charCodeAt(j5);
-          if (c5 > 34 && c5 < 92) {
-            this.json[this.i++] = c5;
-          } else if (c5 < 128) {
-            const esc = ESCAPE_TABLE2[c5];
-            if (esc !== null) {
-              this.ensure(esc.length + 1);
-              this.json[this.i++] = BACKSLASH2;
-              for (let k5 = 0; k5 < esc.length; k5++) {
-                this.json[this.i++] = esc.charCodeAt(k5);
-              }
-            } else {
-              this.json[this.i++] = c5;
-            }
-          } else if (c5 >= 55296 && c5 <= 56319) {
-            const next = j5 + 1 < z ? s2.charCodeAt(j5 + 1) : 0;
-            if (next >= 56320 && next <= 57343) {
-              this.ensure(4);
-              const { written } = encoder2.encodeInto(s2.substring(j5, j5 + 2), this.json.subarray(this.i));
-              this.i += written;
-              ++j5;
-            } else {
-              this.ensure(6);
-              this.writeUnicodeEscape(c5);
-            }
-          } else if (c5 >= 56320 && c5 <= 57343) {
-            this.ensure(6);
-            this.writeUnicodeEscape(c5);
-          } else {
-            let { i: i5, json } = this;
-            if (c5 < 2048) {
-              json[i5++] = 192 | c5 >> 6;
-              json[i5++] = 128 | c5 & 63;
-            } else {
-              json[i5++] = 224 | c5 >> 12;
-              json[i5++] = 128 | c5 >> 6 & 63;
-              json[i5++] = 128 | c5 & 63;
-            }
-            this.i = i5;
-          }
-        }
-        this.json[this.i++] = QUOTE2;
-      }
-      writeUnicodeEscape(code) {
-        let { json, i: i5 } = this;
-        json[i5++] = BACKSLASH2;
-        json[i5++] = 117;
-        const hex = code.toString(16).padStart(4, "0");
-        for (let j5 = 0; j5 < 4; ++j5) {
-          json[i5++] = hex.charCodeAt(j5);
-        }
-        this.i = i5;
-      }
-      static B64 = (() => {
-        const chars2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-        const table = new Uint8Array(64);
-        for (let i5 = 0; i5 < 64; ++i5) {
-          table[i5] = chars2.charCodeAt(i5);
-        }
-        return table;
-      })();
-      writeBase64(data) {
-        const b64Len = Math.ceil(data.length / 3) * 4;
-        this.ensure(b64Len + 2);
-        const json = this.json;
-        const B64 = _JsonShapeSerializer2.B64;
-        let i5 = this.i;
-        json[i5++] = QUOTE2;
-        const len = data.length;
-        const remainder = len % 3;
-        const mainLen = len - remainder;
-        for (let j5 = 0; j5 < mainLen; j5 += 3) {
-          const a5 = data[j5];
-          const b5 = data[j5 + 1];
-          const c5 = data[j5 + 2];
-          json[i5++] = B64[a5 >> 2];
-          json[i5++] = B64[(a5 & 3) << 4 | b5 >> 4];
-          json[i5++] = B64[(b5 & 15) << 2 | c5 >> 6];
-          json[i5++] = B64[c5 & 63];
-        }
-        if (remainder === 2) {
-          const a5 = data[mainLen];
-          const b5 = data[mainLen + 1];
-          json[i5++] = B64[a5 >> 2];
-          json[i5++] = B64[(a5 & 3) << 4 | b5 >> 4];
-          json[i5++] = B64[(b5 & 15) << 2];
-          json[i5++] = 61;
-        } else if (remainder === 1) {
-          const a5 = data[mainLen];
-          json[i5++] = B64[a5 >> 2];
-          json[i5++] = B64[(a5 & 3) << 4];
-          json[i5++] = 61;
-          json[i5++] = 61;
-        }
-        json[i5++] = QUOTE2;
-        this.i = i5;
-      }
-      writeValue(schema, value, container) {
-        if (value == null) {
-          if (container?.isStructSchema()) {
-            if (value === void 0) {
-              const ns2 = NormalizedSchema.of(schema);
-              if (ns2.isIdempotencyToken()) {
-                this.writeAsciiQuoted(generateIdempotencyToken());
-                return;
-              }
-            }
-            return;
-          }
-          this.ensure(4);
-          this.json.set(NULL2, this.i);
-          this.i += 4;
-          return;
-        }
-        const ns = NormalizedSchema.of(schema);
-        const isObject2 = typeof value === "object";
-        if (ns.isStringSchema()) {
-          const mediaType = ns.getMergedTraits().mediaType;
-          if (mediaType) {
-            const isJson = mediaType === "application/json" || mediaType.endsWith("+json");
-            if (isJson) {
-              this.writeJsonString(LazyJsonString.from(value).toString());
-              return;
-            }
-          }
-        }
-        if (isObject2) {
-          if (ns.isStructSchema()) {
-            this.writeStruct(ns, value);
-            return;
-          }
-          if (Array.isArray(value) && (ns.isListSchema() || ns.isDocumentSchema())) {
-            this.writeList(ns, value, ns.isDocumentSchema());
-            return;
-          }
-          if (ns.isMapSchema()) {
-            this.writeMap(ns, value, false);
-            return;
-          }
-          if (value instanceof Uint8Array && (ns.isBlobSchema() || ns.isDocumentSchema())) {
-            this.writeBase64(value);
-            return;
-          }
-          if (value instanceof Date && (ns.isTimestampSchema() || ns.isDocumentSchema())) {
-            this.writeTimestamp(ns, value);
-            return;
-          }
-          if (value instanceof NumericValue) {
-            this.writeAscii(value.string);
-            return;
-          }
-          if (ns.isDocumentSchema()) {
-            if (Array.isArray(value)) {
-              this.writeList(ns, value, true);
-            } else {
-              this.writeMap(ns, value, true);
-            }
-            return;
-          }
-          const json = JSON.stringify(value);
-          this.writeAscii(json);
-          return;
-        }
-        if (typeof value === "string") {
-          if (ns.isBlobSchema()) {
-            const b64 = (this.serdeContext?.base64Encoder ?? toBase64)(value);
-            this.writeAsciiQuoted(b64);
-            return;
-          }
-          this.writeJsonString(value);
-          return;
-        }
-        if (typeof value === "number") {
-          if (Math.abs(value) === Infinity || Number.isNaN(value)) {
-            this.writeAsciiQuoted(String(value));
-            return;
-          }
-          const numStr = String(value);
-          this.writeAscii(numStr);
-          return;
-        }
-        if (typeof value === "boolean") {
-          this.ensure(5);
-          let { i: i5, json } = this;
-          if (value) {
-            json.set(TRUE2, i5);
-            i5 += 4;
-          } else {
-            json.set(FALSE2, i5);
-            i5 += 5;
-          }
-          this.i = i5;
-          return;
-        }
-        if (typeof value === "bigint") {
-          this.writeAscii(value.toString());
-          return;
-        }
-        this.writeAscii(String(value));
-      }
-      writeStruct(ns, value) {
-        this.ensure(2);
-        this.json[this.i++] = OPEN_BRACE2;
-        let wroteAny = false;
-        const hasType = typeof value.__type === "string";
-        let writtenKeys;
-        if (hasType) {
-          writtenKeys = /* @__PURE__ */ new Set();
-        }
-        for (const [memberName, memberSchema] of ns.structIterator()) {
-          const item = value[memberName];
-          if (item == null && !memberSchema.isIdempotencyToken()) {
-            continue;
-          }
-          if (wroteAny) {
-            this.ensure(1);
-            this.json[this.i++] = COMMA2;
-          }
-          wroteAny = true;
-          const targetKey = this.settings.jsonName ? memberSchema.getMergedTraits().jsonName ?? memberName : memberName;
-          if (writtenKeys) {
-            writtenKeys.add(memberName);
-            writtenKeys.add(targetKey);
-          }
-          this.writeAsciiQuoted(targetKey);
-          this.json[this.i++] = COLON2;
-          this.writeValue(memberSchema, item, ns);
-        }
-        if (!wroteAny && ns.isUnionSchema()) {
-          const { $unknown } = value;
-          if (Array.isArray($unknown)) {
-            const [k5, v] = $unknown;
-            this.writeAsciiQuoted(k5);
-            this.ensure(1);
-            this.json[this.i++] = COLON2;
-            this.writeValue(15, v, ns);
-          }
-        } else if (hasType) {
-          for (const k5 in value) {
-            if (writtenKeys.has(k5)) {
-              continue;
-            }
-            writtenKeys.add(k5);
-            const v = value[k5];
-            if (wroteAny) {
-              this.ensure(1);
-              this.json[this.i++] = COMMA2;
-            }
-            wroteAny = true;
-            this.writeAsciiQuoted(k5);
-            this.ensure(1);
-            this.json[this.i++] = COLON2;
-            this.writeValue(15, v, void 0);
-          }
-        }
-        this.ensure(1);
-        this.json[this.i++] = CLOSE_BRACE2;
-      }
-      writeList(ns, value, isDocument) {
-        const sparse = !!ns.getMergedTraits().sparse;
-        const valueSchema = ns.getValueSchema();
-        if (!isDocument) {
-          if (valueSchema.isStringSchema() || valueSchema.isNumericSchema() || valueSchema.isBooleanSchema()) {
-            let hasSpecials = false;
-            for (let i5 = 0; i5 < value.length; ++i5) {
-              const v = value[i5];
-              if (Number.isNaN(v) || v === Infinity || v === -Infinity || v == null && !sparse) {
-                hasSpecials = true;
-                break;
-              }
-            }
-            let json;
-            if (!hasSpecials) {
-              json = JSON.stringify(value);
-            } else {
-              const out = [];
-              for (let i5 = 0; i5 < value.length; ++i5) {
-                const v = value[i5];
-                if (v == null && !sparse)
-                  continue;
-                if (Number.isNaN(v) || v === Infinity || v === -Infinity) {
-                  out.push(String(v));
-                } else {
-                  out.push(v);
-                }
-              }
-              json = JSON.stringify(out);
-            }
-            this.ensure(json.length * 3);
-            this.i += encoder2.encodeInto(json, this.json.subarray(this.i)).written;
-            return;
-          }
-        }
-        this.ensure(2);
-        this.json[this.i++] = OPEN_BRACKET2;
-        let wroteFirstItem = false;
-        for (let i5 = 0; i5 < value.length; ++i5) {
-          const item = value[i5];
-          if (isDocument ? item === void 0 : item == null && !sparse) {
-            continue;
-          }
-          if (wroteFirstItem) {
-            this.ensure(1);
-            this.json[this.i++] = COMMA2;
-          }
-          this.writeValue(valueSchema, item, void 0);
-          wroteFirstItem = true;
-        }
-        this.ensure(1);
-        this.json[this.i++] = CLOSE_BRACKET2;
-      }
-      writeMap(ns, value, isDocument) {
-        const sparse = !!ns.getMergedTraits().sparse;
-        const valueSchema = ns.getValueSchema();
-        if (!isDocument) {
-          if (valueSchema.isStringSchema() || valueSchema.isNumericSchema() || valueSchema.isBooleanSchema()) {
-            let modifications;
-            for (const k5 in value) {
-              const v = value[k5];
-              if (Number.isNaN(v) || v === Infinity || v === -Infinity) {
-                (modifications ??= {})[k5] = v;
-                value[k5] = String(v);
-              } else if (v === null && !sparse) {
-                (modifications ??= {})[k5] = null;
-                value[k5] = void 0;
-              }
-            }
-            const json = JSON.stringify(value);
-            if (modifications) {
-              Object.assign(value, modifications);
-            }
-            this.ensure(json.length * 3);
-            this.i += encoder2.encodeInto(json, this.json.subarray(this.i)).written;
-            return;
-          }
-        }
-        this.ensure(2);
-        this.json[this.i++] = OPEN_BRACE2;
-        let first = true;
-        for (const k5 in value) {
-          const v = value[k5];
-          if (isDocument ? v === void 0 : v == null && !sparse) {
-            continue;
-          }
-          if (!first) {
-            this.ensure(1);
-            this.json[this.i++] = COMMA2;
-          }
-          first = false;
-          this.writeJsonString(k5);
-          this.ensure(1);
-          this.json[this.i++] = COLON2;
-          this.writeValue(valueSchema, v, void 0);
-        }
-        this.ensure(1);
-        this.json[this.i++] = CLOSE_BRACE2;
-      }
-      writeTimestamp(ns, value) {
-        const format2 = determineTimestampFormat(ns, this.settings);
-        switch (format2) {
-          case 5: {
-            const iso = value.toISOString().replace(".000Z", "Z");
-            this.writeAsciiQuoted(iso);
-            return;
-          }
-          case 6: {
-            this.writeAsciiQuoted(dateToUtcString(value));
-            return;
-          }
-          case 7: {
-            const epochSecs = String(value.getTime() / 1e3);
-            this.writeAscii(epochSecs);
-            return;
-          }
-          default: {
-            const epochSecs = String(value.getTime() / 1e3);
-            this.writeAscii(epochSecs);
-            return;
-          }
-        }
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonCodec2.js
-var JsonCodec22;
-var init_JsonCodec22 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v2/JsonCodec2.js"() {
-    init_ConfigurableSerdeContext2();
-    init_JsonShapeDeserializer22();
-    init_JsonShapeSerializer22();
-    JsonCodec22 = class extends SerdeContextConfig2 {
-      settings;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      createSerializer() {
-        const serializer = new JsonShapeSerializer22(this.settings);
-        serializer.setSerdeContext(this.serdeContext);
-        return serializer;
-      }
-      createDeserializer() {
-        const deserializer = new JsonShapeDeserializer22(this.settings);
-        deserializer.setSerdeContext(this.serdeContext);
-        return deserializer;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJsonRpcProtocol.js
-var AwsJsonRpcProtocol;
-var init_AwsJsonRpcProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJsonRpcProtocol.js"() {
-    init_protocols();
-    init_schema();
-    init_ProtocolLib2();
-    init_JsonCodec22();
-    init_parseJsonBody2();
-    AwsJsonRpcProtocol = class extends RpcProtocol {
-      serializer;
-      deserializer;
-      serviceTarget;
-      codec;
-      mixin;
-      awsQueryCompatible;
-      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, serviceTarget, awsQueryCompatible, jsonCodec }) {
-        super({
-          defaultNamespace,
-          errorTypeRegistries: errorTypeRegistries5
-        });
-        this.serviceTarget = serviceTarget;
-        this.codec = jsonCodec ?? new JsonCodec22({
-          timestampFormat: {
-            useTrait: true,
-            default: 7
-          },
-          jsonName: false
-        });
-        this.serializer = this.codec.createSerializer();
-        this.deserializer = this.codec.createDeserializer();
-        this.awsQueryCompatible = !!awsQueryCompatible;
-        this.mixin = new ProtocolLib2(this.awsQueryCompatible);
-      }
-      async serializeRequest(operationSchema, input, context) {
-        const request2 = await super.serializeRequest(operationSchema, input, context);
-        if (!request2.path.endsWith("/")) {
-          request2.path += "/";
-        }
-        request2.headers["content-type"] = `application/x-amz-json-${this.getJsonRpcVersion()}`;
-        request2.headers["x-amz-target"] = `${this.serviceTarget}.${operationSchema.name}`;
-        if (this.awsQueryCompatible) {
-          request2.headers["x-amzn-query-mode"] = "true";
-        }
-        if (deref(operationSchema.input) === "unit" || !request2.body) {
-          request2.body = "{}";
-        }
-        return request2;
-      }
-      getPayloadCodec() {
-        return this.codec;
-      }
-      async handleError(operationSchema, context, response, dataObject, metadata) {
-        const { awsQueryCompatible } = this;
-        if (awsQueryCompatible) {
-          this.mixin.setQueryCompatError(dataObject, response);
-        }
-        const errorIdentifier = loadJsonRpcErrorCode(response, dataObject, awsQueryCompatible) ?? "Unknown";
-        this.mixin.compose(this.compositeErrorRegistry, errorIdentifier, this.options.defaultNamespace);
-        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorIdentifier, this.options.defaultNamespace, response, dataObject, metadata, awsQueryCompatible ? this.mixin.findQueryCompatibleError : void 0);
-        const ns = NormalizedSchema.of(errorSchema);
-        const message = dataObject.message ?? dataObject.Message ?? "UnknownError";
-        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
-        const exception = new ErrorCtor({});
-        const output = {};
-        const errorDeserializer = this.codec.createDeserializer();
-        for (const [name, member2] of ns.structIterator()) {
-          if (dataObject[name] != null) {
-            output[name] = errorDeserializer.readObject(member2, dataObject[name]);
-          }
-        }
-        if (awsQueryCompatible) {
-          this.mixin.queryCompatOutput(dataObject, output);
-        }
-        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
-          $fault: ns.getMergedTraits().error,
-          message
-        }, output), dataObject);
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_0Protocol.js
-var AwsJson1_0Protocol;
-var init_AwsJson1_0Protocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_0Protocol.js"() {
-    init_AwsJsonRpcProtocol();
-    AwsJson1_0Protocol = class extends AwsJsonRpcProtocol {
-      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, serviceTarget, awsQueryCompatible, jsonCodec }) {
-        super({
-          defaultNamespace,
-          errorTypeRegistries: errorTypeRegistries5,
-          serviceTarget,
-          awsQueryCompatible,
-          jsonCodec
-        });
-      }
-      getShapeId() {
-        return "aws.protocols#awsJson1_0";
-      }
-      getJsonRpcVersion() {
-        return "1.0";
-      }
-      getDefaultContentType() {
-        return "application/x-amz-json-1.0";
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_1Protocol.js
-var AwsJson1_1Protocol;
-var init_AwsJson1_1Protocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsJson1_1Protocol.js"() {
-    init_AwsJsonRpcProtocol();
-    AwsJson1_1Protocol = class extends AwsJsonRpcProtocol {
-      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, serviceTarget, awsQueryCompatible, jsonCodec }) {
-        super({
-          defaultNamespace,
-          errorTypeRegistries: errorTypeRegistries5,
-          serviceTarget,
-          awsQueryCompatible,
-          jsonCodec
-        });
-      }
-      getShapeId() {
-        return "aws.protocols#awsJson1_1";
-      }
-      getJsonRpcVersion() {
-        return "1.1";
-      }
-      getDefaultContentType() {
-        return "application/x-amz-json-1.1";
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js
-var AwsRestJsonProtocol2;
-var init_AwsRestJsonProtocol2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/AwsRestJsonProtocol.js"() {
-    init_protocols();
-    init_schema();
-    init_ProtocolLib2();
-    init_JsonCodec22();
-    init_parseJsonBody2();
-    AwsRestJsonProtocol2 = class extends HttpBindingProtocol {
-      serializer;
-      deserializer;
-      codec;
-      mixin = new ProtocolLib2();
-      constructor({ defaultNamespace, errorTypeRegistries: errorTypeRegistries5, jsonCodec }) {
-        super({
-          defaultNamespace,
-          errorTypeRegistries: errorTypeRegistries5
-        });
-        const settings = {
-          timestampFormat: {
-            useTrait: true,
-            default: 7
-          },
-          httpBindings: true,
-          jsonName: true
-        };
-        this.codec = jsonCodec ?? new JsonCodec22(settings);
-        this.serializer = new HttpInterceptingShapeSerializer(this.codec.createSerializer(), settings);
-        this.deserializer = new HttpInterceptingShapeDeserializer(this.codec.createDeserializer(), settings);
-      }
-      getShapeId() {
-        return "aws.protocols#restJson1";
-      }
-      getPayloadCodec() {
-        return this.codec;
-      }
-      setSerdeContext(serdeContext) {
-        this.codec.setSerdeContext(serdeContext);
-        super.setSerdeContext(serdeContext);
-      }
-      async serializeRequest(operationSchema, input, context) {
-        const request2 = await super.serializeRequest(operationSchema, input, context);
-        const inputSchema = NormalizedSchema.of(operationSchema.input);
-        if (!request2.headers["content-type"]) {
-          const contentType = this.mixin.resolveRestContentType(this.getDefaultContentType(), inputSchema);
-          if (contentType) {
-            request2.headers["content-type"] = contentType;
-          }
-        }
-        if (request2.body == null && request2.headers["content-type"] === this.getDefaultContentType()) {
-          request2.body = "{}";
-        }
-        return request2;
-      }
-      async deserializeResponse(operationSchema, context, response) {
-        const output = await super.deserializeResponse(operationSchema, context, response);
-        const outputSchema = NormalizedSchema.of(operationSchema.output);
-        for (const [name, member2] of outputSchema.structIterator()) {
-          if (member2.getMemberTraits().httpPayload && !(name in output)) {
-            output[name] = null;
-          }
-        }
-        return output;
-      }
-      async handleError(operationSchema, context, response, dataObject, metadata) {
-        const errorIdentifier = loadRestJsonErrorCode2(response, dataObject) ?? "Unknown";
-        this.mixin.compose(this.compositeErrorRegistry, errorIdentifier, this.options.defaultNamespace);
-        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorIdentifier, this.options.defaultNamespace, response, dataObject, metadata);
-        const ns = NormalizedSchema.of(errorSchema);
-        const message = dataObject.message ?? dataObject.Message ?? "UnknownError";
-        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
-        const exception = new ErrorCtor({});
-        await this.deserializeHttpMessage(errorSchema, context, response, dataObject);
-        const output = {};
-        const errorDeserializer = this.codec.createDeserializer();
-        for (const [name, member2] of ns.structIterator()) {
-          const target = member2.getMergedTraits().jsonName ?? name;
-          output[name] = errorDeserializer.readObject(member2, dataObject[target]);
-        }
-        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
-          $fault: ns.getMergedTraits().error,
-          message
-        }, output), dataObject);
-      }
-      getDefaultContentType() {
-        return "application/json";
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeDeserializer.js
-var JsonShapeDeserializer;
-var init_JsonShapeDeserializer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeDeserializer.js"() {
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    init_UnionSerde2();
-    init_jsonReviver2();
-    init_needsReviver2();
-    init_parseJsonBody2();
-    init_writeKey2();
-    JsonShapeDeserializer = class extends SerdeContextConfig2 {
-      settings;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      async read(schema, data) {
-        const reviver = needsReviver2(schema) ? jsonReviver2 : void 0;
-        return this._read(schema, typeof data === "string" ? JSON.parse(data, reviver) : await parseJsonBody2(data, this.serdeContext, schema));
-      }
-      readObject(schema, data) {
-        return this._read(schema, data);
-      }
-      _read(schema, value) {
-        const isObject2 = value !== null && typeof value === "object";
-        const ns = NormalizedSchema.of(schema);
-        if (isObject2) {
-          if (ns.isStructSchema()) {
-            const record = value;
-            const union = ns.isUnionSchema();
-            const out = {};
-            let nameMap = void 0;
-            const { jsonName } = this.settings;
-            if (jsonName) {
-              nameMap = {};
-            }
-            let unionSerde;
-            if (union) {
-              unionSerde = new UnionSerde2(record, out);
-            }
-            for (const [memberName, memberSchema] of ns.structIterator()) {
-              let fromKey = memberName;
-              if (jsonName) {
-                fromKey = memberSchema.getMergedTraits().jsonName ?? fromKey;
-                nameMap[fromKey] = memberName;
-              }
-              if (union) {
-                unionSerde.mark(fromKey);
-              }
-              if (record[fromKey] != null) {
-                out[memberName] = this._read(memberSchema, record[fromKey]);
-              }
-            }
-            if (union) {
-              unionSerde.writeUnknown();
-            } else if (typeof record.__type === "string") {
-              for (const k5 in record) {
-                const v = record[k5];
-                const t = jsonName ? nameMap[k5] ?? k5 : k5;
-                if (!(t in out)) {
-                  out[t] = v;
-                }
-              }
-            }
-            return out;
-          }
-          if (Array.isArray(value) && ns.isListSchema()) {
-            const listMember = ns.getValueSchema();
-            const out = [];
-            for (const item of value) {
-              out.push(this._read(listMember, item));
-            }
-            return out;
-          }
-          if (ns.isMapSchema()) {
-            const mapMember = ns.getValueSchema();
-            const out = {};
-            for (const _k in value) {
-              if (_k === "__proto__") {
-                writeKey2(out);
-              }
-              out[_k] = this._read(mapMember, value[_k]);
-            }
-            return out;
-          }
-        }
-        if (ns.isBlobSchema() && typeof value === "string") {
-          return fromBase64(value);
-        }
-        const mediaType = ns.getMergedTraits().mediaType;
-        if (ns.isStringSchema() && typeof value === "string" && mediaType) {
-          const isJson = mediaType === "application/json" || mediaType.endsWith("+json");
-          if (isJson) {
-            return LazyJsonString.from(value);
-          }
-          return value;
-        }
-        if (ns.isTimestampSchema() && value != null) {
-          const format2 = determineTimestampFormat(ns, this.settings);
-          switch (format2) {
-            case 5:
-              return parseRfc3339DateTimeWithOffset(value);
-            case 6:
-              return parseRfc7231DateTime(value);
-            case 7:
-              return parseEpochTimestamp(value);
-            default:
-              console.warn("Missing timestamp format, parsing value with Date constructor:", value);
-              return new Date(value);
-          }
-        }
-        if (ns.isBigIntegerSchema() && (typeof value === "number" || typeof value === "string")) {
-          return BigInt(value);
-        }
-        if (ns.isBigDecimalSchema() && value != void 0) {
-          if (value instanceof NumericValue) {
-            return value;
-          }
-          const untyped = value;
-          if (untyped.type === "bigDecimal" && "string" in untyped) {
-            return new NumericValue(untyped.string, untyped.type);
-          }
-          return new NumericValue(String(value), "bigDecimal");
-        }
-        if (ns.isNumericSchema() && typeof value === "string") {
-          switch (value) {
-            case "Infinity":
-              return Infinity;
-            case "-Infinity":
-              return -Infinity;
-            case "NaN":
-              return NaN;
-          }
-          return value;
-        }
-        if (ns.isDocumentSchema()) {
-          if (isObject2) {
-            const out = Array.isArray(value) ? [] : {};
-            for (const k5 in value) {
-              if (k5 === "__proto__") {
-                writeKey2(out);
-              }
-              const v = value[k5];
-              if (v instanceof NumericValue) {
-                out[k5] = v;
-              } else {
-                out[k5] = this._read(ns, v);
-              }
-            }
-            return out;
-          } else {
-            return structuredClone(value);
-          }
-        }
-        return value;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReplacer.js
-var NUMERIC_CONTROL_CHAR, JsonReplacer;
-var init_jsonReplacer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/jsonReplacer.js"() {
-    init_serde();
-    NUMERIC_CONTROL_CHAR = String.fromCharCode(925);
-    JsonReplacer = class {
-      values = /* @__PURE__ */ new Map();
-      counter = 0;
-      stage = 0;
-      createReplacer() {
-        if (this.stage === 1) {
-          throw new Error("@aws-sdk/core/protocols - JsonReplacer already created.");
-        }
-        if (this.stage === 2) {
-          throw new Error("@aws-sdk/core/protocols - JsonReplacer exhausted.");
-        }
-        this.stage = 1;
-        return (key, value) => {
-          if (value instanceof NumericValue) {
-            const v = `${NUMERIC_CONTROL_CHAR + "nv" + this.counter++}_` + value.string;
-            this.values.set(`"${v}"`, value.string);
-            return v;
-          }
-          if (typeof value === "bigint") {
-            const s2 = value.toString();
-            const v = `${NUMERIC_CONTROL_CHAR + "b" + this.counter++}_` + s2;
-            this.values.set(`"${v}"`, s2);
-            return v;
-          }
-          return value;
-        };
-      }
-      replaceInJson(json) {
-        if (this.stage === 0) {
-          throw new Error("@aws-sdk/core/protocols - JsonReplacer not created yet.");
-        }
-        if (this.stage === 2) {
-          throw new Error("@aws-sdk/core/protocols - JsonReplacer exhausted.");
-        }
-        this.stage = 2;
-        if (this.counter === 0) {
-          return json;
-        }
-        for (const [key, value] of this.values) {
-          json = json.replace(key, value);
-        }
-        return json;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeSerializer.js
-var JsonShapeSerializer;
-var init_JsonShapeSerializer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonShapeSerializer.js"() {
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    init_jsonReplacer();
-    init_writeKey2();
-    JsonShapeSerializer = class extends SerdeContextConfig2 {
-      settings;
-      buffer;
-      useReplacer = false;
-      rootSchema;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      write(schema, value) {
-        this.rootSchema = NormalizedSchema.of(schema);
-        this.buffer = this._write(this.rootSchema, value);
-      }
-      flush() {
-        const { rootSchema, useReplacer } = this;
-        this.rootSchema = void 0;
-        this.useReplacer = false;
-        if (rootSchema?.isStructSchema() || rootSchema?.isDocumentSchema()) {
-          if (!useReplacer) {
-            return JSON.stringify(this.buffer);
-          }
-          const replacer = new JsonReplacer();
-          return replacer.replaceInJson(JSON.stringify(this.buffer, replacer.createReplacer(), 0));
-        }
-        return this.buffer;
-      }
-      writeDiscriminatedDocument(schema, value) {
-        this.write(schema, value);
-        if (typeof this.buffer === "object") {
-          this.buffer.__type = NormalizedSchema.of(schema).getName(true);
-        }
-      }
-      _write(schema, value, container) {
-        const isObject2 = value !== null && typeof value === "object";
-        const ns = NormalizedSchema.of(schema);
-        if (isObject2) {
-          if (ns.isStructSchema()) {
-            const record = value;
-            const out = {};
-            const { jsonName } = this.settings;
-            let nameMap = void 0;
-            if (jsonName) {
-              nameMap = {};
-            }
-            let outCount = 0;
-            for (const [memberName, memberSchema] of ns.structIterator()) {
-              const serializableValue = this._write(memberSchema, record[memberName], ns);
-              if (serializableValue !== void 0) {
-                let targetKey = memberName;
-                if (jsonName) {
-                  targetKey = memberSchema.getMergedTraits().jsonName ?? memberName;
-                  nameMap[memberName] = targetKey;
-                }
-                out[targetKey] = serializableValue;
-                outCount++;
-              }
-            }
-            if (ns.isUnionSchema() && outCount === 0) {
-              const { $unknown } = record;
-              if (Array.isArray($unknown)) {
-                const [k5, v] = $unknown;
-                if (k5 === "__proto__") {
-                  writeKey2(out);
-                }
-                out[k5] = this._write(15, v);
-              }
-            } else if (typeof record.__type === "string") {
-              for (const k5 in record) {
-                const v = record[k5];
-                const targetKey = jsonName ? nameMap[k5] ?? k5 : k5;
-                if (!(targetKey in out)) {
-                  out[targetKey] = this._write(15, v);
-                }
-              }
-            }
-            return out;
-          }
-          if (Array.isArray(value) && ns.isListSchema()) {
-            const listMember = ns.getValueSchema();
-            const out = [];
-            const sparse = !!ns.getMergedTraits().sparse;
-            for (const item of value) {
-              if (sparse || item != null) {
-                out.push(this._write(listMember, item));
-              }
-            }
-            return out;
-          }
-          if (ns.isMapSchema()) {
-            const mapMember = ns.getValueSchema();
-            const out = {};
-            const sparse = !!ns.getMergedTraits().sparse;
-            for (const _k in value) {
-              const _v = value[_k];
-              if (sparse || _v != null) {
-                if (_k === "__proto__") {
-                  writeKey2(out);
-                }
-                out[_k] = this._write(mapMember, _v);
-              }
-            }
-            return out;
-          }
-          if (value instanceof Uint8Array && ns.isBlobSchema()) {
-            if (ns === this.rootSchema) {
-              return value;
-            }
-            return (this.serdeContext?.base64Encoder ?? toBase64)(value);
-          }
-          if (value instanceof Date && (ns.isTimestampSchema() || ns.isDocumentSchema())) {
-            const format2 = determineTimestampFormat(ns, this.settings);
-            switch (format2) {
-              case 5:
-                return value.toISOString().replace(".000Z", "Z");
-              case 6:
-                return dateToUtcString(value);
-              case 7:
-                return value.getTime() / 1e3;
-              default:
-                console.warn("Missing timestamp format, using epoch seconds", value);
-                return value.getTime() / 1e3;
-            }
-          }
-          if (value instanceof NumericValue) {
-            this.useReplacer = true;
-          }
-        }
-        if (value === null && container?.isStructSchema()) {
-          return void 0;
-        }
-        if (ns.isStringSchema()) {
-          if (typeof value === "undefined" && ns.isIdempotencyToken()) {
-            return generateIdempotencyToken();
-          }
-          const mediaType = ns.getMergedTraits().mediaType;
-          if (value != null && mediaType) {
-            const isJson = mediaType === "application/json" || mediaType.endsWith("+json");
-            if (isJson) {
-              return LazyJsonString.from(value);
-            }
-          }
-          return value;
-        }
-        if (typeof value === "number") {
-          if (Math.abs(value) === Infinity || isNaN(value)) {
-            return String(value);
-          }
-          return value;
-        }
-        if (typeof value === "string" && ns.isBlobSchema()) {
-          if (ns === this.rootSchema) {
-            return value;
-          }
-          return (this.serdeContext?.base64Encoder ?? toBase64)(value);
-        }
-        if (typeof value === "bigint") {
-          this.useReplacer = true;
-        }
-        if (ns.isDocumentSchema()) {
-          if (isObject2) {
-            if (value instanceof Uint8Array) {
-              return (this.serdeContext?.base64Encoder ?? toBase64)(value);
-            }
-            const out = Array.isArray(value) ? [] : {};
-            for (const k5 in value) {
-              const v = value[k5];
-              if (k5 === "__proto__") {
-                writeKey2(out);
-              }
-              if (v instanceof NumericValue) {
-                this.useReplacer = true;
-                out[k5] = v;
-              } else {
-                out[k5] = this._write(ns, v);
-              }
-            }
-            return out;
-          } else {
-            return structuredClone(value);
-          }
-        }
-        return value;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonCodec.js
-var JsonCodec;
-var init_JsonCodec = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/codec-v1/JsonCodec.js"() {
-    init_ConfigurableSerdeContext2();
-    init_JsonShapeDeserializer();
-    init_JsonShapeSerializer();
-    JsonCodec = class extends SerdeContextConfig2 {
-      settings;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      createSerializer() {
-        const serializer = new JsonShapeSerializer(this.settings);
-        serializer.setSerdeContext(this.serdeContext);
-        return serializer;
-      }
-      createDeserializer() {
-        const deserializer = new JsonShapeDeserializer(this.settings);
-        deserializer.setSerdeContext(this.serdeContext);
-        return deserializer;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeDeserializer.js
-var import_xml_builder2, XmlShapeDeserializer2;
-var init_XmlShapeDeserializer2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeDeserializer.js"() {
-    import_xml_builder2 = __toESM(require_dist_cjs7());
-    init_client2();
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    init_UnionSerde2();
-    init_writeKey2();
-    XmlShapeDeserializer2 = class extends SerdeContextConfig2 {
-      settings;
-      stringDeserializer;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-        this.stringDeserializer = new FromStringShapeDeserializer(settings);
-      }
-      setSerdeContext(serdeContext) {
-        this.serdeContext = serdeContext;
-        this.stringDeserializer.setSerdeContext(serdeContext);
-      }
-      read(schema, bytes, key) {
-        const ns = NormalizedSchema.of(schema);
-        const memberSchemas = ns.getMemberSchemas();
-        const isEventPayload = ns.isStructSchema() && ns.isMemberSchema() && !!Object.values(memberSchemas).find((memberNs) => {
-          return !!memberNs.getMemberTraits().eventPayload;
-        });
-        if (isEventPayload) {
-          const output = {};
-          const memberName = Object.keys(memberSchemas)[0];
-          const eventMemberSchema = memberSchemas[memberName];
-          if (eventMemberSchema.isBlobSchema()) {
-            output[memberName] = bytes;
-          } else {
-            output[memberName] = this.read(memberSchemas[memberName], bytes);
-          }
-          return output;
-        }
-        const xmlString = (this.serdeContext?.utf8Encoder ?? toUtf8)(bytes);
-        const parsedObject = this.parseXml(xmlString);
-        return this.readSchema(schema, key ? parsedObject[key] : parsedObject);
-      }
-      readSchema(_schema, value) {
-        const ns = NormalizedSchema.of(_schema);
-        if (ns.isUnitSchema()) {
-          return;
-        }
-        const traits = ns.getMergedTraits();
-        if (ns.isListSchema() && !Array.isArray(value)) {
-          return this.readSchema(ns, [value]);
-        }
-        if (value == null) {
-          return value;
-        }
-        if (typeof value === "object") {
-          const flat = !!traits.xmlFlattened;
-          if (ns.isListSchema()) {
-            const listValue = ns.getValueSchema();
-            const buffer2 = [];
-            const sourceKey = listValue.getMergedTraits().xmlName ?? "member";
-            const source = flat ? value : (value[0] ?? value)[sourceKey];
-            if (source == null) {
-              return buffer2;
-            }
-            const sourceArray = Array.isArray(source) ? source : [source];
-            for (const v of sourceArray) {
-              buffer2.push(this.readSchema(listValue, v));
-            }
-            return buffer2;
-          }
-          const buffer = {};
-          if (ns.isMapSchema()) {
-            const keyNs = ns.getKeySchema();
-            const memberNs = ns.getValueSchema();
-            let entries;
-            if (flat) {
-              entries = Array.isArray(value) ? value : [value];
-            } else {
-              entries = Array.isArray(value.entry) ? value.entry : [value.entry];
-            }
-            const keyProperty = keyNs.getMergedTraits().xmlName ?? "key";
-            const valueProperty = memberNs.getMergedTraits().xmlName ?? "value";
-            for (const entry of entries) {
-              const key = entry[keyProperty];
-              const value2 = entry[valueProperty];
-              if (key === "__proto__") {
-                writeKey2(buffer);
-              }
-              buffer[key] = this.readSchema(memberNs, value2);
-            }
-            return buffer;
-          }
-          if (ns.isStructSchema()) {
-            const union = ns.isUnionSchema();
-            let unionSerde;
-            if (union) {
-              unionSerde = new UnionSerde2(value, buffer);
-            }
-            for (const [memberName, memberSchema] of ns.structIterator()) {
-              const memberTraits = memberSchema.getMergedTraits();
-              const xmlObjectKey = !memberTraits.httpPayload ? memberSchema.getMemberTraits().xmlName ?? memberName : memberTraits.xmlName ?? memberSchema.getName();
-              if (union) {
-                unionSerde.mark(xmlObjectKey);
-              }
-              if (value[xmlObjectKey] != null) {
-                buffer[memberName] = this.readSchema(memberSchema, value[xmlObjectKey]);
-              }
-            }
-            if (union) {
-              unionSerde.writeUnknown();
-            }
-            return buffer;
-          }
-          if (ns.isDocumentSchema()) {
-            return value;
-          }
-          throw new Error(`@aws-sdk/core/protocols - xml deserializer unhandled schema type for ${ns.getName(true)}`);
-        }
-        if (ns.isListSchema()) {
-          return [];
-        }
-        if (ns.isMapSchema() || ns.isStructSchema()) {
-          return {};
-        }
-        return this.stringDeserializer.read(ns, value);
-      }
-      parseXml(xml) {
-        if (xml.length) {
-          let parsedObj;
-          try {
-            parsedObj = (0, import_xml_builder2.parseXML)(xml);
-          } catch (e5) {
-            if (e5 && typeof e5 === "object") {
-              Object.defineProperty(e5, "$responseBodyText", {
-                value: xml
-              });
-            }
-            throw e5;
-          }
-          const textNodeName = "#text";
-          const key = Object.keys(parsedObj)[0];
-          const parsedObjToReturn = parsedObj[key];
-          if (parsedObjToReturn[textNodeName]) {
-            parsedObjToReturn[key] = parsedObjToReturn[textNodeName];
-            delete parsedObjToReturn[textNodeName];
-          }
-          return getValueFromTextNode(parsedObjToReturn);
-        }
-        return {};
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/QueryShapeSerializer.js
-var QueryShapeSerializer2;
-var init_QueryShapeSerializer2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/QueryShapeSerializer.js"() {
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    QueryShapeSerializer2 = class extends SerdeContextConfig2 {
-      settings;
-      buffer;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      write(schema, value, prefix = "") {
-        if (this.buffer === void 0) {
-          this.buffer = "";
-        }
-        const ns = NormalizedSchema.of(schema);
-        if (prefix && !prefix.endsWith(".")) {
-          prefix += ".";
-        }
-        if (ns.isBlobSchema()) {
-          if (typeof value === "string" || value instanceof Uint8Array) {
-            this.writeKey(prefix);
-            this.writeValue((this.serdeContext?.base64Encoder ?? toBase64)(value));
-          }
-        } else if (ns.isBooleanSchema() || ns.isNumericSchema() || ns.isStringSchema()) {
-          if (value != null) {
-            this.writeKey(prefix);
-            this.writeValue(String(value));
-          } else if (ns.isIdempotencyToken()) {
-            this.writeKey(prefix);
-            this.writeValue(generateIdempotencyToken());
-          }
-        } else if (ns.isBigIntegerSchema()) {
-          if (value != null) {
-            this.writeKey(prefix);
-            this.writeValue(String(value));
-          }
-        } else if (ns.isBigDecimalSchema()) {
-          if (value != null) {
-            this.writeKey(prefix);
-            this.writeValue(value instanceof NumericValue ? value.string : String(value));
-          }
-        } else if (ns.isTimestampSchema()) {
-          if (value instanceof Date) {
-            this.writeKey(prefix);
-            const format2 = determineTimestampFormat(ns, this.settings);
-            switch (format2) {
-              case 5:
-                this.writeValue(value.toISOString().replace(".000Z", "Z"));
-                break;
-              case 6:
-                this.writeValue(dateToUtcString(value));
-                break;
-              case 7:
-                this.writeValue(String(value.getTime() / 1e3));
-                break;
-            }
-          }
-        } else if (ns.isDocumentSchema()) {
-          if (Array.isArray(value)) {
-            this.write(64 | 15, value, prefix);
-          } else if (value instanceof Date) {
-            this.write(4, value, prefix);
-          } else if (value instanceof Uint8Array) {
-            this.write(21, value, prefix);
-          } else if (value && typeof value === "object") {
-            this.write(128 | 15, value, prefix);
-          } else {
-            this.writeKey(prefix);
-            this.writeValue(String(value));
-          }
-        } else if (ns.isListSchema()) {
-          if (Array.isArray(value)) {
-            if (value.length === 0) {
-              if (this.settings.serializeEmptyLists) {
-                this.writeKey(prefix);
-                this.writeValue("");
-              }
-            } else {
-              const member2 = ns.getValueSchema();
-              const flat = this.settings.flattenLists || ns.getMergedTraits().xmlFlattened;
-              let i5 = 1;
-              for (const item of value) {
-                if (item == null) {
-                  continue;
-                }
-                const traits = member2.getMergedTraits();
-                const suffix = this.getKey("member", traits.xmlName, traits.ec2QueryName);
-                const key = flat ? `${prefix}${i5}` : `${prefix}${suffix}.${i5}`;
-                this.write(member2, item, key);
-                ++i5;
-              }
-            }
-          }
-        } else if (ns.isMapSchema()) {
-          if (value && typeof value === "object") {
-            const keySchema = ns.getKeySchema();
-            const memberSchema = ns.getValueSchema();
-            const flat = ns.getMergedTraits().xmlFlattened;
-            let i5 = 1;
-            for (const k5 in value) {
-              const v = value[k5];
-              if (v == null) {
-                continue;
-              }
-              const keyTraits = keySchema.getMergedTraits();
-              const keySuffix = this.getKey("key", keyTraits.xmlName, keyTraits.ec2QueryName);
-              const key = flat ? `${prefix}${i5}.${keySuffix}` : `${prefix}entry.${i5}.${keySuffix}`;
-              const valTraits = memberSchema.getMergedTraits();
-              const valueSuffix = this.getKey("value", valTraits.xmlName, valTraits.ec2QueryName);
-              const valueKey = flat ? `${prefix}${i5}.${valueSuffix}` : `${prefix}entry.${i5}.${valueSuffix}`;
-              this.write(keySchema, k5, key);
-              this.write(memberSchema, v, valueKey);
-              ++i5;
-            }
-          }
-        } else if (ns.isStructSchema()) {
-          if (value && typeof value === "object") {
-            let didWriteMember = false;
-            for (const [memberName, member2] of ns.structIterator()) {
-              if (value[memberName] == null && !member2.isIdempotencyToken()) {
-                continue;
-              }
-              const traits = member2.getMergedTraits();
-              const suffix = this.getKey(memberName, traits.xmlName, traits.ec2QueryName, "struct");
-              const key = `${prefix}${suffix}`;
-              this.write(member2, value[memberName], key);
-              didWriteMember = true;
-            }
-            if (!didWriteMember && ns.isUnionSchema()) {
-              const { $unknown } = value;
-              if (Array.isArray($unknown)) {
-                const [k5, v] = $unknown;
-                const key = `${prefix}${k5}`;
-                this.write(15, v, key);
-              }
-            }
-          }
-        } else if (ns.isUnitSchema()) {
-        } else {
-          throw new Error(`@aws-sdk/core/protocols - QuerySerializer unrecognized schema type ${ns.getName(true)}`);
-        }
-      }
-      flush() {
-        if (this.buffer === void 0) {
-          throw new Error("@aws-sdk/core/protocols - QuerySerializer cannot flush with nothing written to buffer.");
-        }
-        const str = this.buffer;
-        delete this.buffer;
-        return str;
-      }
-      getKey(memberName, xmlName, ec2QueryName, keySource) {
-        const { ec2, capitalizeKeys } = this.settings;
-        if (ec2 && ec2QueryName) {
-          return ec2QueryName;
-        }
-        const key = xmlName ?? memberName;
-        if (capitalizeKeys && keySource === "struct") {
-          return key[0].toUpperCase() + key.slice(1);
-        }
-        return key;
-      }
-      writeKey(key) {
-        if (key.endsWith(".")) {
-          key = key.slice(0, key.length - 1);
-        }
-        this.buffer += `&${extendedEncodeURIComponent(key)}=`;
-      }
-      writeValue(value) {
-        this.buffer += extendedEncodeURIComponent(value);
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsQueryProtocol.js
-var AwsQueryProtocol2;
-var init_AwsQueryProtocol2 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsQueryProtocol.js"() {
-    init_protocols();
-    init_schema();
-    init_ProtocolLib2();
-    init_XmlShapeDeserializer2();
-    init_QueryShapeSerializer2();
-    AwsQueryProtocol2 = class extends RpcProtocol {
-      options;
-      serializer;
-      deserializer;
-      mixin = new ProtocolLib2();
-      constructor(options) {
-        super({
-          defaultNamespace: options.defaultNamespace,
-          errorTypeRegistries: options.errorTypeRegistries
-        });
-        this.options = options;
-        const settings = {
-          timestampFormat: {
-            useTrait: true,
-            default: 5
-          },
-          httpBindings: false,
-          xmlNamespace: options.xmlNamespace,
-          serviceNamespace: options.defaultNamespace,
-          serializeEmptyLists: true
-        };
-        this.serializer = new QueryShapeSerializer2(settings);
-        this.deserializer = new XmlShapeDeserializer2(settings);
-      }
-      getShapeId() {
-        return "aws.protocols#awsQuery";
-      }
-      setSerdeContext(serdeContext) {
-        this.serializer.setSerdeContext(serdeContext);
-        this.deserializer.setSerdeContext(serdeContext);
-      }
-      getPayloadCodec() {
-        throw new Error("AWSQuery protocol has no payload codec.");
-      }
-      async serializeRequest(operationSchema, input, context) {
-        const request2 = await super.serializeRequest(operationSchema, input, context);
-        if (!request2.path.endsWith("/")) {
-          request2.path += "/";
-        }
-        request2.headers["content-type"] = "application/x-www-form-urlencoded";
-        if (deref(operationSchema.input) === "unit" || !request2.body) {
-          request2.body = "";
-        }
-        const action = operationSchema.name.split("#")[1] ?? operationSchema.name;
-        request2.body = `Action=${action}&Version=${this.options.version}` + request2.body;
-        if (request2.body.endsWith("&")) {
-          request2.body = request2.body.slice(-1);
-        }
-        return request2;
-      }
-      async deserializeResponse(operationSchema, context, response) {
-        const deserializer = this.deserializer;
-        const ns = NormalizedSchema.of(operationSchema.output);
-        const dataObject = {};
-        if (response.statusCode >= 300) {
-          const bytes2 = await collectBody(response.body, context);
-          if (bytes2.byteLength > 0) {
-            Object.assign(dataObject, await deserializer.read(15, bytes2));
-          }
-          await this.handleError(operationSchema, context, response, dataObject, this.deserializeMetadata(response));
-        }
-        for (const header in response.headers) {
-          const value = response.headers[header];
-          delete response.headers[header];
-          response.headers[header.toLowerCase()] = value;
-        }
-        const shortName = operationSchema.name.split("#")[1] ?? operationSchema.name;
-        const awsQueryResultKey = ns.isStructSchema() && this.useNestedResult() ? shortName + "Result" : void 0;
-        const bytes = await collectBody(response.body, context);
-        if (bytes.byteLength > 0) {
-          Object.assign(dataObject, await deserializer.read(ns, bytes, awsQueryResultKey));
-        }
-        dataObject.$metadata = this.deserializeMetadata(response);
-        return dataObject;
-      }
-      useNestedResult() {
-        return true;
-      }
-      async handleError(operationSchema, context, response, dataObject, metadata) {
-        const errorIdentifier = this.loadQueryErrorCode(response, dataObject) ?? "Unknown";
-        this.mixin.compose(this.compositeErrorRegistry, errorIdentifier, this.options.defaultNamespace);
-        const errorData = this.loadQueryError(dataObject) ?? {};
-        const message = this.loadQueryErrorMessage(dataObject);
-        errorData.message = message;
-        errorData.Error = {
-          Type: errorData.Type,
-          Code: errorData.Code,
-          Message: message
-        };
-        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorIdentifier, this.options.defaultNamespace, response, errorData, metadata, this.mixin.findQueryCompatibleError);
-        const ns = NormalizedSchema.of(errorSchema);
-        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
-        const exception = new ErrorCtor({});
-        const output = {
-          Type: errorData.Error.Type,
-          Code: errorData.Error.Code,
-          Error: errorData.Error
-        };
-        for (const [name, member2] of ns.structIterator()) {
-          const target = member2.getMergedTraits().xmlName ?? name;
-          const value = errorData[target] ?? dataObject[target];
-          output[name] = this.deserializer.readSchema(member2, value);
-        }
-        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
-          $fault: ns.getMergedTraits().error,
-          message
-        }, output), dataObject);
-      }
-      loadQueryErrorCode(output, data) {
-        const code = (data.Errors?.[0]?.Error ?? data.Errors?.Error ?? data.Error)?.Code;
-        if (code !== void 0) {
-          return code;
-        }
-        if (output.statusCode == 404) {
-          return "NotFound";
-        }
-      }
-      loadQueryError(data) {
-        return data.Errors?.[0]?.Error ?? data.Errors?.Error ?? data.Error;
-      }
-      loadQueryErrorMessage(data) {
-        const errorData = this.loadQueryError(data);
-        return errorData?.message ?? errorData?.Message ?? data.message ?? data.Message ?? "Unknown";
-      }
-      getDefaultContentType() {
-        return "application/x-www-form-urlencoded";
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsEc2QueryProtocol.js
-var AwsEc2QueryProtocol;
-var init_AwsEc2QueryProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/query/AwsEc2QueryProtocol.js"() {
-    init_AwsQueryProtocol2();
-    AwsEc2QueryProtocol = class extends AwsQueryProtocol2 {
-      options;
-      constructor(options) {
-        super(options);
-        this.options = options;
-        const ec2Settings = {
-          capitalizeKeys: true,
-          flattenLists: true,
-          serializeEmptyLists: false,
-          ec2: true
-        };
-        Object.assign(this.serializer.settings, ec2Settings);
-      }
-      getShapeId() {
-        return "aws.protocols#ec2Query";
-      }
-      useNestedResult() {
-        return false;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js
-var import_xml_builder3, parseXmlBody, parseXmlErrorBody, loadRestXmlErrorCode;
-var init_parseXmlBody = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/parseXmlBody.js"() {
-    import_xml_builder3 = __toESM(require_dist_cjs7());
-    init_client2();
-    init_common2();
-    parseXmlBody = (streamBody, context) => collectBodyString2(streamBody, context).then((encoded) => {
-      if (encoded.length) {
-        let parsedObj;
-        try {
-          parsedObj = (0, import_xml_builder3.parseXML)(encoded);
-        } catch (e5) {
-          if (e5 && typeof e5 === "object") {
-            Object.defineProperty(e5, "$responseBodyText", {
-              value: encoded
-            });
-          }
-          throw e5;
-        }
-        const textNodeName = "#text";
-        const key = Object.keys(parsedObj)[0];
-        const parsedObjToReturn = parsedObj[key];
-        if (parsedObjToReturn[textNodeName]) {
-          parsedObjToReturn[key] = parsedObjToReturn[textNodeName];
-          delete parsedObjToReturn[textNodeName];
-        }
-        return getValueFromTextNode(parsedObjToReturn);
-      }
-      return {};
-    });
-    parseXmlErrorBody = async (errorBody, context) => {
-      const value = await parseXmlBody(errorBody, context);
-      if (value.Error) {
-        value.Error.message = value.Error.message ?? value.Error.Message;
-      }
-      return value;
-    };
-    loadRestXmlErrorCode = (output, data) => {
-      if (data?.Error?.Code !== void 0) {
-        return data.Error.Code;
-      }
-      if (data?.Code !== void 0) {
-        return data.Code;
-      }
-      if (output.statusCode == 404) {
-        return "NotFound";
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js
-var import_xml_builder4, XmlShapeSerializer;
-var init_XmlShapeSerializer = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlShapeSerializer.js"() {
-    import_xml_builder4 = __toESM(require_dist_cjs7());
-    init_protocols();
-    init_schema();
-    init_serde();
-    init_serde();
-    init_ConfigurableSerdeContext2();
-    XmlShapeSerializer = class extends SerdeContextConfig2 {
-      settings;
-      stringBuffer;
-      byteBuffer;
-      buffer;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      write(schema, value) {
-        const ns = NormalizedSchema.of(schema);
-        if (ns.isStringSchema() && typeof value === "string") {
-          this.stringBuffer = value;
-        } else if (ns.isBlobSchema()) {
-          this.byteBuffer = "byteLength" in value ? value : (this.serdeContext?.base64Decoder ?? fromBase64)(value);
-        } else {
-          this.buffer = this.writeStruct(ns, value, void 0);
-          const traits = ns.getMergedTraits();
-          if (traits.httpPayload && !traits.xmlName) {
-            this.buffer.withName(ns.getName());
-          }
-        }
-      }
-      flush() {
-        if (this.byteBuffer !== void 0) {
-          const bytes = this.byteBuffer;
-          delete this.byteBuffer;
-          return bytes;
-        }
-        if (this.stringBuffer !== void 0) {
-          const str = this.stringBuffer;
-          delete this.stringBuffer;
-          return str;
-        }
-        const buffer = this.buffer;
-        if (this.settings.xmlNamespace) {
-          if (!buffer?.attributes?.["xmlns"]) {
-            buffer.addAttribute("xmlns", this.settings.xmlNamespace);
-          }
-        }
-        delete this.buffer;
-        return buffer.toString();
-      }
-      writeStruct(ns, value, parentXmlns) {
-        const traits = ns.getMergedTraits();
-        const name = ns.isMemberSchema() && !traits.httpPayload ? ns.getMemberTraits().xmlName ?? ns.getMemberName() : traits.xmlName ?? ns.getName();
-        if (!name || !ns.isStructSchema()) {
-          throw new Error(`@aws-sdk/core/protocols - xml serializer, cannot write struct with empty name or non-struct, schema=${ns.getName(true)}.`);
-        }
-        const structXmlNode = import_xml_builder4.XmlNode.of(name);
-        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(ns, parentXmlns);
-        for (const [memberName, memberSchema] of ns.structIterator()) {
-          const val = value[memberName];
-          if (val != null || memberSchema.isIdempotencyToken()) {
-            if (memberSchema.getMergedTraits().xmlAttribute) {
-              structXmlNode.addAttribute(memberSchema.getMergedTraits().xmlName ?? memberName, this.writeSimple(memberSchema, val));
-              continue;
-            }
-            if (memberSchema.isListSchema()) {
-              this.writeList(memberSchema, val, structXmlNode, xmlns);
-            } else if (memberSchema.isMapSchema()) {
-              this.writeMap(memberSchema, val, structXmlNode, xmlns);
-            } else if (memberSchema.isStructSchema()) {
-              structXmlNode.addChildNode(this.writeStruct(memberSchema, val, xmlns));
-            } else {
-              const memberNode = import_xml_builder4.XmlNode.of(memberSchema.getMergedTraits().xmlName ?? memberSchema.getMemberName());
-              this.writeSimpleInto(memberSchema, val, memberNode, xmlns);
-              structXmlNode.addChildNode(memberNode);
-            }
-          }
-        }
-        const { $unknown } = value;
-        if ($unknown && ns.isUnionSchema() && Array.isArray($unknown) && Object.keys(value).length === 1) {
-          const [k5, v] = $unknown;
-          const node = import_xml_builder4.XmlNode.of(k5);
-          if (typeof v !== "string") {
-            if (value instanceof import_xml_builder4.XmlNode || value instanceof import_xml_builder4.XmlText) {
-              structXmlNode.addChildNode(value);
-            } else {
-              throw new Error(`@aws-sdk - $unknown union member in XML requires value of type string, @aws-sdk/xml-builder::XmlNode or XmlText.`);
-            }
-          }
-          this.writeSimpleInto(0, v, node, xmlns);
-          structXmlNode.addChildNode(node);
-        }
-        if (xmlns) {
-          structXmlNode.addAttribute(xmlnsAttr, xmlns);
-        }
-        return structXmlNode;
-      }
-      writeList(listMember, array, container, parentXmlns) {
-        if (!listMember.isMemberSchema()) {
-          throw new Error(`@aws-sdk/core/protocols - xml serializer, cannot write non-member list: ${listMember.getName(true)}`);
-        }
-        const listTraits = listMember.getMergedTraits();
-        const listValueSchema = listMember.getValueSchema();
-        const listValueTraits = listValueSchema.getMergedTraits();
-        const sparse = !!listValueTraits.sparse;
-        const flat = !!listTraits.xmlFlattened;
-        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(listMember, parentXmlns);
-        const writeItem = (container2, value) => {
-          if (listValueSchema.isListSchema()) {
-            this.writeList(listValueSchema, Array.isArray(value) ? value : [value], container2, xmlns);
-          } else if (listValueSchema.isMapSchema()) {
-            this.writeMap(listValueSchema, value, container2, xmlns);
-          } else if (listValueSchema.isStructSchema()) {
-            const struct2 = this.writeStruct(listValueSchema, value, xmlns);
-            container2.addChildNode(struct2.withName(flat ? listTraits.xmlName ?? listMember.getMemberName() : listValueTraits.xmlName ?? "member"));
-          } else {
-            const listItemNode = import_xml_builder4.XmlNode.of(flat ? listTraits.xmlName ?? listMember.getMemberName() : listValueTraits.xmlName ?? "member");
-            this.writeSimpleInto(listValueSchema, value, listItemNode, xmlns);
-            container2.addChildNode(listItemNode);
-          }
-        };
-        if (flat) {
-          for (const value of array) {
-            if (sparse || value != null) {
-              writeItem(container, value);
-            }
-          }
-        } else {
-          const listNode = import_xml_builder4.XmlNode.of(listTraits.xmlName ?? listMember.getMemberName());
-          if (xmlns) {
-            listNode.addAttribute(xmlnsAttr, xmlns);
-          }
-          for (const value of array) {
-            if (sparse || value != null) {
-              writeItem(listNode, value);
-            }
-          }
-          container.addChildNode(listNode);
-        }
-      }
-      writeMap(mapMember, map3, container, parentXmlns, containerIsMap = false) {
-        if (!mapMember.isMemberSchema()) {
-          throw new Error(`@aws-sdk/core/protocols - xml serializer, cannot write non-member map: ${mapMember.getName(true)}`);
-        }
-        const mapTraits = mapMember.getMergedTraits();
-        const mapKeySchema = mapMember.getKeySchema();
-        const mapKeyTraits = mapKeySchema.getMergedTraits();
-        const keyTag = mapKeyTraits.xmlName ?? "key";
-        const mapValueSchema = mapMember.getValueSchema();
-        const mapValueTraits = mapValueSchema.getMergedTraits();
-        const valueTag = mapValueTraits.xmlName ?? "value";
-        const sparse = !!mapValueTraits.sparse;
-        const flat = !!mapTraits.xmlFlattened;
-        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(mapMember, parentXmlns);
-        const addKeyValue = (entry, key, val) => {
-          const keyNode = import_xml_builder4.XmlNode.of(keyTag, key);
-          const [keyXmlnsAttr, keyXmlns] = this.getXmlnsAttribute(mapKeySchema, xmlns);
-          if (keyXmlns) {
-            keyNode.addAttribute(keyXmlnsAttr, keyXmlns);
-          }
-          entry.addChildNode(keyNode);
-          let valueNode = import_xml_builder4.XmlNode.of(valueTag);
-          if (mapValueSchema.isListSchema()) {
-            this.writeList(mapValueSchema, val, valueNode, xmlns);
-          } else if (mapValueSchema.isMapSchema()) {
-            this.writeMap(mapValueSchema, val, valueNode, xmlns, true);
-          } else if (mapValueSchema.isStructSchema()) {
-            valueNode = this.writeStruct(mapValueSchema, val, xmlns);
-          } else {
-            this.writeSimpleInto(mapValueSchema, val, valueNode, xmlns);
-          }
-          entry.addChildNode(valueNode);
-        };
-        if (flat) {
-          for (const key in map3) {
-            const val = map3[key];
-            if (sparse || val != null) {
-              const entry = import_xml_builder4.XmlNode.of(mapTraits.xmlName ?? mapMember.getMemberName());
-              addKeyValue(entry, key, val);
-              container.addChildNode(entry);
-            }
-          }
-        } else {
-          let mapNode;
-          if (!containerIsMap) {
-            mapNode = import_xml_builder4.XmlNode.of(mapTraits.xmlName ?? mapMember.getMemberName());
-            if (xmlns) {
-              mapNode.addAttribute(xmlnsAttr, xmlns);
-            }
-            container.addChildNode(mapNode);
-          }
-          for (const key in map3) {
-            const val = map3[key];
-            if (sparse || val != null) {
-              const entry = import_xml_builder4.XmlNode.of("entry");
-              addKeyValue(entry, key, val);
-              (containerIsMap ? container : mapNode).addChildNode(entry);
-            }
-          }
-        }
-      }
-      writeSimple(_schema, value) {
-        if (null === value) {
-          throw new Error("@aws-sdk/core/protocols - (XML serializer) cannot write null value.");
-        }
-        const ns = NormalizedSchema.of(_schema);
-        let nodeContents = null;
-        if (value && typeof value === "object") {
-          if (ns.isBlobSchema()) {
-            nodeContents = (this.serdeContext?.base64Encoder ?? toBase64)(value);
-          } else if (ns.isTimestampSchema() && value instanceof Date) {
-            const format2 = determineTimestampFormat(ns, this.settings);
-            switch (format2) {
-              case 5:
-                nodeContents = value.toISOString().replace(".000Z", "Z");
-                break;
-              case 6:
-                nodeContents = dateToUtcString(value);
-                break;
-              case 7:
-                nodeContents = String(value.getTime() / 1e3);
-                break;
-              default:
-                console.warn("Missing timestamp format, using http date", value);
-                nodeContents = dateToUtcString(value);
-                break;
-            }
-          } else if (ns.isBigDecimalSchema() && value) {
-            if (value instanceof NumericValue) {
-              return value.string;
-            }
-            return String(value);
-          } else if (ns.isMapSchema() || ns.isListSchema()) {
-            throw new Error("@aws-sdk/core/protocols - xml serializer, cannot call _write() on List/Map schema, call writeList or writeMap() instead.");
-          } else {
-            throw new Error(`@aws-sdk/core/protocols - xml serializer, unhandled schema type for object value and schema: ${ns.getName(true)}`);
-          }
-        }
-        if (ns.isBooleanSchema() || ns.isNumericSchema() || ns.isBigIntegerSchema() || ns.isBigDecimalSchema()) {
-          nodeContents = String(value);
-        }
-        if (ns.isStringSchema()) {
-          if (value === void 0 && ns.isIdempotencyToken()) {
-            nodeContents = generateIdempotencyToken();
-          } else {
-            nodeContents = String(value);
-          }
-        }
-        if (nodeContents === null) {
-          throw new Error(`Unhandled schema-value pair ${ns.getName(true)}=${value}`);
-        }
-        return nodeContents;
-      }
-      writeSimpleInto(_schema, value, into, parentXmlns) {
-        const nodeContents = this.writeSimple(_schema, value);
-        const ns = NormalizedSchema.of(_schema);
-        const content = new import_xml_builder4.XmlText(nodeContents);
-        const [xmlnsAttr, xmlns] = this.getXmlnsAttribute(ns, parentXmlns);
-        if (xmlns) {
-          into.addAttribute(xmlnsAttr, xmlns);
-        }
-        into.addChildNode(content);
-      }
-      getXmlnsAttribute(ns, parentXmlns) {
-        const traits = ns.getMergedTraits();
-        const [prefix, xmlns] = traits.xmlNamespace ?? [];
-        if (xmlns && xmlns !== parentXmlns) {
-          return [prefix ? `xmlns:${prefix}` : "xmlns", xmlns];
-        }
-        return [void 0, void 0];
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js
-var XmlCodec;
-var init_XmlCodec = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/XmlCodec.js"() {
-    init_ConfigurableSerdeContext2();
-    init_XmlShapeDeserializer2();
-    init_XmlShapeSerializer();
-    XmlCodec = class extends SerdeContextConfig2 {
-      settings;
-      constructor(settings) {
-        super();
-        this.settings = settings;
-      }
-      createSerializer() {
-        const serializer = new XmlShapeSerializer(this.settings);
-        serializer.setSerdeContext(this.serdeContext);
-        return serializer;
-      }
-      createDeserializer() {
-        const deserializer = new XmlShapeDeserializer2(this.settings);
-        deserializer.setSerdeContext(this.serdeContext);
-        return deserializer;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js
-var AwsRestXmlProtocol;
-var init_AwsRestXmlProtocol = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/xml/AwsRestXmlProtocol.js"() {
-    init_protocols();
-    init_schema();
-    init_ProtocolLib2();
-    init_parseXmlBody();
-    init_XmlCodec();
-    AwsRestXmlProtocol = class extends HttpBindingProtocol {
-      codec;
-      serializer;
-      deserializer;
-      mixin = new ProtocolLib2();
-      constructor(options) {
-        super(options);
-        const settings = {
-          timestampFormat: {
-            useTrait: true,
-            default: 5
-          },
-          httpBindings: true,
-          xmlNamespace: options.xmlNamespace,
-          serviceNamespace: options.defaultNamespace
-        };
-        this.codec = new XmlCodec(settings);
-        this.serializer = new HttpInterceptingShapeSerializer(this.codec.createSerializer(), settings);
-        this.deserializer = new HttpInterceptingShapeDeserializer(this.codec.createDeserializer(), settings);
-      }
-      getPayloadCodec() {
-        return this.codec;
-      }
-      getShapeId() {
-        return "aws.protocols#restXml";
-      }
-      async serializeRequest(operationSchema, input, context) {
-        const request2 = await super.serializeRequest(operationSchema, input, context);
-        const inputSchema = NormalizedSchema.of(operationSchema.input);
-        if (!request2.headers["content-type"]) {
-          const contentType = this.mixin.resolveRestContentType(this.getDefaultContentType(), inputSchema);
-          if (contentType) {
-            request2.headers["content-type"] = contentType;
-          }
-        }
-        if (typeof request2.body === "string" && request2.headers["content-type"] === this.getDefaultContentType() && !request2.body.startsWith("<?xml ") && !this.hasUnstructuredPayloadBinding(inputSchema)) {
-          request2.body = '<?xml version="1.0" encoding="UTF-8"?>' + request2.body;
-        }
-        return request2;
-      }
-      async deserializeResponse(operationSchema, context, response) {
-        return super.deserializeResponse(operationSchema, context, response);
-      }
-      async handleError(operationSchema, context, response, dataObject, metadata) {
-        const errorIdentifier = loadRestXmlErrorCode(response, dataObject) ?? "Unknown";
-        this.mixin.compose(this.compositeErrorRegistry, errorIdentifier, this.options.defaultNamespace);
-        if (dataObject.Error && typeof dataObject.Error === "object") {
-          for (const key of Object.keys(dataObject.Error)) {
-            dataObject[key] = dataObject.Error[key];
-            if (key.toLowerCase() === "message") {
-              dataObject.message = dataObject.Error[key];
-            }
-          }
-        }
-        if (dataObject.RequestId && !metadata.requestId) {
-          metadata.requestId = dataObject.RequestId;
-        }
-        const { errorSchema, errorMetadata } = await this.mixin.getErrorSchemaOrThrowBaseException(errorIdentifier, this.options.defaultNamespace, response, dataObject, metadata);
-        const ns = NormalizedSchema.of(errorSchema);
-        const message = dataObject.Error?.message ?? dataObject.Error?.Message ?? dataObject.message ?? dataObject.Message ?? "UnknownError";
-        const ErrorCtor = this.compositeErrorRegistry.getErrorCtor(errorSchema) ?? Error;
-        const exception = new ErrorCtor({});
-        await this.deserializeHttpMessage(errorSchema, context, response, dataObject);
-        const output = {};
-        const errorDeserializer = this.codec.createDeserializer();
-        for (const [name, member2] of ns.structIterator()) {
-          const target = member2.getMergedTraits().xmlName ?? name;
-          const value = dataObject.Error?.[target] ?? dataObject[target];
-          output[name] = errorDeserializer.readSchema(member2, value);
-        }
-        throw this.mixin.decorateServiceException(Object.assign(exception, errorMetadata, {
-          $fault: ns.getMergedTraits().error,
-          message
-        }, output), dataObject);
-      }
-      getDefaultContentType() {
-        return "application/xml";
-      }
-      hasUnstructuredPayloadBinding(ns) {
-        for (const [, member2] of ns.structIterator()) {
-          if (member2.getMergedTraits().httpPayload) {
-            return !(member2.isStructSchema() || member2.isMapSchema() || member2.isListSchema());
-          }
-        }
-        return false;
-      }
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/awsExpectUnion.js
-var awsExpectUnion;
-var init_awsExpectUnion = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/json/awsExpectUnion.js"() {
-    init_serde();
-    awsExpectUnion = (value) => {
-      if (value == null) {
-        return void 0;
-      }
-      if (typeof value === "object" && "__type" in value) {
-        delete value.__type;
-      }
-      return expectUnion(value);
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/coercing-serializers.js
-var _toStr, _toBool, _toNum;
-var init_coercing_serializers = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/coercing-serializers.js"() {
-    _toStr = (val) => {
-      if (val == null) {
-        return val;
-      }
-      if (typeof val === "number" || typeof val === "bigint") {
-        const warning3 = new Error(`Received number ${val} where a string was expected.`);
-        warning3.name = "Warning";
-        console.warn(warning3);
-        return String(val);
-      }
-      if (typeof val === "boolean") {
-        const warning3 = new Error(`Received boolean ${val} where a string was expected.`);
-        warning3.name = "Warning";
-        console.warn(warning3);
-        return String(val);
-      }
-      return val;
-    };
-    _toBool = (val) => {
-      if (val == null) {
-        return val;
-      }
-      if (typeof val === "number") {
-      }
-      if (typeof val === "string") {
-        const lowercase = val.toLowerCase();
-        if (val !== "" && lowercase !== "false" && lowercase !== "true") {
-          const warning3 = new Error(`Received string "${val}" where a boolean was expected.`);
-          warning3.name = "Warning";
-          console.warn(warning3);
-        }
-        return val !== "" && lowercase !== "false";
-      }
-      return val;
-    };
-    _toNum = (val) => {
-      if (val == null) {
-        return val;
-      }
-      if (typeof val === "boolean") {
-      }
-      if (typeof val === "string") {
-        const num = Number(val);
-        if (num.toString() !== val) {
-          const warning3 = new Error(`Received string "${val}" where a number was expected.`);
-          warning3.name = "Warning";
-          console.warn(warning3);
-          return val;
-        }
-        return num;
-      }
-      return val;
-    };
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js
-var protocols_exports2 = {};
-__export(protocols_exports2, {
-  AwsEc2QueryProtocol: () => AwsEc2QueryProtocol,
-  AwsJson1_0Protocol: () => AwsJson1_0Protocol,
-  AwsJson1_1Protocol: () => AwsJson1_1Protocol,
-  AwsJsonRpcProtocol: () => AwsJsonRpcProtocol,
-  AwsQueryProtocol: () => AwsQueryProtocol2,
-  AwsRestJsonProtocol: () => AwsRestJsonProtocol2,
-  AwsRestXmlProtocol: () => AwsRestXmlProtocol,
-  AwsSmithyRpcV2CborProtocol: () => AwsSmithyRpcV2CborProtocol,
-  JsonCodec: () => JsonCodec,
-  JsonCodec2: () => JsonCodec22,
-  JsonShapeDeserializer: () => JsonShapeDeserializer,
-  JsonShapeDeserializer2: () => JsonShapeDeserializer22,
-  JsonShapeSerializer: () => JsonShapeSerializer,
-  JsonShapeSerializer2: () => JsonShapeSerializer22,
-  QueryShapeSerializer: () => QueryShapeSerializer2,
-  XmlCodec: () => XmlCodec,
-  XmlShapeDeserializer: () => XmlShapeDeserializer2,
-  XmlShapeSerializer: () => XmlShapeSerializer,
-  _toBool: () => _toBool,
-  _toNum: () => _toNum,
-  _toStr: () => _toStr,
-  awsExpectUnion: () => awsExpectUnion,
-  loadJsonRpcErrorCode: () => loadJsonRpcErrorCode,
-  loadRestJsonErrorCode: () => loadRestJsonErrorCode2,
-  loadRestXmlErrorCode: () => loadRestXmlErrorCode,
-  parseJsonBody: () => parseJsonBody2,
-  parseJsonErrorBody: () => parseJsonErrorBody,
-  parseXmlBody: () => parseXmlBody,
-  parseXmlErrorBody: () => parseXmlErrorBody
-});
-var init_protocols3 = __esm({
-  "node_modules/.pnpm/@aws-sdk+core@3.977.9/node_modules/@aws-sdk/core/dist-es/submodules/protocols/index.js"() {
-    init_AwsSmithyRpcV2CborProtocol();
-    init_AwsJson1_0Protocol();
-    init_AwsJson1_1Protocol();
-    init_AwsJsonRpcProtocol();
-    init_AwsRestJsonProtocol2();
-    init_JsonCodec();
-    init_JsonShapeDeserializer();
-    init_JsonShapeSerializer();
-    init_JsonCodec22();
-    init_JsonShapeDeserializer22();
-    init_JsonShapeSerializer22();
-    init_parseJsonBody2();
-    init_AwsEc2QueryProtocol();
-    init_AwsQueryProtocol2();
-    init_QueryShapeSerializer2();
-    init_AwsRestXmlProtocol();
-    init_XmlCodec();
-    init_XmlShapeDeserializer2();
-    init_XmlShapeSerializer();
-    init_parseXmlBody();
-    init_awsExpectUnion();
-    init_coercing_serializers();
-  }
-});
-
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1126.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1127.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
 var require_dist_cjs16 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1126.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
-    var { awsEndpointFunctions: awsEndpointFunctions3, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion$1, createDefaultUserAgentProvider: createDefaultUserAgentProvider3, NODE_APP_ID_CONFIG_OPTIONS: NODE_APP_ID_CONFIG_OPTIONS3, getAwsRegionExtensionConfiguration: getAwsRegionExtensionConfiguration3, resolveAwsRegionExtensionConfiguration: resolveAwsRegionExtensionConfiguration3, resolveUserAgentConfig: resolveUserAgentConfig3, resolveHostHeaderConfig: resolveHostHeaderConfig3, getUserAgentPlugin: getUserAgentPlugin3, getHostHeaderPlugin: getHostHeaderPlugin3, getLoggerPlugin: getLoggerPlugin3, getRecursionDetectionPlugin: getRecursionDetectionPlugin3 } = (init_client3(), __toCommonJS(client_exports2));
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1127.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
+    var { awsEndpointFunctions: awsEndpointFunctions2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion$1, createDefaultUserAgentProvider: createDefaultUserAgentProvider2, NODE_APP_ID_CONFIG_OPTIONS: NODE_APP_ID_CONFIG_OPTIONS2, getAwsRegionExtensionConfiguration: getAwsRegionExtensionConfiguration2, resolveAwsRegionExtensionConfiguration: resolveAwsRegionExtensionConfiguration2, resolveUserAgentConfig: resolveUserAgentConfig2, resolveHostHeaderConfig: resolveHostHeaderConfig2, getUserAgentPlugin: getUserAgentPlugin2, getHostHeaderPlugin: getHostHeaderPlugin2, getLoggerPlugin: getLoggerPlugin2, getRecursionDetectionPlugin: getRecursionDetectionPlugin2 } = (init_client3(), __toCommonJS(client_exports2));
     var { getHttpAuthSchemeEndpointRuleSetPlugin: getHttpAuthSchemeEndpointRuleSetPlugin2, DefaultIdentityProviderConfig: DefaultIdentityProviderConfig2, getHttpSigningPlugin: getHttpSigningPlugin2, createPaginator: createPaginator2 } = (init_dist_es(), __toCommonJS(dist_es_exports));
-    var { normalizeProvider: normalizeProvider3, getSmithyContext: getSmithyContext2, ServiceException: ServiceException2, NoOpLogger: NoOpLogger2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion4, loadConfigsForDefaultMode: loadConfigsForDefaultMode2, getDefaultExtensionConfiguration: getDefaultExtensionConfiguration2, resolveDefaultRuntimeConfig: resolveDefaultRuntimeConfig2, Client: Client2, makeBuilder: makeBuilder2, createAggregatedClient: createAggregatedClient2 } = (init_client2(), __toCommonJS(client_exports));
+    var { normalizeProvider: normalizeProvider3, getSmithyContext: getSmithyContext2, ServiceException: ServiceException2, NoOpLogger: NoOpLogger2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion3, loadConfigsForDefaultMode: loadConfigsForDefaultMode2, getDefaultExtensionConfiguration: getDefaultExtensionConfiguration2, resolveDefaultRuntimeConfig: resolveDefaultRuntimeConfig2, Client: Client2, makeBuilder: makeBuilder2, createAggregatedClient: createAggregatedClient2 } = (init_client2(), __toCommonJS(client_exports));
     var { Command: $Command } = (init_client2(), __toCommonJS(client_exports));
     exports.$Command = $Command;
     exports.__Client = Client2;
@@ -29569,11 +25982,11 @@ var require_dist_cjs16 = __commonJS({
     var { parseUrl: parseUrl3, getHttpHandlerExtensionConfiguration: getHttpHandlerExtensionConfiguration2, resolveHttpHandlerRuntimeConfig: resolveHttpHandlerRuntimeConfig2, getContentLengthPlugin: getContentLengthPlugin2 } = (init_protocols(), __toCommonJS(protocols_exports));
     var { DEFAULT_RETRY_MODE: DEFAULT_RETRY_MODE2, NODE_RETRY_MODE_CONFIG_OPTIONS: NODE_RETRY_MODE_CONFIG_OPTIONS2, NODE_MAX_ATTEMPT_CONFIG_OPTIONS: NODE_MAX_ATTEMPT_CONFIG_OPTIONS2, resolveRetryConfig: resolveRetryConfig2, getRetryPlugin: getRetryPlugin2 } = (init_retry2(), __toCommonJS(retry_exports));
     var { TypeRegistry: TypeRegistry2, getSchemaSerdePlugin: getSchemaSerdePlugin2 } = (init_schema(), __toCommonJS(schema_exports));
-    var { resolveAwsSdkSigV4Config: resolveAwsSdkSigV4Config3, AwsSdkSigV4Signer: AwsSdkSigV4Signer3, NODE_AUTH_SCHEME_PREFERENCE_OPTIONS: NODE_AUTH_SCHEME_PREFERENCE_OPTIONS3 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
+    var { resolveAwsSdkSigV4Config: resolveAwsSdkSigV4Config2, AwsSdkSigV4Signer: AwsSdkSigV4Signer2, NODE_AUTH_SCHEME_PREFERENCE_OPTIONS: NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2 } = (init_httpAuthSchemes2(), __toCommonJS(httpAuthSchemes_exports));
     var { defaultProvider } = require_dist_cjs15();
     var { toUtf8: toUtf83, fromUtf8: fromUtf83, toBase64: toBase643, fromBase64: fromBase643, calculateBodyLength: calculateBodyLength2 } = (init_serde(), __toCommonJS(serde_exports));
     var { streamCollector: streamCollector7, NodeHttpHandler } = require_dist_cjs5();
-    var { AwsJson1_1Protocol: AwsJson1_1Protocol2 } = (init_protocols3(), __toCommonJS(protocols_exports2));
+    var { AwsJson1_1Protocol: AwsJson1_1Protocol2 } = (init_protocols2(), __toCommonJS(protocols_exports2));
     var { Sha256 } = (init_checksum2(), __toCommonJS(checksum_exports));
     var defaultSecretsManagerHttpAuthSchemeParametersProvider = async (config, context, input) => {
       return {
@@ -29608,7 +26021,7 @@ var require_dist_cjs16 = __commonJS({
       return options;
     };
     var resolveHttpAuthSchemeConfig5 = (config) => {
-      const config_0 = resolveAwsSdkSigV4Config3(config);
+      const config_0 = resolveAwsSdkSigV4Config2(config);
       return Object.assign(config_0, {
         authSchemePreference: normalizeProvider3(config.authSchemePreference ?? [])
       });
@@ -29626,7 +26039,7 @@ var require_dist_cjs16 = __commonJS({
       Region: { type: "builtInParams", name: "region" },
       UseDualStack: { type: "builtInParams", name: "useDualstackEndpoint" }
     };
-    var version = "3.1125.0";
+    var version = "3.1126.0";
     var packageInfo = {
       version
     };
@@ -29743,7 +26156,7 @@ var require_dist_cjs16 = __commonJS({
         logger: context.logger
       }));
     };
-    customEndpointFunctions2.aws = awsEndpointFunctions3;
+    customEndpointFunctions2.aws = awsEndpointFunctions2;
     var SecretsManagerServiceException = class _SecretsManagerServiceException extends ServiceException2 {
       constructor(options) {
         super(options);
@@ -30958,7 +27371,7 @@ var require_dist_cjs16 = __commonJS({
           {
             schemeId: "aws.auth#sigv4",
             identityProvider: (ipc) => ipc.getIdentityProvider("aws.auth#sigv4"),
-            signer: new AwsSdkSigV4Signer3()
+            signer: new AwsSdkSigV4Signer2()
           }
         ],
         logger: config?.logger ?? new NoOpLogger2(),
@@ -30977,7 +27390,7 @@ var require_dist_cjs16 = __commonJS({
       };
     };
     var getRuntimeConfig9 = (config) => {
-      emitWarningIfUnsupportedVersion4(process.version);
+      emitWarningIfUnsupportedVersion3(process.version);
       const defaultsMode = resolveDefaultsModeConfig2(config);
       const defaultConfigProvider = () => defaultsMode().then(loadConfigsForDefaultMode2);
       const clientSharedValues = getRuntimeConfig$1(config);
@@ -30991,10 +27404,10 @@ var require_dist_cjs16 = __commonJS({
         ...config,
         runtime: "node",
         defaultsMode,
-        authSchemePreference: config?.authSchemePreference ?? loadConfig2(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS3, loaderConfig),
+        authSchemePreference: config?.authSchemePreference ?? loadConfig2(NODE_AUTH_SCHEME_PREFERENCE_OPTIONS2, loaderConfig),
         bodyLengthChecker: config?.bodyLengthChecker ?? calculateBodyLength2,
         credentialDefaultProvider: config?.credentialDefaultProvider ?? defaultProvider,
-        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider3({ serviceId: clientSharedValues.serviceId, clientVersion: packageInfo.version }),
+        defaultUserAgentProvider: config?.defaultUserAgentProvider ?? createDefaultUserAgentProvider2({ serviceId: clientSharedValues.serviceId, clientVersion: packageInfo.version }),
         maxAttempts: config?.maxAttempts ?? loadConfig2(NODE_MAX_ATTEMPT_CONFIG_OPTIONS2, config),
         region: config?.region ?? loadConfig2(NODE_REGION_CONFIG_OPTIONS2, { ...NODE_REGION_CONFIG_FILE_OPTIONS2, ...loaderConfig }),
         requestHandler: NodeHttpHandler.create(config?.requestHandler ?? defaultConfigProvider),
@@ -31005,7 +27418,7 @@ var require_dist_cjs16 = __commonJS({
         streamCollector: config?.streamCollector ?? streamCollector7,
         useDualstackEndpoint: config?.useDualstackEndpoint ?? loadConfig2(NODE_USE_DUALSTACK_ENDPOINT_CONFIG_OPTIONS2, loaderConfig),
         useFipsEndpoint: config?.useFipsEndpoint ?? loadConfig2(NODE_USE_FIPS_ENDPOINT_CONFIG_OPTIONS2, loaderConfig),
-        userAgentAppId: config?.userAgentAppId ?? loadConfig2(NODE_APP_ID_CONFIG_OPTIONS3, loaderConfig)
+        userAgentAppId: config?.userAgentAppId ?? loadConfig2(NODE_APP_ID_CONFIG_OPTIONS2, loaderConfig)
       };
     };
     var getHttpAuthExtensionConfiguration5 = (runtimeConfig) => {
@@ -31046,9 +27459,9 @@ var require_dist_cjs16 = __commonJS({
       };
     };
     var resolveRuntimeExtensions5 = (runtimeConfig, extensions) => {
-      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration3(runtimeConfig), getDefaultExtensionConfiguration2(runtimeConfig), getHttpHandlerExtensionConfiguration2(runtimeConfig), getHttpAuthExtensionConfiguration5(runtimeConfig));
+      const extensionConfiguration = Object.assign(getAwsRegionExtensionConfiguration2(runtimeConfig), getDefaultExtensionConfiguration2(runtimeConfig), getHttpHandlerExtensionConfiguration2(runtimeConfig), getHttpAuthExtensionConfiguration5(runtimeConfig));
       extensions.forEach((extension) => extension.configure(extensionConfiguration));
-      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration3(extensionConfiguration), resolveDefaultRuntimeConfig2(extensionConfiguration), resolveHttpHandlerRuntimeConfig2(extensionConfiguration), resolveHttpAuthRuntimeConfig5(extensionConfiguration));
+      return Object.assign(runtimeConfig, resolveAwsRegionExtensionConfiguration2(extensionConfiguration), resolveDefaultRuntimeConfig2(extensionConfiguration), resolveHttpHandlerRuntimeConfig2(extensionConfiguration), resolveHttpAuthRuntimeConfig5(extensionConfiguration));
     };
     var SecretsManagerClient2 = class extends Client2 {
       config;
@@ -31057,21 +27470,21 @@ var require_dist_cjs16 = __commonJS({
         super(_config_0);
         this.initConfig = _config_0;
         const _config_1 = resolveClientEndpointParameters5(_config_0);
-        const _config_2 = resolveUserAgentConfig3(_config_1);
+        const _config_2 = resolveUserAgentConfig2(_config_1);
         const _config_3 = resolveRetryConfig2(_config_2);
         const _config_4 = resolveRegionConfig2(_config_3);
-        const _config_5 = resolveHostHeaderConfig3(_config_4);
+        const _config_5 = resolveHostHeaderConfig2(_config_4);
         const _config_6 = resolveEndpointConfig2(_config_5);
         const _config_7 = resolveHttpAuthSchemeConfig5(_config_6);
         const _config_8 = resolveRuntimeExtensions5(_config_7, configuration?.extensions || []);
         this.config = _config_8;
         this.middlewareStack.use(getSchemaSerdePlugin2(this.config));
-        this.middlewareStack.use(getUserAgentPlugin3(this.config));
+        this.middlewareStack.use(getUserAgentPlugin2(this.config));
         this.middlewareStack.use(getRetryPlugin2(this.config));
         this.middlewareStack.use(getContentLengthPlugin2(this.config));
-        this.middlewareStack.use(getHostHeaderPlugin3(this.config));
-        this.middlewareStack.use(getLoggerPlugin3(this.config));
-        this.middlewareStack.use(getRecursionDetectionPlugin3(this.config));
+        this.middlewareStack.use(getHostHeaderPlugin2(this.config));
+        this.middlewareStack.use(getLoggerPlugin2(this.config));
+        this.middlewareStack.use(getRecursionDetectionPlugin2(this.config));
         this.middlewareStack.use(getHttpAuthSchemeEndpointRuleSetPlugin2(this.config, {
           httpAuthSchemeParametersProvider: defaultSecretsManagerHttpAuthSchemeParametersProvider,
           identityProviderConfigProvider: async (config) => new DefaultIdentityProviderConfig2({
@@ -32798,7 +29211,7 @@ function getUserAgent() {
 }
 
 // node_modules/.pnpm/before-after-hook@4.0.0/node_modules/before-after-hook/lib/register.js
-function register(state3, name, method, options) {
+function register(state2, name, method, options) {
   if (typeof method !== "function") {
     throw new Error("method for before hook must be a function");
   }
@@ -32807,24 +29220,24 @@ function register(state3, name, method, options) {
   }
   if (Array.isArray(name)) {
     return name.reverse().reduce((callback, name2) => {
-      return register.bind(null, state3, name2, callback, options);
+      return register.bind(null, state2, name2, callback, options);
     }, method)();
   }
   return Promise.resolve().then(() => {
-    if (!state3.registry[name]) {
+    if (!state2.registry[name]) {
       return method(options);
     }
-    return state3.registry[name].reduce((method2, registered) => {
+    return state2.registry[name].reduce((method2, registered) => {
       return registered.hook.bind(null, method2, options);
     }, method)();
   });
 }
 
 // node_modules/.pnpm/before-after-hook@4.0.0/node_modules/before-after-hook/lib/add.js
-function addHook(state3, kind, name, hook7) {
+function addHook(state2, kind, name, hook7) {
   const orig = hook7;
-  if (!state3.registry[name]) {
-    state3.registry[name] = [];
+  if (!state2.registry[name]) {
+    state2.registry[name] = [];
   }
   if (kind === "before") {
     hook7 = (method, options) => {
@@ -32849,38 +29262,38 @@ function addHook(state3, kind, name, hook7) {
       });
     };
   }
-  state3.registry[name].push({
+  state2.registry[name].push({
     hook: hook7,
     orig
   });
 }
 
 // node_modules/.pnpm/before-after-hook@4.0.0/node_modules/before-after-hook/lib/remove.js
-function removeHook(state3, name, method) {
-  if (!state3.registry[name]) {
+function removeHook(state2, name, method) {
+  if (!state2.registry[name]) {
     return;
   }
-  const index = state3.registry[name].map((registered) => {
+  const index = state2.registry[name].map((registered) => {
     return registered.orig;
   }).indexOf(method);
   if (index === -1) {
     return;
   }
-  state3.registry[name].splice(index, 1);
+  state2.registry[name].splice(index, 1);
 }
 
 // node_modules/.pnpm/before-after-hook@4.0.0/node_modules/before-after-hook/index.js
 var bind = Function.bind;
 var bindable = bind.bind(bind);
-function bindApi(hook7, state3, name) {
+function bindApi(hook7, state2, name) {
   const removeHookRef = bindable(removeHook, null).apply(
     null,
-    name ? [state3, name] : [state3]
+    name ? [state2, name] : [state2]
   );
   hook7.api = { remove: removeHookRef };
   hook7.remove = removeHookRef;
   ["before", "error", "after", "wrap"].forEach((kind) => {
-    const args = name ? [state3, kind, name] : [state3, kind];
+    const args = name ? [state2, kind, name] : [state2, kind];
     hook7[kind] = hook7.api[kind] = bindable(addHook, null).apply(null, args);
   });
 }
@@ -32894,11 +29307,11 @@ function Singular() {
   return singularHook;
 }
 function Collection() {
-  const state3 = {
+  const state2 = {
     registry: {}
   };
-  const hook7 = register.bind(null, state3);
-  bindApi(hook7, state3);
+  const hook7 = register.bind(null, state2);
+  bindApi(hook7, state2);
   return hook7;
 }
 var before_after_hook_default = { Singular, Collection };
@@ -36546,33 +32959,33 @@ var VERSION7 = "0.0.0-development";
 function isRequestError(error2) {
   return error2.request !== void 0;
 }
-async function errorRequest(state3, octokit, error2, options) {
+async function errorRequest(state2, octokit, error2, options) {
   if (!isRequestError(error2) || !error2?.request.request) {
     throw error2;
   }
-  if (error2.status >= 400 && !state3.doNotRetry.includes(error2.status)) {
-    const retries = options.request.retries != null ? options.request.retries : state3.retries;
+  if (error2.status >= 400 && !state2.doNotRetry.includes(error2.status)) {
+    const retries = options.request.retries != null ? options.request.retries : state2.retries;
     const retryAfter = Math.pow((options.request.retryCount || 0) + 1, 2);
     throw octokit.retry.retryRequest(error2, retries, retryAfter);
   }
   throw error2;
 }
-async function wrapRequest(state3, octokit, request2, options) {
+async function wrapRequest(state2, octokit, request2, options) {
   const limiter = new import_light.default();
   limiter.on("failed", function(error2, info) {
     const maxRetries = ~~error2.request.request?.retries;
     const after = ~~error2.request.request?.retryAfter;
     options.request.retryCount = info.retryCount + 1;
     if (maxRetries > info.retryCount) {
-      return after * state3.retryAfterBaseValue;
+      return after * state2.retryAfterBaseValue;
     }
   });
   return limiter.schedule(
-    requestWithGraphqlErrorHandling.bind(null, state3, octokit, request2),
+    requestWithGraphqlErrorHandling.bind(null, state2, octokit, request2),
     options
   );
 }
-async function requestWithGraphqlErrorHandling(state3, octokit, request2, options) {
+async function requestWithGraphqlErrorHandling(state2, octokit, request2, options) {
   const response = await request2(options);
   if (response.data && response.data.errors && response.data.errors.length > 0 && /Something went wrong while executing your query/.test(
     response.data.errors[0].message
@@ -36581,12 +32994,12 @@ async function requestWithGraphqlErrorHandling(state3, octokit, request2, option
       request: options,
       response
     });
-    return errorRequest(state3, octokit, error2, options);
+    return errorRequest(state2, octokit, error2, options);
   }
   return response;
 }
 function retry(octokit, octokitOptions) {
-  const state3 = Object.assign(
+  const state2 = Object.assign(
     {
       enabled: true,
       retryAfterBaseValue: 1e3,
@@ -36606,9 +33019,9 @@ function retry(octokit, octokitOptions) {
       }
     }
   };
-  if (state3.enabled) {
-    octokit.hook.error("request", errorRequest.bind(null, state3, retryPlugin));
-    octokit.hook.wrap("request", wrapRequest.bind(null, state3, retryPlugin));
+  if (state2.enabled) {
+    octokit.hook.error("request", errorRequest.bind(null, state2, retryPlugin));
+    octokit.hook.wrap("request", wrapRequest.bind(null, state2, retryPlugin));
   }
   return retryPlugin;
 }
@@ -36618,10 +33031,10 @@ retry.VERSION = VERSION7;
 var import_light2 = __toESM(require_light(), 1);
 var VERSION8 = "0.0.0-development";
 var noop3 = () => Promise.resolve();
-function wrapRequest2(state3, request2, options) {
-  return state3.retryLimiter.schedule(doRequest, state3, request2, options);
+function wrapRequest2(state2, request2, options) {
+  return state2.retryLimiter.schedule(doRequest, state2, request2, options);
 }
-async function doRequest(state3, request2, options) {
+async function doRequest(state2, request2, options) {
   const { pathname } = new URL(options.url, "http://github.test");
   const isAuth = isAuthRequest(options.method, pathname);
   const isWrite = !isAuth && options.method !== "GET" && options.method !== "HEAD";
@@ -36629,19 +33042,19 @@ async function doRequest(state3, request2, options) {
   const isGraphQL = pathname.startsWith("/graphql");
   const retryCount = ~~request2.retryCount;
   const jobOptions = retryCount > 0 ? { priority: 0, weight: 0 } : {};
-  if (state3.clustering) {
+  if (state2.clustering) {
     jobOptions.expiration = 1e3 * 60;
   }
   if (isWrite || isGraphQL) {
-    await state3.write.key(state3.id).schedule(jobOptions, noop3);
+    await state2.write.key(state2.id).schedule(jobOptions, noop3);
   }
-  if (isWrite && state3.triggersNotification(pathname)) {
-    await state3.notifications.key(state3.id).schedule(jobOptions, noop3);
+  if (isWrite && state2.triggersNotification(pathname)) {
+    await state2.notifications.key(state2.id).schedule(jobOptions, noop3);
   }
   if (isSearch) {
-    await state3.search.key(state3.id).schedule(jobOptions, noop3);
+    await state2.search.key(state2.id).schedule(jobOptions, noop3);
   }
-  const req = (isAuth ? state3.auth : state3.global).key(state3.id).schedule(jobOptions, request2, options);
+  const req = (isAuth ? state2.auth : state2.global).key(state2.id).schedule(jobOptions, request2, options);
   if (isGraphQL) {
     const res = await req;
     if (res.data.errors != null && res.data.errors.some((error2) => error2.type === "RATE_LIMITED")) {
@@ -36741,7 +33154,7 @@ function throttling(octokit, octokitOptions) {
   if (groups.global == null) {
     createGroups(Bottleneck2, common);
   }
-  const state3 = Object.assign(
+  const state2 = Object.assign(
     {
       clustering: connection != null,
       triggersNotification,
@@ -36753,7 +33166,7 @@ function throttling(octokit, octokitOptions) {
     },
     octokitOptions.throttle
   );
-  if (typeof state3.onSecondaryRateLimit !== "function" || typeof state3.onRateLimit !== "function") {
+  if (typeof state2.onSecondaryRateLimit !== "function" || typeof state2.onRateLimit !== "function") {
     throw new Error(`octokit/plugin-throttling error:
         You must pass the onSecondaryRateLimit and onRateLimit error handlers.
         See https://octokit.github.io/rest.js/#throttling
@@ -36768,13 +33181,13 @@ function throttling(octokit, octokitOptions) {
   }
   const events = {};
   const emitter = new Bottleneck2.Events(events);
-  events.on("secondary-limit", state3.onSecondaryRateLimit);
-  events.on("rate-limit", state3.onRateLimit);
+  events.on("secondary-limit", state2.onSecondaryRateLimit);
+  events.on("rate-limit", state2.onRateLimit);
   events.on(
     "error",
     (e5) => octokit.log.warn("Error in throttling-plugin limit handler", e5)
   );
-  state3.retryLimiter.on("failed", async function(error2, info) {
+  state2.retryLimiter.on("failed", async function(error2, info) {
     const [state22, request2, options] = info.args;
     const { pathname } = new URL(options.url, "http://github.test");
     const shouldRetryGraphQL = pathname.startsWith("/graphql") && error2.status !== 401;
@@ -36824,7 +33237,7 @@ function throttling(octokit, octokitOptions) {
       return retryAfter * state22.retryAfterBaseValue;
     }
   });
-  octokit.hook.wrap("request", wrapRequest2.bind(null, state3));
+  octokit.hook.wrap("request", wrapRequest2.bind(null, state2));
   return {};
 }
 throttling.VERSION = VERSION8;
@@ -37140,34 +33553,34 @@ async function deleteAuthorization(options) {
 }
 
 // node_modules/.pnpm/@octokit+auth-oauth-device@8.0.3/node_modules/@octokit/auth-oauth-device/dist-bundle/index.js
-async function getOAuthAccessToken(state3, options) {
-  const cachedAuthentication = getCachedAuthentication(state3, options.auth);
+async function getOAuthAccessToken(state2, options) {
+  const cachedAuthentication = getCachedAuthentication(state2, options.auth);
   if (cachedAuthentication) return cachedAuthentication;
   const { data: verification } = await createDeviceCode({
-    clientType: state3.clientType,
-    clientId: state3.clientId,
-    request: options.request || state3.request,
+    clientType: state2.clientType,
+    clientId: state2.clientId,
+    request: options.request || state2.request,
     // @ts-expect-error the extra code to make TS happy is not worth it
-    scopes: options.auth.scopes || state3.scopes
+    scopes: options.auth.scopes || state2.scopes
   });
-  await state3.onVerification(verification);
+  await state2.onVerification(verification);
   const authentication = await waitForAccessToken(
-    options.request || state3.request,
-    state3.clientId,
-    state3.clientType,
+    options.request || state2.request,
+    state2.clientId,
+    state2.clientType,
     verification
   );
-  state3.authentication = authentication;
+  state2.authentication = authentication;
   return authentication;
 }
-function getCachedAuthentication(state3, auth22) {
+function getCachedAuthentication(state2, auth22) {
   if (auth22.refresh === true) return false;
-  if (!state3.authentication) return false;
-  if (state3.clientType === "github-app") {
-    return state3.authentication;
+  if (!state2.authentication) return false;
+  if (state2.clientType === "github-app") {
+    return state2.authentication;
   }
-  const authentication = state3.authentication;
-  const newScope = ("scopes" in auth22 && auth22.scopes || state3.scopes).join(
+  const authentication = state2.authentication;
+  const newScope = ("scopes" in auth22 && auth22.scopes || state2.scopes).join(
     " "
   );
   const currentScope = authentication.scopes.join(" ");
@@ -37209,12 +33622,12 @@ async function waitForAccessToken(request2, clientId, clientType, verification) 
     throw error2;
   }
 }
-async function auth2(state3, authOptions) {
-  return getOAuthAccessToken(state3, {
+async function auth2(state2, authOptions) {
+  return getOAuthAccessToken(state2, {
     auth: authOptions
   });
 }
-async function hook2(state3, request2, route, parameters) {
+async function hook2(state2, request2, route, parameters) {
   let endpoint2 = request2.endpoint.merge(
     route,
     parameters
@@ -37222,7 +33635,7 @@ async function hook2(state3, request2, route, parameters) {
   if (/\/login\/(oauth\/access_token|device\/code)$/.test(endpoint2.url)) {
     return request2(endpoint2);
   }
-  const { token } = await getOAuthAccessToken(state3, {
+  const { token } = await getOAuthAccessToken(state2, {
     request: request2,
     auth: { type: "oauth" }
   });
@@ -37237,7 +33650,7 @@ function createOAuthDeviceAuth(options) {
     }
   });
   const { request: request2 = requestWithDefaults, ...otherOptions } = options;
-  const state3 = options.clientType === "github-app" ? {
+  const state2 = options.clientType === "github-app" ? {
     ...otherOptions,
     clientType: "github-app",
     request: request2
@@ -37257,22 +33670,22 @@ function createOAuthDeviceAuth(options) {
       '[@octokit/auth-oauth-device] "onVerification" option must be a function (https://github.com/octokit/auth-oauth-device.js#usage)'
     );
   }
-  return Object.assign(auth2.bind(null, state3), {
-    hook: hook2.bind(null, state3)
+  return Object.assign(auth2.bind(null, state2), {
+    hook: hook2.bind(null, state2)
   });
 }
 
 // node_modules/.pnpm/@octokit+auth-oauth-user@6.0.2/node_modules/@octokit/auth-oauth-user/dist-bundle/index.js
 var VERSION10 = "0.0.0-development";
-async function getAuthentication(state3) {
-  if ("code" in state3.strategyOptions) {
+async function getAuthentication(state2) {
+  if ("code" in state2.strategyOptions) {
     const { authentication } = await exchangeWebFlowCode({
-      clientId: state3.clientId,
-      clientSecret: state3.clientSecret,
-      clientType: state3.clientType,
-      onTokenCreated: state3.onTokenCreated,
-      ...state3.strategyOptions,
-      request: state3.request
+      clientId: state2.clientId,
+      clientSecret: state2.clientSecret,
+      clientType: state2.clientType,
+      onTokenCreated: state2.onTokenCreated,
+      ...state2.strategyOptions,
+      request: state2.request
     });
     return {
       type: "token",
@@ -37280,53 +33693,53 @@ async function getAuthentication(state3) {
       ...authentication
     };
   }
-  if ("onVerification" in state3.strategyOptions) {
+  if ("onVerification" in state2.strategyOptions) {
     const deviceAuth = createOAuthDeviceAuth({
-      clientType: state3.clientType,
-      clientId: state3.clientId,
-      onTokenCreated: state3.onTokenCreated,
-      ...state3.strategyOptions,
-      request: state3.request
+      clientType: state2.clientType,
+      clientId: state2.clientId,
+      onTokenCreated: state2.onTokenCreated,
+      ...state2.strategyOptions,
+      request: state2.request
     });
     const authentication = await deviceAuth({
       type: "oauth"
     });
     return {
-      clientSecret: state3.clientSecret,
+      clientSecret: state2.clientSecret,
       ...authentication
     };
   }
-  if ("token" in state3.strategyOptions) {
+  if ("token" in state2.strategyOptions) {
     return {
       type: "token",
       tokenType: "oauth",
-      clientId: state3.clientId,
-      clientSecret: state3.clientSecret,
-      clientType: state3.clientType,
-      onTokenCreated: state3.onTokenCreated,
-      ...state3.strategyOptions
+      clientId: state2.clientId,
+      clientSecret: state2.clientSecret,
+      clientType: state2.clientType,
+      onTokenCreated: state2.onTokenCreated,
+      ...state2.strategyOptions
     };
   }
   throw new Error("[@octokit/auth-oauth-user] Invalid strategy options");
 }
-async function auth3(state3, options = {}) {
-  if (!state3.authentication) {
-    state3.authentication = state3.clientType === "oauth-app" ? await getAuthentication(state3) : await getAuthentication(state3);
+async function auth3(state2, options = {}) {
+  if (!state2.authentication) {
+    state2.authentication = state2.clientType === "oauth-app" ? await getAuthentication(state2) : await getAuthentication(state2);
   }
-  if (state3.authentication.invalid) {
+  if (state2.authentication.invalid) {
     throw new Error("[@octokit/auth-oauth-user] Token is invalid");
   }
-  const currentAuthentication = state3.authentication;
+  const currentAuthentication = state2.authentication;
   if ("expiresAt" in currentAuthentication) {
     if (options.type === "refresh" || new Date(currentAuthentication.expiresAt) < /* @__PURE__ */ new Date()) {
       const { authentication } = await refreshToken({
         clientType: "github-app",
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
         refreshToken: currentAuthentication.refreshToken,
-        request: state3.request
+        request: state2.request
       });
-      state3.authentication = {
+      state2.authentication = {
         tokenType: "oauth",
         type: "token",
         ...authentication
@@ -37334,7 +33747,7 @@ async function auth3(state3, options = {}) {
     }
   }
   if (options.type === "refresh") {
-    if (state3.clientType === "oauth-app") {
+    if (state2.clientType === "oauth-app") {
       throw new Error(
         "[@octokit/auth-oauth-user] OAuth Apps do not support expiring tokens"
       );
@@ -37342,7 +33755,7 @@ async function auth3(state3, options = {}) {
     if (!currentAuthentication.hasOwnProperty("expiresAt")) {
       throw new Error("[@octokit/auth-oauth-user] Refresh token missing");
     }
-    await state3.onTokenCreated?.(state3.authentication, {
+    await state2.onTokenCreated?.(state2.authentication, {
       type: options.type
     });
   }
@@ -37351,28 +33764,28 @@ async function auth3(state3, options = {}) {
     try {
       const { authentication } = await method({
         // @ts-expect-error making TS happy would require unnecessary code so no
-        clientType: state3.clientType,
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
-        token: state3.authentication.token,
-        request: state3.request
+        clientType: state2.clientType,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
+        token: state2.authentication.token,
+        request: state2.request
       });
-      state3.authentication = {
+      state2.authentication = {
         tokenType: "oauth",
         type: "token",
         // @ts-expect-error TBD
         ...authentication
       };
       if (options.type === "reset") {
-        await state3.onTokenCreated?.(state3.authentication, {
+        await state2.onTokenCreated?.(state2.authentication, {
           type: options.type
         });
       }
-      return state3.authentication;
+      return state2.authentication;
     } catch (error2) {
       if (error2.status === 404) {
         error2.message = "[@octokit/auth-oauth-user] Token is invalid";
-        state3.authentication.invalid = true;
+        state2.authentication.invalid = true;
       }
       throw error2;
     }
@@ -37382,25 +33795,25 @@ async function auth3(state3, options = {}) {
     try {
       await method({
         // @ts-expect-error making TS happy would require unnecessary code so no
-        clientType: state3.clientType,
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
-        token: state3.authentication.token,
-        request: state3.request
+        clientType: state2.clientType,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
+        token: state2.authentication.token,
+        request: state2.request
       });
     } catch (error2) {
       if (error2.status !== 404) throw error2;
     }
-    state3.authentication.invalid = true;
-    return state3.authentication;
+    state2.authentication.invalid = true;
+    return state2.authentication;
   }
-  return state3.authentication;
+  return state2.authentication;
 }
 var ROUTES_REQUIRING_BASIC_AUTH = /\/applications\/[^/]+\/(token|grant)s?/;
 function requiresBasicAuth(url) {
   return url && ROUTES_REQUIRING_BASIC_AUTH.test(url);
 }
-async function hook3(state3, request2, route, parameters = {}) {
+async function hook3(state2, request2, route, parameters = {}) {
   const endpoint2 = request2.endpoint.merge(
     route,
     parameters
@@ -37409,11 +33822,11 @@ async function hook3(state3, request2, route, parameters = {}) {
     return request2(endpoint2);
   }
   if (requiresBasicAuth(endpoint2.url)) {
-    const credentials = btoa(`${state3.clientId}:${state3.clientSecret}`);
+    const credentials = btoa(`${state2.clientId}:${state2.clientSecret}`);
     endpoint2.headers.authorization = `basic ${credentials}`;
     return request2(endpoint2);
   }
-  const { token } = state3.clientType === "oauth-app" ? await auth3({ ...state3, request: request2 }) : await auth3({ ...state3, request: request2 });
+  const { token } = state2.clientType === "oauth-app" ? await auth3({ ...state2, request: request2 }) : await auth3({ ...state2, request: request2 });
   endpoint2.headers.authorization = "token " + token;
   return request2(endpoint2);
 }
@@ -37429,7 +33842,7 @@ function createOAuthUserAuth({
   onTokenCreated,
   ...strategyOptions
 }) {
-  const state3 = Object.assign({
+  const state2 = Object.assign({
     clientType,
     clientId,
     clientSecret,
@@ -37437,24 +33850,24 @@ function createOAuthUserAuth({
     strategyOptions,
     request: request2
   });
-  return Object.assign(auth3.bind(null, state3), {
+  return Object.assign(auth3.bind(null, state2), {
     // @ts-expect-error not worth the extra code needed to appease TS
-    hook: hook3.bind(null, state3)
+    hook: hook3.bind(null, state2)
   });
 }
 createOAuthUserAuth.VERSION = VERSION10;
 
 // node_modules/.pnpm/@octokit+auth-oauth-app@9.0.3/node_modules/@octokit/auth-oauth-app/dist-bundle/index.js
-async function auth4(state3, authOptions) {
+async function auth4(state2, authOptions) {
   if (authOptions.type === "oauth-app") {
     return {
       type: "oauth-app",
-      clientId: state3.clientId,
-      clientSecret: state3.clientSecret,
-      clientType: state3.clientType,
+      clientId: state2.clientId,
+      clientSecret: state2.clientSecret,
+      clientType: state2.clientType,
       headers: {
         authorization: `basic ${btoa(
-          `${state3.clientId}:${state3.clientSecret}`
+          `${state2.clientId}:${state2.clientSecret}`
         )}`
       }
     };
@@ -37462,26 +33875,26 @@ async function auth4(state3, authOptions) {
   if ("factory" in authOptions) {
     const { type, ...options } = {
       ...authOptions,
-      ...state3
+      ...state2
     };
     return authOptions.factory(options);
   }
   const common = {
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.request,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.request,
     ...authOptions
   };
-  const userAuth = state3.clientType === "oauth-app" ? await createOAuthUserAuth({
+  const userAuth = state2.clientType === "oauth-app" ? await createOAuthUserAuth({
     ...common,
-    clientType: state3.clientType
+    clientType: state2.clientType
   }) : await createOAuthUserAuth({
     ...common,
-    clientType: state3.clientType
+    clientType: state2.clientType
   });
   return userAuth();
 }
-async function hook4(state3, request2, route, parameters) {
+async function hook4(state2, request2, route, parameters) {
   let endpoint2 = request2.endpoint.merge(
     route,
     parameters
@@ -37489,12 +33902,12 @@ async function hook4(state3, request2, route, parameters) {
   if (/\/login\/(oauth\/access_token|device\/code)$/.test(endpoint2.url)) {
     return request2(endpoint2);
   }
-  if (state3.clientType === "github-app" && !requiresBasicAuth(endpoint2.url)) {
+  if (state2.clientType === "github-app" && !requiresBasicAuth(endpoint2.url)) {
     throw new Error(
       `[@octokit/auth-oauth-app] GitHub Apps cannot use their client ID/secret for basic authentication for endpoints other than "/applications/{client_id}/**". "${endpoint2.method} ${endpoint2.url}" is not supported.`
     );
   }
-  const credentials = btoa(`${state3.clientId}:${state3.clientSecret}`);
+  const credentials = btoa(`${state2.clientId}:${state2.clientSecret}`);
   endpoint2.headers.authorization = `basic ${credentials}`;
   try {
     return await request2(endpoint2);
@@ -37506,7 +33919,7 @@ async function hook4(state3, request2, route, parameters) {
 }
 var VERSION11 = "0.0.0-development";
 function createOAuthAppAuth(options) {
-  const state3 = Object.assign(
+  const state2 = Object.assign(
     {
       request: request.defaults({
         headers: {
@@ -37517,8 +33930,8 @@ function createOAuthAppAuth(options) {
     },
     options
   );
-  return Object.assign(auth4.bind(null, state3), {
-    hook: hook4.bind(null, state3)
+  return Object.assign(auth4.bind(null, state2), {
+    hook: hook4.bind(null, state2)
   });
 }
 
@@ -37913,8 +34326,8 @@ function toTokenAuthentication({
     singleFileName ? { singleFileName } : null
   );
 }
-async function getInstallationAuthentication(state3, options, customRequest) {
-  const installationId = Number(options.installationId || state3.installationId);
+async function getInstallationAuthentication(state2, options, customRequest) {
+  const installationId = Number(options.installationId || state2.installationId);
   if (!installationId) {
     throw new Error(
       "[@octokit/auth-app] installationId option is required for installation authentication."
@@ -37922,35 +34335,35 @@ async function getInstallationAuthentication(state3, options, customRequest) {
   }
   if (options.factory) {
     const { type, factory, oauthApp, ...factoryAuthOptions } = {
-      ...state3,
+      ...state2,
       ...options
     };
     return factory(factoryAuthOptions);
   }
-  const request2 = customRequest || state3.request;
+  const request2 = customRequest || state2.request;
   return getInstallationAuthenticationConcurrently(
-    state3,
+    state2,
     { ...options, installationId },
     request2
   );
 }
 var pendingPromises = /* @__PURE__ */ new Map();
-function getInstallationAuthenticationConcurrently(state3, options, request2) {
+function getInstallationAuthenticationConcurrently(state2, options, request2) {
   const cacheKey = optionsToCacheKey(options);
   if (pendingPromises.has(cacheKey)) {
     return pendingPromises.get(cacheKey);
   }
   const promise = getInstallationAuthenticationImpl(
-    state3,
+    state2,
     options,
     request2
   ).finally(() => pendingPromises.delete(cacheKey));
   pendingPromises.set(cacheKey, promise);
   return promise;
 }
-async function getInstallationAuthenticationImpl(state3, options, request2) {
+async function getInstallationAuthenticationImpl(state2, options, request2) {
   if (!options.refresh) {
-    const result = await get3(state3.cache, options);
+    const result = await get3(state2.cache, options);
     if (result) {
       const {
         token: token2,
@@ -37975,7 +34388,7 @@ async function getInstallationAuthenticationImpl(state3, options, request2) {
       });
     }
   }
-  const appAuthentication = await getAppAuthentication(state3);
+  const appAuthentication = await getAppAuthentication(state2);
   const payload2 = {
     installation_id: options.installationId,
     mediaType: {
@@ -38026,7 +34439,7 @@ async function getInstallationAuthenticationImpl(state3, options, request2) {
   if (singleFileName) {
     Object.assign(payload2, { singleFileName });
   }
-  await set2(state3.cache, options, cacheOptions);
+  await set2(state2.cache, options, cacheOptions);
   const cacheData = {
     installationId: options.installationId,
     token,
@@ -38042,20 +34455,20 @@ async function getInstallationAuthenticationImpl(state3, options, request2) {
   }
   return toTokenAuthentication(cacheData);
 }
-async function auth5(state3, authOptions) {
+async function auth5(state2, authOptions) {
   switch (authOptions.type) {
     case "app":
-      return getAppAuthentication(state3);
+      return getAppAuthentication(state2);
     case "oauth-app":
-      return state3.oauthApp({ type: "oauth-app" });
+      return state2.oauthApp({ type: "oauth-app" });
     case "installation":
       authOptions;
-      return getInstallationAuthentication(state3, {
+      return getInstallationAuthentication(state2, {
         ...authOptions,
         type: "installation"
       });
     case "oauth-user":
-      return state3.oauthApp(authOptions);
+      return state2.oauthApp(authOptions);
     default:
       throw new Error(`Invalid auth type: ${authOptions.type}`);
   }
@@ -38105,14 +34518,14 @@ function isNotTimeSkewError(error2) {
     /'Issued at' claim \('iat'\) must be an Integer representing the time that the assertion was issued/
   ));
 }
-async function hook5(state3, request2, route, parameters) {
+async function hook5(state2, request2, route, parameters) {
   const endpoint2 = request2.endpoint.merge(route, parameters);
   const url = endpoint2.url;
   if (/\/login\/oauth\/access_token$/.test(url)) {
     return request2(endpoint2);
   }
   if (requiresAppAuth(url.replace(request2.endpoint.DEFAULTS.baseUrl, ""))) {
-    const { token: token2 } = await getAppAuthentication(state3);
+    const { token: token2 } = await getAppAuthentication(state2);
     endpoint2.headers.authorization = `bearer ${token2}`;
     let response;
     try {
@@ -38127,12 +34540,12 @@ async function hook5(state3, request2, route, parameters) {
       const diff = Math.floor(
         (Date.parse(error2.response.headers.date) - Date.parse((/* @__PURE__ */ new Date()).toString())) / 1e3
       );
-      state3.log.warn(error2.message);
-      state3.log.warn(
+      state2.log.warn(error2.message);
+      state2.log.warn(
         `[@octokit/auth-app] GitHub API time and system time are different by ${diff} seconds. Retrying request with the difference accounted for.`
       );
       const { token: token3 } = await getAppAuthentication({
-        ...state3,
+        ...state2,
         timeDifference: diff
       });
       endpoint2.headers.authorization = `bearer ${token3}`;
@@ -38141,25 +34554,25 @@ async function hook5(state3, request2, route, parameters) {
     return response;
   }
   if (requiresBasicAuth(url)) {
-    const authentication = await state3.oauthApp({ type: "oauth-app" });
+    const authentication = await state2.oauthApp({ type: "oauth-app" });
     endpoint2.headers.authorization = authentication.headers.authorization;
     return request2(endpoint2);
   }
   const { token, createdAt } = await getInstallationAuthentication(
-    state3,
+    state2,
     // @ts-expect-error TBD
     {},
     request2.defaults({ baseUrl: endpoint2.baseUrl })
   );
   endpoint2.headers.authorization = `token ${token}`;
   return sendRequestWithRetries(
-    state3,
+    state2,
     request2,
     endpoint2,
     createdAt
   );
 }
-async function sendRequestWithRetries(state3, request2, options, createdAt, retries = 0) {
+async function sendRequestWithRetries(state2, request2, options, createdAt, retries = 0) {
   const timeSinceTokenCreationInMs = +/* @__PURE__ */ new Date() - +new Date(createdAt);
   try {
     return await request2(options);
@@ -38175,11 +34588,11 @@ async function sendRequestWithRetries(state3, request2, options, createdAt, retr
     }
     ++retries;
     const awaitTime = retries * 1e3;
-    state3.log.warn(
+    state2.log.warn(
       `[@octokit/auth-app] Retrying after 401 response to account for token replication delay (retry: ${retries}, wait: ${awaitTime / 1e3}s)`
     );
     await new Promise((resolve) => setTimeout(resolve, awaitTime));
-    return sendRequestWithRetries(state3, request2, options, createdAt, retries);
+    return sendRequestWithRetries(state2, request2, options, createdAt, retries);
   }
 }
 var VERSION12 = "8.2.0";
@@ -38208,7 +34621,7 @@ function createAppAuth(options) {
       "user-agent": `octokit-auth-app.js/${VERSION12} ${getUserAgent()}`
     }
   });
-  const state3 = Object.assign(
+  const state2 = Object.assign(
     {
       request: request2,
       cache: getCache()
@@ -38225,8 +34638,8 @@ function createAppAuth(options) {
       })
     }
   );
-  return Object.assign(auth5.bind(null, state3), {
-    hook: hook5.bind(null, state3)
+  return Object.assign(auth5.bind(null, state2), {
+    hook: hook5.bind(null, state2)
   });
 }
 
@@ -38297,47 +34710,47 @@ var createUnauthenticatedAuth = function createUnauthenticatedAuth2(options) {
 
 // node_modules/.pnpm/@octokit+oauth-app@8.0.3/node_modules/@octokit/oauth-app/dist-node/index.js
 var VERSION13 = "8.0.3";
-function addEventHandler(state3, eventName, eventHandler) {
+function addEventHandler(state2, eventName, eventHandler) {
   if (Array.isArray(eventName)) {
     for (const singleEventName of eventName) {
-      addEventHandler(state3, singleEventName, eventHandler);
+      addEventHandler(state2, singleEventName, eventHandler);
     }
     return;
   }
-  if (!state3.eventHandlers[eventName]) {
-    state3.eventHandlers[eventName] = [];
+  if (!state2.eventHandlers[eventName]) {
+    state2.eventHandlers[eventName] = [];
   }
-  state3.eventHandlers[eventName].push(eventHandler);
+  state2.eventHandlers[eventName].push(eventHandler);
 }
 var OAuthAppOctokit = Octokit.defaults({
   userAgent: `octokit-oauth-app.js/${VERSION13} ${getUserAgent()}`
 });
-async function emitEvent(state3, context) {
+async function emitEvent(state2, context) {
   const { name, action } = context;
-  if (state3.eventHandlers[`${name}.${action}`]) {
-    for (const eventHandler of state3.eventHandlers[`${name}.${action}`]) {
+  if (state2.eventHandlers[`${name}.${action}`]) {
+    for (const eventHandler of state2.eventHandlers[`${name}.${action}`]) {
       await eventHandler(context);
     }
   }
-  if (state3.eventHandlers[name]) {
-    for (const eventHandler of state3.eventHandlers[name]) {
+  if (state2.eventHandlers[name]) {
+    for (const eventHandler of state2.eventHandlers[name]) {
       await eventHandler(context);
     }
   }
 }
-async function getUserOctokitWithState(state3, options) {
-  return state3.octokit.auth({
+async function getUserOctokitWithState(state2, options) {
+  return state2.octokit.auth({
     type: "oauth-user",
     ...options,
     async factory(options2) {
-      const octokit = new state3.Octokit({
+      const octokit = new state2.Octokit({
         authStrategy: createOAuthUserAuth,
         auth: options2
       });
       const authentication = await octokit.auth({
         type: "get"
       });
-      await emitEvent(state3, {
+      await emitEvent(state2, {
         name: "token",
         action: "created",
         token: authentication.token,
@@ -38349,37 +34762,37 @@ async function getUserOctokitWithState(state3, options) {
     }
   });
 }
-function getWebFlowAuthorizationUrlWithState(state3, options) {
+function getWebFlowAuthorizationUrlWithState(state2, options) {
   const optionsWithDefaults = {
-    clientId: state3.clientId,
-    request: state3.octokit.request,
+    clientId: state2.clientId,
+    request: state2.octokit.request,
     ...options,
-    allowSignup: state3.allowSignup ?? options.allowSignup,
-    redirectUrl: options.redirectUrl ?? state3.redirectUrl,
-    scopes: options.scopes ?? state3.defaultScopes
+    allowSignup: state2.allowSignup ?? options.allowSignup,
+    redirectUrl: options.redirectUrl ?? state2.redirectUrl,
+    scopes: options.scopes ?? state2.defaultScopes
   };
   return getWebFlowAuthorizationUrl({
-    clientType: state3.clientType,
+    clientType: state2.clientType,
     ...optionsWithDefaults
   });
 }
-async function createTokenWithState(state3, options) {
-  const authentication = await state3.octokit.auth({
+async function createTokenWithState(state2, options) {
+  const authentication = await state2.octokit.auth({
     type: "oauth-user",
     ...options
   });
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "token",
     action: "created",
     token: authentication.token,
     scopes: authentication.scopes,
     authentication,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createOAuthUserAuth,
       auth: {
-        clientType: state3.clientType,
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
+        clientType: state2.clientType,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
         token: authentication.token,
         scopes: authentication.scopes,
         refreshToken: authentication.refreshToken,
@@ -38390,26 +34803,26 @@ async function createTokenWithState(state3, options) {
   });
   return { authentication };
 }
-async function checkTokenWithState(state3, options) {
+async function checkTokenWithState(state2, options) {
   const result = await checkToken({
     // @ts-expect-error not worth the extra code to appease TS
-    clientType: state3.clientType,
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.octokit.request,
+    clientType: state2.clientType,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.octokit.request,
     ...options
   });
   Object.assign(result.authentication, { type: "token", tokenType: "oauth" });
   return result;
 }
-async function resetTokenWithState(state3, options) {
+async function resetTokenWithState(state2, options) {
   const optionsWithDefaults = {
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.octokit.request,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.octokit.request,
     ...options
   };
-  if (state3.clientType === "oauth-app") {
+  if (state2.clientType === "oauth-app") {
     const response2 = await resetToken({
       clientType: "oauth-app",
       ...optionsWithDefaults
@@ -38418,18 +34831,18 @@ async function resetTokenWithState(state3, options) {
       type: "token",
       tokenType: "oauth"
     });
-    await emitEvent(state3, {
+    await emitEvent(state2, {
       name: "token",
       action: "reset",
       token: response2.authentication.token,
       scopes: response2.authentication.scopes || void 0,
       authentication: authentication2,
-      octokit: new state3.Octokit({
+      octokit: new state2.Octokit({
         authStrategy: createOAuthUserAuth,
         auth: {
-          clientType: state3.clientType,
-          clientId: state3.clientId,
-          clientSecret: state3.clientSecret,
+          clientType: state2.clientType,
+          clientId: state2.clientId,
+          clientSecret: state2.clientSecret,
           token: response2.authentication.token,
           scopes: response2.authentication.scopes
         }
@@ -38445,99 +34858,99 @@ async function resetTokenWithState(state3, options) {
     type: "token",
     tokenType: "oauth"
   });
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "token",
     action: "reset",
     token: response.authentication.token,
     authentication,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createOAuthUserAuth,
       auth: {
-        clientType: state3.clientType,
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
+        clientType: state2.clientType,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
         token: response.authentication.token
       }
     })
   });
   return { ...response, authentication };
 }
-async function refreshTokenWithState(state3, options) {
-  if (state3.clientType === "oauth-app") {
+async function refreshTokenWithState(state2, options) {
+  if (state2.clientType === "oauth-app") {
     throw new Error(
       "[@octokit/oauth-app] app.refreshToken() is not supported for OAuth Apps"
     );
   }
   const response = await refreshToken({
     clientType: "github-app",
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.octokit.request,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.octokit.request,
     refreshToken: options.refreshToken
   });
   const authentication = Object.assign(response.authentication, {
     type: "token",
     tokenType: "oauth"
   });
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "token",
     action: "refreshed",
     token: response.authentication.token,
     authentication,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createOAuthUserAuth,
       auth: {
-        clientType: state3.clientType,
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
+        clientType: state2.clientType,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
         token: response.authentication.token
       }
     })
   });
   return { ...response, authentication };
 }
-async function scopeTokenWithState(state3, options) {
-  if (state3.clientType === "oauth-app") {
+async function scopeTokenWithState(state2, options) {
+  if (state2.clientType === "oauth-app") {
     throw new Error(
       "[@octokit/oauth-app] app.scopeToken() is not supported for OAuth Apps"
     );
   }
   const response = await scopeToken({
     clientType: "github-app",
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.octokit.request,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.octokit.request,
     ...options
   });
   const authentication = Object.assign(response.authentication, {
     type: "token",
     tokenType: "oauth"
   });
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "token",
     action: "scoped",
     token: response.authentication.token,
     authentication,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createOAuthUserAuth,
       auth: {
-        clientType: state3.clientType,
-        clientId: state3.clientId,
-        clientSecret: state3.clientSecret,
+        clientType: state2.clientType,
+        clientId: state2.clientId,
+        clientSecret: state2.clientSecret,
         token: response.authentication.token
       }
     })
   });
   return { ...response, authentication };
 }
-async function deleteTokenWithState(state3, options) {
+async function deleteTokenWithState(state2, options) {
   const optionsWithDefaults = {
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.octokit.request,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.octokit.request,
     ...options
   };
-  const response = state3.clientType === "oauth-app" ? await deleteToken({
+  const response = state2.clientType === "oauth-app" ? await deleteToken({
     clientType: "oauth-app",
     ...optionsWithDefaults
   }) : (
@@ -38547,11 +34960,11 @@ async function deleteTokenWithState(state3, options) {
       ...optionsWithDefaults
     })
   );
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "token",
     action: "deleted",
     token: options.token,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createUnauthenticatedAuth,
       auth: {
         reason: `Handling "token.deleted" event. The access for the token has been revoked.`
@@ -38560,14 +34973,14 @@ async function deleteTokenWithState(state3, options) {
   });
   return response;
 }
-async function deleteAuthorizationWithState(state3, options) {
+async function deleteAuthorizationWithState(state2, options) {
   const optionsWithDefaults = {
-    clientId: state3.clientId,
-    clientSecret: state3.clientSecret,
-    request: state3.octokit.request,
+    clientId: state2.clientId,
+    clientSecret: state2.clientSecret,
+    request: state2.octokit.request,
     ...options
   };
-  const response = state3.clientType === "oauth-app" ? await deleteAuthorization({
+  const response = state2.clientType === "oauth-app" ? await deleteAuthorization({
     clientType: "oauth-app",
     ...optionsWithDefaults
   }) : (
@@ -38577,22 +34990,22 @@ async function deleteAuthorizationWithState(state3, options) {
       ...optionsWithDefaults
     })
   );
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "token",
     action: "deleted",
     token: options.token,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createUnauthenticatedAuth,
       auth: {
         reason: `Handling "token.deleted" event. The access for the token has been revoked.`
       }
     })
   });
-  await emitEvent(state3, {
+  await emitEvent(state2, {
     name: "authorization",
     action: "deleted",
     token: options.token,
-    octokit: new state3.Octokit({
+    octokit: new state2.Octokit({
       authStrategy: createUnauthenticatedAuth,
       auth: {
         reason: `Handling "authorization.deleted" event. The access for the app has been revoked.`
@@ -38625,7 +35038,7 @@ var OAuthApp = class {
         clientSecret: options.clientSecret
       }
     });
-    const state3 = {
+    const state2 = {
       clientType: this.type,
       clientId: options.clientId,
       clientSecret: options.clientSecret,
@@ -38639,38 +35052,38 @@ var OAuthApp = class {
       octokit,
       eventHandlers: {}
     };
-    this.on = addEventHandler.bind(null, state3);
+    this.on = addEventHandler.bind(null, state2);
     this.octokit = octokit;
     this.getUserOctokit = getUserOctokitWithState.bind(
       null,
-      state3
+      state2
     );
     this.getWebFlowAuthorizationUrl = getWebFlowAuthorizationUrlWithState.bind(
       null,
-      state3
+      state2
     );
     this.createToken = createTokenWithState.bind(
       null,
-      state3
+      state2
     );
     this.checkToken = checkTokenWithState.bind(
       null,
-      state3
+      state2
     );
     this.resetToken = resetTokenWithState.bind(
       null,
-      state3
+      state2
     );
     this.refreshToken = refreshTokenWithState.bind(
       null,
-      state3
+      state2
     );
     this.scopeToken = scopeTokenWithState.bind(
       null,
-      state3
+      state2
     );
-    this.deleteToken = deleteTokenWithState.bind(null, state3);
-    this.deleteAuthorization = deleteAuthorizationWithState.bind(null, state3);
+    this.deleteToken = deleteTokenWithState.bind(null, state2);
+    this.deleteAuthorization = deleteAuthorizationWithState.bind(null, state2);
   }
   // assigned during constructor
   type;
@@ -39112,30 +35525,30 @@ function validateEventName(eventName, options = {}) {
     }
   }
 }
-function handleEventHandlers(state3, webhookName, handler3) {
-  if (!state3.hooks[webhookName]) {
-    state3.hooks[webhookName] = [];
+function handleEventHandlers(state2, webhookName, handler3) {
+  if (!state2.hooks[webhookName]) {
+    state2.hooks[webhookName] = [];
   }
-  state3.hooks[webhookName].push(handler3);
+  state2.hooks[webhookName].push(handler3);
 }
-function receiverOn(state3, webhookNameOrNames, handler3) {
+function receiverOn(state2, webhookNameOrNames, handler3) {
   if (Array.isArray(webhookNameOrNames)) {
     webhookNameOrNames.forEach(
-      (webhookName) => receiverOn(state3, webhookName, handler3)
+      (webhookName) => receiverOn(state2, webhookName, handler3)
     );
     return;
   }
   validateEventName(webhookNameOrNames, {
     onUnknownEventName: "warn",
-    log: state3.log
+    log: state2.log
   });
-  handleEventHandlers(state3, webhookNameOrNames, handler3);
+  handleEventHandlers(state2, webhookNameOrNames, handler3);
 }
-function receiverOnAny(state3, handler3) {
-  handleEventHandlers(state3, "*", handler3);
+function receiverOnAny(state2, handler3) {
+  handleEventHandlers(state2, "*", handler3);
 }
-function receiverOnError(state3, handler3) {
-  handleEventHandlers(state3, "error", handler3);
+function receiverOnError(state2, handler3) {
+  handleEventHandlers(state2, "error", handler3);
 }
 function wrapErrorHandler(handler3, error2) {
   let returnValue;
@@ -39152,15 +35565,15 @@ function wrapErrorHandler(handler3, error2) {
     });
   }
 }
-function getHooks(state3, eventPayloadAction, eventName) {
-  const hooks = [state3.hooks[eventName], state3.hooks["*"]];
+function getHooks(state2, eventPayloadAction, eventName) {
+  const hooks = [state2.hooks[eventName], state2.hooks["*"]];
   if (eventPayloadAction) {
-    hooks.unshift(state3.hooks[`${eventName}.${eventPayloadAction}`]);
+    hooks.unshift(state2.hooks[`${eventName}.${eventPayloadAction}`]);
   }
   return [].concat(...hooks.filter(Boolean));
 }
-function receiverHandle(state3, event) {
-  const errorHandlers = state3.hooks.error || [];
+function receiverHandle(state2, event) {
+  const errorHandlers = state2.hooks.error || [];
   if (event instanceof Error) {
     const error2 = Object.assign(new AggregateError([event], event.message), {
       event
@@ -39177,7 +35590,7 @@ function receiverHandle(state3, event) {
     throw new AggregateError([error2], error2.message);
   }
   const hooks = getHooks(
-    state3,
+    state2,
     "action" in event.payload ? event.payload.action : null,
     event.name
   );
@@ -39187,8 +35600,8 @@ function receiverHandle(state3, event) {
   const errors = [];
   const promises = hooks.map((handler3) => {
     let promise = Promise.resolve(event);
-    if (state3.transform) {
-      promise = promise.then(state3.transform);
+    if (state2.transform) {
+      promise = promise.then(state2.transform);
     }
     return promise.then((event2) => {
       return handler3(event2);
@@ -39209,45 +35622,45 @@ function receiverHandle(state3, event) {
     throw error2;
   });
 }
-function removeListener(state3, webhookNameOrNames, handler3) {
+function removeListener(state2, webhookNameOrNames, handler3) {
   if (Array.isArray(webhookNameOrNames)) {
     webhookNameOrNames.forEach(
-      (webhookName) => removeListener(state3, webhookName, handler3)
+      (webhookName) => removeListener(state2, webhookName, handler3)
     );
     return;
   }
-  if (!state3.hooks[webhookNameOrNames]) {
+  if (!state2.hooks[webhookNameOrNames]) {
     return;
   }
-  for (let i5 = state3.hooks[webhookNameOrNames].length - 1; i5 >= 0; i5--) {
-    if (state3.hooks[webhookNameOrNames][i5] === handler3) {
-      state3.hooks[webhookNameOrNames].splice(i5, 1);
+  for (let i5 = state2.hooks[webhookNameOrNames].length - 1; i5 >= 0; i5--) {
+    if (state2.hooks[webhookNameOrNames][i5] === handler3) {
+      state2.hooks[webhookNameOrNames].splice(i5, 1);
       return;
     }
   }
 }
 function createEventHandler(options) {
-  const state3 = {
+  const state2 = {
     hooks: {},
     log: createLogger2(options && options.log)
   };
   if (options && options.transform) {
-    state3.transform = options.transform;
+    state2.transform = options.transform;
   }
   return {
-    on: receiverOn.bind(null, state3),
-    onAny: receiverOnAny.bind(null, state3),
-    onError: receiverOnError.bind(null, state3),
-    removeListener: removeListener.bind(null, state3),
-    receive: receiverHandle.bind(null, state3)
+    on: receiverOn.bind(null, state2),
+    onAny: receiverOnAny.bind(null, state2),
+    onError: receiverOnError.bind(null, state2),
+    removeListener: removeListener.bind(null, state2),
+    receive: receiverHandle.bind(null, state2)
   };
 }
-async function verifyAndReceive(state3, event) {
+async function verifyAndReceive(state2, event) {
   const matchesSignature = await verifyWithFallback(
-    state3.secret,
+    state2.secret,
     event.payload,
     event.signature,
-    state3.additionalSecrets
+    state2.additionalSecrets
   ).catch(() => false);
   if (!matchesSignature) {
     const error2 = new Error(
@@ -39255,7 +35668,7 @@ async function verifyAndReceive(state3, event) {
     );
     error2.event = event;
     error2.status = 400;
-    return state3.eventHandler.receive(error2);
+    return state2.eventHandler.receive(error2);
   }
   let payload2;
   try {
@@ -39265,7 +35678,7 @@ async function verifyAndReceive(state3, event) {
     error2.status = 400;
     throw new AggregateError([error2], error2.message);
   }
-  return state3.eventHandler.receive({
+  return state2.eventHandler.receive({
     id: event.id,
     name: event.name,
     payload: payload2
@@ -39286,7 +35699,7 @@ var Webhooks = class {
     if (!options || !options.secret) {
       throw new Error("[@octokit/webhooks] options.secret required");
     }
-    const state3 = {
+    const state2 = {
       eventHandler: createEventHandler(options),
       secret: options.secret,
       additionalSecrets: options.additionalSecrets,
@@ -39295,12 +35708,12 @@ var Webhooks = class {
     };
     this.sign = sign2.bind(null, options.secret);
     this.verify = verify.bind(null, options.secret);
-    this.on = state3.eventHandler.on;
-    this.onAny = state3.eventHandler.onAny;
-    this.onError = state3.eventHandler.onError;
-    this.removeListener = state3.eventHandler.removeListener;
-    this.receive = state3.eventHandler.receive;
-    this.verifyAndReceive = verifyAndReceive.bind(null, state3);
+    this.on = state2.eventHandler.on;
+    this.onAny = state2.eventHandler.onAny;
+    this.onError = state2.eventHandler.onError;
+    this.removeListener = state2.eventHandler.removeListener;
+    this.receive = state2.eventHandler.receive;
+    this.verifyAndReceive = verifyAndReceive.bind(null, state2);
   }
 };
 
