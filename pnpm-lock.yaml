@@ -168,7 +168,7 @@ importers:
     dependencies:
       '@aws-sdk/client-secrets-manager':
         specifier: ^3.1063.0
-        version: 3.1133.0
+        version: 3.1134.0
       '@azure/functions':
         specifier: ^4.14.0
         version: 4.16.4
@@ -224,8 +224,8 @@ importers:
 
 packages:
 
-  '@aws-sdk/client-secrets-manager@3.1133.0':
-    resolution: {integrity: sha512-j9hy5YWHZUNktppFRVCYIgrhi30J+kGgBASVxf6PRkSpg4yL/q/k6hG91hYecXVoRTsrcVXxweLyB+Dgd7NG9Q==}
+  '@aws-sdk/client-secrets-manager@3.1134.0':
+    resolution: {integrity: sha512-zU5qnW369Kpn4PFuV8R8zWqefbjy4ZRIXTSN3hCFN1elIxZsb0avXUQ/wamh4WXVWCR0exBlaDgvO+8nxWHOvw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.978.0':
@@ -2655,7 +2655,7 @@ packages:
 
 snapshots:
 
-  '@aws-sdk/client-secrets-manager@3.1133.0':
+  '@aws-sdk/client-secrets-manager@3.1134.0':
     dependencies:
       '@aws-sdk/core': 3.978.0
       '@aws-sdk/credential-provider-node': 3.972.83
