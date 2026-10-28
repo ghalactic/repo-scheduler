@@ -168,7 +168,7 @@ importers:
     dependencies:
       '@aws-sdk/client-secrets-manager':
         specifier: ^3.1063.0
-        version: 3.1154.0
+        version: 3.1155.0
       '@azure/functions':
         specifier: ^4.14.0
         version: 4.16.5
@@ -224,8 +224,8 @@ importers:
 
 packages:
 
-  '@aws-sdk/client-secrets-manager@3.1154.0':
-    resolution: {integrity: sha512-iz4f+mRJiN+SLvdEbkjt2dRSCALYWssBlvXAj3uoCC6cB9+gkUaaV5xYx6CeKACro9fca9QyVzXWB/K9A/wXoQ==}
+  '@aws-sdk/client-secrets-manager@3.1155.0':
+    resolution: {integrity: sha512-Y3LUtxo/027dxgLm4agqlTGCr1ucK1oSgp4Fv5bDYkahP52Q0qp5be8lVAwn7Lef/jRHGvpV4CwmrY4ZCJTtJQ==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.978.5':
@@ -2442,7 +2442,7 @@ packages:
 
 snapshots:
 
-  '@aws-sdk/client-secrets-manager@3.1154.0':
+  '@aws-sdk/client-secrets-manager@3.1155.0':
     dependencies:
       '@aws-sdk/core': 3.978.5
       '@aws-sdk/credential-provider-node': 3.972.88
@@ -3526,8 +3526,8 @@ snapshots:
 
   acorn@8.18.0: {}
 
-  ajv-formats@2.1.1(ajv@8.20.0):
-    optionalDependencies:
+  ajv-formats@2.1.1:
+    dependencies:
       ajv: 8.20.0
 
   ajv@6.15.0:
@@ -3618,7 +3618,7 @@ snapshots:
   cloudevents@10.0.0:
     dependencies:
       ajv: 8.20.0
-      ajv-formats: 2.1.1(ajv@8.20.0)
+      ajv-formats: 2.1.1
       json-bigint: 1.0.0
       process: 0.11.10
       util: 0.12.5
