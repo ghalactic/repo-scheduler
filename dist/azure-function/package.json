@@ -3,6 +3,6 @@
   "type": "module",
   "main": "dist/index.mjs",
   "dependencies": {
-    "@azure/functions": "^4.17.0"
+    "@azure/functions": "^4.17.1"
   }
 }
