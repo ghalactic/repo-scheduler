@@ -25894,9 +25894,9 @@ var init_signin = __esm({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.91/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.92/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js
 var require_dist_cjs11 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.91/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+credential-provider-login@3.972.92/node_modules/@aws-sdk/credential-provider-login/dist-cjs/index.js"(exports) {
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var { CredentialsProviderError: CredentialsProviderError2, parseKnownFiles: parseKnownFiles2, getProfileName: getProfileName2 } = (init_config2(), __toCommonJS(config_exports));
     var { HttpRequest: HttpRequest2 } = (init_protocols(), __toCommonJS(protocols_exports));
@@ -25959,7 +25959,8 @@ var require_dist_cjs11 = __commonJS({
           return requestHandler2?.metadata?.handlerProtocol === "h2";
         };
         const requestHandler = isH22(this.callerClientConfig?.requestHandler) ? void 0 : this.callerClientConfig?.requestHandler;
-        const region = this.profileData.region ?? await this.callerClientConfig?.region?.() ?? process.env.AWS_REGION;
+        const signInRegion = typeof freshToken.signInRegion === "string" && freshToken.signInRegion.length > 0 ? freshToken.signInRegion : void 0;
+        const region = signInRegion ?? this.profileData.region ?? await this.callerClientConfig?.region?.() ?? process.env.AWS_REGION;
         const client2 = new SigninClient2({
           credentials: {
             accessKeyId: "",
@@ -25969,7 +25970,8 @@ var require_dist_cjs11 = __commonJS({
           requestHandler,
           logger: logger2,
           userAgentAppId,
-          ...this.init?.clientConfig
+          ...this.init?.clientConfig,
+          ...signInRegion && { region: signInRegion }
         });
         this.createDPoPInterceptor(client2.middlewareStack);
         const commandInput = {
@@ -26313,9 +26315,9 @@ var require_dist_cjs13 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.29/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.30/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js
 var require_dist_cjs14 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.29/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+credential-provider-ini@3.973.30/node_modules/@aws-sdk/credential-provider-ini/dist-cjs/index.js"(exports) {
     var { CredentialsProviderError: CredentialsProviderError2, chain: chain2, getProfileName: getProfileName2, parseKnownFiles: parseKnownFiles2 } = (init_config2(), __toCommonJS(config_exports));
     var { setCredentialFeature: setCredentialFeature2 } = (init_client3(), __toCommonJS(client_exports2));
     var resolveCredentialSource = (credentialSource, profileName, logger2) => {
@@ -26510,9 +26512,9 @@ var require_dist_cjs14 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.96/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.97/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js
 var require_dist_cjs15 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.96/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+credential-provider-node@3.972.97/node_modules/@aws-sdk/credential-provider-node/dist-cjs/index.js"(exports) {
     var { ENV_KEY, ENV_SECRET, fromEnv: fromEnv2 } = require_dist_cjs3();
     var { chain: chain2, CredentialsProviderError: CredentialsProviderError2, ENV_PROFILE: ENV_PROFILE2 } = (init_config2(), __toCommonJS(config_exports));
     var ENV_IMDS_DISABLED2 = "AWS_EC2_METADATA_DISABLED";
@@ -26666,9 +26668,9 @@ var require_dist_cjs15 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1166.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1167.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
 var require_dist_cjs16 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1166.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1167.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
     var { awsEndpointFunctions: awsEndpointFunctions2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion$1, createDefaultUserAgentProvider: createDefaultUserAgentProvider2, getDefaultSocketTimeout: getDefaultSocketTimeout2, NODE_APP_ID_CONFIG_OPTIONS: NODE_APP_ID_CONFIG_OPTIONS2, getAwsRegionExtensionConfiguration: getAwsRegionExtensionConfiguration2, resolveAwsRegionExtensionConfiguration: resolveAwsRegionExtensionConfiguration2, resolveUserAgentConfig: resolveUserAgentConfig2, resolveHostHeaderConfig: resolveHostHeaderConfig2, getUserAgentPlugin: getUserAgentPlugin2, getHostHeaderPlugin: getHostHeaderPlugin2, getLoggerPlugin: getLoggerPlugin2, getRecursionDetectionPlugin: getRecursionDetectionPlugin2 } = (init_client3(), __toCommonJS(client_exports2));
     var { getHttpAuthSchemeEndpointRuleSetPlugin: getHttpAuthSchemeEndpointRuleSetPlugin2, DefaultIdentityProviderConfig: DefaultIdentityProviderConfig2, getHttpSigningPlugin: getHttpSigningPlugin2, createPaginator: createPaginator2 } = (init_dist_es(), __toCommonJS(dist_es_exports));
     var { normalizeProvider: normalizeProvider3, getSmithyContext: getSmithyContext2, ServiceException: ServiceException2, NoOpLogger: NoOpLogger2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion3, loadConfigsForDefaultMode: loadConfigsForDefaultMode2, getDefaultExtensionConfiguration: getDefaultExtensionConfiguration2, resolveDefaultRuntimeConfig: resolveDefaultRuntimeConfig2, Client: Client2, makeBuilder: makeBuilder2, createAggregatedClient: createAggregatedClient2 } = (init_client2(), __toCommonJS(client_exports));
@@ -26737,7 +26739,7 @@ var require_dist_cjs16 = __commonJS({
       Region: { type: "builtInParams", name: "region" },
       UseDualStack: { type: "builtInParams", name: "useDualstackEndpoint" }
     };
-    var version = "3.1165.0";
+    var version = "3.1166.0";
     var packageInfo = {
       version
     };
