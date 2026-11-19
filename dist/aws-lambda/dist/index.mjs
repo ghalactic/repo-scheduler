@@ -26668,9 +26668,9 @@ var require_dist_cjs15 = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1167.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
+// node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1168.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js
 var require_dist_cjs16 = __commonJS({
-  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1167.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
+  "node_modules/.pnpm/@aws-sdk+client-secrets-manager@3.1168.0/node_modules/@aws-sdk/client-secrets-manager/dist-cjs/index.js"(exports) {
     var { awsEndpointFunctions: awsEndpointFunctions2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion$1, createDefaultUserAgentProvider: createDefaultUserAgentProvider2, getDefaultSocketTimeout: getDefaultSocketTimeout2, NODE_APP_ID_CONFIG_OPTIONS: NODE_APP_ID_CONFIG_OPTIONS2, getAwsRegionExtensionConfiguration: getAwsRegionExtensionConfiguration2, resolveAwsRegionExtensionConfiguration: resolveAwsRegionExtensionConfiguration2, resolveUserAgentConfig: resolveUserAgentConfig2, resolveHostHeaderConfig: resolveHostHeaderConfig2, getUserAgentPlugin: getUserAgentPlugin2, getHostHeaderPlugin: getHostHeaderPlugin2, getLoggerPlugin: getLoggerPlugin2, getRecursionDetectionPlugin: getRecursionDetectionPlugin2 } = (init_client3(), __toCommonJS(client_exports2));
     var { getHttpAuthSchemeEndpointRuleSetPlugin: getHttpAuthSchemeEndpointRuleSetPlugin2, DefaultIdentityProviderConfig: DefaultIdentityProviderConfig2, getHttpSigningPlugin: getHttpSigningPlugin2, createPaginator: createPaginator2 } = (init_dist_es(), __toCommonJS(dist_es_exports));
     var { normalizeProvider: normalizeProvider3, getSmithyContext: getSmithyContext2, ServiceException: ServiceException2, NoOpLogger: NoOpLogger2, emitWarningIfUnsupportedVersion: emitWarningIfUnsupportedVersion3, loadConfigsForDefaultMode: loadConfigsForDefaultMode2, getDefaultExtensionConfiguration: getDefaultExtensionConfiguration2, resolveDefaultRuntimeConfig: resolveDefaultRuntimeConfig2, Client: Client2, makeBuilder: makeBuilder2, createAggregatedClient: createAggregatedClient2 } = (init_client2(), __toCommonJS(client_exports));
@@ -26739,7 +26739,7 @@ var require_dist_cjs16 = __commonJS({
       Region: { type: "builtInParams", name: "region" },
       UseDualStack: { type: "builtInParams", name: "useDualstackEndpoint" }
     };
-    var version = "3.1166.0";
+    var version = "3.1167.0";
     var packageInfo = {
       version
     };
@@ -26864,21 +26864,6 @@ var require_dist_cjs16 = __commonJS({
         Object.setPrototypeOf(this, _SecretsManagerServiceException.prototype);
       }
     };
-    var DecryptionFailure = class _DecryptionFailure extends SecretsManagerServiceException {
-      static shapeId = "com.amazonaws.secretsmanager#DecryptionFailure";
-      name = "DecryptionFailure";
-      $fault = "client";
-      Message;
-      constructor(opts) {
-        super({
-          name: "DecryptionFailure",
-          $fault: "client",
-          ...opts
-        });
-        Object.setPrototypeOf(this, _DecryptionFailure.prototype);
-        this.Message = opts.Message;
-      }
-    };
     var InternalServiceError = class _InternalServiceError extends SecretsManagerServiceException {
       static shapeId = "com.amazonaws.secretsmanager#InternalServiceError";
       name = "InternalServiceError";
@@ -26891,21 +26876,6 @@ var require_dist_cjs16 = __commonJS({
           ...opts
         });
         Object.setPrototypeOf(this, _InternalServiceError.prototype);
-        this.Message = opts.Message;
-      }
-    };
-    var InvalidNextTokenException = class _InvalidNextTokenException extends SecretsManagerServiceException {
-      static shapeId = "com.amazonaws.secretsmanager#InvalidNextTokenException";
-      name = "InvalidNextTokenException";
-      $fault = "client";
-      Message;
-      constructor(opts) {
-        super({
-          name: "InvalidNextTokenException",
-          $fault: "client",
-          ...opts
-        });
-        Object.setPrototypeOf(this, _InvalidNextTokenException.prototype);
         this.Message = opts.Message;
       }
     };
@@ -26939,6 +26909,21 @@ var require_dist_cjs16 = __commonJS({
         this.Message = opts.Message;
       }
     };
+    var LimitExceededException = class _LimitExceededException extends SecretsManagerServiceException {
+      static shapeId = "com.amazonaws.secretsmanager#LimitExceededException";
+      name = "LimitExceededException";
+      $fault = "client";
+      Message;
+      constructor(opts) {
+        super({
+          name: "LimitExceededException",
+          $fault: "client",
+          ...opts
+        });
+        Object.setPrototypeOf(this, _LimitExceededException.prototype);
+        this.Message = opts.Message;
+      }
+    };
     var ResourceNotFoundException2 = class _ResourceNotFoundException extends SecretsManagerServiceException {
       static shapeId = "com.amazonaws.secretsmanager#ResourceNotFoundException";
       name = "ResourceNotFoundException";
@@ -26954,6 +26939,36 @@ var require_dist_cjs16 = __commonJS({
         this.Message = opts.Message;
       }
     };
+    var DecryptionFailure = class _DecryptionFailure extends SecretsManagerServiceException {
+      static shapeId = "com.amazonaws.secretsmanager#DecryptionFailure";
+      name = "DecryptionFailure";
+      $fault = "client";
+      Message;
+      constructor(opts) {
+        super({
+          name: "DecryptionFailure",
+          $fault: "client",
+          ...opts
+        });
+        Object.setPrototypeOf(this, _DecryptionFailure.prototype);
+        this.Message = opts.Message;
+      }
+    };
+    var InvalidNextTokenException = class _InvalidNextTokenException extends SecretsManagerServiceException {
+      static shapeId = "com.amazonaws.secretsmanager#InvalidNextTokenException";
+      name = "InvalidNextTokenException";
+      $fault = "client";
+      Message;
+      constructor(opts) {
+        super({
+          name: "InvalidNextTokenException",
+          $fault: "client",
+          ...opts
+        });
+        Object.setPrototypeOf(this, _InvalidNextTokenException.prototype);
+        this.Message = opts.Message;
+      }
+    };
     var EncryptionFailure = class _EncryptionFailure extends SecretsManagerServiceException {
       static shapeId = "com.amazonaws.secretsmanager#EncryptionFailure";
       name = "EncryptionFailure";
@@ -26966,21 +26981,6 @@ var require_dist_cjs16 = __commonJS({
           ...opts
         });
         Object.setPrototypeOf(this, _EncryptionFailure.prototype);
-        this.Message = opts.Message;
-      }
-    };
-    var LimitExceededException = class _LimitExceededException extends SecretsManagerServiceException {
-      static shapeId = "com.amazonaws.secretsmanager#LimitExceededException";
-      name = "LimitExceededException";
-      $fault = "client";
-      Message;
-      constructor(opts) {
-        super({
-          name: "LimitExceededException",
-          $fault: "client",
-          ...opts
-        });
-        Object.setPrototypeOf(this, _LimitExceededException.prototype);
         this.Message = opts.Message;
       }
     };
@@ -27045,6 +27045,9 @@ var require_dist_cjs16 = __commonJS({
       }
     };
     var _AAD = "AutomaticallyAfterDays";
+    var _ACAR = "AssociateCrossAccountReplica";
+    var _ACARR = "AssociateCrossAccountReplicaRequest";
+    var _ACARRs = "AssociateCrossAccountReplicaResponse";
     var _APIELT = "APIErrorListType";
     var _APIET = "APIErrorType";
     var _ARN = "ARN";
@@ -27054,6 +27057,13 @@ var require_dist_cjs16 = __commonJS({
     var _BGSVR = "BatchGetSecretValueRequest";
     var _BGSVRa = "BatchGetSecretValueResponse";
     var _BPP = "BlockPublicPolicy";
+    var _CAP = "CrossAccountPrimary";
+    var _CAPARN = "CrossAccountPrimaryARN";
+    var _CAPT = "CrossAccountPrimaryType";
+    var _CAR = "CrossAccountReplicas";
+    var _CARARN = "CrossAccountReplicaARN";
+    var _CARE = "CrossAccountReplicaEntry";
+    var _CARLT = "CrossAccountReplicaListType";
     var _CD = "CreatedDate";
     var _CN = "CheckName";
     var _CRS = "CancelRotateSecret";
@@ -27064,6 +27074,9 @@ var require_dist_cjs16 = __commonJS({
     var _CSR = "CreateSecretRequest";
     var _CSRr = "CreateSecretResponse";
     var _D = "Description";
+    var _DCAR = "DisassociateCrossAccountReplica";
+    var _DCARR = "DisassociateCrossAccountReplicaRequest";
+    var _DCARRi = "DisassociateCrossAccountReplicaResponse";
     var _DD = "DeletionDate";
     var _DDe = "DeletedDate";
     var _DF = "DecryptionFailure";
@@ -27118,6 +27131,9 @@ var require_dist_cjs16 = __commonJS({
     var _LCD = "LastChangedDate";
     var _LEE = "LimitExceededException";
     var _LRD = "LastRotatedDate";
+    var _LRP = "ListResourcePolicies";
+    var _LRPR = "ListResourcePoliciesRequest";
+    var _LRPRi = "ListResourcePoliciesResponse";
     var _LS = "ListSecrets";
     var _LSR = "ListSecretsRequest";
     var _LSRi = "ListSecretsResponse";
@@ -27133,12 +27149,14 @@ var require_dist_cjs16 = __commonJS({
     var _NT = "NextToken";
     var _OS = "OwningService";
     var _PL = "PasswordLength";
+    var _PN = "PolicyName";
     var _PNME = "PreconditionNotMetException";
     var _PPE = "PublicPolicyException";
     var _PR = "PrimaryRegion";
     var _PRP = "PutResourcePolicy";
     var _PRPR = "PutResourcePolicyRequest";
     var _PRPRu = "PutResourcePolicyResponse";
+    var _PSARN = "PrimarySecretARN";
     var _PSV = "PutSecretValue";
     var _PSVR = "PutSecretValueRequest";
     var _PSVRu = "PutSecretValueResponse";
@@ -27152,16 +27170,22 @@ var require_dist_cjs16 = __commonJS({
     var _RLARN = "RotationLambdaARN";
     var _RNFE2 = "ResourceNotFoundException";
     var _RP = "RandomPassword";
+    var _RPS = "ResourcePolicySummary";
+    var _RPSLT = "ResourcePolicySummaryListType";
     var _RPT = "RandomPasswordType";
     var _RPe = "ResourcePolicy";
-    var _RR = "RotationRules";
+    var _RPes = "ResourcePolicies";
+    var _RR = "ReplicaRestriction";
+    var _RRARN = "ReplicationRoleARN";
     var _RRFR = "RemoveRegionsFromReplication";
     var _RRFRR = "RemoveRegionsFromReplicationRequest";
     var _RRFRRe = "RemoveRegionsFromReplicationResponse";
     var _RRR = "RemoveReplicaRegions";
     var _RRT = "ReplicaRegionType";
     var _RRTo = "RotationRulesType";
+    var _RRo = "RotationRules";
     var _RS = "ReplicationStatus";
+    var _RSARN = "ReplicaSecretARN";
     var _RSLT = "ReplicationStatusListType";
     var _RSR = "RestoreSecretRequest";
     var _RSRe = "RestoreSecretResponse";
@@ -27361,6 +27385,23 @@ var require_dist_cjs16 = __commonJS({
       [_SI2, _EC, _M],
       [0, 0, 0]
     ];
+    var AssociateCrossAccountReplicaRequest$ = [
+      3,
+      n05,
+      _ACARR,
+      0,
+      [_SI2, _CARARN, _RR, _RRARN],
+      [0, 0, 0, 0],
+      2
+    ];
+    var AssociateCrossAccountReplicaResponse$ = [
+      3,
+      n05,
+      _ACARRs,
+      0,
+      [_ARN, _CARARN, _RS],
+      [0, 0, 0]
+    ];
     var BatchGetSecretValueRequest$ = [
       3,
       n05,
@@ -27399,8 +27440,8 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _CSR,
       0,
-      [_N, _CRT, _D, _KKI, _SB, _SS, _T2, _ARR2, _FORS, _Ty],
-      [0, [0, 4], 0, 0, [() => SecretBinaryType, 0], [() => SecretStringType, 0], () => TagListType, () => AddReplicaRegionListType, 2, 0],
+      [_N, _CRT, _D, _KKI, _SB, _SS, _T2, _ARR2, _FORS, _Ty, _CAPARN],
+      [0, [0, 4], 0, 0, [() => SecretBinaryType, 0], [() => SecretStringType, 0], () => TagListType, () => AddReplicaRegionListType, 2, 0, 0],
       1
     ];
     var CreateSecretResponse$ = [
@@ -27411,13 +27452,29 @@ var require_dist_cjs16 = __commonJS({
       [_ARN, _N, _VI, _RS],
       [0, 0, 0, () => ReplicationStatusListType]
     ];
+    var CrossAccountPrimaryType$ = [
+      3,
+      n05,
+      _CAPT,
+      0,
+      [_PSARN, _RS, _SM],
+      [0, 0, 0]
+    ];
+    var CrossAccountReplicaEntry$ = [
+      3,
+      n05,
+      _CARE,
+      0,
+      [_RSARN, _RRARN, _RS, _SM],
+      [0, 0, 0, 0]
+    ];
     var DeleteResourcePolicyRequest$ = [
       3,
       n05,
       _DRPR,
       0,
-      [_SI2],
-      [0],
+      [_SI2, _PN],
+      [0, 0],
       1
     ];
     var DeleteResourcePolicyResponse$ = [
@@ -27425,8 +27482,8 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _DRPRe,
       0,
-      [_ARN, _N],
-      [0, 0]
+      [_ARN, _N, _PN],
+      [0, 0, 0]
     ];
     var DeleteSecretRequest$ = [
       3,
@@ -27459,8 +27516,25 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _DSResc,
       0,
-      [_ARN, _N, _Ty, _D, _KKI, _RE, _RLARN, _RR, _ESRM, _ESRRA, _LRD, _LCD, _LAD, _DDe, _NRD, _T2, _VITS, _OS, _CD, _PR, _RS],
-      [0, 0, 0, 0, 0, 2, 0, () => RotationRulesType$, () => ExternalSecretRotationMetadataType, 0, 4, 4, 4, 4, 4, () => TagListType, [2, n05, _SVTSMT, 0, 0, 64 | 0], 0, 4, 0, () => ReplicationStatusListType]
+      [_ARN, _N, _Ty, _D, _KKI, _RE, _RLARN, _RRo, _ESRM, _ESRRA, _LRD, _LCD, _LAD, _DDe, _NRD, _T2, _VITS, _OS, _CD, _PR, _RS, _CAP, _CAR],
+      [0, 0, 0, 0, 0, 2, 0, () => RotationRulesType$, () => ExternalSecretRotationMetadataType, 0, 4, 4, 4, 4, 4, () => TagListType, [2, n05, _SVTSMT, 0, 0, 64 | 0], 0, 4, 0, () => ReplicationStatusListType, () => CrossAccountPrimaryType$, () => CrossAccountReplicaListType]
+    ];
+    var DisassociateCrossAccountReplicaRequest$ = [
+      3,
+      n05,
+      _DCARR,
+      0,
+      [_SI2, _CARARN],
+      [0, 0],
+      2
+    ];
+    var DisassociateCrossAccountReplicaResponse$ = [
+      3,
+      n05,
+      _DCARRi,
+      0,
+      [_ARN, _CARARN],
+      [0, 0]
     ];
     var ExternalSecretRotationMetadataItem$ = [
       3,
@@ -27499,8 +27573,8 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _GRPRet,
       0,
-      [_SI2],
-      [0],
+      [_SI2, _PN],
+      [0, 0],
       1
     ];
     var GetResourcePolicyResponse$ = [
@@ -27508,8 +27582,8 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _GRPRete,
       0,
-      [_ARN, _N, _RPe],
-      [0, 0, 0]
+      [_ARN, _N, _RPe, _PN],
+      [0, 0, 0, 0]
     ];
     var GetSecretValueRequest$ = [
       3,
@@ -27527,6 +27601,24 @@ var require_dist_cjs16 = __commonJS({
       0,
       [_ARN, _N, _VI, _SB, _SS, _VSe, _CD],
       [0, 0, 0, [() => SecretBinaryType, 0], [() => SecretStringType, 0], 64 | 0, 4]
+    ];
+    var ListResourcePoliciesRequest$ = [
+      3,
+      n05,
+      _LRPR,
+      0,
+      [_SI2, _MR, _NT],
+      [0, 1, 0],
+      1
+    ];
+    var ListResourcePoliciesResponse$ = [
+      3,
+      n05,
+      _LRPRi,
+      0,
+      [_RPes, _NT],
+      [() => ResourcePolicySummaryListType, 0],
+      1
     ];
     var ListSecretsRequest$ = [
       3,
@@ -27566,8 +27658,8 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _PRPR,
       0,
-      [_SI2, _RPe, _BPP],
-      [0, 0, 2],
+      [_SI2, _RPe, _PN, _BPP],
+      [0, 0, 0, 2],
       2
     ];
     var PutResourcePolicyResponse$ = [
@@ -27575,8 +27667,8 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _PRPRu,
       0,
-      [_ARN, _N],
-      [0, 0]
+      [_ARN, _N, _PN],
+      [0, 0, 0]
     ];
     var PutSecretValueRequest$ = [
       3,
@@ -27645,6 +27737,14 @@ var require_dist_cjs16 = __commonJS({
       [_R, _KKI, _S, _SM, _LAD],
       [0, 0, 0, 0, 4]
     ];
+    var ResourcePolicySummary$ = [
+      3,
+      n05,
+      _RPS,
+      0,
+      [_PN],
+      [0]
+    ];
     var RestoreSecretRequest$ = [
       3,
       n05,
@@ -27667,7 +27767,7 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _RSRo,
       0,
-      [_SI2, _CRT, _RLARN, _RR, _ESRM, _ESRRA, _RI],
+      [_SI2, _CRT, _RLARN, _RRo, _ESRM, _ESRRA, _RI],
       [0, [0, 4], 0, () => RotationRulesType$, () => ExternalSecretRotationMetadataType, 0, 2],
       1
     ];
@@ -27692,7 +27792,7 @@ var require_dist_cjs16 = __commonJS({
       n05,
       _SLE,
       0,
-      [_ARN, _N, _Ty, _D, _KKI, _RE, _RLARN, _RR, _ESRM, _ESRRA, _LRD, _LCD, _LAD, _DDe, _NRD, _T2, _SVTS, _OS, _CD, _PR],
+      [_ARN, _N, _Ty, _D, _KKI, _RE, _RLARN, _RRo, _ESRM, _ESRRA, _LRD, _LCD, _LAD, _DDe, _NRD, _T2, _SVTS, _OS, _CD, _PR],
       [0, 0, 0, 0, 0, 2, 0, () => RotationRulesType$, () => ExternalSecretRotationMetadataType, 0, 4, 4, 4, 4, 4, () => TagListType, [2, n05, _SVTSMT, 0, 0, 64 | 0], 0, 4, 0]
     ];
     var SecretValueEntry$ = [
@@ -27828,6 +27928,13 @@ var require_dist_cjs16 = __commonJS({
       0,
       () => APIErrorType$
     ];
+    var CrossAccountReplicaListType = [
+      1,
+      n05,
+      _CARLT,
+      0,
+      () => CrossAccountReplicaEntry$
+    ];
     var ExternalSecretRotationMetadataType = [
       1,
       n05,
@@ -27848,6 +27955,13 @@ var require_dist_cjs16 = __commonJS({
       _RSLT,
       0,
       () => ReplicationStatusType$
+    ];
+    var ResourcePolicySummaryListType = [
+      1,
+      n05,
+      _RPSLT,
+      0,
+      () => ResourcePolicySummary$
     ];
     var SecretListType = [
       1,
@@ -27886,6 +28000,14 @@ var require_dist_cjs16 = __commonJS({
       _VET,
       0,
       () => ValidationErrorsEntry$
+    ];
+    var AssociateCrossAccountReplica$ = [
+      9,
+      n05,
+      _ACAR,
+      0,
+      () => AssociateCrossAccountReplicaRequest$,
+      () => AssociateCrossAccountReplicaResponse$
     ];
     var BatchGetSecretValue$ = [
       9,
@@ -27935,6 +28057,14 @@ var require_dist_cjs16 = __commonJS({
       () => DescribeSecretRequest$,
       () => DescribeSecretResponse$
     ];
+    var DisassociateCrossAccountReplica$ = [
+      9,
+      n05,
+      _DCAR,
+      0,
+      () => DisassociateCrossAccountReplicaRequest$,
+      () => DisassociateCrossAccountReplicaResponse$
+    ];
     var GetRandomPassword$ = [
       9,
       n05,
@@ -27958,6 +28088,14 @@ var require_dist_cjs16 = __commonJS({
       0,
       () => GetSecretValueRequest$,
       () => GetSecretValueResponse$
+    ];
+    var ListResourcePolicies$ = [
+      9,
+      n05,
+      _LRP,
+      0,
+      () => ListResourcePoliciesRequest$,
+      () => ListResourcePoliciesResponse$
     ];
     var ListSecrets$ = [
       9,
@@ -28214,6 +28352,8 @@ var require_dist_cjs16 = __commonJS({
     var command5 = makeBuilder2(commonParams5, "secretsmanager", "SecretsManagerClient", getEndpointPlugin2);
     var _ep05 = {};
     var _mw05 = (Command2, cs, config, o3) => [];
+    var AssociateCrossAccountReplicaCommand = class extends command5(_ep05, _mw05, "AssociateCrossAccountReplica", AssociateCrossAccountReplica$) {
+    };
     var BatchGetSecretValueCommand = class extends command5(_ep05, _mw05, "BatchGetSecretValue", BatchGetSecretValue$) {
     };
     var CancelRotateSecretCommand = class extends command5(_ep05, _mw05, "CancelRotateSecret", CancelRotateSecret$) {
@@ -28226,11 +28366,15 @@ var require_dist_cjs16 = __commonJS({
     };
     var DescribeSecretCommand = class extends command5(_ep05, _mw05, "DescribeSecret", DescribeSecret$) {
     };
+    var DisassociateCrossAccountReplicaCommand = class extends command5(_ep05, _mw05, "DisassociateCrossAccountReplica", DisassociateCrossAccountReplica$) {
+    };
     var GetRandomPasswordCommand = class extends command5(_ep05, _mw05, "GetRandomPassword", GetRandomPassword$) {
     };
     var GetResourcePolicyCommand = class extends command5(_ep05, _mw05, "GetResourcePolicy", GetResourcePolicy$) {
     };
     var GetSecretValueCommand2 = class extends command5(_ep05, _mw05, "GetSecretValue", GetSecretValue$) {
+    };
+    var ListResourcePoliciesCommand = class extends command5(_ep05, _mw05, "ListResourcePolicies", ListResourcePolicies$) {
     };
     var ListSecretsCommand = class extends command5(_ep05, _mw05, "ListSecrets", ListSecrets$) {
     };
@@ -28261,18 +28405,22 @@ var require_dist_cjs16 = __commonJS({
     var ValidateResourcePolicyCommand = class extends command5(_ep05, _mw05, "ValidateResourcePolicy", ValidateResourcePolicy$) {
     };
     var paginateBatchGetSecretValue = createPaginator2(SecretsManagerClient2, BatchGetSecretValueCommand, "NextToken", "NextToken", "MaxResults");
+    var paginateListResourcePolicies = createPaginator2(SecretsManagerClient2, ListResourcePoliciesCommand, "NextToken", "NextToken", "MaxResults");
     var paginateListSecrets = createPaginator2(SecretsManagerClient2, ListSecretsCommand, "NextToken", "NextToken", "MaxResults");
     var paginateListSecretVersionIds = createPaginator2(SecretsManagerClient2, ListSecretVersionIdsCommand, "NextToken", "NextToken", "MaxResults");
     var commands5 = {
+      AssociateCrossAccountReplicaCommand,
       BatchGetSecretValueCommand,
       CancelRotateSecretCommand,
       CreateSecretCommand,
       DeleteResourcePolicyCommand,
       DeleteSecretCommand,
       DescribeSecretCommand,
+      DisassociateCrossAccountReplicaCommand,
       GetRandomPasswordCommand,
       GetResourcePolicyCommand,
       GetSecretValueCommand: GetSecretValueCommand2,
+      ListResourcePoliciesCommand,
       ListSecretsCommand,
       ListSecretVersionIdsCommand,
       PutResourcePolicyCommand,
@@ -28290,12 +28438,24 @@ var require_dist_cjs16 = __commonJS({
     };
     var paginators = {
       paginateBatchGetSecretValue,
+      paginateListResourcePolicies,
       paginateListSecrets,
       paginateListSecretVersionIds
     };
     var SecretsManager = class extends SecretsManagerClient2 {
     };
     createAggregatedClient2(commands5, SecretsManager, { paginators });
+    var ReplicaRestrictionType = {
+      NoRestriction: "NoRestriction",
+      SameOrg: "SameOrg"
+    };
+    var StatusType = {
+      Detached: "Detached",
+      Failed: "Failed",
+      InProgress: "InProgress",
+      InSync: "InSync",
+      Pending: "Pending"
+    };
     var FilterNameStringType = {
       all: "all",
       description: "description",
@@ -28304,11 +28464,6 @@ var require_dist_cjs16 = __commonJS({
       primary_region: "primary-region",
       tag_key: "tag-key",
       tag_value: "tag-value"
-    };
-    var StatusType = {
-      Failed: "Failed",
-      InProgress: "InProgress",
-      InSync: "InSync"
     };
     var SortByType = {
       created_date: "created-date",
@@ -28321,6 +28476,10 @@ var require_dist_cjs16 = __commonJS({
       desc: "desc"
     };
     exports.APIErrorType$ = APIErrorType$;
+    exports.AssociateCrossAccountReplica$ = AssociateCrossAccountReplica$;
+    exports.AssociateCrossAccountReplicaCommand = AssociateCrossAccountReplicaCommand;
+    exports.AssociateCrossAccountReplicaRequest$ = AssociateCrossAccountReplicaRequest$;
+    exports.AssociateCrossAccountReplicaResponse$ = AssociateCrossAccountReplicaResponse$;
     exports.BatchGetSecretValue$ = BatchGetSecretValue$;
     exports.BatchGetSecretValueCommand = BatchGetSecretValueCommand;
     exports.BatchGetSecretValueRequest$ = BatchGetSecretValueRequest$;
@@ -28333,6 +28492,8 @@ var require_dist_cjs16 = __commonJS({
     exports.CreateSecretCommand = CreateSecretCommand;
     exports.CreateSecretRequest$ = CreateSecretRequest$;
     exports.CreateSecretResponse$ = CreateSecretResponse$;
+    exports.CrossAccountPrimaryType$ = CrossAccountPrimaryType$;
+    exports.CrossAccountReplicaEntry$ = CrossAccountReplicaEntry$;
     exports.DecryptionFailure = DecryptionFailure;
     exports.DecryptionFailure$ = DecryptionFailure$;
     exports.DeleteResourcePolicy$ = DeleteResourcePolicy$;
@@ -28347,6 +28508,10 @@ var require_dist_cjs16 = __commonJS({
     exports.DescribeSecretCommand = DescribeSecretCommand;
     exports.DescribeSecretRequest$ = DescribeSecretRequest$;
     exports.DescribeSecretResponse$ = DescribeSecretResponse$;
+    exports.DisassociateCrossAccountReplica$ = DisassociateCrossAccountReplica$;
+    exports.DisassociateCrossAccountReplicaCommand = DisassociateCrossAccountReplicaCommand;
+    exports.DisassociateCrossAccountReplicaRequest$ = DisassociateCrossAccountReplicaRequest$;
+    exports.DisassociateCrossAccountReplicaResponse$ = DisassociateCrossAccountReplicaResponse$;
     exports.EncryptionFailure = EncryptionFailure;
     exports.EncryptionFailure$ = EncryptionFailure$;
     exports.ExternalSecretRotationMetadataItem$ = ExternalSecretRotationMetadataItem$;
@@ -28374,6 +28539,10 @@ var require_dist_cjs16 = __commonJS({
     exports.InvalidRequestException$ = InvalidRequestException$3;
     exports.LimitExceededException = LimitExceededException;
     exports.LimitExceededException$ = LimitExceededException$;
+    exports.ListResourcePolicies$ = ListResourcePolicies$;
+    exports.ListResourcePoliciesCommand = ListResourcePoliciesCommand;
+    exports.ListResourcePoliciesRequest$ = ListResourcePoliciesRequest$;
+    exports.ListResourcePoliciesResponse$ = ListResourcePoliciesResponse$;
     exports.ListSecretVersionIds$ = ListSecretVersionIds$;
     exports.ListSecretVersionIdsCommand = ListSecretVersionIdsCommand;
     exports.ListSecretVersionIdsRequest$ = ListSecretVersionIdsRequest$;
@@ -28401,6 +28570,7 @@ var require_dist_cjs16 = __commonJS({
     exports.RemoveRegionsFromReplicationRequest$ = RemoveRegionsFromReplicationRequest$;
     exports.RemoveRegionsFromReplicationResponse$ = RemoveRegionsFromReplicationResponse$;
     exports.ReplicaRegionType$ = ReplicaRegionType$;
+    exports.ReplicaRestrictionType = ReplicaRestrictionType;
     exports.ReplicateSecretToRegions$ = ReplicateSecretToRegions$;
     exports.ReplicateSecretToRegionsCommand = ReplicateSecretToRegionsCommand;
     exports.ReplicateSecretToRegionsRequest$ = ReplicateSecretToRegionsRequest$;
@@ -28410,6 +28580,7 @@ var require_dist_cjs16 = __commonJS({
     exports.ResourceExistsException$ = ResourceExistsException$;
     exports.ResourceNotFoundException = ResourceNotFoundException2;
     exports.ResourceNotFoundException$ = ResourceNotFoundException$2;
+    exports.ResourcePolicySummary$ = ResourcePolicySummary$;
     exports.RestoreSecret$ = RestoreSecret$;
     exports.RestoreSecretCommand = RestoreSecretCommand;
     exports.RestoreSecretRequest$ = RestoreSecretRequest$;
@@ -28455,6 +28626,7 @@ var require_dist_cjs16 = __commonJS({
     exports.ValidationErrorsEntry$ = ValidationErrorsEntry$;
     exports.errorTypeRegistries = errorTypeRegistries5;
     exports.paginateBatchGetSecretValue = paginateBatchGetSecretValue;
+    exports.paginateListResourcePolicies = paginateListResourcePolicies;
     exports.paginateListSecretVersionIds = paginateListSecretVersionIds;
     exports.paginateListSecrets = paginateListSecrets;
   }
